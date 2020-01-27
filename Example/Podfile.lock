@@ -1,0 +1,29 @@
+PODS:
+  - SnapKit (5.0.1)
+  - ThemeKit.swift (1.0):
+    - SnapKit (~> 5.0)
+    - UIExtensions.swift (~> 1.1)
+  - UIExtensions.swift (1.1)
+
+DEPENDENCIES:
+  - ThemeKit.swift (from `../`)
+  - UIExtensions.swift (from `../../gui-kit/`)
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
+
+EXTERNAL SOURCES:
+  ThemeKit.swift:
+    :path: "../"
+  UIExtensions.swift:
+    :path: "../../gui-kit/"
+
+SPEC CHECKSUMS:
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  ThemeKit.swift: 7fe4c505feea4066b8b00cff027c5cf3f2158207
+  UIExtensions.swift: b3852a339a81c730d98b3342ae0275e807703782
+
+PODFILE CHECKSUM: 9cd07fc1535bc2512e2506b4693b2ac344932738
+
+COCOAPODS: 1.8.4

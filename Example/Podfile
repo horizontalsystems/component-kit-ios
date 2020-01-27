@@ -1,11 +1,11 @@
+platform :ios, '11'
 use_frameworks!
 
-target 'ComponentKit_Example' do
-  pod 'ComponentKit', :path => '../'
+target 'ComponentKitExample' do
+  pod 'ThemeKit.swift', :path => '../'
+  pod 'UIExtensions.swift', :path => '../../gui-kit/'
+end
 
-  target 'ComponentKit_Tests' do
-    inherit! :search_paths
-
-    
-  end
+target 'ComponentKitTests' do
+  pod 'ThemeKit.swift', :path => '../'
 end
