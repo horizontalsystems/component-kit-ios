@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ComponentKit_Example' do
+  pod 'ComponentKit', :path => '../'
+
+  target 'ComponentKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
