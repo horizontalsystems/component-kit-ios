@@ -43,5 +43,9 @@ extension UIColor {
 }
 
 extension UIColor {
+    public static var themeBackgroundFromGradient: UIColor { .themeTyler }
+    public static var themeBackgroundToGradient: UIColor { .themeHelsing }
+
+    public static var themeInputFieldTintColor: UIColor { .themeJacob }
     public static var themeNavigationBarBackground: UIColor { UIColor.themeTyler.withAlphaComponent(0.96) }
 }
