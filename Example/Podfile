@@ -2,10 +2,13 @@ platform :ios, '11'
 use_frameworks!
 
 target 'ComponentKitExample' do
-  pod 'ThemeKit.swift', :path => '../'
-  pod 'UIExtensions.swift', :path => '../../gui-kit/'
+  pod 'ThemeKit.swift', path: '../'
+  pod 'LanguageKit.swift', path: '../'
+
+  pod 'UIExtensions.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
 end
 
 target 'ComponentKitTests' do
-  pod 'ThemeKit.swift', :path => '../'
+  pod 'ThemeKit.swift', path: '../'
+  pod 'LanguageKit.swift', path: '../'
 end

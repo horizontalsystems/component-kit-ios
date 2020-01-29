@@ -1,4 +1,6 @@
 PODS:
+  - LanguageKit.swift (1.0):
+    - UIExtensions.swift (~> 1.1)
   - SnapKit (5.0.1)
   - ThemeKit.swift (1.0):
     - SnapKit (~> 5.0)
@@ -6,24 +8,33 @@ PODS:
   - UIExtensions.swift (1.1)
 
 DEPENDENCIES:
+  - LanguageKit.swift (from `../`)
   - ThemeKit.swift (from `../`)
-  - UIExtensions.swift (from `../../gui-kit/`)
+  - UIExtensions.swift (from `https://github.com/horizontalsystems/gui-kit/`)
 
 SPEC REPOS:
   trunk:
     - SnapKit
 
 EXTERNAL SOURCES:
+  LanguageKit.swift:
+    :path: "../"
   ThemeKit.swift:
     :path: "../"
   UIExtensions.swift:
-    :path: "../../gui-kit/"
+    :git: https://github.com/horizontalsystems/gui-kit/
+
+CHECKOUT OPTIONS:
+  UIExtensions.swift:
+    :commit: 36c456a9d6f9ff8b978b8397a50eeb4d22b75d00
+    :git: https://github.com/horizontalsystems/gui-kit/
 
 SPEC CHECKSUMS:
+  LanguageKit.swift: ce8d428ef08f9651dbd3ef188312c94e138b2f05
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   ThemeKit.swift: dd8566bf70dd4931471e60846c939dc72bfa8cd0
   UIExtensions.swift: b3852a339a81c730d98b3342ae0275e807703782
 
-PODFILE CHECKSUM: 9cd07fc1535bc2512e2506b4693b2ac344932738
+PODFILE CHECKSUM: 8b71824ff468c867ec85e5361e85f9c5bf3f857b
 
 COCOAPODS: 1.8.4
