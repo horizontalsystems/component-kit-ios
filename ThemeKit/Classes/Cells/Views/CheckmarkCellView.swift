@@ -7,7 +7,7 @@ class CheckmarkCellView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        imageView.image = UIImage(named: "Confirmations Icon")?.withRenderingMode(.alwaysTemplate)
+        imageView.image = ThemeKitBundle.shared.image(named: "Checkmark 24")?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .themeJacob
         imageView.setContentHuggingPriority(.required, for: .horizontal)
         addSubview(imageView)
