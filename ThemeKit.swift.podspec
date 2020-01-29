@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.swift_version = '5'
 
   s.source_files = 'ThemeKit/Classes/**/*'
+  s.resource_bundle = { 'ThemeKit' => 'ThemeKit/Assets/*.xcassets' }
 
   s.dependency 'UIExtensions.swift', '~> 1.1'
   s.dependency 'SnapKit', '~> 5.0'
