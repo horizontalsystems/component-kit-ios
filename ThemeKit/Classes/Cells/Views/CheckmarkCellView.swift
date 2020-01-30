@@ -1,10 +1,10 @@
 import UIKit
 import SnapKit
 
-class CheckmarkCellView: UIView {
+open class CheckmarkCellView: UIView {
     private let imageView = UIImageView()
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
 
         imageView.image = ThemeKitBundle.shared.image(named: "Checkmark 24")?.withRenderingMode(.alwaysTemplate)
@@ -18,11 +18,11 @@ class CheckmarkCellView: UIView {
         }
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func bind(visible: Bool) {
+    public func bind(visible: Bool) {
         imageView.isHidden = !visible
     }
 
