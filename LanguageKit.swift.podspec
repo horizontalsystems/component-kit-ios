@@ -14,6 +14,9 @@ Pod::Spec.new do |s|
   s.swift_version = '5'
 
   s.source_files = 'LanguageKit/Classes/**/*'
+  s.resource_bundle = { 'LanguageKit' => 'LanguageKit/Assets/*.xcassets' }
 
   s.dependency 'UIExtensions.swift', '~> 1.1'
+  s.dependency 'SectionsTableView.swift', '~> 1.1'
+  s.dependency 'ThemeKit.swift', '~> 1.0'
 end
