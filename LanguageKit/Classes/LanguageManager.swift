@@ -12,21 +12,11 @@ public class LanguageManager {
     public static let shared = LanguageManager()
 
     public var currentLocale: Locale
-    private var currentBundle: Bundle?
 
     init() {
         let language = LanguageManager.storedCurrentLanguage ?? LanguageManager.preferredLanguage ?? LanguageManager.fallbackLanguage
         currentLocale = Locale(identifier: language)
-        currentBundle = LanguageManager.bundle(language: language)
     }
-
-    private func localize(string: String, language: String) -> String? {
-        if let path = Bundle.main.path(forResource: language, ofType: "lproj"), let bundle = Bundle(path: path) {
-            return bundle.localizedString(forKey: string, value: nil, table: nil)
-        }
-        return nil
-    }
-
 
 }
 
@@ -51,7 +41,6 @@ extension LanguageManager: ILanguageManager {
         }
         set {
             currentLocale = Locale(identifier: newValue)
-            currentBundle = LanguageManager.bundle(language: newValue)
             LanguageManager.store(currentLanguage: newValue)
         }
     }
@@ -77,12 +66,16 @@ extension LanguageManager: ILanguageManager {
 
 extension LanguageManager {
 
-    public func localize(string: String) -> String {
-        currentBundle?.localizedString(forKey: string, value: nil, table: nil) ?? string
+    public func localize(string: String, bundle: Bundle?) -> String {
+        if let languageBundleUrl = bundle?.url(forResource: currentLanguage, withExtension: "lproj"), let languageBundle = Bundle(url: languageBundleUrl) {
+            return languageBundle.localizedString(forKey: string, value: nil, table: nil)
+        }
+
+        return string
     }
 
-    public func localize(string: String, arguments: [CVarArg]) -> String {
-        String(format: localize(string: string), locale: currentLocale, arguments: arguments)
+    public func localize(string: String, bundle: Bundle?, arguments: [CVarArg]) -> String {
+        String(format: localize(string: string, bundle: bundle), locale: currentLocale, arguments: arguments)
     }
 
 }
@@ -96,14 +89,6 @@ extension LanguageManager {
 
     static var availableLanguages: [String] {
         Bundle.main.localizations.sorted()
-    }
-
-    static func bundle(language: String) -> Bundle? {
-        guard let path = Bundle.main.path(forResource: language, ofType: "lproj") else {
-            return nil
-        }
-
-        return Bundle(path: path)
     }
 
 }
