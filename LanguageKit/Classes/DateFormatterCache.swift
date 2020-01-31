@@ -6,14 +6,14 @@ class DateFormatterCache {
     private var formatters = [CacheKey: DateFormatter]()
 
     func getFormatter(forFormat format: String) -> DateFormatter {
-        let key = CacheKey(format: format, localeIdentifier: Locale.appCurrent.identifier)
+        let key = CacheKey(format: format, language: LanguageManager.shared.currentLanguage)
 
         if let formatter = formatters[key] {
             return formatter
         }
 
         let formatter = DateFormatter()
-        formatter.locale = Locale.appCurrent
+        formatter.locale = LanguageManager.shared.currentLocale
         formatter.setLocalizedDateFormatFromTemplate(format)
 
         formatters[key] = formatter
@@ -23,7 +23,7 @@ class DateFormatterCache {
 
     private struct CacheKey: Hashable {
         let format: String
-        let localeIdentifier: String
+        let language: String
     }
 
 }

@@ -1,33 +1,24 @@
-class LanguageSettingsInteractor {
-    private var languageManager: ILanguageManager
-
-    init(languageManager: ILanguageManager) {
-        self.languageManager = languageManager
-    }
-
-}
-
-extension LanguageSettingsInteractor: ILanguageSettingsInteractor {
+class LanguageSettingsInteractor: ILanguageSettingsInteractor {
 
     var currentLanguage: String {
         get {
-            languageManager.currentLanguage
+            LanguageManager.shared.currentLanguage
         }
         set {
-            languageManager.currentLanguage = newValue
+            LanguageManager.shared.currentLanguage = newValue
         }
     }
 
     var availableLanguages: [String] {
-        languageManager.availableLanguages
+        LanguageManager.availableLanguages
     }
 
     func displayName(language: String) -> String? {
-        languageManager.displayName(language: language)
+        LanguageManager.shared.displayName(language: language)
     }
 
     func nativeDisplayName(language: String) -> String? {
-        languageManager.nativeDisplayName(language: language)
+        LanguageManager.nativeDisplayName(language: language)
     }
 
 }
