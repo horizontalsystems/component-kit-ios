@@ -31,7 +31,7 @@ extension LanguageSettingsRouter {
 
     public static func module(mainModuleCreator: @escaping () -> UIViewController) -> UIViewController {
         let router = LanguageSettingsRouter(mainModuleCreator: mainModuleCreator)
-        let interactor = LanguageSettingsInteractor(languageManager: LanguageManager.shared)
+        let interactor = LanguageSettingsInteractor()
         let presenter = LanguageSettingsPresenter(router: router, interactor: interactor)
         let view = LanguageSettingsViewController(delegate: presenter)
 
