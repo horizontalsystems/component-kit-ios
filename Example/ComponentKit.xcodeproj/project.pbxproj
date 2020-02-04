@@ -59,6 +59,7 @@
 		D3A8073223DEA9AF00BD50FB /* ColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		D3A8073323DEA9AF00BD50FB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3A8073D23DFF92900BD50FB /* LanguageKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = LanguageKit.swift.podspec; path = ../LanguageKit.swift.podspec; sourceTree = "<group>"; };
+		D3A807AB23E93D0E00BD50FB /* StorageKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = StorageKit.swift.podspec; path = ../StorageKit.swift.podspec; sourceTree = "<group>"; };
 		E6CA651F9287F9A24D646F9A /* Pods-ComponentKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-ComponentKit_Tests/Pods-ComponentKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +159,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				D3A807AB23E93D0E00BD50FB /* StorageKit.swift.podspec */,
 				D3A8073D23DFF92900BD50FB /* LanguageKit.swift.podspec */,
 				77FC697FAC8E7FD15B554493 /* ThemeKit.swift.podspec */,
 				BF959EB2797C954E19B19758 /* README.md */,
@@ -292,17 +294,23 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/HUD.swift/HUD.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/LanguageKit.swift/LanguageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SectionsTableView.swift/SectionsTableView.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/StorageKit.swift/StorageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ThemeKit.swift/ThemeKit.framework",
 				"${BUILT_PRODUCTS_DIR}/UIExtensions.swift/UIExtensions.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LanguageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SectionsTableView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StorageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ThemeKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIExtensions.framework",
 			);
@@ -318,17 +326,23 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ComponentKitTests/Pods-ComponentKitTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/HUD.swift/HUD.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/LanguageKit.swift/LanguageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SectionsTableView.swift/SectionsTableView.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/StorageKit.swift/StorageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ThemeKit.swift/ThemeKit.framework",
 				"${BUILT_PRODUCTS_DIR}/UIExtensions.swift/UIExtensions.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LanguageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SectionsTableView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StorageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ThemeKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIExtensions.framework",
 			);

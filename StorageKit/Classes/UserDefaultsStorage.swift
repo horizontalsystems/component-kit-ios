@@ -1,0 +1,22 @@
+import Foundation
+
+class UserDefaultsStorage {
+    static var shared = UserDefaultsStorage()
+}
+
+extension UserDefaultsStorage: ILocalStorage {
+
+    func value<T>(for key: String) -> T? {
+        UserDefaults.standard.value(forKey: key) as? T
+    }
+
+    func set<T>(value: T?, for key: String) {
+        if let value = value {
+            UserDefaults.standard.set(value, forKey: key)
+        } else  {
+            UserDefaults.standard.removeObject(forKey: key)
+        }
+        UserDefaults.standard.synchronize()
+    }
+
+}

@@ -4,6 +4,7 @@ use_frameworks!
 target 'ComponentKitExample' do
   pod 'ThemeKit.swift', path: '../'
   pod 'LanguageKit.swift', path: '../'
+  pod 'StorageKit.swift', path: '../'
 
   pod 'UIExtensions.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
 end
@@ -11,4 +12,5 @@ end
 target 'ComponentKitTests' do
   pod 'ThemeKit.swift', path: '../'
   pod 'LanguageKit.swift', path: '../'
+  pod 'StorageKit.swift', path: '../'
 end
