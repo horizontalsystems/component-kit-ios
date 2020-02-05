@@ -2,23 +2,14 @@ import Foundation
 import KeychainAccess
 
 class KeychainStorage {
-    private let keyDidLaunchOnce = "did_launch_once_key"
-
     private let keychain: Keychain
 
     init(service: String) {
         keychain = Keychain(service: service).accessibility(.whenPasscodeSetThisDeviceOnly)
-
-        handleDidLaunchOnce()
     }
 
-    private func handleDidLaunchOnce() {
-        let didLaunchOnce = Kit.localStorage.value(for: keyDidLaunchOnce) ?? false
-
-        if !didLaunchOnce {
-            try? keychain.removeAll()
-            Kit.localStorage.set(value: true, for: keyDidLaunchOnce)
-        }
+    func clear() throws {
+        try keychain.removeAll()
     }
 
 }
