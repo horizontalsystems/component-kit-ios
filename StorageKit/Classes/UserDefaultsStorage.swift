@@ -1,7 +1,6 @@
 import Foundation
 
 class UserDefaultsStorage {
-    static var shared = UserDefaultsStorage()
 }
 
 extension UserDefaultsStorage: ILocalStorage {

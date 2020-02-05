@@ -1,14 +1,37 @@
-import Foundation
+import UIKit
+import LanguageKit
 
-public class Kit {
+class StorageKit {
 
-    public static var localStorage: ILocalStorage {
-        UserDefaultsStorage.shared
+    static var bundle: Bundle? {
+        Bundle(for: StorageKit.self).url(forResource: "StorageKit", withExtension: "bundle").flatMap { Bundle(url: $0) }
     }
 
-    public static func secureStorage(service: String) -> ISecureStorage {
-        KeychainStorage(service: service)
+    static func image(named: String) -> UIImage? {
+        UIImage(named: named, in: bundle, compatibleWith: nil)
     }
+
+}
+
+extension String {
+
+    var localized: String {
+        LanguageManager.shared.localize(string: self, bundle: StorageKit.bundle)
+    }
+
+    func localized(_ arguments: CVarArg...) -> String {
+        LanguageManager.shared.localize(string: self, bundle: StorageKit.bundle, arguments: arguments)
+    }
+
+}
+
+public class LocalStorage {
+
+    public static var `default`: ILocalStorage {
+        userDefaults
+    }
+
+    public static let userDefaults: ILocalStorage = UserDefaultsStorage()
 
 }
 
@@ -23,4 +46,18 @@ public protocol ISecureStorage {
     func value(for key: String) -> Data?
     func set(value: Data?, for key: String) throws
     func removeValue(for key: String) throws
+}
+
+public protocol IKeychainKit {
+    var secureStorage: ISecureStorage { get }
+    var locked: Bool { get }
+    func set(delegate: IKeychainKitDelegate?)
+    func handleLaunch()
+    func handleForeground()
+}
+
+public protocol IKeychainKitDelegate: AnyObject {
+    func onInitialLock()
+    func onLock()
+    func onUnlock()
 }
