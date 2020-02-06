@@ -1,0 +1,3 @@
+protocol IEditPinRouter {
+    func dismiss()
+}

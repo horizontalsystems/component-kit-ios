@@ -1,0 +1,33 @@
+"pin.button.cancel" = "Abbrechen";
+"pin.button.confirm" = "Bestätigen";
+
+// Set PIN
+
+"set_pin.title" = "Code";
+"set_pin.info" = "Dein Code ist notwendig, um deinen Wallet zu entsperren und Geld zu schicken";
+"set_pin.confirm.info" = "Bestätigen";
+"set_pin.wrong_confirmation" = "Der eingegebene Code scheint nicht richtig zu sein. Bitte versuchen Sie es erneut.";
+
+// Edit PIN
+
+"edit_pin.title" = "Code bearbeiten";
+"edit_pin.unlock_info" = "Aktuelle Code ";
+"edit_pin.new_pin_info" = "Neue Code";
+
+// Unlock PIN
+
+"unlock_pin.info" = "Code";
+"unlock_pin.cant_save_pin" = "Hoppla! Wir können den Code nicht speichern - bitte kontaktieren Sie uns so schnell wie möglich.";
+"unlock_pin.blocked_until" = "Deaktiviert bis: %@ ";
+"rate_list.updated" = "aktualisiert";
+
+//NumPad
+
+"numpad_2" = "A B C";
+"numpad_3" = "D E F";
+"numpad_4" = "G H I";
+"numpad_5" = "J K L";
+"numpad_6" = "M N O";
+"numpad_7" = "P Q R S";
+"numpad_8" = "T U V";
+"numpad_9" = "W X Y Z";
