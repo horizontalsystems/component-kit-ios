@@ -12,7 +12,6 @@ PODS:
     - UIExtensions.swift (~> 1.1)
   - Nimble (8.0.5)
   - PinKit.swift (1.0):
-    - KeychainAccess
     - LanguageKit.swift (~> 1.0)
     - RxSwift
     - StorageKit.swift (~> 1.0)
@@ -45,7 +44,7 @@ DEPENDENCIES:
   - RxBlocking (~> 5.0)
   - StorageKit.swift (from `../`)
   - ThemeKit.swift (from `../`)
-  - UIExtensions.swift (from `../../gui-kit/`)
+  - UIExtensions.swift (from `https://github.com/horizontalsystems/gui-kit/`)
 
 SPEC REPOS:
   trunk:
@@ -69,7 +68,12 @@ EXTERNAL SOURCES:
   ThemeKit.swift:
     :path: "../"
   UIExtensions.swift:
-    :path: "../../gui-kit/"
+    :git: https://github.com/horizontalsystems/gui-kit/
+
+CHECKOUT OPTIONS:
+  UIExtensions.swift:
+    :commit: 037a537bbc19b596a32635c4e9146d0e28bb1074
+    :git: https://github.com/horizontalsystems/gui-kit/
 
 SPEC CHECKSUMS:
   Cuckoo: 4045c5a8ce378c919c20c5ff3d6dd11ded0ec699
@@ -77,7 +81,7 @@ SPEC CHECKSUMS:
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
   LanguageKit.swift: f1105c75fe9d04f482d2ab55e48eb91ed008abef
   Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
-  PinKit.swift: a639696d0d9c4c06544b94d8eeda0ab9d88dc39e
+  PinKit.swift: 1acbf82ce5114972f1eb9a5a0c1b808dc08ad12e
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   RxBlocking: c5e090f42d046df8b0e7752742510f349963710f
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
@@ -87,6 +91,6 @@ SPEC CHECKSUMS:
   ThemeKit.swift: ab5c081b10f6a80149d37751f3ee98f1292bf497
   UIExtensions.swift: b3852a339a81c730d98b3342ae0275e807703782
 
-PODFILE CHECKSUM: 159b2011c527dddf85fa0e8327e9cf2c1e237b2d
+PODFILE CHECKSUM: e9805c9e47ca01b9668b2ab909a1e7396a35284c
 
 COCOAPODS: 1.8.4

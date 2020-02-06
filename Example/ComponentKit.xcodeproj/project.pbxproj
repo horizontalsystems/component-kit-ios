@@ -12,7 +12,6 @@
 		3ACFA8F923E9756000180FDF /* LockoutManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA4ABB4EE8FB398136754 /* LockoutManagerTests.swift */; };
 		3ACFA8FA23E9756000180FDF /* LockoutUntilDateFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAD03BA48C2716BC753CB /* LockoutUntilDateFactoryTests.swift */; };
 		3ACFA8FB23E9756000180FDF /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA4C3AD8E593C6A96CBC9 /* TestExtensions.swift */; };
-		417E0C84D5BFF704293B2E18 /* libPods-PinKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52ADBB30D0F5D75B6CCF774F /* libPods-PinKitTests.a */; };
 		58AAA01A50799C480D183A57 /* PinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA8124C28BB65CA6A3666 /* PinController.swift */; };
 		58AAA1CD8048AB56051DC663 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAE140B69AF27C88189BB /* App.swift */; };
 		58AAA532722A25F75165E9CD /* LockoutManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA4ABB4EE8FB398136754 /* LockoutManagerTests.swift */; };
@@ -20,8 +19,8 @@
 		58AAA68282B9D381AE5A31B0 /* LockoutUntilDateFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAD03BA48C2716BC753CB /* LockoutUntilDateFactoryTests.swift */; };
 		58AAAF3A59F5DC265AB3EC96 /* LockProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA7A435A2B3772EDC5DF1 /* LockProvider.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
-		A30C5948A60DAA53584A2EAB /* libPods-ComponentKitExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C855CA7554C82D98CD274115 /* libPods-ComponentKitExample.a */; };
-		C33993A40C81401D5C869D7B /* libPods-ComponentKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C438D21A2AB9EAB71E66E18E /* libPods-ComponentKitTests.a */; };
+		93C4CEAFDC8B36A1EA836EEB /* Pods_ComponentKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DA038DD92CDA44528F69CF /* Pods_ComponentKitExample.framework */; };
+		CC6AFC4EEC59BFB5A09022FE /* Pods_ComponentKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4469A1DDED632E804F113EAA /* Pods_ComponentKitTests.framework */; };
 		D3A8073423DEA9AF00BD50FB /* ColorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8072B23DEA9AF00BD50FB /* ColorsController.swift */; };
 		D3A8073523DEA9AF00BD50FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3A8072C23DEA9AF00BD50FB /* LaunchScreen.xib */; };
 		D3A8073623DEA9AF00BD50FB /* FontsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8072D23DEA9AF00BD50FB /* FontsController.swift */; };
@@ -30,6 +29,7 @@
 		D3A8073A23DEA9AF00BD50FB /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8073123DEA9AF00BD50FB /* FontCell.swift */; };
 		D3A8073B23DEA9AF00BD50FB /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8073223DEA9AF00BD50FB /* ColorCell.swift */; };
 		D3A8073C23DEA9AF00BD50FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8073323DEA9AF00BD50FB /* AppDelegate.swift */; };
+		E4885FD66F35076004CE4B9B /* Pods_PinKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37185E7C4D22FE82F070477 /* Pods_PinKitTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +57,7 @@
 		3ACFA8EE23E93F3000180FDF /* GeneratedMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneratedMocks.swift; path = Tests/PinKit/GeneratedMocks.swift; sourceTree = "<group>"; };
 		3ACFA90323E9756000180FDF /* ComponentKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComponentKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF35C2890903976EE7AD5F1 /* Pods-ComponentKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentKitTests.release.xcconfig"; path = "Target Support Files/Pods-ComponentKitTests/Pods-ComponentKitTests.release.xcconfig"; sourceTree = "<group>"; };
-		52ADBB30D0F5D75B6CCF774F /* libPods-PinKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PinKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4469A1DDED632E804F113EAA /* Pods_ComponentKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComponentKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AAA4ABB4EE8FB398136754 /* LockoutManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockoutManagerTests.swift; sourceTree = "<group>"; };
 		58AAA4C3AD8E593C6A96CBC9 /* TestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
 		58AAA7A435A2B3772EDC5DF1 /* LockProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockProvider.swift; sourceTree = "<group>"; };
@@ -73,10 +73,10 @@
 		7C60AFE8B3B933BE56AE743B /* Pods-ComponentKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentKitExample.debug.xcconfig"; path = "Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample.debug.xcconfig"; sourceTree = "<group>"; };
 		951CE3D23F3915E5952C82E7 /* Pods-ComponentKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentKit_Example.release.xcconfig"; path = "Target Support Files/Pods-ComponentKit_Example/Pods-ComponentKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		96409816B4E45A0226581D06 /* Pods-PinKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinKitTests.release.xcconfig"; path = "Target Support Files/Pods-PinKitTests/Pods-PinKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		96DA038DD92CDA44528F69CF /* Pods_ComponentKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComponentKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB472CAB63535A4CC3C06934 /* Pods-ComponentKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-ComponentKit_Example/Pods-ComponentKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BF959EB2797C954E19B19758 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		C438D21A2AB9EAB71E66E18E /* libPods-ComponentKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComponentKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C855CA7554C82D98CD274115 /* libPods-ComponentKitExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComponentKitExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D37185E7C4D22FE82F070477 /* Pods_PinKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A8072B23DEA9AF00BD50FB /* ColorsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsController.swift; sourceTree = "<group>"; };
 		D3A8072C23DEA9AF00BD50FB /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		D3A8072D23DEA9AF00BD50FB /* FontsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontsController.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				417E0C84D5BFF704293B2E18 /* libPods-PinKitTests.a in Frameworks */,
+				E4885FD66F35076004CE4B9B /* Pods_PinKitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C33993A40C81401D5C869D7B /* libPods-ComponentKitTests.a in Frameworks */,
+				CC6AFC4EEC59BFB5A09022FE /* Pods_ComponentKitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A30C5948A60DAA53584A2EAB /* libPods-ComponentKitExample.a in Frameworks */,
+				93C4CEAFDC8B36A1EA836EEB /* Pods_ComponentKitExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,9 +122,9 @@
 		34E6DD9A6A3EFEE77549D8C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C855CA7554C82D98CD274115 /* libPods-ComponentKitExample.a */,
-				C438D21A2AB9EAB71E66E18E /* libPods-ComponentKitTests.a */,
-				52ADBB30D0F5D75B6CCF774F /* libPods-PinKitTests.a */,
+				96DA038DD92CDA44528F69CF /* Pods_ComponentKitExample.framework */,
+				4469A1DDED632E804F113EAA /* Pods_ComponentKitTests.framework */,
+				D37185E7C4D22FE82F070477 /* Pods_PinKitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,7 +267,7 @@
 				3ACFA8DB23E9359800180FDF /* Sources */,
 				3ACFA8DD23E9359800180FDF /* Frameworks */,
 				3ACFA8DF23E9359800180FDF /* Resources */,
-				3ACFA8E023E9359800180FDF /* [CP] Copy Pods Resources */,
+				76447CC9171872B3F0B04652 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -288,7 +288,7 @@
 				3ACFA8F723E9756000180FDF /* Sources */,
 				3ACFA8FC23E9756000180FDF /* Frameworks */,
 				3ACFA8FE23E9756000180FDF /* Resources */,
-				3ACFA8FF23E9756000180FDF /* [CP] Copy Pods Resources */,
+				07478D5DB51ADBD07E1F7DD6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -308,7 +308,7 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				AA17608A05C81E262413707C /* [CP] Copy Pods Resources */,
+				EC183504FD8E44A20050A034 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -389,6 +389,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		07478D5DB51ADBD07E1F7DD6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ComponentKitTests/Pods-ComponentKitTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/HUD.swift/HUD.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/LanguageKit.swift/LanguageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/PinKit.swift/PinKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SectionsTableView.swift/SectionsTableView.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/StorageKit.swift/StorageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ThemeKit.swift/ThemeKit.framework",
+				"${BUILT_PRODUCTS_DIR}/UIExtensions.swift/UIExtensions.framework",
+				"${BUILT_PRODUCTS_DIR}/Cuckoo/Cuckoo.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LanguageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SectionsTableView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StorageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ThemeKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIExtensions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cuckoo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComponentKitTests/Pods-ComponentKitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3ACFA8DA23E9359800180FDF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,32 +453,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3ACFA8E023E9359800180FDF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PinKitTests/Pods-PinKitTests-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/HUD.swift/HUD.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/LanguageKit.swift/LanguageKit.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/PinKit.swift/PinKit.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/StorageKit.swift/StorageKit.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ThemeKit.swift/ThemeKit.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HUD.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LanguageKit.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PinKit.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StorageKit.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ThemeKit.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinKitTests/Pods-PinKitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3ACFA8ED23E93E8000180FDF /* Cuckoo */ = {
@@ -495,56 +513,48 @@
 			shellPath = /bin/sh;
 			shellScript = "OUTPUT_FILE=\"${PROJECT_DIR}/Tests/PinKit/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\nINPUT_DIR=\"${PROJECT_DIR}/../PinKit/Classes\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"PinKit\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Core/Protocols.swift\"\n";
 		};
-		3ACFA8FF23E9756000180FDF /* [CP] Copy Pods Resources */ = {
+		76447CC9171872B3F0B04652 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ComponentKitTests/Pods-ComponentKitTests-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/HUD.swift/HUD.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/LanguageKit.swift/LanguageKit.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/PinKit.swift/PinKit.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/StorageKit.swift/StorageKit.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ThemeKit.swift/ThemeKit.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-PinKitTests/Pods-PinKitTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/HUD.swift/HUD.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/LanguageKit.swift/LanguageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/PinKit.swift/PinKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SectionsTableView.swift/SectionsTableView.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/StorageKit.swift/StorageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ThemeKit.swift/ThemeKit.framework",
+				"${BUILT_PRODUCTS_DIR}/UIExtensions.swift/UIExtensions.framework",
+				"${BUILT_PRODUCTS_DIR}/Cuckoo/Cuckoo.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HUD.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LanguageKit.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PinKit.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StorageKit.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ThemeKit.bundle",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LanguageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SectionsTableView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StorageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ThemeKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIExtensions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cuckoo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComponentKitTests/Pods-ComponentKitTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AA17608A05C81E262413707C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/HUD.swift/HUD.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/LanguageKit.swift/LanguageKit.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/PinKit.swift/PinKit.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/StorageKit.swift/StorageKit.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ThemeKit.swift/ThemeKit.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HUD.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LanguageKit.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PinKit.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StorageKit.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ThemeKit.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinKitTests/Pods-PinKitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DA3B0DFC914A9DBFB8589768 /* [CP] Check Pods Manifest.lock */ = {
@@ -567,6 +577,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC183504FD8E44A20050A034 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/HUD.swift/HUD.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/LanguageKit.swift/LanguageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/PinKit.swift/PinKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SectionsTableView.swift/SectionsTableView.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/StorageKit.swift/StorageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ThemeKit.swift/ThemeKit.framework",
+				"${BUILT_PRODUCTS_DIR}/UIExtensions.swift/UIExtensions.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LanguageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SectionsTableView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StorageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ThemeKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIExtensions.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
