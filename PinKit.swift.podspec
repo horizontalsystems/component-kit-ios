@@ -21,5 +21,4 @@ Pod::Spec.new do |s|
   s.dependency 'LanguageKit.swift', '~> 1.0'
   s.dependency 'StorageKit.swift', '~> 1.0'
   s.dependency 'RxSwift'
-  s.dependency 'KeychainAccess'
 end
