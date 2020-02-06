@@ -22,7 +22,7 @@ open class LeftImageCellView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func bind(image: UIImage?) {
+    open func bind(image: UIImage?) {
         imageView.image = image
     }
 

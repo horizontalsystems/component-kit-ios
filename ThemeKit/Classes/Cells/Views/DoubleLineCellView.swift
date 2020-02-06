@@ -33,7 +33,7 @@ open class DoubleLineCellView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func bind(title: String?, subtitle: String?) {
+    open func bind(title: String?, subtitle: String?) {
         titleLabel.text = title
         subtitleLabel.text = subtitle
     }

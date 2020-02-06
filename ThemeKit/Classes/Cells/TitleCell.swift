@@ -34,7 +34,7 @@ open class TitleCell: ThemeCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func bind(titleIcon: UIImage? = nil, title: String, titleColor: UIColor = .themeOz, showDisclosure: Bool = false, last: Bool = false) {
+    open func bind(titleIcon: UIImage? = nil, title: String, titleColor: UIColor = .themeOz, showDisclosure: Bool = false, last: Bool = false) {
         super.bind(showDisclosure: showDisclosure, last: last)
 
         iconImageView.snp.updateConstraints { maker in

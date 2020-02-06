@@ -1,10 +1,12 @@
 import UIKit
 import SnapKit
+import ThemeKit
 
-open class ImageDoubleLineCheckmarkCell: ThemeCell {
+open class ImageSingleLineValueCell: ThemeCell {
     private let leftView = LeftImageCellView()
-    private let middleView = DoubleLineCellView()
-    private let rightView = CheckmarkCellView()
+    private let middleView = SingleLineCellView()
+    private let rightView = RightValueCellView()
+    private let disclosureView = DisclosureCellView()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,8 +24,14 @@ open class ImageDoubleLineCheckmarkCell: ThemeCell {
 
         contentView.addSubview(rightView)
         rightView.snp.makeConstraints { maker in
-            maker.trailing.top.bottom.equalToSuperview()
+            maker.top.bottom.equalToSuperview()
             maker.leading.equalTo(middleView.snp.trailing)
+        }
+
+        contentView.addSubview(disclosureView)
+        disclosureView.snp.makeConstraints { maker in
+            maker.top.trailing.bottom.equalToSuperview()
+            maker.leading.equalTo(rightView.snp.trailing)
         }
     }
 
@@ -31,12 +39,12 @@ open class ImageDoubleLineCheckmarkCell: ThemeCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open func bind(image: UIImage?, title: String?, subtitle: String?, checkmarkVisible: Bool, last: Bool = false) {
+    open func bind(image: UIImage?, title: String?, value: String?, last: Bool = false) {
         super.bind(last: last)
 
         leftView.bind(image: image)
-        middleView.bind(title: title, subtitle: subtitle)
-        rightView.bind(visible: checkmarkVisible)
+        middleView.bind(text: title)
+        rightView.bind(text: value)
     }
 
 }

@@ -22,7 +22,7 @@ open class CheckmarkCellView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func bind(visible: Bool) {
+    open func bind(visible: Bool) {
         imageView.isHidden = !visible
     }
 

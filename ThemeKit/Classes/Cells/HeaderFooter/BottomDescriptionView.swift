@@ -28,7 +28,7 @@ open class BottomDescriptionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func bind(text: String?) {
+    open func bind(text: String?) {
         label.text = text
     }
 

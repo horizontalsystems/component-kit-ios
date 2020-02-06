@@ -1,15 +1,16 @@
 import UIKit
+import UIExtensions
 import SnapKit
+import ThemeKit
 
-open class RightLabelCell: TitleCell {
-    private var rightLabel = UILabel()
+open class RightImageCell: TitleCell {
+    var rightImageView = TintImageView()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        rightLabel.textColor = .themeGray
-        contentView.addSubview(rightLabel)
-        rightLabel.snp.makeConstraints { maker in
+        contentView.addSubview(rightImageView)
+        rightImageView.snp.makeConstraints { maker in
             maker.trailing.equalTo(disclosureImageView.snp.leading).offset(-CGFloat.margin4x)
             maker.centerY.equalToSuperview()
         }
@@ -19,9 +20,10 @@ open class RightLabelCell: TitleCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open func bind(titleIcon: UIImage?, title: String, rightText: String?, showDisclosure: Bool, last: Bool = false) {
+    open func bind(titleIcon: UIImage?, title: String, rightImage: UIImage?, rightImageTintColor: UIColor?, showDisclosure: Bool, last: Bool = false) {
         super.bind(titleIcon: titleIcon, title: title, showDisclosure: showDisclosure, last: last)
-        rightLabel.text = rightText
+        rightImageView.tintColor = rightImageTintColor
+        rightImageView.image = rightImage
     }
 
 }
