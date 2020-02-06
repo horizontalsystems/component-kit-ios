@@ -12,7 +12,7 @@ open class ThemeCell: UITableViewCell {
     private let topSeparatorView = UIView()
     private let bottomSeparatorView = UIView()
 
-    public let disclosureImageView = UIImageView(image: UIImage(named: "Disclosure Indicator"))
+    public let disclosureImageView = UIImageView(image: ThemeKit.image(named: "Disclosure Indicator"))
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
