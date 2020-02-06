@@ -43,6 +43,14 @@ open class ThemeNavigationController: UINavigationController {
 
 open class ThemeTabBarController: UITabBarController {
 
+    public init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override open func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,6 +70,10 @@ open class ThemeTabBarController: UITabBarController {
         super.viewWillAppear(animated)
 
         tabBar.superview?.setNeedsLayout()
+    }
+
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        .themeDefault
     }
 
 }
@@ -103,7 +115,7 @@ open class ThemeViewController: UIViewController {
     }
 
     override open var preferredStatusBarStyle: UIStatusBarStyle {
-        Theme.current.statusBarStyle
+        .themeDefault
     }
 
 }
