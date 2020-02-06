@@ -1,0 +1,33 @@
+"pin.button.cancel" = "Cancelar";
+"pin.button.confirm" = "Confirm";
+
+// Set PIN
+
+"set_pin.title" = "Código de acceso";
+"set_pin.info" = "Su código servirá para abrir su monedero y enviar dinero";
+"set_pin.confirm.info" = "Confirmar";
+"set_pin.wrong_confirmation" = "El código de acceso no coincide. Inténtelo de nuevo";
+
+// Edit PIN
+
+"edit_pin.title" = "Editar el código de acceso";
+"edit_pin.unlock_info" = "Código actual";
+"edit_pin.new_pin_info" = "Nuevo código de acceso";
+
+// Unlock PIN
+
+"unlock_pin.info" = "Código de acceso";
+"unlock_pin.cant_save_pin" = "¡Ups! ¡No podemos guardar su código, póngase en contacto con nosotros lo antes posible!";
+"unlock_pin.blocked_until" = "Inhabilitado hasta: %@";
+"rate_list.updated" = "actualizado";
+
+//NumPad
+
+"numpad_2" = "A B C";
+"numpad_3" = "D E F";
+"numpad_4" = "G H I";
+"numpad_5" = "J K L";
+"numpad_6" = "M N O";
+"numpad_7" = "P Q R S";
+"numpad_8" = "T U V";
+"numpad_9" = "W X Y Z";

@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        App.shared.pinKit.willEnterForeground()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

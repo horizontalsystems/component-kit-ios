@@ -1,0 +1,33 @@
+"pin.button.cancel" = "Отменить";
+"pin.button.confirm" = "Подтвердить";
+
+// Set PIN
+
+"set_pin.title" = "Код Доступа";
+"set_pin.info" = "Ваш код будет использоваться для разблокировки вашего кошелька и отправки денег";
+"set_pin.confirm.info" = "Подтвердить";
+"set_pin.wrong_confirmation" = "Код не совпадает. Попробуйте еще раз";
+
+// Edit PIN
+
+"edit_pin.title" = "Изменить Код";
+"edit_pin.unlock_info" = "Текущий Код";
+"edit_pin.new_pin_info" = "Новый Код";
+
+// Unlock PIN
+
+"unlock_pin.info" = "Код Доступа";
+"unlock_pin.cant_save_pin" = "Ой! Мы не можем сохранить ваш код. Пожалуйста, свяжитесь с нами как можно скорее!";
+"unlock_pin.blocked_until" = "Отключено до: %@";
+"rate_list.updated" = "обновлено";
+
+//NumPad
+
+"numpad_2" = "А Б В Г";
+"numpad_3" = "Д Е Ж З";
+"numpad_4" = "И Й К Л";
+"numpad_5" = "М Н О П";
+"numpad_6" = "Р С Т У";
+"numpad_7" = "Ф Х Ц Ч";
+"numpad_8" = "Ш Щ Ъ Ы";
+"numpad_9" = "Ь Э Ю Я";

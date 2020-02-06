@@ -5,7 +5,9 @@ import SnapKit
 class MainController: ThemeTabBarController {
 
     init(selectedIndex: Int = 0) {
-        super.init(nibName: nil, bundle: nil)
+        super.init()
+
+        App.shared.lockProvider.viewController = self
 
         let colorsTitle = "Colors"
         let colorsController = ColorsController()
@@ -22,10 +24,16 @@ class MainController: ThemeTabBarController {
         cellsController.title = cellsTitle
         cellsController.tabBarItem = UITabBarItem(title: cellsTitle, image: UIImage(named: "TabBar Icon"), tag: 2)
 
+        let pinTitle = "Pin"
+        let pinController = PinController()
+        pinController.title = pinTitle
+        pinController.tabBarItem = UITabBarItem(title: pinTitle, image: UIImage(named: "TabBar Icon"), tag: 3)
+
         viewControllers = [
             ThemeNavigationController(rootViewController: colorsController),
             ThemeNavigationController(rootViewController: fontsController),
             ThemeNavigationController(rootViewController: cellsController),
+            ThemeNavigationController(rootViewController: pinController),
         ]
 
         self.selectedIndex = selectedIndex

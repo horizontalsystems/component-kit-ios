@@ -1,4 +1,7 @@
 PODS:
+  - Cuckoo (1.3.0):
+    - Cuckoo/Swift (= 1.3.0)
+  - Cuckoo/Swift (1.3.0)
   - HUD.swift (1.2):
     - SnapKit (~> 5.0)
     - UIExtensions.swift (~> 1.1)
@@ -7,6 +10,18 @@ PODS:
     - SectionsTableView.swift (~> 1.1)
     - ThemeKit.swift (~> 1.0)
     - UIExtensions.swift (~> 1.1)
+  - Nimble (8.0.5)
+  - PinKit.swift (1.0):
+    - KeychainAccess
+    - LanguageKit.swift (~> 1.0)
+    - RxSwift
+    - StorageKit.swift (~> 1.0)
+    - ThemeKit.swift (~> 1.0)
+    - UIExtensions.swift (~> 1.1)
+  - Quick (2.2.0)
+  - RxBlocking (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
   - SectionsTableView.swift (1.1):
     - SnapKit (~> 5.0)
     - UIExtensions.swift (~> 1.1)
@@ -22,43 +37,56 @@ PODS:
   - UIExtensions.swift (1.1)
 
 DEPENDENCIES:
+  - Cuckoo
   - LanguageKit.swift (from `../`)
+  - Nimble
+  - PinKit.swift (from `../`)
+  - Quick
+  - RxBlocking (~> 5.0)
   - StorageKit.swift (from `../`)
   - ThemeKit.swift (from `../`)
-  - UIExtensions.swift (from `https://github.com/horizontalsystems/gui-kit/`)
+  - UIExtensions.swift (from `../../gui-kit/`)
 
 SPEC REPOS:
   trunk:
+    - Cuckoo
     - HUD.swift
     - KeychainAccess
+    - Nimble
+    - Quick
+    - RxBlocking
+    - RxSwift
     - SectionsTableView.swift
     - SnapKit
 
 EXTERNAL SOURCES:
   LanguageKit.swift:
     :path: "../"
+  PinKit.swift:
+    :path: "../"
   StorageKit.swift:
     :path: "../"
   ThemeKit.swift:
     :path: "../"
   UIExtensions.swift:
-    :git: https://github.com/horizontalsystems/gui-kit/
-
-CHECKOUT OPTIONS:
-  UIExtensions.swift:
-    :commit: 36c456a9d6f9ff8b978b8397a50eeb4d22b75d00
-    :git: https://github.com/horizontalsystems/gui-kit/
+    :path: "../../gui-kit/"
 
 SPEC CHECKSUMS:
+  Cuckoo: 4045c5a8ce378c919c20c5ff3d6dd11ded0ec699
   HUD.swift: 0b9d074f07f601891878f87ff10ad867eed3182b
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
   LanguageKit.swift: f1105c75fe9d04f482d2ab55e48eb91ed008abef
+  Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
+  PinKit.swift: a639696d0d9c4c06544b94d8eeda0ab9d88dc39e
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+  RxBlocking: c5e090f42d046df8b0e7752742510f349963710f
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SectionsTableView.swift: 91f2235b63405f938621b7df040149d7c65b355d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   StorageKit.swift: 1b618d59978510ac2f32971a01f87e54cddbe0da
   ThemeKit.swift: ab5c081b10f6a80149d37751f3ee98f1292bf497
   UIExtensions.swift: b3852a339a81c730d98b3342ae0275e807703782
 
-PODFILE CHECKSUM: 6b34f8ada291ebc815f0ca288f488293a832a911
+PODFILE CHECKSUM: 159b2011c527dddf85fa0e8327e9cf2c1e237b2d
 
 COCOAPODS: 1.8.4

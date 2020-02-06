@@ -5,12 +5,27 @@ target 'ComponentKitExample' do
   pod 'ThemeKit.swift', path: '../'
   pod 'LanguageKit.swift', path: '../'
   pod 'StorageKit.swift', path: '../'
+  pod 'PinKit.swift', path: '../'
 
-  pod 'UIExtensions.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
+  pod 'UIExtensions.swift', path: '../../gui-kit/'
+end
+
+def testPods
+  pod 'Quick'
+  pod 'Nimble'
+  pod 'Cuckoo'
+  pod 'RxBlocking', '~> 5.0'
+end
+
+target 'PinKitTests' do
+  pod 'PinKit.swift', :path => '../'
+  testPods
 end
 
 target 'ComponentKitTests' do
   pod 'ThemeKit.swift', path: '../'
   pod 'LanguageKit.swift', path: '../'
   pod 'StorageKit.swift', path: '../'
+  pod 'PinKit.swift', path: '../'
+  testPods
 end

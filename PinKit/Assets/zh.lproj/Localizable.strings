@@ -1,0 +1,37 @@
+"pin.button.cancel" = "取消";
+"pin.button.confirm" = "确认";
+
+// Set PIN
+
+"set_pin.title" = "密码";
+"set_pin.info" = "您的密码将用于解锁钱包和发送资金";
+"set_pin.confirm.info" = "确认";
+"set_pin.wrong_confirmation" = "密码不匹配。请重试。";
+
+// Edit PIN
+
+"edit_pin.title" = "编辑密码";
+"edit_pin.unlock_info" = "当前密码";
+"edit_pin.new_pin_info" = "新密码";
+
+// Unlock PIN
+
+"unlock_pin.info" = "密码";
+"unlock_pin.cant_save_pin" = "哎哟！我们无法保存您的密码，请尽快与我们联系，谢谢。";
+"unlock_pin.blocked_until" = "禁用至: %@";
+"rate_list.updated" = "已更新";
+
+// No Passcode
+
+"no_passcode.info_text" = "此应用要求电话已启用密码（屏幕锁定）。\n\n您可以在iOS设置中启用密码。\n\n请注意，禁用操作系统级别的PIN码后，电话的安全存储保障措施将使以前保存的数据无效。您必须恢复您的钱包密钥才能回到您的钱包。";
+
+//NumPad
+
+"numpad_2" = "A B C";
+"numpad_3" = "D E F";
+"numpad_4" = "G H I";
+"numpad_5" = "J K L";
+"numpad_6" = "M N O";
+"numpad_7" = "P Q R S";
+"numpad_8" = "T U V";
+"numpad_9" = "W X Y Z";

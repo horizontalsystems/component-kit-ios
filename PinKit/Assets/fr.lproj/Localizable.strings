@@ -1,0 +1,33 @@
+"pin.button.cancel" = "Annuler";
+"pin.button.confirm" = "Confirmer";
+
+// Set PIN
+
+"set_pin.title" = "Code";
+"set_pin.info" = "Votre code sera utilisé pour déverrouiller votre porte-monnaie et envoyer de l’argent";
+"set_pin.confirm.info" = "Confirmer";
+"set_pin.wrong_confirmation" = "Le Code ne correspond pas. Réessayez";
+
+// Edit PIN
+
+"edit_pin.title" = "Modifier le code ";
+"edit_pin.unlock_info" = "Le code actuel";
+"edit_pin.new_pin_info" = "Le code nouveu";
+
+// Unlock PIN
+
+"unlock_pin.info" = "Code";
+"unlock_pin.cant_save_pin" = "Oops! Nous ne pouvons pas enregistrer votre code, veuillez nous contacter au plus vite!";
+"unlock_pin.blocked_until" = "Désactivé jusqu'à: %@";
+"rate_list.updated" = "mis à jour";
+
+//NumPad
+
+"numpad_2" = "A B C";
+"numpad_3" = "D E F";
+"numpad_4" = "G H I";
+"numpad_5" = "J K L";
+"numpad_6" = "M N O";
+"numpad_7" = "P Q R S";
+"numpad_8" = "T U V";
+"numpad_9" = "W X Y Z";
