@@ -7,7 +7,7 @@ target 'ComponentKitExample' do
   pod 'StorageKit.swift', path: '../'
   pod 'PinKit.swift', path: '../'
 
-  pod 'UIExtensions.swift', path: '../../gui-kit/'
+  pod 'UIExtensions.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
 end
 
 def testPods
