@@ -32,15 +32,6 @@ public protocol IUnlockDelegate: class {
     func onCancelUnlock()
 }
 
-public protocol ILockProvider: class {
-    var viewController: UIViewController? { get set }
-    func lockScreenModule(delegate: IUnlockDelegate, appStart: Bool) -> UIViewController
-}
-
-protocol ILockRouter {
-    func showUnlock(delegate: IUnlockDelegate, lockProvider: ILockProvider)
-}
-
 protocol IBiometricManager {
     func validate(reason: String)
 }
