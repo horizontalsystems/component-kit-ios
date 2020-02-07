@@ -6,13 +6,13 @@ class App {
     static let shared = App()
 
     let pinKit: IPinKit
+    let pinKitDelegate: PinKitDelegate
     let keychainKit: IKeychainKit
-    let lockProvider: ILockProvider
 
     init() {
-        lockProvider = LockProvider()
+        pinKitDelegate = PinKitDelegate()
         keychainKit = KeychainKit(service: App.secureService)
-        pinKit = PinKit.Kit(secureStorage: keychainKit.secureStorage, localStorage: StorageKit.LocalStorage.default, lockProvider: lockProvider)
+        pinKit = PinKit.Kit(secureStorage: keychainKit.secureStorage, localStorage: StorageKit.LocalStorage.default)
     }
 
 }

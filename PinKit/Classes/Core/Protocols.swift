@@ -1,6 +1,8 @@
 import RxSwift
 
 public protocol IPinKit: class {
+    func set(delegate: IPinKitDelegate?)
+
     var isPinSet: Bool { get }
     var isPinSetObservable: Observable<Bool> { get }
     func clear() throws
@@ -17,7 +19,8 @@ public protocol IPinKit: class {
     func unlockPinModule(delegate: IUnlockDelegate, enableBiometry: Bool, unlockMode: UnlockMode) -> UIViewController
 }
 
-public protocol ILockManager {
+public protocol ILockManager: AnyObject {
+    var delegate: IPinKitDelegate? { get set }
     var isLocked: Bool { get }
     func lock()
     func didEnterBackground()
@@ -83,4 +86,8 @@ protocol IPeriodicTimerDelegate: class {
 
 protocol IUptimeProvider {
     var uptime: TimeInterval { get }
+}
+
+public protocol IPinKitDelegate: AnyObject {
+    func onLock(delegate: IUnlockDelegate)
 }
