@@ -21,7 +21,7 @@ class UnlockPinInteractor {
 extension UnlockPinInteractor: IUnlockPinInteractor {
 
     var failedAttempts: Int {
-        return lockoutManager.unlockAttempts ?? 0
+        lockoutManager.unlockAttempts
     }
 
     func updateLockoutState() {

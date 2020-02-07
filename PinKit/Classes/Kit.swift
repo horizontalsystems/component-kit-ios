@@ -11,13 +11,12 @@ public class Kit {
     private let lockManager: ILockManager & IUnlockDelegate
     private let lockoutManager: ILockoutManager
 
-    public init(secureStorage: ISecureStorage, localStorage: ILocalStorage, lockProvider: ILockProvider) {
+    public init(secureStorage: ISecureStorage, localStorage: ILocalStorage) {
         self.secureStorage = secureStorage
         self.localStorage = localStorage
 
-        let lockRouter = LockRouter()
         pinManager = PinManager(secureStorage: secureStorage, localStorage: localStorage)
-        lockManager = LockManager(pinManager: pinManager, localStorage: localStorage, lockRouter: lockRouter, lockProvider: lockProvider)
+        lockManager = LockManager(pinManager: pinManager, localStorage: localStorage)
 
         let uptimeProvider = UptimeProvider()
         let lockoutUntilDateFactory = LockoutUntilDateFactory(currentDateProvider: CurrentDateProvider())
@@ -27,6 +26,10 @@ public class Kit {
 }
 
 extension Kit: IPinKit {
+
+    public func set(delegate: IPinKitDelegate?) {
+        lockManager.delegate = delegate
+    }
 
     public var isPinSet: Bool {
         pinManager.isPinSet

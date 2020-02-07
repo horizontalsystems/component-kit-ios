@@ -7,7 +7,7 @@ class MainController: ThemeTabBarController {
     init(selectedIndex: Int = 0) {
         super.init()
 
-        App.shared.lockProvider.viewController = self
+        App.shared.pinKitDelegate.viewController = self
 
         let colorsTitle = "Colors"
         let colorsController = ColorsController()

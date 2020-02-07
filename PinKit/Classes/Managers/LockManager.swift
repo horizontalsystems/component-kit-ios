@@ -6,17 +6,15 @@ class LockManager {
 
     private let pinManager: IPinManager
     private let localStorage: ILocalStorage
-    private let lockRouter: ILockRouter
-    private let lockProvider: ILockProvider
 
     private let lockTimeout: Double = 60
     private(set) var isLocked: Bool
 
-    init(pinManager: IPinManager, localStorage: ILocalStorage, lockRouter: ILockRouter, lockProvider: ILockProvider) {
+    weak var delegate: IPinKitDelegate?
+
+    init(pinManager: IPinManager, localStorage: ILocalStorage) {
         self.pinManager = pinManager
         self.localStorage = localStorage
-        self.lockRouter = lockRouter
-        self.lockProvider = lockProvider
 
         isLocked = pinManager.isPinSet
     }
@@ -54,7 +52,7 @@ extension LockManager: ILockManager {
         }
 
         isLocked = true
-        lockRouter.showUnlock(delegate: self, lockProvider: lockProvider)
+        delegate?.onLock(delegate: self)
     }
 
 }
