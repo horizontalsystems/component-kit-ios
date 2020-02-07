@@ -1,0 +1,33 @@
+"pin.button.cancel" = "Cancel";
+"pin.button.confirm" = "Confirm";
+
+// Set PIN
+
+"set_pin.title" = "Passcode";
+"set_pin.info" = "Your passcode will be used to unlock your wallet and send money";
+"set_pin.confirm.info" = "Confirm";
+"set_pin.wrong_confirmation" = "Passcode did not match. Try again";
+
+// Edit PIN
+
+"edit_pin.title" = "Edit Passcode";
+"edit_pin.unlock_info" = "Current Passcode";
+"edit_pin.new_pin_info" = "New Passcode";
+
+// Unlock PIN
+
+"unlock_pin.info" = "Passcode";
+"unlock_pin.cant_save_pin" = "Ouch! We cannot save your passcode, please contact us asap!";
+"unlock_pin.blocked_until" = "Disabled until: %@";
+"rate_list.updated" = "updated";
+
+//NumPad
+
+"numpad_2" = "A B C";
+"numpad_3" = "D E F";
+"numpad_4" = "G H I";
+"numpad_5" = "J K L";
+"numpad_6" = "M N O";
+"numpad_7" = "P Q R S";
+"numpad_8" = "T U V";
+"numpad_9" = "W X Y Z";
