@@ -7,6 +7,7 @@ public class Kit {
     private let secureStorage: ISecureStorage
     private let localStorage: ILocalStorage
 
+    private let biometryManager: IBiometryManager
     private let pinManager: IPinManager
     private let lockManager: ILockManager & IUnlockDelegate
     private let lockoutManager: ILockoutManager
@@ -15,6 +16,7 @@ public class Kit {
         self.secureStorage = secureStorage
         self.localStorage = localStorage
 
+        biometryManager = BiometryManager()
         pinManager = PinManager(secureStorage: secureStorage, localStorage: localStorage)
         lockManager = LockManager(pinManager: pinManager, localStorage: localStorage)
 
@@ -39,6 +41,14 @@ extension Kit: IPinKit {
         pinManager.isPinSetObservable
     }
 
+    public var biometryType: BiometryType {
+        biometryManager.biometryType
+    }
+
+    public var biometryTypeObservable: Observable<BiometryType> {
+        biometryManager.biometryTypeObservable
+    }
+
     public func clear() throws {
         try pinManager.clear()
     }
@@ -52,7 +62,6 @@ extension Kit: IPinKit {
         }
     }
 
-
     public var isLocked: Bool {
         lockManager.isLocked
     }
@@ -61,12 +70,17 @@ extension Kit: IPinKit {
         lockManager.lock()
     }
 
+    public func didFinishLaunching() {
+        biometryManager.refresh()
+    }
+
     public func didEnterBackground() {
         lockManager.didEnterBackground()
     }
 
     public func willEnterForeground() {
         lockManager.willEnterForeground()
+        biometryManager.refresh()
     }
 
     public var editPinModule: UIViewController {

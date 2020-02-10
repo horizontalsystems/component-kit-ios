@@ -5,12 +5,15 @@ public protocol IPinKit: class {
 
     var isPinSet: Bool { get }
     var isPinSetObservable: Observable<Bool> { get }
+    var biometryType: BiometryType { get }
+    var biometryTypeObservable: Observable<BiometryType> { get }
     func clear() throws
 
     var biometryEnabled: Bool { get set }
 
     var isLocked: Bool { get }
     func lock()
+    func didFinishLaunching()
     func didEnterBackground()
     func willEnterForeground()
 
@@ -34,6 +37,12 @@ public protocol IUnlockDelegate: class {
 
 protocol IBiometricManager {
     func validate(reason: String)
+}
+
+protocol IBiometryManager {
+    var biometryType: BiometryType { get }
+    var biometryTypeObservable: Observable<BiometryType> { get }
+    func refresh()
 }
 
 protocol BiometricManagerDelegate: class {
