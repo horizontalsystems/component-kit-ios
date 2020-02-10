@@ -2,6 +2,12 @@ PODS:
   - Cuckoo (1.3.0):
     - Cuckoo/Swift (= 1.3.0)
   - Cuckoo/Swift (1.3.0)
+  - CurrencyKit.swift (1.0):
+    - LanguageKit.swift (~> 1.0)
+    - RxSwift (~> 5.0)
+    - SectionsTableView.swift (~> 1.1)
+    - StorageKit.swift (~> 1.0)
+    - ThemeKit.swift (~> 1.0)
   - HUD.swift (1.2):
     - SnapKit (~> 5.0)
     - UIExtensions.swift (~> 1.1)
@@ -37,6 +43,7 @@ PODS:
 
 DEPENDENCIES:
   - Cuckoo
+  - CurrencyKit.swift (from `../`)
   - LanguageKit.swift (from `../`)
   - Nimble
   - PinKit.swift (from `../`)
@@ -59,6 +66,8 @@ SPEC REPOS:
     - SnapKit
 
 EXTERNAL SOURCES:
+  CurrencyKit.swift:
+    :path: "../"
   LanguageKit.swift:
     :path: "../"
   PinKit.swift:
@@ -77,6 +86,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Cuckoo: 4045c5a8ce378c919c20c5ff3d6dd11ded0ec699
+  CurrencyKit.swift: c1a37e0e43eac3828be95c8348693f192d67b376
   HUD.swift: 0b9d074f07f601891878f87ff10ad867eed3182b
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
   LanguageKit.swift: f1105c75fe9d04f482d2ab55e48eb91ed008abef
@@ -91,6 +101,6 @@ SPEC CHECKSUMS:
   ThemeKit.swift: ab5c081b10f6a80149d37751f3ee98f1292bf497
   UIExtensions.swift: b3852a339a81c730d98b3342ae0275e807703782
 
-PODFILE CHECKSUM: e9805c9e47ca01b9668b2ab909a1e7396a35284c
+PODFILE CHECKSUM: 10a3dfe93f543cd5cffe349a8636690db8a1366a
 
 COCOAPODS: 1.8.4
