@@ -74,6 +74,8 @@
 		D37185E7C4D22FE82F070477 /* Pods_PinKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A8073D23DFF92900BD50FB /* LanguageKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = LanguageKit.swift.podspec; path = ../LanguageKit.swift.podspec; sourceTree = "<group>"; };
 		D3A807AB23E93D0E00BD50FB /* StorageKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = StorageKit.swift.podspec; path = ../StorageKit.swift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D3F0072F23F11A2400AB7250 /* PinKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = PinKit.swift.podspec; path = ../PinKit.swift.podspec; sourceTree = "<group>"; };
+		D3F0073023F11A2400AB7250 /* CurrencyKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = CurrencyKit.swift.podspec; path = ../CurrencyKit.swift.podspec; sourceTree = "<group>"; };
 		D50AF660D5CEE322C1D238EC /* Pods-PinKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinKitTests.debug.xcconfig"; path = "Target Support Files/Pods-PinKitTests/Pods-PinKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E6CA651F9287F9A24D646F9A /* Pods-ComponentKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-ComponentKit_Tests/Pods-ComponentKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,6 +209,8 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				D3F0073023F11A2400AB7250 /* CurrencyKit.swift.podspec */,
+				D3F0072F23F11A2400AB7250 /* PinKit.swift.podspec */,
 				D3A807AB23E93D0E00BD50FB /* StorageKit.swift.podspec */,
 				D3A8073D23DFF92900BD50FB /* LanguageKit.swift.podspec */,
 				77FC697FAC8E7FD15B554493 /* ThemeKit.swift.podspec */,
@@ -448,6 +452,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CurrencyKit.swift/CurrencyKit.framework",
 				"${BUILT_PRODUCTS_DIR}/HUD.swift/HUD.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/LanguageKit.swift/LanguageKit.framework",
@@ -461,6 +466,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LanguageKit.framework",

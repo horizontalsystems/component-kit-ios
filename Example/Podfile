@@ -6,6 +6,7 @@ target 'ComponentKitExample' do
   pod 'LanguageKit.swift', path: '../'
   pod 'StorageKit.swift', path: '../'
   pod 'PinKit.swift', path: '../'
+  pod 'CurrencyKit.swift', path: '../'
 
   pod 'UIExtensions.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
 end
@@ -19,13 +20,5 @@ end
 
 target 'PinKitTests' do
   pod 'PinKit.swift', :path => '../'
-  testPods
-end
-
-target 'ComponentKitTests' do
-  pod 'ThemeKit.swift', path: '../'
-  pod 'LanguageKit.swift', path: '../'
-  pod 'StorageKit.swift', path: '../'
-  pod 'PinKit.swift', path: '../'
   testPods
 end
