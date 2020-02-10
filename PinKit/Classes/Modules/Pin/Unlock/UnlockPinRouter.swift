@@ -6,9 +6,9 @@ class UnlockPinRouter {
 
     private let delegate: IUnlockDelegate
 
-    private let unlockMode: UnlockMode
+    private let unlockMode: PresentationStyle
 
-    init(unlockMode: UnlockMode, delegate: IUnlockDelegate) {
+    init(unlockMode: PresentationStyle, delegate: IUnlockDelegate) {
         self.unlockMode = unlockMode
         self.delegate = delegate
     }
@@ -33,15 +33,15 @@ extension UnlockPinRouter: IUnlockPinRouter {
 
 extension UnlockPinRouter {
 
-    static func module(delegate: IUnlockDelegate, lockManagerDelegate: IUnlockDelegate, pinManager: IPinManager, lockoutManager: ILockoutManager, enableBiometry: Bool, unlockMode: UnlockMode) -> UIViewController {
+    static func module(delegate: IUnlockDelegate, lockManagerDelegate: IUnlockDelegate, pinManager: IPinManager, lockoutManager: ILockoutManager, enableBiometry: Bool, presentationStyle: PresentationStyle, cancellable: Bool = true) -> UIViewController {
         let biometricManager = BiometricManager()
         let timer = OneTimeTimer()
 
-        let router = UnlockPinRouter(unlockMode: unlockMode, delegate: delegate)
+        let router = UnlockPinRouter(unlockMode: presentationStyle, delegate: delegate)
         let interactor = UnlockPinInteractor(pinManager: pinManager, biometricManager: biometricManager, lockoutManager: lockoutManager, timer: timer)
-        let presenter = UnlockPinPresenter(interactor: interactor, router: router, lockManagerDelegate: lockManagerDelegate, configuration: .init(cancellable: unlockMode == .simple, enableBiometry: enableBiometry))
+        let presenter = UnlockPinPresenter(interactor: interactor, router: router, lockManagerDelegate: lockManagerDelegate, configuration: .init(cancellable: cancellable, enableBiometry: enableBiometry))
 
-        let viewController = PinViewController(delegate: presenter, unlockMode: unlockMode)
+        let viewController = PinViewController(delegate: presenter, presentationStyle: presentationStyle)
 
         biometricManager.delegate = interactor
         interactor.delegate = presenter

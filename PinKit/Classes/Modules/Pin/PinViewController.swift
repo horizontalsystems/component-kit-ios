@@ -15,14 +15,14 @@ class PinViewController: ThemeViewController {
 
     private let lockoutView = LockoutView()
 
-    private let unlockMode: UnlockMode
+    private let presentationStyle: PresentationStyle
     private var currentPage = 0
 
-    init(delegate: IPinViewDelegate, unlockMode: UnlockMode = .simple) {
+    init(delegate: IPinViewDelegate, presentationStyle: PresentationStyle = .simple) {
         self.delegate = delegate
-        self.unlockMode = unlockMode
+        self.presentationStyle = presentationStyle
 
-        super.init(gradient: unlockMode == .simple)
+        super.init(gradient: presentationStyle == .simple)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -32,7 +32,7 @@ class PinViewController: ThemeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let useSafeAreaLayoutGuide = unlockMode == .simple
+        let useSafeAreaLayoutGuide = presentationStyle == .simple
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: useSafeAreaLayoutGuide ? CGFloat.margin4x : CGFloat.margin1x, right: 0)
 
         view.addSubview(holderView)
@@ -97,7 +97,8 @@ extension PinViewController: IPinView {
     }
 
     func addPage(withDescription description: String) {
-        let page = PinPage(description: description, isTitle: unlockMode == .complex)
+        let isTitle = navigationController?.isNavigationBarHidden ?? true
+        let page = PinPage(description: description, isTitle: isTitle)
         pages.append(page)
 
         let pinView = PinView()
