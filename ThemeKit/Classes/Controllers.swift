@@ -39,6 +39,14 @@ open class ThemeNavigationController: UINavigationController {
         self.topViewController
     }
 
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        self.topViewController?.preferredStatusBarStyle ?? .themeDefault
+    }
+
+    override open var prefersStatusBarHidden: Bool {
+        self.topViewController?.prefersStatusBarHidden ?? false
+    }
+
 }
 
 open class ThemeTabBarController: UITabBarController {
