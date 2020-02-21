@@ -1,1 +1,2 @@
-"settings_language.title" = "Sprache";
+"settings_base_currency.title" = "Währung";
+"settings_base_currency.provided_by" = "Wechselkurse in Echtzeit und historische Kurse werden von CryptoCompare.com bereitgestellt";

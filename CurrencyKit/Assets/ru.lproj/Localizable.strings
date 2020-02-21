@@ -1,1 +1,2 @@
-"settings_language.title" = "Язык";
+"settings_base_currency.title" = "Базовая Валюта";
+"settings_base_currency.provided_by" = "Курсы реального времени и исторические курсы предоставляются CryptoCompare.com";

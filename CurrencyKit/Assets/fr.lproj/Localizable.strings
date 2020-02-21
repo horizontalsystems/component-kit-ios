@@ -1,1 +1,2 @@
-"settings_language.title" = "Langue";
+"settings_base_currency.title" = "Devise de Base";
+"settings_base_currency.provided_by" = "Les taux de change en temps réel et historiques sont fournis par CryptoCompare.com";
