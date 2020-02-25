@@ -1,7 +1,7 @@
 PODS:
-  - Cuckoo (1.3.0):
-    - Cuckoo/Swift (= 1.3.0)
-  - Cuckoo/Swift (1.3.0)
+  - Cuckoo (1.3.2):
+    - Cuckoo/Swift (= 1.3.2)
+  - Cuckoo/Swift (1.3.2)
   - CurrencyKit.swift (1.0):
     - LanguageKit.swift (~> 1.0)
     - RxSwift (~> 5.0)
@@ -81,11 +81,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   UIExtensions.swift:
-    :commit: 037a537bbc19b596a32635c4e9146d0e28bb1074
+    :commit: 17079e955f1069c47f869eff4a352049c6cb9111
     :git: https://github.com/horizontalsystems/gui-kit/
 
 SPEC CHECKSUMS:
-  Cuckoo: 4045c5a8ce378c919c20c5ff3d6dd11ded0ec699
+  Cuckoo: 57f71c6616b6b08cd9fe27f803da056fb619ff3e
   CurrencyKit.swift: c1a37e0e43eac3828be95c8348693f192d67b376
   HUD.swift: 0b9d074f07f601891878f87ff10ad867eed3182b
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
