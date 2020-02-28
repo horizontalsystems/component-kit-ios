@@ -1,6 +1,6 @@
 import UIKit
-import SnapKit
 import UIExtensions
+import SnapKit
 
 open class SecondaryBalanceDoubleRowView: UIView {
     private let icon = UIImageView()

@@ -1,4 +1,5 @@
 import UIKit
+import UIExtensions
 import SnapKit
 
 open class BalanceDoubleRowView: UIView {
