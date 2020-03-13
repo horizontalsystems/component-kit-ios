@@ -12,12 +12,11 @@ open class ThemeCell: UITableViewCell {
     private let topSeparatorView = UIView()
     private let bottomSeparatorView = UIView()
 
-    public let disclosureImageView = UIImageView(image: ThemeKit.image(named: "Disclosure Indicator"))
+    public let disclosureImageView = UIImageView(image: ThemeKit.image(named: "Disclosure Indicator")?.withRenderingMode(.alwaysTemplate))
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        backgroundColor = .themeLawrence
         contentView.backgroundColor = .clear
         separatorInset.left = 0
 
@@ -54,7 +53,7 @@ open class ThemeCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open func bind(showDisclosure: Bool = false, last: Bool = false) {
+    open func bind(showDisclosure: Bool = false, last: Bool = false, active: Bool = true) {
         disclosureImageView.isHidden = !showDisclosure
         disclosureImageView.snp.remakeConstraints { maker in
             maker.trailing.equalTo(contentView.snp.trailingMargin)
@@ -65,6 +64,9 @@ open class ThemeCell: UITableViewCell {
         bottomSeparatorView.snp.updateConstraints { maker in
             maker.height.equalTo(last ? 1 / UIScreen.main.scale : 0)
         }
+
+        backgroundColor = active ? .themeLawrence : .themeSteel10
+        disclosureImageView.tintColor = active ? .themeGray : .themeGray50
     }
 
     override open func setHighlighted(_ highlighted: Bool, animated: Bool) {

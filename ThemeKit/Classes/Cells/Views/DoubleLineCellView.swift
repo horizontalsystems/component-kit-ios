@@ -16,7 +16,6 @@ open class DoubleLineCellView: UIView {
         }
 
         titleLabel.font = .body
-        titleLabel.textColor = .themeOz
 
         addSubview(subtitleLabel)
         subtitleLabel.snp.makeConstraints { maker in
@@ -26,16 +25,18 @@ open class DoubleLineCellView: UIView {
         }
 
         subtitleLabel.font = .subhead2
-        subtitleLabel.textColor = .themeGray
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open func bind(title: String?, subtitle: String?) {
+    open func bind(title: String?, subtitle: String?, active: Bool = true) {
         titleLabel.text = title
         subtitleLabel.text = subtitle
+
+        titleLabel.textColor = active ? .themeLeah : .themeWhite50
+        subtitleLabel.textColor = active ? .themeGray : .themeGray50
     }
 
 }
