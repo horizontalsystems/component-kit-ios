@@ -17,6 +17,7 @@ extension UIColor {
     public static let themeLight = UIColor(hex: 0xf5f5f5)
     public static let themeBlack50 = UIColor(hex: 0x000000, alpha: 0.5)
     public static let themeWhite50 = UIColor(hex: 0xffffff, alpha: 0.5)
+    public static let themeSteel10 = UIColor(hex: 0x73798c, alpha: 0.1)
     public static let themeSteel20 = UIColor(hex: 0x73798c, alpha: 0.2)
     public static let themeGray50 = UIColor(hex: 0x808085, alpha: 0.5)
     public static let themeYellow50 = UIColor(hex: 0xffa800, alpha: 0.5)
