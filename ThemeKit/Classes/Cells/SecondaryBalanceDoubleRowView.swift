@@ -3,19 +3,20 @@ import UIExtensions
 import SnapKit
 
 open class SecondaryBalanceDoubleRowView: UIView {
+    public static let height: CGFloat = 25
+
     private let icon = UIImageView()
     private let coinValueLabel = UILabel()
     private let currencyValueLabel = UILabel()
 
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
+    public init() {
+        super.init(frame: .zero)
 
         backgroundColor = .clear
-        clipsToBounds = true
 
         addSubview(icon)
         icon.snp.makeConstraints { maker in
-            maker.leading.bottom.equalToSuperview()
+            maker.leading.equalToSuperview().offset(CGFloat.margin1x)
         }
 
         icon.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -23,7 +24,8 @@ open class SecondaryBalanceDoubleRowView: UIView {
         addSubview(coinValueLabel)
         coinValueLabel.snp.makeConstraints { maker in
             maker.leading.equalTo(icon.snp.trailing).offset(CGFloat.margin1x)
-            maker.bottom.equalToSuperview()
+            maker.top.equalToSuperview().offset(CGFloat.margin1x)
+            maker.centerY.equalTo(icon.snp.centerY)
         }
 
         coinValueLabel.font = .subhead2
@@ -32,7 +34,8 @@ open class SecondaryBalanceDoubleRowView: UIView {
         addSubview(currencyValueLabel)
         currencyValueLabel.snp.makeConstraints { maker in
             maker.leading.equalTo(coinValueLabel.snp.trailing).offset(CGFloat.margin2x)
-            maker.trailing.bottom.equalToSuperview()
+            maker.trailing.equalToSuperview().inset(CGFloat.margin1x)
+            maker.centerY.equalTo(coinValueLabel.snp.centerY)
         }
 
         currencyValueLabel.font = .subhead1
@@ -44,21 +47,15 @@ open class SecondaryBalanceDoubleRowView: UIView {
         fatalError("not implemented")
     }
 
-    public func bind(image: UIImage?, coinValue: (text: String, dimmed: Bool)?, currencyValue: (text: String, dimmed: Bool)?, animated: Bool) {
-        if let coinValue = coinValue {
-            set(hidden: false, animated: animated, duration: CardCell.animationDuration)
+    public func bind(image: UIImage?, coinValue: (text: String?, dimmed: Bool), currencyValue: (text: String?, dimmed: Bool)?) {
+        icon.image = image
 
-            icon.image = image
+        coinValueLabel.text = coinValue.text
 
-            coinValueLabel.text = coinValue.text
-
-            if let currencyValue = currencyValue {
-                currencyValueLabel.text = currencyValue.text
-            } else {
-                currencyValueLabel.text = nil
-            }
+        if let currencyValue = currencyValue {
+            currencyValueLabel.text = currencyValue.text
         } else {
-            set(hidden: true, animated: animated, duration: CardCell.animationDuration)
+            currencyValueLabel.text = nil
         }
     }
 
