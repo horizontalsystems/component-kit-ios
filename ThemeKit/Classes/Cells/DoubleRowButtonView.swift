@@ -3,6 +3,8 @@ import UIExtensions
 import SnapKit
 
 open class DoubleRowButtonView: UIView {
+    public static let height: CGFloat = 58
+
     private let leftButton: UIButton
     private let rightButton: UIButton
 
@@ -19,8 +21,8 @@ open class DoubleRowButtonView: UIView {
 
         addSubview(leftButton)
         leftButton.snp.makeConstraints { maker in
-            maker.leading.equalToSuperview().offset(CGFloat.margin2x)
-            maker.top.equalToSuperview().offset(CGFloat.margin3x)
+            maker.leading.equalToSuperview()
+            maker.top.equalToSuperview().offset(CGFloat.margin2x)
             maker.height.equalTo(CGFloat.heightButton)
         }
 
@@ -30,7 +32,7 @@ open class DoubleRowButtonView: UIView {
         buttonWrapper.snp.makeConstraints { maker in
             maker.leading.equalTo(leftButton.snp.trailing).offset(CGFloat.margin2x)
             maker.top.equalTo(leftButton.snp.top)
-            maker.trailing.equalToSuperview().inset(CGFloat.margin2x)
+            maker.trailing.equalToSuperview()
             maker.width.equalTo(leftButton.snp.width)
             maker.height.equalTo(CGFloat.heightButton)
         }
@@ -47,26 +49,17 @@ open class DoubleRowButtonView: UIView {
         fatalError("not implemented")
     }
 
-    public func bind(left: (title: String, enabled: Bool?, action: (() -> ())?), right: (title: String, enabled: Bool?, action: (() -> ())?), animated: Bool) {
-        leftButton.setTitle(left.title, for: .normal)
-        rightButton.setTitle(right.title, for: .normal)
+    public func bind(leftTitle: String, rightTitle: String) {
+        leftButton.setTitle(leftTitle, for: .normal)
+        rightButton.setTitle(rightTitle, for: .normal)
+    }
 
-        if let enabled = left.enabled {
-            leftButton.set(hidden: false, animated: animated, duration: CardCell.animationDuration)
-            leftButton.isEnabled = enabled
-        } else {
-            leftButton.set(hidden: true, animated: animated, duration: CardCell.animationDuration)
-        }
+    public func bind(leftEnabled: Bool, rightEnabled: Bool, leftAction: @escaping () -> (), rightAction: @escaping () -> ()) {
+        leftButton.isEnabled = leftEnabled
+        rightButton.isEnabled = rightEnabled
 
-        if let enabled = right.enabled {
-            rightButton.set(hidden: false, animated: animated, duration: CardCell.animationDuration)
-            rightButton.isEnabled = enabled
-        } else {
-            rightButton.set(hidden: true, animated: animated, duration: CardCell.animationDuration)
-        }
-
-        onTapLeft = left.action
-        onTapRight = right.action
+        onTapLeft = leftAction
+        onTapRight = rightAction
     }
 
     @objc private func onLeft() {

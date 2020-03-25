@@ -8,7 +8,7 @@ open class GrayIconHolder: UIView {
         super.init(frame: frame)
 
         snp.makeConstraints { maker in
-            maker.width.height.equalTo(46)
+            maker.width.height.equalTo(44)
         }
 
         backgroundColor = .themeJeremy
