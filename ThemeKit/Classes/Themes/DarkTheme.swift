@@ -21,6 +21,7 @@ class DarkTheme: ITheme {
     let colorNina: UIColor = .themeWhite50
     let colorHelsing: UIColor = .themeDark
     var colorCassandra: UIColor = .themeDark
+    var colorRaina: UIColor = .themeSteel10
 
     let alphaSecondaryButtonGradient: CGFloat = 0.2
 }

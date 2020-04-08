@@ -35,7 +35,7 @@ open class DoubleLineCellView: UIView {
         titleLabel.text = title
         subtitleLabel.text = subtitle
 
-        titleLabel.textColor = active ? .themeLeah : .themeWhite50
+        titleLabel.textColor = active ? .themeLeah : .themeNina
         subtitleLabel.textColor = active ? .themeGray : .themeGray50
     }
 

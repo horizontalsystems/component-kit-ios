@@ -9,7 +9,7 @@ open class SubtitleHeaderFooterView: UITableViewHeaderFooterView {
 
         addSubview(label)
         label.snp.makeConstraints { maker in
-            maker.leading.trailing.equalToSuperview().inset(CGFloat.margin6x)
+            maker.leading.trailing.equalToSuperview().inset(CGFloat.margin4x)
             maker.bottom.equalToSuperview().inset(CGFloat.margin2x)
         }
 
