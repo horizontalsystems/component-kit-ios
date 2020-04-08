@@ -43,6 +43,7 @@ extension UIColor {
     public static var themeNina: UIColor { Theme.current.colorNina }
     public static var themeHelsing: UIColor { Theme.current.colorHelsing }
     public static var themeCassandra: UIColor { Theme.current.colorCassandra }
+    public static var themeRaina: UIColor { Theme.current.colorRaina }
 }
 
 extension UIColor {

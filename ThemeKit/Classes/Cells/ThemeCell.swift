@@ -65,7 +65,7 @@ open class ThemeCell: UITableViewCell {
             maker.height.equalTo(last ? 1 / UIScreen.main.scale : 0)
         }
 
-        backgroundColor = active ? .themeLawrence : .themeSteel10
+        backgroundColor = active ? .themeLawrence : .themeRaina
         disclosureImageView.tintColor = active ? .themeGray : .themeGray50
     }
 
