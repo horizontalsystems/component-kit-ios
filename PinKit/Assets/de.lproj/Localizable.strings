@@ -4,7 +4,7 @@
 // Set PIN
 
 "set_pin.title" = "Code";
-"set_pin.info" = "Dein Code ist notwendig, um deinen Wallet zu entsperren und Geld zu schicken";
+"set_pin.info" = "Dein Code ist notwendig, um deinen Wallet zu entsperren ";
 "set_pin.confirm.info" = "Bestätigen";
 "set_pin.wrong_confirmation" = "Der eingegebene Code scheint nicht richtig zu sein. Bitte versuchen Sie es erneut.";
 
