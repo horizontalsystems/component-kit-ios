@@ -3,8 +3,8 @@ import SnapKit
 
 open class BottomDescriptionView: UIView {
     private static let sideMargin: CGFloat = .margin6x
-    private static let topMargin: CGFloat = .margin2x
-    private static let bottomMargin: CGFloat = .margin12x
+    private static let topMargin: CGFloat = .margin3x
+    private static let bottomMargin: CGFloat = .margin8x
     private static let font: UIFont = .subhead2
 
     private let label = UILabel()
