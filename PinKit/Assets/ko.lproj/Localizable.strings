@@ -4,7 +4,7 @@
 // Set PIN
 
 "set_pin.title" = "비밀번호";
-"set_pin.info" = "너의 비밀번호는 너의 지갑을 열어주고 돈을 보내는데 사용될 것입니다.";
+"set_pin.info" = "당신의 비밀번호는 지갑 어플을 장금해체하는데 사용할 것 입니다.";
 "set_pin.confirm.info" = "확인";
 "set_pin.wrong_confirmation" = "비밀번호가 일치하지 않는다. 다시 시도하세요.";
 

@@ -4,7 +4,7 @@
 // Set PIN
 
 "set_pin.title" = "Code";
-"set_pin.info" = "Votre code sera utilisé pour déverrouiller votre porte-monnaie et envoyer de l’argent";
+"set_pin.info" = "Votre code sera utilisé pour déverrouiller l'appli de porte-monnaie";
 "set_pin.confirm.info" = "Confirmer";
 "set_pin.wrong_confirmation" = "Le Code ne correspond pas. Réessayez";
 

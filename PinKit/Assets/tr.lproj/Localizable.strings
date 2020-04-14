@@ -4,7 +4,7 @@
 // Set PIN
 
 "set_pin.title" = "Kod";
-"set_pin.info" = "Şifre, programı açmak ve para göndermek için kullanılacak";
+"set_pin.info" = "Şifre, cüzdan kilidini açmak için kullanılacak";
 "set_pin.confirm.info" = "Onayla";
 "set_pin.wrong_confirmation" = "Şifre uyuşmadı. Tekrar deneyin";
 
