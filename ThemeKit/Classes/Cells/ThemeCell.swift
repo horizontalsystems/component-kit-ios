@@ -3,7 +3,13 @@ import UIExtensions
 import SnapKit
 
 open class ThemeCell: UITableViewCell {
-    private static let selectAnimationDuration = 0.3
+    public var activeBackgroundColor: UIColor = .themeLawrence
+    public var selectedBackgroundColor: UIColor = .themeLawrencePressed {
+        didSet {
+            selectView.backgroundColor = selectedBackgroundColor
+        }
+    }
+    public var inactiveBackgroundColor: UIColor = .themeRaina
 
     private let separatorColor: UIColor = .themeSteel20
 
@@ -43,7 +49,7 @@ open class ThemeCell: UITableViewCell {
             maker.bottom.equalTo(bottomSeparatorView.snp.top)
         }
 
-        selectView.backgroundColor = .themeSteel20
+        selectView.backgroundColor = selectedBackgroundColor
         selectView.alpha = 0
 
         contentView.addSubview(disclosureImageView)
@@ -65,7 +71,7 @@ open class ThemeCell: UITableViewCell {
             maker.height.equalTo(last ? 1 / UIScreen.main.scale : 0)
         }
 
-        backgroundColor = active ? .themeLawrence : .themeRaina
+        backgroundColor = active ? activeBackgroundColor : inactiveBackgroundColor
         disclosureImageView.tintColor = active ? .themeGray : .themeGray50
     }
 
@@ -73,7 +79,7 @@ open class ThemeCell: UITableViewCell {
         guard selectionStyle != .none else { return }
 
         if animated {
-            UIView.animate(withDuration: ThemeCell.selectAnimationDuration) {
+            UIView.animate(withDuration: .themeAnimationDuration) {
                 self.selectView.alpha = highlighted ? 1 : 0
             }
         } else {
@@ -85,12 +91,27 @@ open class ThemeCell: UITableViewCell {
         guard selectionStyle != .none else { return }
 
         if animated {
-            UIView.animate(withDuration: ThemeCell.selectAnimationDuration) {
+            UIView.animate(withDuration: .themeAnimationDuration) {
                 self.selectView.alpha = selected ? 1 : 0
             }
         } else {
             selectView.alpha = selected ? 1 : 0
         }
+    }
+
+}
+
+open class ClaudeThemeCell: ThemeCell {
+
+    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        activeBackgroundColor = .themeClaude
+        selectedBackgroundColor = .themeJeremy
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }
