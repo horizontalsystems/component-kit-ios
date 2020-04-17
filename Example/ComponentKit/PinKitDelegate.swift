@@ -14,7 +14,7 @@ extension PinKitDelegate: IPinKitDelegate {
             controller = presentedController
         }
 
-        controller?.present(App.shared.pinKit.unlockPinModule(delegate: delegate, enableBiometry: true, autoBiometry: false, insets: .zero, cancellable: true), animated: true)
+        controller?.present(App.shared.pinKit.unlockPinModule(delegate: delegate, biometryUnlockMode: .enabled, insets: .zero, cancellable: true), animated: true)
     }
 
 }
