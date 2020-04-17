@@ -19,12 +19,12 @@ class PinViewController: ThemeViewController {
 
     private let insets: UIEdgeInsets
 
-    init(delegate: IPinViewDelegate, enableBiometry: Bool = false, insets: UIEdgeInsets = .zero) {
+    init(delegate: IPinViewDelegate, biometryUnlockMode: BiometryUnlockMode = .disabled, insets: UIEdgeInsets = .zero) {
         self.delegate = delegate
         self.insets = insets
 
         var style: NumPad.Style = [.letters]
-        if enableBiometry {
+        if biometryUnlockMode != .disabled {
             style.insert(.biometry)
         }
         numPad = NumPad(style: style)

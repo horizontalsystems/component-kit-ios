@@ -2,13 +2,11 @@ import Foundation
 
 class UnlockPresenterConfiguration {
     var cancellable: Bool
-    var enableBiometry: Bool
-    var autoBiometry: Bool
+    var biometryUnlockMode: BiometryUnlockMode
 
-    init(cancellable: Bool, enableBiometry: Bool, autoBiometry: Bool) {
+    init(cancellable: Bool, biometryUnlockMode: BiometryUnlockMode) {
         self.cancellable = cancellable
-        self.enableBiometry = enableBiometry
-        self.autoBiometry = autoBiometry
+        self.biometryUnlockMode = biometryUnlockMode
     }
 
 }
