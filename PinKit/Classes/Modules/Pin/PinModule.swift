@@ -17,6 +17,7 @@ protocol IPinViewDelegate {
     func viewDidLoad()
     func onEnter(pin: String, forPage index: Int)
     func onCancel()
+    func onTapBiometric()
 }
 
 protocol IPinInteractor {

@@ -8,21 +8,28 @@ class PinViewController: ThemeViewController {
     let delegate: IPinViewDelegate
 
     private let holderView = UIScrollView()
-    private let numPad = NumPad(style: [.letters])
+    private let numPad: NumPad
 
     private var pages = [PinPage]()
     private var pinViews = [PinView]()
 
     private let lockoutView = LockoutView()
 
-    private let presentationStyle: PresentationStyle
     private var currentPage = 0
 
-    init(delegate: IPinViewDelegate, presentationStyle: PresentationStyle = .simple) {
-        self.delegate = delegate
-        self.presentationStyle = presentationStyle
+    private let insets: UIEdgeInsets
 
-        super.init(gradient: presentationStyle == .simple)
+    init(delegate: IPinViewDelegate, enableBiometry: Bool = false, insets: UIEdgeInsets = .zero) {
+        self.delegate = delegate
+        self.insets = insets
+
+        var style: NumPad.Style = [.letters]
+        if enableBiometry {
+            style.insert(.biometry)
+        }
+        numPad = NumPad(style: style)
+
+        super.init()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -32,14 +39,12 @@ class PinViewController: ThemeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let useSafeAreaLayoutGuide = presentationStyle == .simple
-        let insets = UIEdgeInsets(top: 0, left: 0, bottom: useSafeAreaLayoutGuide ? CGFloat.margin4x : CGFloat.margin1x, right: 0)
+        let insets = UIEdgeInsets(top: self.insets.top, left: self.insets.left, bottom: CGFloat.margin4x + self.insets.bottom, right: self.insets.right)
 
         view.addSubview(holderView)
         holderView.isScrollEnabled = false
         holderView.snp.makeConstraints { maker in
-            let constraint: ConstraintRelatableTarget = useSafeAreaLayoutGuide ? self.view.safeAreaLayoutGuide.snp.top : self.view
-            maker.top.equalTo(constraint).offset(insets.top)
+            maker.top.equalTo(view.safeAreaLayoutGuide).offset(insets.top)
             maker.leading.equalToSuperview().offset(insets.left)
             maker.trailing.equalToSuperview().inset(insets.right)
         }
@@ -47,9 +52,8 @@ class PinViewController: ThemeViewController {
 
         view.addSubview(numPad)
         numPad.snp.makeConstraints { maker in
-            let constraint: ConstraintRelatableTarget = useSafeAreaLayoutGuide ? self.view.safeAreaLayoutGuide.snp.bottom : self.view
-            maker.top.equalTo(self.holderView.snp.bottom)
-            maker.bottom.equalTo(constraint).inset(insets.bottom)
+            maker.top.equalTo(holderView.snp.bottom)
+            maker.bottom.equalTo(view.safeAreaLayoutGuide).inset(insets.bottom)
             maker.leading.equalToSuperview().offset(keyboardSideMargin + insets.left)
             maker.trailing.equalToSuperview().inset(keyboardSideMargin + insets.right)
             maker.height.equalTo(numPad.height(for: view.bounds.width - 2 * keyboardSideMargin - insets.width))
@@ -86,6 +90,10 @@ extension PinViewController: NumPadDelegate {
 
     func numPadDidClickBackspace() {
         pinViews[currentPage].pinDotsView.removeLastDigit()
+    }
+
+    func numPadDidClickBiometry() {
+        delegate.onTapBiometric()
     }
 
 }

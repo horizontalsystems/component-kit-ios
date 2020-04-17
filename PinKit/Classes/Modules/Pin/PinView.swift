@@ -12,16 +12,25 @@ class PinView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        addSubview(pinDotsView)
+        let wrapper = UIView()
+
+        addSubview(wrapper)
+        wrapper.snp.makeConstraints { maker in
+            maker.center.equalToSuperview()
+        }
+        wrapper.backgroundColor = .clear
+
+        wrapper.addSubview(pinDotsView)
         pinDotsView.snp.makeConstraints { maker in
             maker.centerX.equalToSuperview()
-            maker.centerY.equalToSuperview().offset(CGFloat.margin6x)
+            maker.bottom.equalToSuperview()
         }
 
-        addSubview(topLabel)
+        wrapper.addSubview(topLabel)
         topLabel.snp.makeConstraints { maker in
-            maker.bottom.equalTo(self.pinDotsView.snp.top).offset(-CGFloat.margin4x)
+            maker.top.equalToSuperview()
             maker.leading.trailing.equalToSuperview().inset(44)
+            maker.bottom.equalTo(self.pinDotsView.snp.top).offset(-CGFloat.margin4x)
         }
 
         topLabel.lineBreakMode = .byWordWrapping

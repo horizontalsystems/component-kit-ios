@@ -91,8 +91,8 @@ extension Kit: IPinKit {
         SetPinRouter.module(delegate: delegate, pinManager: pinManager)
     }
 
-    public func unlockPinModule(delegate: IUnlockDelegate, enableBiometry: Bool, presentationStyle: PresentationStyle, cancellable: Bool) -> UIViewController {
-        UnlockPinRouter.module(delegate: delegate, lockManagerDelegate: lockManager, pinManager: pinManager, lockoutManager: lockoutManager, enableBiometry: enableBiometry, presentationStyle: presentationStyle, cancellable: cancellable)
+    public func unlockPinModule(delegate: IUnlockDelegate, enableBiometry: Bool, autoBiometry: Bool, insets: UIEdgeInsets, cancellable: Bool) -> UIViewController {
+        UnlockPinRouter.module(delegate: delegate, lockManagerDelegate: lockManager, pinManager: pinManager, lockoutManager: lockoutManager, enableBiometry: enableBiometry, autoBiometry: autoBiometry, insets: insets, cancellable: cancellable)
     }
 
 }
