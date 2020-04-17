@@ -5,7 +5,7 @@ class NumPad: UICollectionView {
     private let columnCount: CGFloat = 3
     private let rowCount: CGFloat = 4
 
-    private let itemSizeRatio: CGFloat = 1.2
+    private let itemSizeRatio: CGFloat = 1.26
     private let itemLineSpacingRatio: CGFloat = 5
 
     private enum Cell {
@@ -18,6 +18,7 @@ class NumPad: UICollectionView {
 
         public static let decimal = Style(rawValue: 1 << 1)
         public static let letters = Style(rawValue: 1 << 2)
+        public static let biometry = Style(rawValue: 1 << 3)
     }
 
     weak var numPadDelegate: NumPadDelegate?
@@ -53,6 +54,8 @@ class NumPad: UICollectionView {
         }
         if style.contains(.decimal), let decimalSeparator = formatter.decimalSeparator {
             cells.append(.number(number: decimalSeparator, letters: nil, filled: false, action: { [weak self] in self?.numPadDelegate?.numPadDidClick(digit: decimalSeparator) }))
+        } else if style.contains(.biometry) {
+            cells.append(.image(image: PinKit.image(named: "Biometry"), pressedImage: PinKit.image(named: "Biometry")?.tinted(with: .themeGray50), action: { [weak self] in self?.numPadDelegate?.numPadDidClickBiometry() }))
         } else {
             cells.append(.image(image: nil, pressedImage: nil, action: nil))
         }
@@ -262,4 +265,5 @@ class NumPadImageCell: UICollectionViewCell {
 protocol NumPadDelegate: class {
     func numPadDidClick(digit: String)
     func numPadDidClickBackspace()
+    func numPadDidClickBiometry()
 }

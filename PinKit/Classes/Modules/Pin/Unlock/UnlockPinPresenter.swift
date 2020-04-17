@@ -11,7 +11,7 @@ class UnlockPinPresenter {
 
     private let configuration: UnlockPresenterConfiguration
 
-    init(interactor: IUnlockPinInteractor, router: IUnlockPinRouter, lockManagerDelegate: IUnlockDelegate, configuration: UnlockPresenterConfiguration = .init(cancellable: false, enableBiometry: true)) {
+    init(interactor: IUnlockPinInteractor, router: IUnlockPinRouter, lockManagerDelegate: IUnlockDelegate, configuration: UnlockPresenterConfiguration = .init(cancellable: false, enableBiometry: true, autoBiometry: true)) {
         self.interactor = interactor
         self.router = router
         self.lockManagerDelegate = lockManagerDelegate
@@ -25,7 +25,7 @@ extension UnlockPinPresenter: IPinViewDelegate {
     func viewDidLoad() {
         view?.addPage(withDescription: "unlock_pin.info")
 
-        if interactor.failedAttempts == 0, configuration.enableBiometry {
+        if interactor.failedAttempts == 0, configuration.enableBiometry, configuration.autoBiometry {
             interactor.biometricUnlock()
         }
 
@@ -48,6 +48,10 @@ extension UnlockPinPresenter: IPinViewDelegate {
     func onCancel() {
         lockManagerDelegate.onCancelUnlock()
         router.dismiss(didUnlock: false)
+    }
+
+    func onTapBiometric() {
+        interactor.biometricUnlock()
     }
 
 }

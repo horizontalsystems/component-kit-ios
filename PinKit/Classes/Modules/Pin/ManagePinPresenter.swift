@@ -74,6 +74,9 @@ extension ManagePinPresenter: IPinViewDelegate {
     @objc func onCancel() {
     }
 
+    func onTapBiometric() {
+    }
+
 }
 
 extension ManagePinPresenter: IPinInteractorDelegate {
