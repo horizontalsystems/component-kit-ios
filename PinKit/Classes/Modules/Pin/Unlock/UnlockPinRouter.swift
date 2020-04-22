@@ -28,15 +28,15 @@ extension UnlockPinRouter: IUnlockPinRouter {
 
 extension UnlockPinRouter {
 
-    static func module(delegate: IUnlockDelegate, lockManagerDelegate: IUnlockDelegate, pinManager: IPinManager, lockoutManager: ILockoutManager, biometryUnlockMode: BiometryUnlockMode, insets: UIEdgeInsets, cancellable: Bool = true) -> UIViewController {
+    static func module(delegate: IUnlockDelegate, lockManagerDelegate: IUnlockDelegate, pinManager: IPinManager, lockoutManager: ILockoutManager, biometryUnlockMode: BiometryUnlockMode, insets: UIEdgeInsets, cancellable: Bool = true, biometryManager: IBiometryManager) -> UIViewController {
         let biometricManager = BiometricManager()
         let timer = OneTimeTimer()
 
         let router = UnlockPinRouter(delegate: delegate)
-        let interactor = UnlockPinInteractor(pinManager: pinManager, biometricManager: biometricManager, lockoutManager: lockoutManager, timer: timer)
+        let interactor = UnlockPinInteractor(pinManager: pinManager, biometricManager: biometricManager, lockoutManager: lockoutManager, timer: timer, biometryManager: biometryManager)
         let presenter = UnlockPinPresenter(interactor: interactor, router: router, lockManagerDelegate: lockManagerDelegate, configuration: .init(cancellable: cancellable, biometryUnlockMode: biometryUnlockMode))
 
-        let viewController = PinViewController(delegate: presenter, biometryUnlockMode: biometryUnlockMode, insets: insets)
+        let viewController = PinViewController(delegate: presenter, insets: insets)
 
         biometricManager.delegate = interactor
         interactor.delegate = presenter

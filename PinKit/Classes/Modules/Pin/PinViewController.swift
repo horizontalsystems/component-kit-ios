@@ -8,7 +8,7 @@ class PinViewController: ThemeViewController {
     let delegate: IPinViewDelegate
 
     private let holderView = UIScrollView()
-    private let numPad: NumPad
+    private let numPad = NumPad()
 
     private var pages = [PinPage]()
     private var pinViews = [PinView]()
@@ -19,17 +19,13 @@ class PinViewController: ThemeViewController {
 
     private let insets: UIEdgeInsets
 
-    init(delegate: IPinViewDelegate, biometryUnlockMode: BiometryUnlockMode = .disabled, insets: UIEdgeInsets = .zero) {
+    init(delegate: IPinViewDelegate, insets: UIEdgeInsets = .zero) {
         self.delegate = delegate
         self.insets = insets
 
-        var style: NumPad.Style = [.letters]
-        if biometryUnlockMode != .disabled {
-            style.insert(.biometry)
-        }
-        numPad = NumPad(style: style)
-
         super.init()
+
+        numPad.append(style: .letters)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -102,6 +98,13 @@ extension PinViewController: IPinView {
 
     func set(title: String) {
         self.title = title.localized
+    }
+
+    func set(biometryUnlockMode: BiometryUnlockMode, biometryType: BiometryType, biometryEnabled: Bool) {
+        if biometryUnlockMode != .disabled, biometryEnabled {
+            numPad.append(style: .biometry)
+        }
+        numPad.set(biometryType: biometryType)
     }
 
     func addPage(withDescription description: String) {

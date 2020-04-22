@@ -25,7 +25,9 @@ extension UnlockPinPresenter: IPinViewDelegate {
     func viewDidLoad() {
         view?.addPage(withDescription: "unlock_pin.info")
 
-        if interactor.failedAttempts == 0, configuration.biometryUnlockMode == .auto {
+        view?.set(biometryUnlockMode: configuration.biometryUnlockMode, biometryType: interactor.biometryType, biometryEnabled: interactor.biometryEnabled)
+
+        if interactor.failedAttempts == 0, interactor.biometryEnabled, configuration.biometryUnlockMode == .auto {
             interactor.biometricUnlock()
         }
 

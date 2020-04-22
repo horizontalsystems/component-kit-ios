@@ -7,18 +7,29 @@ class UnlockPinInteractor {
     private let biometricManager: IBiometricManager
     private let lockoutManager: ILockoutManager
     private var timer: IOneTimeTimer
+    private var biometryManager: IBiometryManager
 
-    init(pinManager: IPinManager, biometricManager: IBiometricManager, lockoutManager: ILockoutManager, timer: IOneTimeTimer) {
+    init(pinManager: IPinManager, biometricManager: IBiometricManager, lockoutManager: ILockoutManager, timer: IOneTimeTimer, biometryManager: IBiometryManager) {
         self.pinManager = pinManager
         self.biometricManager = biometricManager
         self.lockoutManager = lockoutManager
         self.timer = timer
+        self.biometryManager = biometryManager
+
         self.timer.delegate = self
     }
 
 }
 
 extension UnlockPinInteractor: IUnlockPinInteractor {
+
+    var biometryEnabled: Bool {
+        pinManager.biometryEnabled
+    }
+
+    var biometryType: BiometryType {
+        biometryManager.biometryType
+    }
 
     var failedAttempts: Int {
         lockoutManager.unlockAttempts
@@ -47,11 +58,7 @@ extension UnlockPinInteractor: IUnlockPinInteractor {
     }
 
     func biometricUnlock() {
-        if pinManager.biometryEnabled {
-            biometricManager.validate(reason: "biometric_usage_reason")
-        } else {
-            delegate?.didFailBiometricUnlock()
-        }
+        biometricManager.validate(reason: "biometric_usage_reason")
     }
 
 }
