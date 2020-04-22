@@ -27,11 +27,11 @@ class NumPad: UICollectionView {
     private let formatter = NumberFormatter()
 
     private var cells = [Cell]()
-    private var style: Style
+    private var style = Style()
 
-    init(style: Style = []) {
-        self.style = style
+    private var biometryType: BiometryType?
 
+    init() {
         super.init(frame: .zero, collectionViewLayout: layout)
 
         dataSource = self
@@ -46,6 +46,16 @@ class NumPad: UICollectionView {
 
         isScrollEnabled = false
 
+        buildItems()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func buildItems() {
+        cells = [Cell]()
+
         let localizedOne = format(number: 1)
         cells.append(.number(number: localizedOne, letters: style.contains(.letters) ? " " : nil, filled: true, action: { [weak self] in self?.numPadDelegate?.numPadDidClick(digit: localizedOne) }))
         for i in 2...9 {
@@ -55,17 +65,14 @@ class NumPad: UICollectionView {
         if style.contains(.decimal), let decimalSeparator = formatter.decimalSeparator {
             cells.append(.number(number: decimalSeparator, letters: nil, filled: false, action: { [weak self] in self?.numPadDelegate?.numPadDidClick(digit: decimalSeparator) }))
         } else if style.contains(.biometry) {
-            cells.append(.image(image: PinKit.image(named: "Biometry"), pressedImage: PinKit.image(named: "Biometry")?.tinted(with: .themeGray50), action: { [weak self] in self?.numPadDelegate?.numPadDidClickBiometry() }))
+            let image = biometryType == .faceId ? PinKit.image(named: "Face Id") : PinKit.image(named: "Touch Id")
+            cells.append(.image(image: image, pressedImage: image?.tinted(with: .themeGray50), action: { [weak self] in self?.numPadDelegate?.numPadDidClickBiometry() }))
         } else {
             cells.append(.image(image: nil, pressedImage: nil, action: nil))
         }
         let localizedZero = format(number: 0)
         cells.append(.number(number: localizedZero, letters: nil, filled: true, action: { [weak self] in self?.numPadDelegate?.numPadDidClick(digit: localizedZero) }))
         cells.append(.image(image: PinKit.image(named: "Backspace Medium"), pressedImage: PinKit.image(named: "Backspace Medium Pressed"), action: { [weak self] in self?.numPadDelegate?.numPadDidClickBackspace() }))
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     private var itemWidth: CGFloat {
@@ -92,12 +99,26 @@ class NumPad: UICollectionView {
         ceil(rowCount * width / (columnCount * itemSizeRatio) + (rowCount - 1) * width / (columnCount * itemSizeRatio) /  itemLineSpacingRatio) // sum of item heights and line spacing between them
     }
 
+    public func append(style: Style) {
+        self.style.insert(style)
+
+        buildItems()
+        reloadData()
+    }
+
+    public func set(biometryType: BiometryType) {
+        self.biometryType = biometryType
+
+        buildItems()
+        reloadData()
+    }
+
 }
 
 extension NumPad: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cells.count
+        cells.count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

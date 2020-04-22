@@ -2,6 +2,7 @@ import Foundation
 
 protocol IPinView: class {
     func set(title: String)
+    func set(biometryUnlockMode: BiometryUnlockMode, biometryType: BiometryType, biometryEnabled: Bool)
     func addPage(withDescription description: String)
     func show(page index: Int)
     func show(error: String, forPage index: Int)
