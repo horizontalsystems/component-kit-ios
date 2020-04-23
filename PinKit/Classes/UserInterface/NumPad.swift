@@ -65,7 +65,13 @@ class NumPad: UICollectionView {
         if style.contains(.decimal), let decimalSeparator = formatter.decimalSeparator {
             cells.append(.number(number: decimalSeparator, letters: nil, filled: false, action: { [weak self] in self?.numPadDelegate?.numPadDidClick(digit: decimalSeparator) }))
         } else if style.contains(.biometry) {
-            let image = biometryType == .faceId ? PinKit.image(named: "Face Id") : PinKit.image(named: "Touch Id")
+            let image: UIImage? = biometryType.flatMap {
+                switch $0 {
+                case .faceId: return PinKit.image(named: "Face Id") 
+                case .touchId: return PinKit.image(named: "Touch Id")
+                case .none: return nil
+                }
+            }
             cells.append(.image(image: image, pressedImage: image?.tinted(with: .themeGray50), action: { [weak self] in self?.numPadDelegate?.numPadDidClickBiometry() }))
         } else {
             cells.append(.image(image: nil, pressedImage: nil, action: nil))
