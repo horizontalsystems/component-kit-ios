@@ -1,13 +1,14 @@
 import UIKit
 import SnapKit
 import UIExtensions
+import ThemeKit
 
 class PinView: UIView {
 
     let pinDotsView = PinDotsView()
     private let topLabel = UILabel()
     private let cancelButtonView = UIView()
-    private let cancelButton = UIButton.appTertiary
+    private let cancelButton = ThemeButton().apply(style: .tertiary)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

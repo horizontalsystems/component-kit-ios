@@ -10,9 +10,9 @@ class PinController: ThemeViewController {
 
     private let pinLabel = UILabel()
 
-    private let clearPinButton = UIButton.appRed
-    private let setPinButton = UIButton.appGreen
-    private let editPinButton = UIButton.appGray
+    private let clearPinButton = ThemeButton().apply(style: .red)
+    private let setPinButton = ThemeButton()
+    private let editPinButton = ThemeButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,9 @@ class PinController: ThemeViewController {
 
         clearPinButton.setTitle("Clear Pin", for: .normal)
         setPinButton.setTitle("Set Pin", for: .normal)
+        setPinButton.apply(style: .green)
         editPinButton.setTitle("Edit Pin", for: .normal)
+        editPinButton.apply(style: .yellow)
 
         clearPinButton.addTarget(self, action: #selector(onClearPin), for: .touchUpInside)
         setPinButton.addTarget(self, action: #selector(onSetPin), for: .touchUpInside)
