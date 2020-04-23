@@ -81,7 +81,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   UIExtensions.swift:
-    :commit: 17079e955f1069c47f869eff4a352049c6cb9111
+    :commit: 5af797c162f7d45e1dc9c3ed40992efaa1f62878
     :git: https://github.com/horizontalsystems/gui-kit/
 
 SPEC CHECKSUMS:
@@ -101,6 +101,6 @@ SPEC CHECKSUMS:
   ThemeKit.swift: ab5c081b10f6a80149d37751f3ee98f1292bf497
   UIExtensions.swift: b3852a339a81c730d98b3342ae0275e807703782
 
-PODFILE CHECKSUM: 10a3dfe93f543cd5cffe349a8636690db8a1366a
+PODFILE CHECKSUM: 27bf6ad9f714ba0c48619cec5bf146cabfefc774
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.8.4
