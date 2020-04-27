@@ -12,7 +12,7 @@ class DarkTheme: ITheme {
     let colorOz: UIColor = .themeLight
     let colorLeah: UIColor = .themeSteelLight
     let colorJeremy: UIColor = .themeSteel20
-    let colorElena: UIColor = .themeSteelDark
+    let colorElena: UIColor = .themeSteel20
     let colorLawrence: UIColor = .themeSteelDark
     let colorLawrencePressed: UIColor = .themeLawrencePressedD
     let colorClaude: UIColor = .themeDark

@@ -238,13 +238,15 @@ extension ThemeButton {
             bottomColor = .themeLucian
             applyDefault()
         case .gray:
+            self.cornerRadius = 8
+
+            self.titleLabel?.font = .headline2
             setTitleColor(.black, for: .normal)
 
             topColor = UIColor(white: 1, alpha: 1)
             bottomColor = .themeLightGray
 
             setBackgroundColor(.themeSteel20, forState: .disabled)
-            applyDefault()
         }
 
         if let bottomColor = bottomColor {
