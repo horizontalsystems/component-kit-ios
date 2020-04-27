@@ -29,7 +29,7 @@ open class ThemeCell: UITableViewCell {
         contentView.addSubview(topSeparatorView)
         topSeparatorView.snp.makeConstraints { maker in
             maker.leading.top.trailing.equalToSuperview()
-            maker.height.equalTo(1 / UIScreen.main.scale)
+            maker.height.equalTo(0)
         }
 
         topSeparatorView.backgroundColor = separatorColor
@@ -60,6 +60,10 @@ open class ThemeCell: UITableViewCell {
     }
 
     open func bind(showDisclosure: Bool = false, last: Bool = false, active: Bool = true) {
+        bind(topSeparatorVisible: true, bottomSeparatorVisible: last, showDisclosure: showDisclosure, active: active)
+    }
+
+    open func bind(topSeparatorVisible: Bool = false, bottomSeparatorVisible: Bool = false, showDisclosure: Bool = false, active: Bool = true) {
         disclosureImageView.isHidden = !showDisclosure
         disclosureImageView.snp.remakeConstraints { maker in
             maker.trailing.equalTo(contentView.snp.trailingMargin)
@@ -67,8 +71,12 @@ open class ThemeCell: UITableViewCell {
             maker.centerY.equalToSuperview()
         }
 
+        topSeparatorView.snp.updateConstraints { maker in
+            maker.height.equalTo(topSeparatorVisible ? 1 / UIScreen.main.scale : 0)
+        }
+
         bottomSeparatorView.snp.updateConstraints { maker in
-            maker.height.equalTo(last ? 1 / UIScreen.main.scale : 0)
+            maker.height.equalTo(bottomSeparatorVisible ? 1 / UIScreen.main.scale : 0)
         }
 
         backgroundColor = active ? activeBackgroundColor : inactiveBackgroundColor
