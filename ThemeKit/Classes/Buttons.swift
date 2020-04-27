@@ -1,7 +1,15 @@
 import UIKit
 import UIExtensions
 
-public enum ThemeButtonStyle { case yellow, green, red, gray, secondary, tertiary }
+public enum ThemeButtonStyle {
+    case primaryYellow
+    case primaryGreen
+    case primaryRed
+    case primaryGray
+    case primaryTransparent
+    case secondaryDefault
+    case secondaryTransparent
+}
 
 extension UIButton {
 
@@ -107,6 +115,10 @@ open class ThemeButton: UIButton {
         setNeedsDisplay()
     }
 
+    public func setBackgroundColor(_ color: UIColor, blendColor: UIColor, forState state: UIControl.State) {
+        setBackgroundColor(color.blend(with: blendColor).toHSBColor, bottomColor: color.toHSBColor, forState: .normal)
+    }
+
     public init() {
         super.init(frame: .zero)
 
@@ -182,77 +194,93 @@ extension ThemeButton {
 
     @discardableResult public func apply(style: ThemeButtonStyle) -> Self {
 
-        var topColor: UIColor = .clear
-        var bottomColor: UIColor?
-
-        let applyDefault = {    // default setup fields for red, green, yellow and gray buttons
+        let applyPrimary = {
             self.cornerRadius = 8
-
             self.titleLabel?.font = .headline2
-            self.setTitleColor(.themeGray50, for: .disabled)
+            self.titleLabel?.textAlignment = .center
 
-            topColor = UIColor(white: 1, alpha: 0.4)
-            self.setBackgroundColor(.themeSteel20, forState: .disabled)
+//            self.contentEdgeInsets = UIEdgeInsets(top: 15, left: .margin4x, bottom: 15, right: .margin4x)
+        }
+
+        let applySecondary = {
+            self.cornerRadius = 4
+            self.titleLabel?.font = .subhead1
+            self.titleLabel?.textAlignment = .center
+
+            self.contentEdgeInsets = UIEdgeInsets(top: 6, left: .margin2x, bottom: 5, right: .margin2x)
         }
 
         switch style {
-        case .secondary:
-            titleLabel?.font = .subhead1
-            setTitleColor(.themeOz, for: .normal)
+
+        case .primaryYellow:
+            applyPrimary()
+
+            setTitleColor(.black, for: .normal)
             setTitleColor(.themeGray50, for: .disabled)
 
-            topColor = UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient)
-            bottomColor = .themeElena
+            setBackgroundColor(.themeJacob, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
+            setBackgroundColor(.themeJacob, forState: .highlighted)
+            setBackgroundColor(.themeSteel20, forState: .disabled)
 
+        case .primaryGreen:
+            applyPrimary()
+
+            setTitleColor(.black, for: .normal)
+            setTitleColor(.themeGray50, for: .disabled)
+
+            setBackgroundColor(.themeRemus, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
+            setBackgroundColor(.themeRemus, forState: .highlighted)
+            setBackgroundColor(.themeSteel20, forState: .disabled)
+
+        case .primaryRed:
+            applyPrimary()
+
+            setTitleColor(.white, for: .normal)
+            setTitleColor(.themeGray50, for: .disabled)
+
+            setBackgroundColor(.themeLucian, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
+            setBackgroundColor(.themeLucian, forState: .highlighted)
+            setBackgroundColor(.themeSteel20, forState: .disabled)
+
+        case .primaryGray:
+            applyPrimary()
+
+            setTitleColor(.black, for: .normal)
+            setTitleColor(.themeGray50, for: .disabled)
+
+            setBackgroundColor(.themeLightGray, blendColor: UIColor(white: 1, alpha: 1), forState: .normal)
+            setBackgroundColor(.themeLightGray, forState: .highlighted)
+            setBackgroundColor(.themeSteel20, forState: .disabled)
+
+        case .primaryTransparent:
+            applyPrimary()
+
+            setTitleColor(.themeOz, for: .normal)
+            setTitleColor(.themeNina, for: .highlighted)
+            setTitleColor(.themeSteel20, for: .disabled)
+
+        case .secondaryDefault:
+            applySecondary()
+
+            setTitleColor(.themeOz, for: .normal)
+            setTitleColor(.themeSteel20, for: .disabled)
+
+            setBackgroundColor(.themeElena, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .normal)
+            setBackgroundColor(.themeElena, forState: .highlighted)
             setBackgroundColor(.themeJeremy, forState: .disabled)
 
-            cornerRadius = 4
             borderColor = .themeSteel20
             borderWidth = 1
-            contentEdgeInsets.left = .margin2x
-            contentEdgeInsets.right = .margin2x
-        case .tertiary:
-            titleLabel?.font = .headline2
 
-            setTitleColor(.themeLeah, for: .normal)
-            setTitleColor(.themeGray50, for: .highlighted)
-            setTitleColor(.themeGray50, for: .disabled)
+        case .secondaryTransparent:
+            applySecondary()
 
-            contentEdgeInsets.left = .margin2x
-            contentEdgeInsets.right = .margin2x
-        case .yellow:
-            setTitleColor(.black, for: .normal)
+            setTitleColor(.themeOz, for: .normal)
+            setTitleColor(.themeNina, for: .highlighted)
+            setTitleColor(.themeSteel20, for: .disabled)
 
-            bottomColor = .themeJacob
-            applyDefault()
-        case .green:
-            titleLabel?.font = .headline2
-            setTitleColor(.black, for: .normal)
-            setTitleColor(.themeGray50, for: .disabled)
-
-            bottomColor = .themeRemus
-            applyDefault()
-        case .red:
-            setTitleColor(.white, for: .normal)
-
-            bottomColor = .themeLucian
-            applyDefault()
-        case .gray:
-            setTitleColor(.black, for: .normal)
-
-            topColor = UIColor(white: 1, alpha: 1)
-            bottomColor = .themeLightGray
-
-            setBackgroundColor(.themeSteel20, forState: .disabled)
-            applyDefault()
         }
 
-        if let bottomColor = bottomColor {
-            setBackgroundColor(bottomColor.blend(with: topColor).toHSBColor, bottomColor: bottomColor.toHSBColor, forState: .normal)
-            setBackgroundColor(bottomColor, forState: .highlighted)
-        } else {
-            setBackgroundColor(topColor, forState: .normal)
-        }
         return self
     }
 

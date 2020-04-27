@@ -8,7 +8,7 @@ class PinView: UIView {
     let pinDotsView = PinDotsView()
     private let topLabel = UILabel()
     private let cancelButtonView = UIView()
-    private let cancelButton = ThemeButton().apply(style: .tertiary)
+    private let cancelButton = ThemeButton().apply(style: .secondaryTransparent)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
