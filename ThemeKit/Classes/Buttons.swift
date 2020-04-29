@@ -9,6 +9,7 @@ public enum ThemeButtonStyle {
     case primaryTransparent
     case secondaryDefault
     case secondaryTransparent
+    case secondaryIcon
 }
 
 extension UIButton {
@@ -207,7 +208,16 @@ extension ThemeButton {
             self.titleLabel?.font = .subhead1
             self.titleLabel?.textAlignment = .center
 
-            self.contentEdgeInsets = UIEdgeInsets(top: 6, left: .margin2x, bottom: 5, right: .margin2x)
+            self.contentEdgeInsets = UIEdgeInsets(top: 5.5, left: .margin3x, bottom: 5.5, right: .margin3x)
+        }
+
+        let applySecondaryBackground = {
+            self.setBackgroundColor(.themeJeremy, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .normal)
+            self.setBackgroundColor(.themeJeremy, forState: .highlighted)
+            self.setBackgroundColor(.themeJeremy, forState: .disabled)
+
+            self.borderColor = .themeSteel20
+            self.borderWidth = 1
         }
 
         switch style {
@@ -261,16 +271,10 @@ extension ThemeButton {
 
         case .secondaryDefault:
             applySecondary()
+            applySecondaryBackground()
 
             setTitleColor(.themeOz, for: .normal)
-            setTitleColor(.themeSteel20, for: .disabled)
-
-            setBackgroundColor(.themeElena, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .normal)
-            setBackgroundColor(.themeElena, forState: .highlighted)
-            setBackgroundColor(.themeJeremy, forState: .disabled)
-
-            borderColor = .themeSteel20
-            borderWidth = 1
+            setTitleColor(.themeGray50, for: .disabled)
 
         case .secondaryTransparent:
             applySecondary()
@@ -279,7 +283,25 @@ extension ThemeButton {
             setTitleColor(.themeNina, for: .highlighted)
             setTitleColor(.themeSteel20, for: .disabled)
 
+        case .secondaryIcon:
+            applySecondaryBackground()
+
+            cornerRadius = 4
+
+            // titleLabel should not affect button size, that is why we set smallest font
+            titleLabel?.font = .systemFont(ofSize: 1)
+
+            contentEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
+            setContentCompressionResistancePriority(.required, for: .horizontal)
+            setContentCompressionResistancePriority(.required, for: .vertical)
         }
+
+        return self
+    }
+
+    @discardableResult public func apply(secondaryIconImage: UIImage?) -> Self {
+        setImage(secondaryIconImage?.tinted(with: .themeLeah), for: .normal)
+        setImage(secondaryIconImage?.tinted(with: .themeGray50), for: .disabled)
 
         return self
     }
