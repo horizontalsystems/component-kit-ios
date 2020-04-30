@@ -73,6 +73,11 @@ open class ThemeButton: UIButton {
         setNeedsDisplay()
     }
 
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        setNeedsDisplay()
+    }
+
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         setNeedsDisplay()
