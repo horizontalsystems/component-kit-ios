@@ -5,16 +5,13 @@ import SnapKit
 open class DoubleRowButtonView: UIView {
     public static let height: CGFloat = 58
 
-    private let leftButton: UIButton
-    private let rightButton: UIButton
+    private let leftButton = ThemeButton()
+    private let rightButton = ThemeButton()
 
     private var onTapLeft: (() -> ())?
     private var onTapRight: (() -> ())?
 
-    public init(leftButton: UIButton, rightButton: UIButton) {
-        self.leftButton = leftButton
-        self.rightButton = rightButton
-
+    public init(leftButtonStyle: ThemeButtonStyle, rightButtonStyle: ThemeButtonStyle) {
         super.init(frame: .zero)
 
         let buttonWrapper = UIControl()     // disable touch events through cell to tableView
@@ -26,6 +23,7 @@ open class DoubleRowButtonView: UIView {
             maker.height.equalTo(CGFloat.heightButton)
         }
 
+        leftButton.apply(style: leftButtonStyle)
         leftButton.addTarget(self, action: #selector(onLeft), for: .touchUpInside)
 
         addSubview(buttonWrapper)
@@ -42,6 +40,7 @@ open class DoubleRowButtonView: UIView {
             maker.edges.equalTo(buttonWrapper.snp.edges)
         }
 
+        rightButton.apply(style: rightButtonStyle)
         rightButton.addTarget(self, action: #selector(onRight), for: .touchUpInside)
     }
 
