@@ -19,7 +19,7 @@ open class ThemeNavigationController: UINavigationController {
 
     private func commonInit() {
         navigationBar.prefersLargeTitles = true
-        modalPresentationStyle = .fullScreen
+        modalPresentationStyle = .overFullScreen
         navigationBar.tintColor = .themeJacob
         // set navigation theme for iOS less than 13
         guard #available(iOS 13.0, *) else {
@@ -94,7 +94,7 @@ open class ThemeViewController: UIViewController {
 
         super.init(nibName: nil, bundle: nil)
 
-        modalPresentationStyle = .fullScreen
+        modalPresentationStyle = .overFullScreen
     }
 
     required public init?(coder aDecoder: NSCoder) {
