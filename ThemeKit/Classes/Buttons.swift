@@ -141,8 +141,8 @@ extension ThemeButton {
             setTitleColor(.black, for: .normal)
             setTitleColor(.themeGray50, for: .disabled)
 
-            setBackgroundColor(.themeJacob, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
-            setBackgroundColor(.themeJacob, forState: .highlighted)
+            setBackgroundColor(.themeYellowD, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
+            setBackgroundColor(.themeYellowD, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
         case .primaryGreen:
@@ -151,8 +151,8 @@ extension ThemeButton {
             setTitleColor(.black, for: .normal)
             setTitleColor(.themeGray50, for: .disabled)
 
-            setBackgroundColor(.themeRemus, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
-            setBackgroundColor(.themeRemus, forState: .highlighted)
+            setBackgroundColor(.themeGreenL, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
+            setBackgroundColor(.themeGreenL, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
         case .primaryRed:
@@ -161,8 +161,8 @@ extension ThemeButton {
             setTitleColor(.white, for: .normal)
             setTitleColor(.themeGray50, for: .disabled)
 
-            setBackgroundColor(.themeLucian, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
-            setBackgroundColor(.themeLucian, forState: .highlighted)
+            setBackgroundColor(.themeRedL, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
+            setBackgroundColor(.themeRedL, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
         case .primaryGray:
