@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 
 class NumPad: UICollectionView {
+    private var enabled = true
     private let columnCount: CGFloat = 3
     private let rowCount: CGFloat = 4
 
@@ -10,7 +11,7 @@ class NumPad: UICollectionView {
 
     private enum Cell {
         case number(number: String, letters: String?, filled: Bool, action: () -> ())
-        case image(image: UIImage?, pressedImage: UIImage?, action: (() -> ())?)
+        case image(image: UIImage?, pressedImage: UIImage?, disabled: Bool, action: (() -> ())?)
     }
 
     public struct Style: OptionSet {
@@ -57,13 +58,13 @@ class NumPad: UICollectionView {
         cells = [Cell]()
 
         let localizedOne = format(number: 1)
-        cells.append(.number(number: localizedOne, letters: style.contains(.letters) ? " " : nil, filled: true, action: { [weak self] in self?.numPadDelegate?.numPadDidClick(digit: localizedOne) }))
+        cells.append(.number(number: localizedOne, letters: style.contains(.letters) ? " " : nil, filled: true, action: { [weak self] in self?.numPadDidClick(digit: localizedOne) }))
         for i in 2...9 {
             let localizedNumber = format(number: i)
-            cells.append(.number(number: localizedNumber, letters: letters(for: i), filled: true, action: { [weak self] in self?.numPadDelegate?.numPadDidClick(digit: localizedNumber) }))
+            cells.append(.number(number: localizedNumber, letters: letters(for: i), filled: true, action: { [weak self] in self?.numPadDidClick(digit: localizedNumber) }))
         }
         if style.contains(.decimal), let decimalSeparator = formatter.decimalSeparator {
-            cells.append(.number(number: decimalSeparator, letters: nil, filled: false, action: { [weak self] in self?.numPadDelegate?.numPadDidClick(digit: decimalSeparator) }))
+            cells.append(.number(number: decimalSeparator, letters: nil, filled: false, action: { [weak self] in self?.numPadDidClick(digit: decimalSeparator) }))
         } else if style.contains(.biometry) {
             let image: UIImage? = biometryType.flatMap {
                 switch $0 {
@@ -72,13 +73,13 @@ class NumPad: UICollectionView {
                 case .none: return nil
                 }
             }
-            cells.append(.image(image: image, pressedImage: image?.tinted(with: .themeGray50), action: { [weak self] in self?.numPadDelegate?.numPadDidClickBiometry() }))
+            cells.append(.image(image: image, pressedImage: image?.tinted(with: .themeGray50), disabled: false, action: { [weak self] in self?.numPadDelegate?.numPadDidClickBiometry() }))
         } else {
-            cells.append(.image(image: nil, pressedImage: nil, action: nil))
+            cells.append(.image(image: nil, pressedImage: nil, disabled: false, action: nil))
         }
         let localizedZero = format(number: 0)
-        cells.append(.number(number: localizedZero, letters: nil, filled: true, action: { [weak self] in self?.numPadDelegate?.numPadDidClick(digit: localizedZero) }))
-        cells.append(.image(image: PinKit.image(named: "Backspace Medium"), pressedImage: PinKit.image(named: "Backspace Medium Pressed"), action: { [weak self] in self?.numPadDelegate?.numPadDidClickBackspace() }))
+        cells.append(.number(number: localizedZero, letters: nil, filled: true, action: { [weak self] in self?.numPadDidClick(digit: localizedZero) }))
+        cells.append(.image(image: PinKit.image(named: "Backspace Medium")?.withRenderingMode(.alwaysTemplate), pressedImage: PinKit.image(named: "Backspace Medium Pressed"), disabled: enabled, action: { [weak self] in self?.numPadDidClickBackspace() }))
     }
 
     private var itemWidth: CGFloat {
@@ -101,6 +102,22 @@ class NumPad: UICollectionView {
         formatter.string(from: number as NSNumber) ?? ""
     }
 
+    private func numPadDidClick(digit: String) {
+        guard enabled else {
+            return
+        }
+
+        numPadDelegate?.numPadDidClick(digit: digit)
+    }
+
+    private func numPadDidClickBackspace() {
+        guard enabled else {
+            return
+        }
+
+        numPadDelegate?.numPadDidClickBackspace()
+    }
+
     public func height(for width: CGFloat) -> CGFloat {
         ceil(rowCount * width / (columnCount * itemSizeRatio) + (rowCount - 1) * width / (columnCount * itemSizeRatio) /  itemLineSpacingRatio) // sum of item heights and line spacing between them
     }
@@ -119,6 +136,19 @@ class NumPad: UICollectionView {
         reloadData()
     }
 
+    func disable() {
+        enabled = false
+
+        buildItems()
+        reloadData()
+    }
+
+    func enable() {
+        enabled = true
+
+        buildItems()
+        reloadData()
+    }
 }
 
 extension NumPad: UICollectionViewDataSource {
@@ -146,11 +176,11 @@ extension NumPad: UICollectionViewDelegate {
         switch cells[indexPath.item] {
         case .number(let number, let letters, let filled, let action):
             if let cell = cell as? NumPadNumberCell {
-                cell.bind(number: number, letters: letters, filled: filled, cornerRadius: ceil(itemWidth / 2), onTap: action)
+                cell.bind(number: number, letters: letters, filled: filled, enabled: enabled, cornerRadius: ceil(itemWidth / 2), onTap: action)
             }
-        case .image(let image, let pressedImage, let action):
+        case .image(let image, let pressedImage, let disabled, let action):
             if let cell = cell as? NumPadImageCell {
-                cell.bind(image: image, pressedImage: pressedImage, onTap: action)
+                cell.bind(image: image, pressedImage: pressedImage, enabled: disabled, onTap: action)
             }
         }
     }
@@ -160,15 +190,15 @@ extension NumPad: UICollectionViewDelegate {
 extension NumPad: UICollectionViewDelegateFlowLayout {
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: itemWidth, height: itemWidth)
+        CGSize(width: itemWidth, height: itemWidth)
     }
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return interitemSpacing
+        interitemSpacing
     }
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return lineSpacing
+        lineSpacing
     }
 
 }
@@ -201,7 +231,7 @@ class NumPadNumberCell: UICollectionViewCell {
 
         textHolderView.addSubview(numberLabel)
         numberLabel.font = .title2R
-        numberLabel.textColor = .themeLeah
+        numberLabel.textColor = .themeOz
 
         textHolderView.addSubview(lettersLabel)
         lettersLabel.font = .micro
@@ -214,20 +244,32 @@ class NumPadNumberCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func bind(number: String, letters: String?, filled: Bool, cornerRadius: CGFloat, onTap: @escaping () -> ()) {
+    func bind(number: String, letters: String?, filled: Bool, enabled: Bool, cornerRadius: CGFloat, onTap: @escaping () -> ()) {
         button.cornerRadius = cornerRadius
+        button.setBackgroundColor(color: .clear, forState: .normal)
+
         if filled {
             button.borderColor = .themeSteel20
-            button.setBackgroundColor(color: .clear, forState: .normal)
-            button.setBackgroundColor(color: .themeLawrence, forState: .highlighted)
         } else {
             button.borderColor = .clear
-            button.setBackgroundColor(color: .clear, forState: .normal)
+        }
+
+        if filled && enabled {
+            button.setBackgroundColor(color: .themeLawrence, forState: .highlighted)
+        } else {
             button.setBackgroundColor(color: .clear, forState: .highlighted)
         }
 
         numberLabel.text = number
         lettersLabel.text = letters
+        if enabled {
+            numberLabel.textColor = .themeOz
+            lettersLabel.textColor = .themeGray50
+        } else {
+            numberLabel.textColor = .themeSteel10
+            lettersLabel.textColor = .themeSteel20
+        }
+
         self.onTap = onTap
 
         lettersLabel.isHidden = letters == nil
@@ -277,10 +319,16 @@ class NumPadImageCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func bind(image: UIImage?, pressedImage: UIImage?, onTap: (() -> ())?) {
+    func bind(image: UIImage?, pressedImage: UIImage?, enabled: Bool, onTap: (() -> ())?) {
         self.onTap = onTap
         button.setImage(image, for: .normal)
-        button.setImage(pressedImage, for: .highlighted)
+        if enabled {
+            button.tintColor = .themeGray
+            button.setImage(pressedImage, for: .highlighted)
+        } else {
+            button.tintColor = .themeSteel20
+            button.setImage(image, for: .highlighted)
+        }
     }
 
     @objc func didTapButton() {

@@ -6,7 +6,6 @@ import LanguageKit
 class LockoutView: UIView {
     private let lockoutIconBackgroundSideSize: CGFloat = 94
 
-    let iconBackgroundView = UIView()
     let lockIcon = UIImageView(image: PinKit.image(named: "Lock Out Large"))
     let infoLabel = UILabel()
 
@@ -14,27 +13,28 @@ class LockoutView: UIView {
         super.init(frame: .zero)
         backgroundColor = .themeBackgroundFromGradient
 
-        addSubview(iconBackgroundView)
-        iconBackgroundView.backgroundColor = .themeJeremy
-        iconBackgroundView.layer.cornerRadius = lockoutIconBackgroundSideSize / 2
-        iconBackgroundView.snp.makeConstraints { maker in
-            maker.centerX.equalToSuperview()
-            maker.centerY.equalToSuperview().multipliedBy(0.66)
-            maker.size.equalTo(lockoutIconBackgroundSideSize)
+        let wrapper = UIView()
+
+        addSubview(wrapper)
+        wrapper.snp.makeConstraints { maker in
+            maker.center.equalToSuperview()
+            maker.leading.equalToSuperview().offset(CGFloat.margin8x)
+            maker.trailing.equalToSuperview().offset(-CGFloat.margin8x)
         }
 
-        addSubview(lockIcon)
+        wrapper.addSubview(lockIcon)
         lockIcon.snp.makeConstraints { maker in
-            maker.center.equalTo(iconBackgroundView)
-            maker.centerY.equalToSuperview().multipliedBy(0.66)
+            maker.centerX.equalToSuperview()
+            maker.top.equalToSuperview()
         }
-        addSubview(infoLabel)
+
+        wrapper.addSubview(infoLabel)
         infoLabel.snp.makeConstraints { maker in
             maker.centerX.equalToSuperview()
-            maker.top.equalTo(self.iconBackgroundView.snp.bottom).offset(CGFloat.margin6x)
-            maker.leading.equalTo(self.snp.leading).offset(CGFloat.margin8x)
-            maker.trailing.equalTo(self.snp.trailing).offset(-CGFloat.margin8x)
+            maker.top.equalTo(lockIcon.snp.bottom).offset(CGFloat.margin4x)
+            maker.bottom.equalToSuperview()
         }
+
         infoLabel.numberOfLines = 0
         infoLabel.textAlignment = .center
         infoLabel.font = .body
