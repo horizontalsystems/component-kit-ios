@@ -35,7 +35,7 @@ class PinViewController: ThemeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let insets = UIEdgeInsets(top: self.insets.top, left: self.insets.left, bottom: CGFloat.margin4x + self.insets.bottom, right: self.insets.right)
+        let insets = UIEdgeInsets(top: self.insets.top, left: self.insets.left, bottom: CGFloat.margin8x + self.insets.bottom, right: self.insets.right)
 
         view.addSubview(holderView)
         holderView.isScrollEnabled = false
@@ -60,7 +60,7 @@ class PinViewController: ThemeViewController {
         view.addSubview(lockoutView)
         lockoutView.hide()
         lockoutView.snp.makeConstraints { maker in
-            maker.edges.equalToSuperview()
+            maker.edges.equalTo(self.holderView)
         }
 
         delegate.viewDidLoad()
@@ -174,10 +174,14 @@ extension PinViewController: IPinView {
 
     func showLockView(till date: Date) {
         lockoutView.show(expirationDate: date)
+        holderView.isHidden = true
+        numPad.disable()
     }
 
     func show(attemptsLeft: Int?, forPage index: Int) {
         lockoutView.hide()
+        holderView.isHidden = false
+        numPad.enable()
     }
 
 }

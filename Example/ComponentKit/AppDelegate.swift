@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        App.shared.pinKit.didFinishLaunching()
+    }
+
     func applicationWillResignActive(_ application: UIApplication) {
     }
 

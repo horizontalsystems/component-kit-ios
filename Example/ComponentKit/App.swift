@@ -13,6 +13,8 @@ class App {
         pinKitDelegate = PinKitDelegate()
         keychainKit = KeychainKit(service: App.secureService)
         pinKit = PinKit.Kit(secureStorage: keychainKit.secureStorage, localStorage: StorageKit.LocalStorage.default)
+        pinKit.set(delegate: pinKitDelegate)
+        pinKit.biometryEnabled = true
     }
 
 }
