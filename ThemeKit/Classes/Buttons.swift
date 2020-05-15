@@ -15,6 +15,8 @@ public enum ThemeButtonStyle {
 open class ThemeButton: UIButton {
     private var backgroundGradients = [UInt: [UIColor]]()
 
+    private var style: ThemeButtonStyle?
+
     public func setBackgroundColor(_ color: UIColor, bottomColor: UIColor? = nil, forState state: UIControl.State) {
         var colors = [color]
         if let gradientBottomColor = bottomColor {
@@ -25,7 +27,7 @@ open class ThemeButton: UIButton {
     }
 
     public func setBackgroundColor(_ color: UIColor, blendColor: UIColor, forState state: UIControl.State) {
-        setBackgroundColor(color.blend(with: blendColor).toHSBColor, bottomColor: color.toHSBColor, forState: .normal)
+        setBackgroundColor(color.blend(with: blendColor).toHSBColor, bottomColor: color.toHSBColor, forState: state)
     }
 
     public init() {
@@ -102,11 +104,21 @@ open class ThemeButton: UIButton {
         perform(#selector(hesitateUpdate), with: nil, afterDelay: 0.1)
     }
 
+    override public var isSelected: Bool {
+        didSet {
+            if let style = style, style == .secondaryTransparent {
+                self.borderColor = isSelected ? .themeSteel20 : .clear
+                self.borderWidth = isSelected ? 1 : 0
+            }
+        }
+    }
+
 }
 
 extension ThemeButton {
 
     @discardableResult public func apply(style: ThemeButtonStyle) -> Self {
+        self.style = style
 
         let applyPrimary = {
             self.cornerRadius = 8
@@ -131,6 +143,13 @@ extension ThemeButton {
 
             self.borderColor = .themeSteel20
             self.borderWidth = 1
+        }
+
+        let applySecondaryTransparentBackground = {
+            self.setBackgroundColor(.clear, forState: .normal)
+            self.setBackgroundColor(.themeJeremy, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .selected)
+            self.setBackgroundColor(.clear, forState: .highlighted)
+            self.setBackgroundColor(.clear, forState: .disabled)
         }
 
         switch style {
@@ -191,10 +210,14 @@ extension ThemeButton {
 
         case .secondaryTransparent:
             applySecondary()
+            self.cornerRadius = 14
+
+            applySecondaryTransparentBackground()
 
             setTitleColor(.themeOz, for: .normal)
             setTitleColor(.themeNina, for: .highlighted)
-            setTitleColor(.themeSteel20, for: .disabled)
+            setTitleColor(.themeGray50, for: .disabled)
+            setTitleColor(.themeOz, for: .selected)
 
         case .secondaryIcon:
             applySecondaryBackground()
