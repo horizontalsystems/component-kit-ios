@@ -17,7 +17,8 @@ class PinView: UIView {
 
         addSubview(wrapper)
         wrapper.snp.makeConstraints { maker in
-            maker.center.equalToSuperview()
+            maker.centerY.equalToSuperview()
+            maker.leading.trailing.equalToSuperview()
         }
         wrapper.backgroundColor = .clear
 
