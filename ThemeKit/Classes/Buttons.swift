@@ -145,13 +145,6 @@ extension ThemeButton {
             self.borderWidth = 1
         }
 
-        let applySecondaryTransparentBackground = {
-            self.setBackgroundColor(.clear, forState: .normal)
-            self.setBackgroundColor(.themeJeremy, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .selected)
-            self.setBackgroundColor(.clear, forState: .highlighted)
-            self.setBackgroundColor(.clear, forState: .disabled)
-        }
-
         switch style {
 
         case .primaryYellow:
@@ -212,7 +205,10 @@ extension ThemeButton {
             applySecondary()
             self.cornerRadius = 14
 
-            applySecondaryTransparentBackground()
+            setBackgroundColor(.clear, forState: .normal)
+            setBackgroundColor(.themeJeremy, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .selected)
+            setBackgroundColor(.clear, forState: .highlighted)
+            setBackgroundColor(.clear, forState: .disabled)
 
             setTitleColor(.themeOz, for: .normal)
             setTitleColor(.themeNina, for: .highlighted)
