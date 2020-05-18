@@ -14,8 +14,7 @@ public enum ThemeButtonStyle {
 
 open class ThemeButton: UIButton {
     private var backgroundGradients = [UInt: [UIColor]]()
-
-    private var style: ThemeButtonStyle?
+    private var borderColors: [UInt: UIColor] = [UIControl.State.normal.rawValue: .clear]
 
     public func setBackgroundColor(_ color: UIColor, bottomColor: UIColor? = nil, forState state: UIControl.State) {
         var colors = [color]
@@ -30,18 +29,24 @@ open class ThemeButton: UIButton {
         setBackgroundColor(color.blend(with: blendColor).toHSBColor, bottomColor: color.toHSBColor, forState: state)
     }
 
+    public func setBorderColor(_ color: UIColor, forState state: UIControl.State) {
+        borderColors[state.rawValue] = color
+    }
+
     public init() {
         super.init(frame: .zero)
 
-        self.isOpaque = false
-        self.backgroundColor = .clear
+        isOpaque = false
+        backgroundColor = .clear
+        borderColor = .clear
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        self.isOpaque = false
-        self.backgroundColor = .clear
+        isOpaque = false
+        backgroundColor = .clear
+        borderColor = .clear
     }
 
     override open func draw(_ rect: CGRect) {
@@ -104,12 +109,35 @@ open class ThemeButton: UIButton {
         perform(#selector(hesitateUpdate), with: nil, afterDelay: 0.1)
     }
 
-    override public var isSelected: Bool {
-        didSet {
-            if let style = style, style == .secondaryTransparent {
-                self.borderColor = isSelected ? .themeSteel20 : .clear
-                self.borderWidth = isSelected ? 1 : 0
+    private func updateBorderColor() {
+        let value = state.rawValue
+        let defaultColor = borderColors[UIControl.State.normal.rawValue]
+
+        for bit in (1...7).reversed() {
+            if value >> bit > 0 {
+                borderColor = borderColors[1 << bit] ?? defaultColor
+                return
             }
+        }
+
+        borderColor = defaultColor
+    }
+
+    open override var isSelected: Bool {
+        didSet {
+            updateBorderColor()
+        }
+    }
+
+    open override var isHighlighted: Bool {
+        didSet {
+            updateBorderColor()
+        }
+    }
+
+    open override var isEnabled: Bool {
+        didSet {
+            updateBorderColor()
         }
     }
 
@@ -118,8 +146,6 @@ open class ThemeButton: UIButton {
 extension ThemeButton {
 
     @discardableResult public func apply(style: ThemeButtonStyle) -> Self {
-        self.style = style
-
         let applyPrimary = {
             self.cornerRadius = 8
             self.titleLabel?.font = .headline2
@@ -141,7 +167,8 @@ extension ThemeButton {
             self.setBackgroundColor(.themeJeremy, forState: .highlighted)
             self.setBackgroundColor(.themeJeremy, forState: .disabled)
 
-            self.borderColor = .themeSteel20
+            self.setBorderColor(.themeSteel20, forState: .normal)
+            self.updateBorderColor()
             self.borderWidth = 1
         }
 
@@ -203,12 +230,17 @@ extension ThemeButton {
 
         case .secondaryTransparent:
             applySecondary()
-            self.cornerRadius = 14
+
+            cornerRadius = 14
 
             setBackgroundColor(.clear, forState: .normal)
             setBackgroundColor(.themeJeremy, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .selected)
             setBackgroundColor(.clear, forState: .highlighted)
             setBackgroundColor(.clear, forState: .disabled)
+
+            setBorderColor(.themeSteel20, forState: .selected)
+            updateBorderColor()
+            borderWidth = 1
 
             setTitleColor(.themeOz, for: .normal)
             setTitleColor(.themeNina, for: .highlighted)
