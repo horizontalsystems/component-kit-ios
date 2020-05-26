@@ -150,16 +150,12 @@ extension ThemeButton {
             self.cornerRadius = 8
             self.titleLabel?.font = .headline2
             self.titleLabel?.textAlignment = .center
-
-//            self.contentEdgeInsets = UIEdgeInsets(top: 15, left: .margin4x, bottom: 15, right: .margin4x)
         }
 
         let applySecondary = {
             self.cornerRadius = 4
             self.titleLabel?.font = .subhead1
             self.titleLabel?.textAlignment = .center
-
-            self.contentEdgeInsets = UIEdgeInsets(top: 5.5, left: .margin3x, bottom: 5.5, right: .margin3x)
         }
 
         let applySecondaryBackground = {
@@ -171,6 +167,8 @@ extension ThemeButton {
             self.updateBorderColor()
             self.borderWidth = 1
         }
+
+        contentEdgeInsets = ThemeButton.contentEdgeInsets(for: style)
 
         switch style {
 
@@ -255,7 +253,6 @@ extension ThemeButton {
             // titleLabel should not affect button size, that is why we set smallest font
             titleLabel?.font = .systemFont(ofSize: 1)
 
-            contentEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
             setContentCompressionResistancePriority(.required, for: .horizontal)
             setContentCompressionResistancePriority(.required, for: .vertical)
             setContentHuggingPriority(.required, for: .horizontal)
@@ -271,6 +268,15 @@ extension ThemeButton {
         setImage(secondaryIconImage?.tinted(with: .themeGray50), for: .disabled)
 
         return self
+    }
+
+    static public func contentEdgeInsets(for style: ThemeButtonStyle) -> UIEdgeInsets {
+        switch style {
+//        case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin4x, bottom: 15, right: .margin4x)
+        case .secondaryDefault: return UIEdgeInsets(top: 5.5, left: .margin3x, bottom: 5.5, right: .margin3x)
+        case .secondaryIcon: return UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
+        default: return .zero
+        }
     }
 
 }
