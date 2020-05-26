@@ -148,13 +148,11 @@ extension ThemeButton {
     @discardableResult public func apply(style: ThemeButtonStyle) -> Self {
         let applyPrimary = {
             self.cornerRadius = 8
-            self.titleLabel?.font = .headline2
             self.titleLabel?.textAlignment = .center
         }
 
         let applySecondary = {
             self.cornerRadius = 4
-            self.titleLabel?.font = .subhead1
             self.titleLabel?.textAlignment = .center
         }
 
@@ -169,6 +167,7 @@ extension ThemeButton {
         }
 
         contentEdgeInsets = ThemeButton.contentEdgeInsets(for: style)
+        titleLabel?.font = ThemeButton.titleFont(for: style)
 
         switch style {
 
@@ -250,9 +249,6 @@ extension ThemeButton {
 
             cornerRadius = 4
 
-            // titleLabel should not affect button size, that is why we set smallest font
-            titleLabel?.font = .systemFont(ofSize: 1)
-
             setContentCompressionResistancePriority(.required, for: .horizontal)
             setContentCompressionResistancePriority(.required, for: .vertical)
             setContentHuggingPriority(.required, for: .horizontal)
@@ -270,13 +266,32 @@ extension ThemeButton {
         return self
     }
 
-    static public func contentEdgeInsets(for style: ThemeButtonStyle) -> UIEdgeInsets {
+}
+
+extension ThemeButton {
+
+    static private func contentEdgeInsets(for style: ThemeButtonStyle) -> UIEdgeInsets {
         switch style {
 //        case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin4x, bottom: 15, right: .margin4x)
         case .secondaryDefault: return UIEdgeInsets(top: 5.5, left: .margin3x, bottom: 5.5, right: .margin3x)
         case .secondaryIcon: return UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
         default: return .zero
         }
+    }
+
+    static private func titleFont(for style: ThemeButtonStyle) -> UIFont {
+        switch style {
+        case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return .headline2
+        case .secondaryDefault, .secondaryTransparent: return .subhead1
+        case .secondaryIcon: return .systemFont(ofSize: 1) // titleLabel should not affect button size, that is why we set smallest font
+        }
+    }
+
+    static public func height(forContainerWidth containerWidth: CGFloat, text: String, style: ThemeButtonStyle) -> CGFloat {
+        let insets = ThemeButton.contentEdgeInsets(for: style)
+        let font = ThemeButton.titleFont(for: style)
+
+        return ceil(text.height(forContainerWidth: containerWidth - insets.left - insets.right, font: font)) + insets.top + insets.bottom
     }
 
 }
