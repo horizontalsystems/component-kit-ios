@@ -25,6 +25,7 @@ extension UIColor {
     public static let themeGreen50 = UIColor(hex: 0x05c46b, alpha: 0.5)
     public static let themeLawrencePressedD = UIColor(hex: 0x353842)
     public static let themeLawrencePressedL = UIColor(hex: 0xe3e4e8)
+    public static let themeStronbuy = UIColor(hex: 0x1a60ff)
 }
 
 extension UIColor {
