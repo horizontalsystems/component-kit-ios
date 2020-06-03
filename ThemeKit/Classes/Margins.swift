@@ -26,5 +26,5 @@ extension CGFloat {
     public static let heightSingleLineInput: CGFloat = 44
     public static let heightDoubleLineInput: CGFloat = 66
     public static let heightButton: CGFloat = 50
-    public static let heightBottomWrapperBar: CGFloat = 126
+    public static let heightBottomWrapperBar: CGFloat = 98
 }
