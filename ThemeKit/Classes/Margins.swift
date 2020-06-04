@@ -23,8 +23,6 @@ extension CGFloat {
     public static let heightOneDp: CGFloat = 1
     public static let heightSingleLineCell: CGFloat = 44
     public static let heightDoubleLineCell: CGFloat = 60
-    public static let heightSingleLineInput: CGFloat = 44
-    public static let heightDoubleLineInput: CGFloat = 66
     public static let heightButton: CGFloat = 50
     public static let heightBottomWrapperBar: CGFloat = 98
 }
