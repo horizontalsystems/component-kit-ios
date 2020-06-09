@@ -6,9 +6,9 @@ class BiometryManager: IBiometryManager {
 
     private let subject = PublishSubject<BiometryType>()
 
-    var biometryType: BiometryType = .none {
+    var biometryType: BiometryType? {
         didSet {
-            if oldValue != biometryType {
+            if let biometryType = biometryType, oldValue != biometryType {
                 subject.onNext(biometryType)
             }
         }

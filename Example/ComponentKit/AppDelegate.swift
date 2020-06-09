@@ -8,6 +8,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Theme.updateNavigationBarTheme()
 
+        App.shared.pinKit.didFinishLaunching()
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
 
@@ -15,10 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = MainController()
 
         return true
-    }
-
-    func applicationDidFinishLaunching(_ application: UIApplication) {
-        App.shared.pinKit.didFinishLaunching()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

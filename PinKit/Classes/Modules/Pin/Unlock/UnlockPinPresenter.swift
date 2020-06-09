@@ -18,6 +18,10 @@ class UnlockPinPresenter {
         self.configuration = configuration
     }
 
+    private func updateView(biometryType: BiometryType?) {
+        view?.set(biometryUnlockMode: configuration.biometryUnlockMode, biometryType: biometryType, biometryEnabled: interactor.biometryEnabled)
+    }
+
 }
 
 extension UnlockPinPresenter: IPinViewDelegate {
@@ -25,7 +29,9 @@ extension UnlockPinPresenter: IPinViewDelegate {
     func viewDidLoad() {
         view?.addPage(withDescription: "unlock_pin.info")
 
-        view?.set(biometryUnlockMode: configuration.biometryUnlockMode, biometryType: interactor.biometryType, biometryEnabled: interactor.biometryEnabled)
+        interactor.subscribeBiometryType()
+
+        updateView(biometryType: interactor.biometryType)
 
         if interactor.failedAttempts == 0, interactor.biometryEnabled, configuration.biometryUnlockMode == .auto {
             interactor.biometricUnlock()
@@ -75,6 +81,10 @@ extension UnlockPinPresenter: IUnlockPinInteractorDelegate {
         case .locked(let dueDate):
             view?.showLockView(till: dueDate)
         }
+    }
+
+    func didUpdate(biometryType: BiometryType) {
+        updateView(biometryType: biometryType)
     }
 
 }

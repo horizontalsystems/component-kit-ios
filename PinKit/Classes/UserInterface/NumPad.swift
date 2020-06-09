@@ -129,7 +129,7 @@ class NumPad: UICollectionView {
         reloadData()
     }
 
-    public func set(biometryType: BiometryType) {
+    public func set(biometryType: BiometryType?) {
         self.biometryType = biometryType
 
         buildItems()
