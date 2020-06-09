@@ -41,7 +41,7 @@ extension Kit: IPinKit {
         pinManager.isPinSetObservable
     }
 
-    public var biometryType: BiometryType {
+    public var biometryType: BiometryType? {
         biometryManager.biometryType
     }
 

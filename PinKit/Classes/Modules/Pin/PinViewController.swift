@@ -100,7 +100,7 @@ extension PinViewController: IPinView {
         self.title = title.localized
     }
 
-    func set(biometryUnlockMode: BiometryUnlockMode, biometryType: BiometryType, biometryEnabled: Bool) {
+    func set(biometryUnlockMode: BiometryUnlockMode, biometryType: BiometryType?, biometryEnabled: Bool) {
         if biometryUnlockMode != .disabled, biometryEnabled {
             numPad.append(style: .biometry)
         }

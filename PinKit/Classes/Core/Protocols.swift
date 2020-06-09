@@ -5,7 +5,7 @@ public protocol IPinKit: class {
 
     var isPinSet: Bool { get }
     var isPinSetObservable: Observable<Bool> { get }
-    var biometryType: BiometryType { get }
+    var biometryType: BiometryType? { get }
     var biometryTypeObservable: Observable<BiometryType> { get }
     func clear() throws
 
@@ -40,7 +40,7 @@ protocol IBiometricManager {
 }
 
 protocol IBiometryManager {
-    var biometryType: BiometryType { get }
+    var biometryType: BiometryType? { get }
     var biometryTypeObservable: Observable<BiometryType> { get }
     func refresh()
 }

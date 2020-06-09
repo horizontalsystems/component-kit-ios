@@ -1,4 +1,5 @@
 import Foundation
+import RxSwift
 
 class UnlockPinInteractor {
     weak var delegate: IUnlockPinInteractorDelegate?
@@ -8,6 +9,8 @@ class UnlockPinInteractor {
     private let lockoutManager: ILockoutManager
     private var timer: IOneTimeTimer
     private var biometryManager: IBiometryManager
+
+    private var disposeBag = DisposeBag()
 
     init(pinManager: IPinManager, biometricManager: IBiometricManager, lockoutManager: ILockoutManager, timer: IOneTimeTimer, biometryManager: IBiometryManager) {
         self.pinManager = pinManager
@@ -27,12 +30,21 @@ extension UnlockPinInteractor: IUnlockPinInteractor {
         pinManager.biometryEnabled
     }
 
-    var biometryType: BiometryType {
+    var biometryType: BiometryType? {
         biometryManager.biometryType
     }
 
     var failedAttempts: Int {
         lockoutManager.unlockAttempts
+    }
+
+    func subscribeBiometryType() {
+        biometryManager.biometryTypeObservable
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { [weak self] biometryType in
+                    self?.delegate?.didUpdate(biometryType: biometryType)
+                })
+                .disposed(by: disposeBag)
     }
 
     func updateLockoutState() {
