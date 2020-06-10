@@ -270,16 +270,16 @@ extension ThemeButton {
 
 extension ThemeButton {
 
-    static private func contentEdgeInsets(for style: ThemeButtonStyle) -> UIEdgeInsets {
+    private static func contentEdgeInsets(for style: ThemeButtonStyle) -> UIEdgeInsets {
         switch style {
 //        case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin4x, bottom: 15, right: .margin4x)
-        case .secondaryDefault: return UIEdgeInsets(top: 5.5, left: .margin3x, bottom: 5.5, right: .margin3x)
+        case .secondaryDefault, .secondaryTransparent: return UIEdgeInsets(top: 5.5, left: .margin4x, bottom: 5.5, right: .margin4x)
         case .secondaryIcon: return UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
         default: return .zero
         }
     }
 
-    static private func titleFont(for style: ThemeButtonStyle) -> UIFont {
+    private static func titleFont(for style: ThemeButtonStyle) -> UIFont {
         switch style {
         case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return .headline2
         case .secondaryDefault, .secondaryTransparent: return .subhead1
@@ -287,11 +287,17 @@ extension ThemeButton {
         }
     }
 
-    static public func height(forContainerWidth containerWidth: CGFloat, text: String, style: ThemeButtonStyle) -> CGFloat {
+    public static func size(containerWidth: CGFloat, text: String, style: ThemeButtonStyle) -> CGSize {
         let insets = ThemeButton.contentEdgeInsets(for: style)
         let font = ThemeButton.titleFont(for: style)
 
-        return ceil(text.height(forContainerWidth: containerWidth - insets.left - insets.right, font: font)) + insets.top + insets.bottom
+        let textContainerWidth = containerWidth - insets.left - insets.right
+        let textSize = text.size(containerWidth: textContainerWidth, font: font)
+
+        return CGSize(
+                width: textSize.width + insets.left + insets.right,
+                height: textSize.height + insets.top + insets.bottom
+        )
     }
 
 }
