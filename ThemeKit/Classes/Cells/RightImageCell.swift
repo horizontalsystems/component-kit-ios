@@ -1,7 +1,6 @@
 import UIKit
 import UIExtensions
 import SnapKit
-import ThemeKit
 
 open class RightImageCell: TitleCell {
     var rightImageView = TintImageView()

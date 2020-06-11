@@ -1,6 +1,5 @@
 import UIKit
 import SnapKit
-import ThemeKit
 
 open class ImageSingleLineValueCell: ThemeCell {
     private let leftView = LeftImageCellView()

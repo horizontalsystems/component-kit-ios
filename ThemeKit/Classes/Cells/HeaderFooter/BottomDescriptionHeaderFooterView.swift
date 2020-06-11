@@ -1,6 +1,5 @@
 import UIKit
 import SnapKit
-import ThemeKit
 
 open class BottomDescriptionHeaderFooterView: UITableViewHeaderFooterView {
     private let descriptionView = BottomDescriptionView()

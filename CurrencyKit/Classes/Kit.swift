@@ -13,7 +13,7 @@ public class Kit {
     private let currencyManager: CurrencyManager
 
     public init(localStorage: ILocalStorage, currencyCodes: [String] = []) {
-        var currencies = currencyCodes.flatMap { code in
+        var currencies = currencyCodes.compactMap { code in
             Kit.supportedCurrencies.first { $0.code == code }
         }
 

@@ -1,6 +1,5 @@
 import UIKit
 import SnapKit
-import ThemeKit
 
 open class SingleLineCheckmarkCell: ThemeCell {
     private let leftView = SingleLineCellView()

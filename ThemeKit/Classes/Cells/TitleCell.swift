@@ -1,7 +1,6 @@
 import UIKit
 import UIExtensions
 import SnapKit
-import ThemeKit
 
 open class TitleCell: ThemeCell {
     private let iconSize: CGFloat = 24

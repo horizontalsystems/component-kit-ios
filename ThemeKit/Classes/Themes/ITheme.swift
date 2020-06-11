@@ -22,6 +22,7 @@ protocol ITheme {
     var colorHelsing: UIColor { get }
     var colorCassandra: UIColor { get }
     var colorRaina: UIColor { get }
+    var colorBran: UIColor { get }
 
     var alphaSecondaryButtonGradient: CGFloat { get }
 }
