@@ -1,6 +1,5 @@
 import UIKit
 import SnapKit
-import ThemeKit
 
 open class ToggleCell: TitleCell {
     var toggleView = UISwitch()

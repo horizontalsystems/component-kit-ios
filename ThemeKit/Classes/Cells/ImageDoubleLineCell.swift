@@ -1,6 +1,5 @@
 import UIKit
 import SnapKit
-import ThemeKit
 
 open class ImageDoubleLineCell: ThemeCell {
     private let leftView = LeftImageCellView()

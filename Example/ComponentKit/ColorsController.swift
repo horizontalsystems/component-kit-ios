@@ -19,6 +19,9 @@ class ColorsController: ThemeViewController {
         Color(name: "Tyler", value: .themeTyler),
         Color(name: "Nina", value: .themeNina),
         Color(name: "Helsing", value: .themeHelsing),
+        Color(name: "Cassandra", value: .themeCassandra),
+        Color(name: "Rains", value: .themeRaina),
+        Color(name: "Bran", value: .themeBran),
     ]
 
     private let tableView = UITableView()
