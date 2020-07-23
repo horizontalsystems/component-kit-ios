@@ -2,10 +2,10 @@ import UIKit
 import SnapKit
 
 open class TopDescriptionView: UIView {
-    private static let sideMargin: CGFloat = .margin6x
-    private static let topMargin: CGFloat = .margin3x
-    private static let bottomMargin: CGFloat = .margin6x
-    private static let font: UIFont = .subhead2
+    private static let sideMargin: CGFloat = .margin4x
+    private static let topMargin: CGFloat = 6
+    private static let bottomMargin: CGFloat = 8
+    private static let font: UIFont = .subhead1
 
     private let label = UILabel()
 
