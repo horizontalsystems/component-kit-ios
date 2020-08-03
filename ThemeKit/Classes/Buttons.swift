@@ -272,10 +272,9 @@ extension ThemeButton {
 
     private static func contentEdgeInsets(for style: ThemeButtonStyle) -> UIEdgeInsets {
         switch style {
-//        case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin4x, bottom: 15, right: .margin4x)
+        case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin2x, bottom: 15, right: .margin2x)
         case .secondaryDefault, .secondaryTransparent: return UIEdgeInsets(top: 5.5, left: .margin4x, bottom: 5.5, right: .margin4x)
         case .secondaryIcon: return UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
-        default: return .zero
         }
     }
 
@@ -287,6 +286,15 @@ extension ThemeButton {
         }
     }
 
+    public static func height(style: ThemeButtonStyle? = nil) -> CGFloat {
+        let style = style ?? .primaryYellow                 // use as default primary sizes and insets
+
+        let insets = ThemeButton.contentEdgeInsets(for: style)
+        let fontSize = round(ThemeButton.titleFont(for: style).lineHeight)
+
+        return fontSize + insets.height
+    }
+
     public static func size(containerWidth: CGFloat, text: String, style: ThemeButtonStyle) -> CGSize {
         let insets = ThemeButton.contentEdgeInsets(for: style)
         let font = ThemeButton.titleFont(for: style)
@@ -295,8 +303,8 @@ extension ThemeButton {
         let textSize = text.size(containerWidth: textContainerWidth, font: font)
 
         return CGSize(
-                width: textSize.width + insets.left + insets.right,
-                height: textSize.height + insets.top + insets.bottom
+                width: textSize.width + insets.width,
+                height: textSize.height + insets.height
         )
     }
 
