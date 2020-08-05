@@ -110,12 +110,6 @@ public class ScanQrView: UIView {
 
     public func start() {
         scanQueue.async {
-            if let captureSession = self.captureSession, !captureSession.isRunning {
-                DispatchQueue.main.async {
-                    captureSession.startRunning()
-                }
-            }
-
             if !self.initiallySetUp {
                 self.initiallySetUp = true
 
@@ -130,6 +124,14 @@ public class ScanQrView: UIView {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    public func startCaptureSession() {
+        if let captureSession = self.captureSession, !captureSession.isRunning {
+            DispatchQueue.main.async {
+                captureSession.startRunning()
             }
         }
     }
