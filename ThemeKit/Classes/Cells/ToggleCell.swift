@@ -3,7 +3,7 @@ import UIExtensions
 import SnapKit
 
 open class ToggleCell: TitleCell {
-    var rightImageView = TintImageView()
+    var rightImageView = UIImageView()
     var toggleView = UISwitch()
     var onToggle: ((Bool) -> ())?
 
@@ -31,11 +31,10 @@ open class ToggleCell: TitleCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open func bind(titleIcon: UIImage? = nil, title: String, rightImage: UIImage? = nil, rightImageTintColor: UIColor? = nil, isOn: Bool, last: Bool = false, onToggle: ((Bool) -> ())? = nil) {
+    open func bind(titleIcon: UIImage? = nil, title: String, rightImage: UIImage? = nil, isOn: Bool, last: Bool = false, onToggle: ((Bool) -> ())? = nil) {
         super.bind(titleIcon: titleIcon, title: title, last: last)
         self.onToggle = onToggle
         toggleView.isOn = isOn
-        rightImageView.tintColor = rightImageTintColor
         rightImageView.image = rightImage
     }
 
