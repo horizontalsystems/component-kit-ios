@@ -44,6 +44,7 @@ extension PinManager: IPinManager {
     func clear() throws {
         try secureStorage.removeValue(for: pinKey)
         localStorage.set(value: false, for: biometricOnKey)
+        isPinSetSubject.onNext(false)
     }
 
     var isPinSetObservable: Observable<Bool> {
