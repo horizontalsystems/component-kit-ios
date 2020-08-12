@@ -1,7 +1,9 @@
 import UIKit
+import UIExtensions
 import SnapKit
 
 open class ToggleCell: TitleCell {
+    var rightImageView = TintImageView()
     var toggleView = UISwitch()
     var onToggle: ((Bool) -> ())?
 
@@ -17,16 +19,24 @@ open class ToggleCell: TitleCell {
 
         toggleView.tintColor = .themeSteel20
         toggleView.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+
+        contentView.addSubview(rightImageView)
+        rightImageView.snp.makeConstraints { maker in
+            maker.trailing.equalTo(toggleView.snp.leading).offset(-CGFloat.margin2x)
+            maker.centerY.equalToSuperview()
+        }
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open func bind(titleIcon: UIImage? = nil, title: String, isOn: Bool, last: Bool = false, onToggle: ((Bool) -> ())? = nil) {
+    open func bind(titleIcon: UIImage? = nil, title: String, rightImage: UIImage? = nil, rightImageTintColor: UIColor? = nil, isOn: Bool, last: Bool = false, onToggle: ((Bool) -> ())? = nil) {
         super.bind(titleIcon: titleIcon, title: title, last: last)
         self.onToggle = onToggle
         toggleView.isOn = isOn
+        rightImageView.tintColor = rightImageTintColor
+        rightImageView.image = rightImage
     }
 
     @objc private func switchChanged() {
