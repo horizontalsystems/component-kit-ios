@@ -207,7 +207,7 @@ extension ThemeButton {
             setTitleColor(.black, for: .normal)
             setTitleColor(.themeGray50, for: .disabled)
 
-            setBackgroundColor(.themeLightGray, blendColor: UIColor(white: 1, alpha: 1), forState: .normal)
+            setBackgroundColor(.themeLightGray, blendColor: UIColor.themeLight.withAlphaComponent(1), forState: .normal)
             setBackgroundColor(.themeLightGray, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
