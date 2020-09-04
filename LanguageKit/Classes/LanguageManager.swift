@@ -4,7 +4,7 @@ public class LanguageManager {
     public static let shared = LanguageManager()
 
     private static let userDefaultsKey = "current_language"
-    private static let fallbackLanguage = "en"
+    public static let fallbackLanguage = "en"
 
     public var currentLanguage: String {
         didSet {
