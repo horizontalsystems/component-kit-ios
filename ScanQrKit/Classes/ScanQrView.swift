@@ -100,7 +100,9 @@ public class ScanQrView: UIView {
 
     private func failed() {
         captureSession = nil
-        showAlert(title: "access_camera.not_supported".localized)
+        DispatchQueue.main.async {
+            self.showAlert(title: "access_camera.not_supported".localized)
+        }
     }
 
     private func showAlert(title: String, actionText: String? = nil, action: (() -> ())? = nil) {
