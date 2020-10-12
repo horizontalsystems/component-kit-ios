@@ -7,12 +7,15 @@ open class RightLabelCell: TitleCell {
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        rightLabel.textColor = .themeGray
         contentView.addSubview(rightLabel)
         rightLabel.snp.makeConstraints { maker in
+            maker.leading.equalTo(titleLabel.snp.trailing).offset(CGFloat.margin4x)
             maker.trailing.equalTo(disclosureImageView.snp.leading).offset(-CGFloat.margin4x)
             maker.centerY.equalToSuperview()
         }
+
+        rightLabel.lineBreakMode = .byTruncatingMiddle
+        rightLabel.textColor = .themeGray
     }
 
     required public init?(coder aDecoder: NSCoder) {
