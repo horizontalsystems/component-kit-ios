@@ -15,7 +15,6 @@ class PinDotsView: UIView {
         self.pinLength = pinLength ?? 6
         super.init(frame: .zero)
 
-        dotsHolder.backgroundColor = .yellow
         dotsHolder.axis = .horizontal
         dotsHolder.distribution = .equalSpacing
         dotsHolder.alignment = .center
