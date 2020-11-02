@@ -295,16 +295,28 @@ extension ThemeButton {
         return fontSize + insets.height
     }
 
-    public static func size(containerWidth: CGFloat, text: String, style: ThemeButtonStyle) -> CGSize {
+    public static func size(containerWidth: CGFloat, text: String?, icon: UIImage? = nil, style: ThemeButtonStyle) -> CGSize {
         let insets = ThemeButton.contentEdgeInsets(for: style)
-        let font = ThemeButton.titleFont(for: style)
+        var width: CGFloat = 0, height: CGFloat = 0
 
-        let textContainerWidth = containerWidth - insets.left - insets.right
-        let textSize = text.size(containerWidth: textContainerWidth, font: font)
+        if let text = text {
+            let font = ThemeButton.titleFont(for: style)
+
+            let textContainerWidth = containerWidth - insets.left - insets.right
+            let textSize = text.size(containerWidth: textContainerWidth, font: font)
+            width += textSize.width
+            height += textSize.height
+        }
+
+        if let icon = icon {
+            let iconSize = icon.size
+            width += iconSize.width
+            height = max(height, iconSize.height)
+        }
 
         return CGSize(
-                width: textSize.width + insets.width,
-                height: textSize.height + insets.height
+                width: width + insets.width,
+                height: height + insets.height
         )
     }
 
