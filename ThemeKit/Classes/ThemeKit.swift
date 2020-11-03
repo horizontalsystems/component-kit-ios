@@ -1,4 +1,4 @@
-import UIKit
+import LanguageKit
 
 class ThemeKit {
 
@@ -8,6 +8,18 @@ class ThemeKit {
 
     static func image(named: String) -> UIImage? {
         UIImage(named: named, in: bundle, compatibleWith: nil)
+    }
+
+}
+
+extension String {
+
+    var localized: String {
+        LanguageManager.shared.localize(string: self, bundle: ThemeKit.bundle)
+    }
+
+    func localized(_ arguments: CVarArg...) -> String {
+        LanguageManager.shared.localize(string: self, bundle: ThemeKit.bundle, arguments: arguments)
     }
 
 }
