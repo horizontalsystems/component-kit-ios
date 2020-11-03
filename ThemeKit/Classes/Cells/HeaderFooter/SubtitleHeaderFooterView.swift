@@ -21,8 +21,8 @@ open class SubtitleHeaderFooterView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open func bind(text: String?, uppercased: Bool = true) {
-        label.text = uppercased ? text?.uppercased() : text
+    open func bind(text: String?) {
+        label.text = text
     }
 
 }
