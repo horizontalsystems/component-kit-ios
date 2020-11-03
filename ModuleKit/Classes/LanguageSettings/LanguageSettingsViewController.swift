@@ -56,7 +56,7 @@ extension LanguageSettingsViewController: SectionsDataSource {
                                 height: .heightDoubleLineCell,
                                 bind: { [unowned self] cell, _ in
                                     cell.bind(
-                                            image: LanguageKit.image(named: item.language),
+                                            image: ModuleKit.image(named: item.language),
                                             title: item.name,
                                             subtitle: item.nativeName,
                                             checkmarkVisible: item.selected,

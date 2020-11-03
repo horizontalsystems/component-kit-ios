@@ -20,7 +20,7 @@ public class LanguageManager {
         displayName(language: currentLanguage)
     }
 
-    func displayName(language: String) -> String? {
+    public func displayName(language: String) -> String? {
         (currentLocale as NSLocale).displayName(forKey: NSLocale.Key.identifier, value: language)?.capitalized
     }
 
@@ -28,12 +28,12 @@ public class LanguageManager {
         UserDefaults.standard.set(currentLanguage, forKey: LanguageManager.userDefaultsKey)
     }
 
-    static func nativeDisplayName(language: String) -> String? {
+    public static func nativeDisplayName(language: String) -> String? {
         let locale = NSLocale(localeIdentifier: language)
         return locale.displayName(forKey: NSLocale.Key.identifier, value: language)?.capitalized
     }
 
-    static var availableLanguages: [String] {
+    public static var availableLanguages: [String] {
         Bundle.main.localizations.sorted()
     }
 
