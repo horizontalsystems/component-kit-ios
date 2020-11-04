@@ -47,6 +47,13 @@ open class ThemeNavigationController: UINavigationController {
         self.topViewController?.prefersStatusBarHidden ?? false
     }
 
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        DispatchQueue.main.async {
+            self.navigationBar.sizeToFit()
+        }
+    }
 }
 
 open class ThemeTabBarController: UITabBarController {
