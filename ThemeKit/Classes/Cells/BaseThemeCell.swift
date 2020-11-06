@@ -2,16 +2,15 @@ import UIKit
 import SnapKit
 
 open class BaseThemeCell: UITableViewCell {
-    public let selectView = UIView()
-
-    private let topSeparatorView = UIView()
-    private let bottomSeparatorView = UIView()
+    let topSeparatorView = UIView()
+    let bottomSeparatorView = UIView()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         contentView.backgroundColor = .clear
         separatorInset.left = 0
+        selectionStyle = .none
 
         contentView.addSubview(topSeparatorView)
         topSeparatorView.snp.makeConstraints { maker in
@@ -28,46 +27,22 @@ open class BaseThemeCell: UITableViewCell {
         }
 
         bottomSeparatorView.backgroundColor = .themeSteel20
-
-        contentView.addSubview(selectView)
-        selectView.snp.makeConstraints { maker in
-            maker.leading.trailing.equalToSuperview()
-            maker.top.equalTo(topSeparatorView.snp.bottom)
-            maker.bottom.equalTo(bottomSeparatorView.snp.top)
-        }
-
-        selectView.alpha = 0
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override open func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        guard selectionStyle != .none else { return }
-
-        if animated {
-            UIView.animate(withDuration: .themeAnimationDuration) {
-                self.selectView.alpha = highlighted ? 1 : 0
-            }
-        } else {
-            selectView.alpha = highlighted ? 1 : 0
+    open func set(backgroundStyle: BackgroundStyle, topSeparator: Bool = true, bottomSeparator: Bool = false) {
+        switch backgroundStyle {
+        case .lawrence:
+            backgroundColor = .themeLawrence
+        case .claude:
+            backgroundColor = .themeClaude
+        case .transparent:
+            backgroundColor = .clear
         }
-    }
 
-    override open func setSelected(_ selected: Bool, animated: Bool) {
-        guard selectionStyle != .none else { return }
-
-        if animated {
-            UIView.animate(withDuration: .themeAnimationDuration) {
-                self.selectView.alpha = selected ? 1 : 0
-            }
-        } else {
-            selectView.alpha = selected ? 1 : 0
-        }
-    }
-
-    public func bind(topSeparator: Bool = true, bottomSeparator: Bool = false) {
         topSeparatorView.snp.updateConstraints { maker in
             maker.height.equalTo(topSeparator ? 1 / UIScreen.main.scale : 0)
         }
@@ -90,6 +65,12 @@ open class BaseThemeCell: UITableViewCell {
             maker.trailing.equalToSuperview().inset(CGFloat.margin4x)
             maker.top.bottom.equalToSuperview()
         }
+    }
+
+    public enum BackgroundStyle {
+        case lawrence
+        case claude
+        case transparent
     }
 
 }

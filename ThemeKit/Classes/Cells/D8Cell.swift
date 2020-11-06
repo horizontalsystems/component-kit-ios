@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-open class D8Cell: LawrenceThemeCell {
+open class D8Cell: BaseThemeCell {
     private let leftView = LeftDView()
     private let rightView = Right8View()
 
@@ -9,18 +9,22 @@ open class D8Cell: LawrenceThemeCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         layout(leftView: leftView, rightView: rightView)
+
+        rightView.textColor = .themeLeah
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open func bind(title: String?, value: String?, last: Bool = false) {
-        super.bind(bottomSeparator: last)
+    public var title: String? {
+        get { leftView.text }
+        set { leftView.text = newValue }
+    }
 
-        leftView.text = title
-        rightView.text = value
-        rightView.textColor = .themeLeah
+    public var value: String? {
+        get { rightView.text }
+        set { rightView.text = newValue }
     }
 
 }

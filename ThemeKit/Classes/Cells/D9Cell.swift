@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-open class D9Cell: LawrenceThemeCell {
+open class D9Cell: BaseThemeCell {
     private let leftView = LeftDView()
     private let rightView = Right9View()
 
@@ -14,12 +14,15 @@ open class D9Cell: LawrenceThemeCell {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    public var title: String? {
+        get { leftView.text }
+        set { leftView.text = newValue }
+    }
 
-    open func bind(title: String?, viewItem: CopyableSecondaryButton.ViewItem?, last: Bool = false) {
-        super.bind(bottomSeparator: last)
-
-        leftView.text = title
-        rightView.viewItem = viewItem
+    public var viewItem: CopyableSecondaryButton.ViewItem? {
+        get { rightView.viewItem }
+        set { rightView.viewItem = newValue }
     }
 
 }

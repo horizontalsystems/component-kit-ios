@@ -1,9 +1,9 @@
 import UIKit
 import SnapKit
 
-open class D2Cell: BaseSelectableThemeCell {
+open class D11Cell: BaseThemeCell {
     private let leftView = LeftDView()
-    private let rightView = Right2View()
+    private let rightView = Right11View()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -20,14 +20,14 @@ open class D2Cell: BaseSelectableThemeCell {
         set { leftView.text = newValue }
     }
 
-    public var value: String? {
-        get { rightView.text }
-        set { rightView.text = newValue }
+    public var isOn: Bool {
+        get { rightView.isOn }
+        set { rightView.isOn = newValue }
     }
 
-    public var valueColor: UIColor {
-        get { rightView.textColor }
-        set { rightView.textColor = newValue }
+    public var onToggle: ((Bool) -> ())? {
+        get { rightView.onToggle }
+        set { rightView.onToggle = newValue }
     }
 
 }
