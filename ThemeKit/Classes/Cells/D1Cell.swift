@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-open class D1Cell: LawrenceThemeCell {
+open class D1Cell: BaseSelectableThemeCell {
     private let leftView = LeftDView()
     private let rightView = Right1View()
 
@@ -15,10 +15,9 @@ open class D1Cell: LawrenceThemeCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open func bind(title: String?, last: Bool = false) {
-        super.bind(bottomSeparator: last)
-
-        leftView.text = title
+    public var title: String? {
+        get { leftView.text }
+        set { leftView.text = newValue }
     }
 
 }
