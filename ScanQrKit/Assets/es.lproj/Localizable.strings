@@ -1,0 +1,3 @@
+"access_camera.message" = "Se ha denegado el acceso a tu cámara para esta aplicación, puedes ir a ajustes y permitir el acceso";
+"access_camera.not_supported" = "Su dispositivo no admite escanear un código de un elemento. Por favor, utilice un dispositivo con una cámara.";
+"access_camera.settings" = "Ir a los Ajustes";
