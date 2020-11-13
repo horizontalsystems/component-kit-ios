@@ -1,0 +1,3 @@
+"access_camera.message" = "无法访问相机此应用，您可以进入设置并允许访问";
+"access_camera.not_supported" = "您的设备不支持从一个项目扫描代码。请使用带有相机的设备。";
+"access_camera.settings" = "进入设置";
