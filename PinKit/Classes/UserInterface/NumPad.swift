@@ -68,7 +68,7 @@ class NumPad: UICollectionView {
         } else if style.contains(.biometry) {
             let image: UIImage? = biometryType.flatMap {
                 switch $0 {
-                case .faceId: return PinKit.image(named: "Face Id") 
+                case .faceId: return PinKit.image(named: "Face Id")
                 case .touchId: return PinKit.image(named: "Touch Id")
                 case .none: return nil
                 }
@@ -79,7 +79,7 @@ class NumPad: UICollectionView {
         }
         let localizedZero = format(number: 0)
         cells.append(.number(number: localizedZero, letters: nil, filled: true, action: { [weak self] in self?.numPadDidClick(digit: localizedZero) }))
-        cells.append(.image(image: PinKit.image(named: "Backspace Medium")?.withRenderingMode(.alwaysTemplate), pressedImage: PinKit.image(named: "Backspace Medium Pressed"), disabled: enabled, action: { [weak self] in self?.numPadDidClickBackspace() }))
+        cells.append(.image(image: PinKit.image(named: "Backspace Medium")?.withRenderingMode(.alwaysTemplate), pressedImage: PinKit.image(named: "Backspace Medium")?.tinted(with: .themeGray50), disabled: enabled, action: { [weak self] in self?.numPadDidClickBackspace() }))
     }
 
     private var itemWidth: CGFloat {
