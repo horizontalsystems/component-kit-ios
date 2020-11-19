@@ -274,7 +274,7 @@ extension ThemeButton {
         switch style {
         case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin2x, bottom: 15, right: .margin2x)
         case .secondaryDefault, .secondaryTransparent: return UIEdgeInsets(top: 5.5, left: .margin4x, bottom: 5.5, right: .margin4x)
-        case .secondaryIcon: return UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
+        case .secondaryIcon: return UIEdgeInsets(top: .margin1x, left: .margin1x, bottom: .margin1x, right: .margin1x)
         }
     }
 
