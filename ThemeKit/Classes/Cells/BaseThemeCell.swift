@@ -52,10 +52,10 @@ open class BaseThemeCell: UITableViewCell {
         }
     }
 
-    public func layout(leftView: UIView, rightView: UIView) {
+    public func layout(leftView: UIView, leftInset: CGFloat = .margin4x, rightView: UIView) {
         contentView.addSubview(leftView)
         leftView.snp.makeConstraints { maker in
-            maker.leading.equalToSuperview().inset(CGFloat.margin4x)
+            maker.leading.equalToSuperview().inset(leftInset)
             maker.top.bottom.equalToSuperview()
         }
 
