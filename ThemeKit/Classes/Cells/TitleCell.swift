@@ -3,9 +3,9 @@ import UIExtensions
 import SnapKit
 
 open class TitleCell: ThemeCell {
-    private let iconSize: CGFloat = 24
+    private let iconSize: CGFloat = 20
 
-    public var iconImageView = TintImageView()
+    public var iconImageView = UIImageView()
     public var titleLabel = UILabel()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -17,8 +17,6 @@ open class TitleCell: ThemeCell {
             maker.size.equalTo(iconSize)
             maker.centerY.equalToSuperview()
         }
-
-        iconImageView.tintColor = .themeJacob
 
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { maker in
