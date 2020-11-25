@@ -1,25 +1,22 @@
 import UIKit
 import SnapKit
 
-open class Right2View: UIView {
-    private let label = UILabel()
+open class Right3View: UIView {
+    private let imageView = UIImageView()
     private let disclosureImageView = UIImageView(image: ThemeKit.image(named: "disclosure_indicator_20")?.withRenderingMode(.alwaysTemplate))
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        addSubview(label)
-        label.snp.makeConstraints { maker in
+        addSubview(imageView)
+        imageView.snp.makeConstraints { maker in
             maker.leading.equalToSuperview()
             maker.centerY.equalToSuperview()
         }
 
-        label.font = .subhead1
-        label.textColor = .themeGray
-
         addSubview(disclosureImageView)
         disclosureImageView.snp.makeConstraints { maker in
-            maker.leading.equalTo(label.snp.trailing).offset(CGFloat.margin6)
+            maker.leading.equalTo(imageView.snp.trailing).offset(CGFloat.margin6)
             maker.trailing.equalToSuperview()
             maker.centerY.equalToSuperview()
         }
@@ -31,22 +28,9 @@ open class Right2View: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public var text: String? {
-        get {
-            label.text
-        }
-        set {
-            label.text = newValue
-        }
-    }
-
-    public var textColor: UIColor {
-        get {
-            label.textColor
-        }
-        set {
-            label.textColor = newValue
-        }
+    public var image: UIImage? {
+        get { imageView.image }
+        set { imageView.image = newValue }
     }
 
 }
