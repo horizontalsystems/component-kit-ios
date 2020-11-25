@@ -17,6 +17,17 @@ extension CGFloat {
     public static let margin10x: CGFloat = 40
     public static let margin12x: CGFloat = 48
 
+    public static let margin2: CGFloat = 2
+    public static let margin4: CGFloat = 4
+    public static let margin6: CGFloat = 6
+    public static let margin8: CGFloat = 8
+    public static let margin12: CGFloat = 12
+    public static let margin16: CGFloat = 16
+    public static let margin24: CGFloat = 24
+    public static let margin32: CGFloat = 32
+    public static let margin40: CGFloat = 40
+    public static let margin48: CGFloat = 48
+
     public static let marginTextSide: CGFloat = 44
 
     public static let heightOnePixel: CGFloat = 1 / UIScreen.main.scale
