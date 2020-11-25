@@ -14,6 +14,9 @@ open class Right3View: UIView {
             maker.centerY.equalToSuperview()
         }
 
+        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
+
         addSubview(disclosureImageView)
         disclosureImageView.snp.makeConstraints { maker in
             maker.leading.equalTo(imageView.snp.trailing).offset(CGFloat.margin6)
