@@ -3,7 +3,7 @@ import SnapKit
 
 open class Right3View: UIView {
     private let imageView = UIImageView()
-    private let disclosureImageView = UIImageView(image: ThemeKit.image(named: "disclosure_indicator_20")?.withRenderingMode(.alwaysTemplate))
+    private let disclosureImageView = UIImageView(image: ThemeKit.image(named: "arrow_big_forward_20")?.withRenderingMode(.alwaysTemplate))
 
     override public init(frame: CGRect) {
         super.init(frame: frame)

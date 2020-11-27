@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 open class DropdownCellView: UIView {
-    private let imageView = UIImageView(image: ThemeKit.image(named: "Dropdown Indicator"))
+    private let imageView = UIImageView(image: ThemeKit.image(named: "arrow_small_down_20"))
 
     override public init(frame: CGRect) {
         super.init(frame: frame)

@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 open class Right1View: UIView {
-    private let disclosureImageView = UIImageView(image: ThemeKit.image(named: "Disclosure Indicator")?.withRenderingMode(.alwaysTemplate))
+    private let disclosureImageView = UIImageView(image: ThemeKit.image(named: "arrow_big_forward_20")?.withRenderingMode(.alwaysTemplate))
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
