@@ -14,7 +14,7 @@ open class LeftCView: UIView {
         imageButton.snp.makeConstraints { maker in
             maker.leading.equalToSuperview()
             maker.top.bottom.equalToSuperview()
-            maker.width.equalTo(48)
+            maker.width.equalTo(CGFloat.margin16 + 20 + CGFloat.margin16)
         }
 
         imageButton.addTarget(self, action: #selector(onTapButton), for: .touchUpInside)

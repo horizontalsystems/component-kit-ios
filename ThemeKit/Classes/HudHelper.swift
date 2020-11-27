@@ -50,8 +50,8 @@ public class HudHelper {
     private func show(type: ImageType, title: String?, subtitle: String?) {
         let statusImage: UIImage?
         switch type {
-        case .success: statusImage = ThemeKit.image(named: "Hud Success Icon")
-        case .error: statusImage = ThemeKit.image(named: "Hud Error Icon")?.tinted(with: .themeOz)
+        case .success: statusImage = ThemeKit.image(named: "checkmark_48")
+        case .error: statusImage = ThemeKit.image(named: "close_48")?.tinted(with: .themeOz)
         case .attention: statusImage = ThemeKit.image(named: "Hud Attention Icon")
         }
 

@@ -7,7 +7,7 @@ open class CheckmarkCellView: UIView {
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        imageView.image = ThemeKit.image(named: "Checkmark 24")?.withRenderingMode(.alwaysTemplate)
+        imageView.image = ThemeKit.image(named: "check_1_20")?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .themeJacob
         imageView.setContentHuggingPriority(.required, for: .horizontal)
         addSubview(imageView)
