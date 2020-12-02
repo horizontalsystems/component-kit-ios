@@ -50,8 +50,10 @@ open class ThemeNavigationController: UINavigationController {
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        DispatchQueue.main.async {
-            self.navigationBar.sizeToFit()
+        if navigationItem.searchController != nil {
+            DispatchQueue.main.async {
+                self.navigationBar.sizeToFit()
+            }
         }
     }
 }
