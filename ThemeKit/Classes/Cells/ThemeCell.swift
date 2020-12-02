@@ -67,7 +67,7 @@ open class ThemeCell: UITableViewCell {
         disclosureImageView.isHidden = !showDisclosure
         disclosureImageView.snp.remakeConstraints { maker in
             maker.trailing.equalTo(contentView.snp.trailingMargin)
-            maker.size.equalTo(showDisclosure ? CGSize(width: 8, height: 13) : 0)
+            maker.size.equalTo(showDisclosure ? 20 : 0)
             maker.centerY.equalToSuperview()
         }
 
