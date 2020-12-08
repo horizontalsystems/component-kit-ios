@@ -13,7 +13,7 @@ open class BaseSelectableThemeCell: BaseThemeCell {
         selectView.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
             maker.top.equalTo(topSeparatorView.snp.bottom)
-            maker.bottom.equalTo(bottomSeparatorView.snp.top)
+            maker.bottom.equalTo(bottomSeparatorView.snp.top).priority(.high)
         }
 
         selectView.alpha = 0

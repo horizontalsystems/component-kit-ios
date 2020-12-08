@@ -5,12 +5,15 @@ open class BaseThemeCell: UITableViewCell {
     let topSeparatorView = UIView()
     let bottomSeparatorView = UIView()
 
+    public var isVisible = true
+
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         contentView.backgroundColor = .clear
         separatorInset.left = 0
         selectionStyle = .none
+        clipsToBounds = true
 
         contentView.addSubview(topSeparatorView)
         topSeparatorView.snp.makeConstraints { maker in
@@ -31,6 +34,10 @@ open class BaseThemeCell: UITableViewCell {
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    open var cellHeight: CGFloat {
+        isVisible ? .heightSingleLineCell : 0
     }
 
     open func set(backgroundStyle: BackgroundStyle, topSeparator: Bool = true, bottomSeparator: Bool = false) {
