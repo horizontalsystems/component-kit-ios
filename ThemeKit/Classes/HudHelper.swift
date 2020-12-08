@@ -18,7 +18,7 @@ public class HudHelper {
         show(type: .attention, title: title, subtitle: subtitle)
     }
 
-    public func showSpinner(title: String? = nil, userInteractionEnabled: Bool = true) {
+    public func showSpinner(title: String? = nil, userInteractionEnabled: Bool = false) {
         var customConfig = themeConfigHud()
         customConfig.hapticType = nil
         customConfig.userInteractionEnabled = userInteractionEnabled
@@ -30,17 +30,21 @@ public class HudHelper {
         statusConfig.dismissTimeInterval = nil
         statusConfig.customShowCancelInterval = nil
 
-        statusConfig.customProgressValue = nil
-        statusConfig.customProgressColor = .themeOz
-        statusConfig.customProgressRadius = 21
-        statusConfig.customProgressLineWidth = 5
-
         HUDStatusFactory.instance.config = statusConfig
 
-        let content = HUDStatusFactory.instance.view(type: .progress(.custom), title: title)
+        let content = HUDActivityView(
+                dashHeight: 10,
+                dashStrokeWidth: 4,
+                radius: 20,
+                strokeColor: .gray,
+                duration: 0.834
+        )
+
         HUD.instance.showHUD(content, onTapHUD: { hud in
             hud.hide()
         })
+
+        content.startAnimating()
    }
 
     public func hide() {
