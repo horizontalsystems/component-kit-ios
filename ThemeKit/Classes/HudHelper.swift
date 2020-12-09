@@ -32,13 +32,7 @@ public class HudHelper {
 
         HUDStatusFactory.instance.config = statusConfig
 
-        let content = HUDActivityView(
-                dashHeight: 10,
-                dashStrokeWidth: 4,
-                radius: 20,
-                strokeColor: .gray,
-                duration: 0.834
-        )
+        let content = HUDActivityView.create(with: .large48)
 
         HUD.instance.showHUD(content, onTapHUD: { hud in
             hud.hide()
