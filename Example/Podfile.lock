@@ -90,7 +90,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HUD.swift:
-    :commit: 4356cc42f5b733ba0fd11928dbd61fa3e000431e
+    :commit: e50f6e0d05b8769f3e4e038a29e454f7ef109823
     :git: https://github.com/horizontalsystems/gui-kit/
   UIExtensions.swift:
     :commit: 4356cc42f5b733ba0fd11928dbd61fa3e000431e
