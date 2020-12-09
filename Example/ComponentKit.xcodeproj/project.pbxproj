@@ -529,7 +529,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D50AF660D5CEE322C1D238EC /* Pods-PinKitTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = HC4MCAXJ66;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -552,7 +551,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 96409816B4E45A0226581D06 /* Pods-PinKitTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = HC4MCAXJ66;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
