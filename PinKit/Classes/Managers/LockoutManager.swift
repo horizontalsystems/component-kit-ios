@@ -1,20 +1,31 @@
 import StorageKit
 
-class LockoutManager: ILockoutManager {
+class LockoutManager {
     private let unlockAttemptsKey = "unlock_attempts_keychain_key"
     private let lockTimestampKey = "lock_timestamp_keychain_key"
 
     private var secureStorage: ISecureStorage
     private var uptimeProvider: IUptimeProvider
-    private var lockoutUntilDateFactory: ILockoutUntilDateFactory
+    private var lockoutTimeFrameFactory: ILockoutUntilDateFactory
 
     private let lockoutThreshold = 5
 
     init(secureStorage: ISecureStorage, uptimeProvider: IUptimeProvider, lockoutTimeFrameFactory: ILockoutUntilDateFactory) {
         self.secureStorage = secureStorage
         self.uptimeProvider = uptimeProvider
-        self.lockoutUntilDateFactory = lockoutTimeFrameFactory
+        self.lockoutTimeFrameFactory = lockoutTimeFrameFactory
     }
+
+    private func handleReboot() {
+        let unlockAttempts: Int = secureStorage.value(for: unlockAttemptsKey) ?? 0
+        if unlockAttempts >= lockoutThreshold {
+            try? secureStorage.set(value: uptimeProvider.uptime, for: lockTimestampKey)
+        }
+    }
+
+}
+
+extension LockoutManager: ILockoutManager {
 
     var unlockAttempts: Int {
         secureStorage.value(for: unlockAttemptsKey) ?? 0
@@ -22,8 +33,15 @@ class LockoutManager: ILockoutManager {
 
     var currentState: LockoutState {
         let uptime = uptimeProvider.uptime
+        var lockoutTimestamp = secureStorage.value(for: lockTimestampKey) ?? uptime
+
+        if uptime < lockoutTimestamp {
+            handleReboot()
+            lockoutTimestamp = uptime
+        }
+
         let unlockAttempts: Int = secureStorage.value(for: unlockAttemptsKey) ?? 0
-        let unlockDate = lockoutUntilDateFactory.lockoutUntilDate(failedAttempts: unlockAttempts, lockoutTimestamp: secureStorage.value(for: lockTimestampKey) ?? uptime, uptime: uptime)
+        let unlockDate = lockoutTimeFrameFactory.lockoutUntilDate(failedAttempts: unlockAttempts, lockoutTimestamp: lockoutTimestamp, uptime: uptime)
 
         if unlockAttempts >= lockoutThreshold, Date().compare(unlockDate) == .orderedAscending {
             return .locked(till: unlockDate)
