@@ -9,7 +9,7 @@ class LockoutUntilDateFactory: ILockoutUntilDateFactory {
 
     func lockoutUntilDate(failedAttempts: Int, lockoutTimestamp: TimeInterval, uptime: TimeInterval) -> Date {
         var timeFrame: TimeInterval = 0
-        let secondsFromLockout = uptime - lockoutTimestamp
+        let secondsFromLockout = uptime >= lockoutTimestamp ? uptime - lockoutTimestamp : uptime
 
         if failedAttempts == 5 {
             timeFrame = 60 * 5 - secondsFromLockout

@@ -16,13 +16,6 @@ class LockoutManager {
         self.lockoutTimeFrameFactory = lockoutTimeFrameFactory
     }
 
-    private func handleReboot() {
-        let unlockAttempts: Int = secureStorage.value(for: unlockAttemptsKey) ?? 0
-        if unlockAttempts >= lockoutThreshold {
-            try? secureStorage.set(value: uptimeProvider.uptime, for: lockTimestampKey)
-        }
-    }
-
 }
 
 extension LockoutManager: ILockoutManager {
@@ -33,12 +26,7 @@ extension LockoutManager: ILockoutManager {
 
     var currentState: LockoutState {
         let uptime = uptimeProvider.uptime
-        var lockoutTimestamp = secureStorage.value(for: lockTimestampKey) ?? uptime
-
-        if uptime < lockoutTimestamp {
-            handleReboot()
-            lockoutTimestamp = uptime
-        }
+        let lockoutTimestamp = secureStorage.value(for: lockTimestampKey) ?? uptime
 
         let unlockAttempts: Int = secureStorage.value(for: unlockAttemptsKey) ?? 0
         let unlockDate = lockoutTimeFrameFactory.lockoutUntilDate(failedAttempts: unlockAttempts, lockoutTimestamp: lockoutTimestamp, uptime: uptime)
