@@ -35,21 +35,18 @@ open class Right5View: UIView {
     public var onTap: (() -> ())?
 
     public var text: String? {
-        get {
-            button.title(for: .normal)
-        }
-        set {
-            button.setTitle(newValue, for: .normal)
-        }
+        get { button.title(for: .normal) }
+        set { button.setTitle(newValue, for: .normal) }
     }
 
     public var textColor: UIColor {
-        get {
-            button.titleColor(for: .normal) ?? defaultTextColor
-        }
-        set {
-            button.setTitleColor(newValue, for: .normal)
-        }
+        get { button.titleColor(for: .normal) ?? defaultTextColor }
+        set { button.setTitleColor(newValue, for: .normal) }
+    }
+
+    public var enabled: Bool {
+        get { button.isUserInteractionEnabled }
+        set { button.isUserInteractionEnabled = newValue }
     }
 
 }
