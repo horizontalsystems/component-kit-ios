@@ -45,4 +45,9 @@ open class C5Cell: BaseThemeCell {
         set { rightView.onTap = newValue }
     }
 
+    public var valueActionEnabled: Bool {
+        get { rightView.enabled }
+        set { rightView.enabled = newValue }
+    }
+
 }
