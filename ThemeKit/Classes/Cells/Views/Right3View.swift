@@ -25,6 +25,7 @@ open class Right3View: UIView {
         }
 
         disclosureImageView.tintColor = .themeGray
+        disclosureImageView.setContentHuggingPriority(.required, for: .horizontal)
     }
 
     required public init?(coder aDecoder: NSCoder) {
