@@ -2,6 +2,8 @@ import UIKit
 import SnapKit
 
 open class Right7View: UIView {
+    private static let insets = UIEdgeInsets(top: 14, left: 0, bottom: 13, right: 0)
+
     private let label = UILabel()
 
     override public init(frame: CGRect) {
@@ -9,12 +11,13 @@ open class Right7View: UIView {
 
         addSubview(label)
         label.snp.makeConstraints { maker in
-            maker.leading.trailing.equalToSuperview()
-            maker.centerY.equalToSuperview()
+            maker.edges.equalToSuperview().inset(Self.insets)
         }
 
         label.lineBreakMode = .byTruncatingMiddle
-        label.font = .subhead1
+        label.textAlignment = .right
+        label.numberOfLines = 0
+        label.font = Self.font(italic: false)
         label.textColor = .themeLeah
     }
 
@@ -34,7 +37,21 @@ open class Right7View: UIView {
 
     public var italic: Bool {
         get { label.font == .subhead1I }
-        set { label.font = newValue ? .subhead1I : .subhead1 }
+        set { label.font = Self.font(italic: newValue) }
+    }
+
+}
+
+extension Right7View {
+
+    private static func font(italic: Bool) -> UIFont {
+        italic ? .subhead1I : .subhead1
+    }
+
+    public static func height(containerWidth: CGFloat, text: String?, italic: Bool = false) -> CGFloat {
+        let text = text ?? ""
+        let textHeight = text.height(forContainerWidth: containerWidth, font: font(italic: italic))
+        return textHeight + insets.height
     }
 
 }
