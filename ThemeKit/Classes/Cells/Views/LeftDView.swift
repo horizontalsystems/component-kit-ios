@@ -2,6 +2,8 @@ import UIKit
 import SnapKit
 
 open class LeftDView: UIView {
+    private static let font: UIFont = .subhead2
+
     private let label = UILabel()
 
     override public init(frame: CGRect) {
@@ -13,7 +15,7 @@ open class LeftDView: UIView {
             maker.centerY.equalToSuperview()
         }
 
-        label.font = .subhead2
+        label.font = Self.font
         label.textColor = .themeGray
     }
 
@@ -28,6 +30,15 @@ open class LeftDView: UIView {
         set {
             label.text = newValue
         }
+    }
+
+}
+
+extension LeftDView {
+
+    public static func width(text: String?) -> CGFloat {
+        let text = text ?? ""
+        return text.size(containerWidth: .greatestFiniteMagnitude, font: font).width
     }
 
 }

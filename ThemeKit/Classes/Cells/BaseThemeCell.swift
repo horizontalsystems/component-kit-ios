@@ -2,6 +2,10 @@ import UIKit
 import SnapKit
 
 open class BaseThemeCell: UITableViewCell {
+    public static let leftInset: CGFloat = .margin4x
+    public static let rightInset: CGFloat = .margin4x
+    public static let middleInset: CGFloat = .margin4x
+
     let topSeparatorView = UIView()
     let bottomSeparatorView = UIView()
 
@@ -59,7 +63,7 @@ open class BaseThemeCell: UITableViewCell {
         }
     }
 
-    public func layout(leftView: UIView, leftInset: CGFloat = .margin4x, rightView: UIView) {
+    public func layout(leftView: UIView, leftInset: CGFloat = BaseThemeCell.leftInset, rightView: UIView) {
         contentView.addSubview(leftView)
         leftView.snp.makeConstraints { maker in
             maker.leading.equalToSuperview().inset(leftInset)
@@ -68,8 +72,8 @@ open class BaseThemeCell: UITableViewCell {
 
         contentView.addSubview(rightView)
         rightView.snp.makeConstraints { maker in
-            maker.leading.equalTo(leftView.snp.trailing).offset(CGFloat.margin4x)
-            maker.trailing.equalToSuperview().inset(CGFloat.margin4x)
+            maker.leading.equalTo(leftView.snp.trailing).offset(Self.middleInset)
+            maker.trailing.equalToSuperview().inset(Self.rightInset)
             maker.top.bottom.equalToSuperview()
         }
     }
