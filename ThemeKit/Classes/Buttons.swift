@@ -10,6 +10,7 @@ public enum ThemeButtonStyle {
     case secondaryDefault
     case secondaryTransparent
     case secondaryIcon
+    case tertiary
 }
 
 open class ThemeButton: UIButton {
@@ -253,6 +254,21 @@ extension ThemeButton {
             setContentCompressionResistancePriority(.required, for: .vertical)
             setContentHuggingPriority(.required, for: .horizontal)
             setContentHuggingPriority(.required, for: .vertical)
+
+        case .tertiary:
+            applySecondary()
+
+            cornerRadius = 12
+
+            setBackgroundColor(.themeLawrence, forState: .normal)
+            setBackgroundColor(.themeLawrence, forState: .highlighted)
+            setBackgroundColor(.themeLawrence, forState: .disabled)
+            setBackgroundColor(.themeJacob, forState: .selected)
+
+            setTitleColor(.themeNina, for: .normal)
+            setTitleColor(.themeGray50, for: .highlighted)
+            setTitleColor(.themeGray50, for: .disabled)
+            setTitleColor(.black, for: .selected)
         }
 
         return self
@@ -274,6 +290,7 @@ extension ThemeButton {
         switch style {
         case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin2x, bottom: 15, right: .margin2x)
         case .secondaryDefault, .secondaryTransparent: return UIEdgeInsets(top: 5.5, left: .margin4x, bottom: 5.5, right: .margin4x)
+        case .tertiary: return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         case .secondaryIcon: return UIEdgeInsets(top: .margin1x, left: .margin1x, bottom: .margin1x, right: .margin1x)
         }
     }
@@ -282,6 +299,7 @@ extension ThemeButton {
         switch style {
         case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return .headline2
         case .secondaryDefault, .secondaryTransparent: return .subhead1
+        case .tertiary: return .captionSB
         case .secondaryIcon: return .systemFont(ofSize: 1) // titleLabel should not affect button size, that is why we set smallest font
         }
     }
