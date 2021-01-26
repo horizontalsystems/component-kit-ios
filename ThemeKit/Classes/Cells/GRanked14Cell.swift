@@ -3,7 +3,7 @@ import SnapKit
 
 open class GRanked14Cell: BaseThemeCell {
     private let leftView = LeftGRankedView()
-    private let rightView = Right14View()
+    private let rightView = Right14TitledView()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,17 +45,22 @@ open class GRanked14Cell: BaseThemeCell {
         set { leftView.bottomText = newValue }
     }
 
-    public var priceText: String? {
+    public var primaryValueText: String? {
         get { rightView.topText }
         set { rightView.topText = newValue }
     }
 
-    public var diffText: String? {
+    public var secondaryTitleText: String? {
+        get { rightView.bottomTitleText }
+        set { rightView.bottomTitleText = newValue }
+    }
+
+    public var secondaryValueText: String? {
         get { rightView.bottomText }
         set { rightView.bottomText = newValue }
     }
 
-    public var diffTextColor: UIColor {
+    public var secondaryValueTextColor: UIColor {
         get { rightView.bottomTextColor }
         set { rightView.bottomTextColor = newValue }
     }
