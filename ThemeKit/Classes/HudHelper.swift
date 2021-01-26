@@ -1,5 +1,6 @@
 import UIKit
 import HUD
+import SnapKit
 
 public class HudHelper {
     public static let instance = HudHelper()
@@ -32,13 +33,25 @@ public class HudHelper {
 
         HUDStatusFactory.instance.config = statusConfig
 
-        let content = HUDActivityView.create(with: .large48)
+        let activityView = HUDActivityView.create(with: .large48)
+        activityView.snp.removeConstraints()
 
+        var titleLabel: UILabel?
+        if let title = title {
+            titleLabel = UILabel()
+            titleLabel?.font = statusConfig.titleLabelFont
+            titleLabel?.textColor = statusConfig.titleLabelColor
+            titleLabel?.numberOfLines = statusConfig.titleLabelLinesCount
+            titleLabel?.textAlignment = statusConfig.titleLabelAlignment
+            titleLabel?.text = title
+        }
+
+        let content = HUDStatusView(frame: .zero, imageView: activityView, titleLabel: titleLabel, subtitleLabel: nil, config: statusConfig)
         HUD.instance.showHUD(content, onTapHUD: { hud in
             hud.hide()
         })
 
-        content.startAnimating()
+        activityView.startAnimating()
    }
 
     public func hide() {
