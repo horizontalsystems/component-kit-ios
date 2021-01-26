@@ -21,10 +21,12 @@ open class Right14TitledView: UIView {
 
         addSubview(bottomTitleLabel)
         bottomTitleLabel.snp.makeConstraints { maker in
-            maker.leading.equalToSuperview()
+            maker.leading.greaterThanOrEqualToSuperview()
             maker.top.equalTo(topLabel.snp.bottom).offset(CGFloat.margin2)
         }
 
+        bottomTitleLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        bottomTitleLabel.setContentHuggingPriority(.required, for: .horizontal)
         bottomTitleLabel.textAlignment = .right
         bottomTitleLabel.font = .caption
         bottomTitleLabel.textColor = .themeJacob
@@ -36,6 +38,8 @@ open class Right14TitledView: UIView {
             maker.top.equalTo(topLabel.snp.bottom).offset(CGFloat.margin2)
         }
 
+        bottomLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        bottomLabel.setContentHuggingPriority(.required, for: .horizontal)
         bottomLabel.textAlignment = .right
         bottomLabel.font = .caption
         bottomLabel.textColor = .themeGray
