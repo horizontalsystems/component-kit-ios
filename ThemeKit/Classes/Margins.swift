@@ -7,6 +7,12 @@ extension CGFloat {
     public static let cornerRadius3x: CGFloat = 12
     public static let cornerRadius4x: CGFloat = 16
 
+    public static let cornerRadius2: CGFloat = 2
+    public static let cornerRadius4: CGFloat = 4
+    public static let cornerRadius8: CGFloat = 8
+    public static let cornerRadius12: CGFloat = 12
+    public static let cornerRadius16: CGFloat = 16
+
     public static let margin05x: CGFloat = 2
     public static let margin1x: CGFloat = 4
     public static let margin2x: CGFloat = 8
@@ -33,6 +39,7 @@ extension CGFloat {
     public static let heightOnePixel: CGFloat = 1 / UIScreen.main.scale
     public static let heightOneDp: CGFloat = 1
     public static let heightSingleLineCell: CGFloat = 44
+    public static let heightCell48: CGFloat = 48
     public static let heightDoubleLineCell: CGFloat = 60
     public static let heightButton: CGFloat = 50
     public static let heightBottomWrapperBar: CGFloat = 98

@@ -2,15 +2,24 @@ import UIKit
 import SnapKit
 
 open class Right11View: UIView {
+    private let imageView = UIImageView()
     private let toggleView = UISwitch()
+
     public var onToggle: ((Bool) -> ())?
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
+        addSubview(imageView)
+        imageView.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview()
+            maker.centerY.equalToSuperview()
+        }
+
         addSubview(toggleView)
         toggleView.snp.makeConstraints { maker in
-            maker.leading.trailing.equalToSuperview()
+            maker.leading.equalTo(imageView.snp.trailing).offset(CGFloat.margin8)
+            maker.trailing.equalToSuperview()
             maker.centerY.equalToSuperview()
         }
 
@@ -27,12 +36,13 @@ open class Right11View: UIView {
     }
 
     public var isOn: Bool {
-        get {
-            toggleView.isOn
-        }
-        set {
-            toggleView.isOn = newValue
-        }
+        get { toggleView.isOn }
+        set { toggleView.isOn = newValue }
+    }
+
+    public var image: UIImage? {
+        get { imageView.image }
+        set { imageView.image = newValue }
     }
 
 }
