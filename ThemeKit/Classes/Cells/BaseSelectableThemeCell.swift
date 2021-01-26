@@ -9,7 +9,7 @@ open class BaseSelectableThemeCell: BaseThemeCell {
 
         selectionStyle = .default
 
-        contentView.addSubview(selectView)
+        wrapperView.addSubview(selectView)
         selectView.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
             maker.top.equalTo(topSeparatorView.snp.bottom)
@@ -23,8 +23,8 @@ open class BaseSelectableThemeCell: BaseThemeCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func set(backgroundStyle: BackgroundStyle, topSeparator: Bool = true, bottomSeparator: Bool = false) {
-        super.set(backgroundStyle: backgroundStyle, topSeparator: topSeparator, bottomSeparator: bottomSeparator)
+    open override func set(backgroundStyle: BackgroundStyle, isFirst: Bool = false, isLast: Bool = false) {
+        super.set(backgroundStyle: backgroundStyle, isFirst: isFirst, isLast: isLast)
 
         switch backgroundStyle {
         case .lawrence:

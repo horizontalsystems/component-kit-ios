@@ -1,9 +1,9 @@
 import UIKit
 import SnapKit
 
-open class A11Cell: BaseThemeCell {
+open class A5Cell: BaseThemeCell {
     private let leftView = LeftAView()
-    private let rightView = Right11View()
+    private let rightView = Right5View()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,19 +25,24 @@ open class A11Cell: BaseThemeCell {
         set { leftView.image = newValue }
     }
 
-    public var rightImage: UIImage? {
-        get { rightView.image }
-        set { rightView.image = newValue }
+    public var value: String? {
+        get { rightView.text }
+        set { rightView.text = newValue }
     }
 
-    public var isOn: Bool {
-        get { rightView.isOn }
-        set { rightView.isOn = newValue }
+    public var valueColor: UIColor {
+        get { rightView.textColor }
+        set { rightView.textColor = newValue }
     }
 
-    public var onToggle: ((Bool) -> ())? {
-        get { rightView.onToggle }
-        set { rightView.onToggle = newValue }
+    public var valueAction: (() -> ())? {
+        get { rightView.onTap }
+        set { rightView.onTap = newValue }
+    }
+
+    public var valueActionEnabled: Bool {
+        get { rightView.enabled }
+        set { rightView.enabled = newValue }
     }
 
 }

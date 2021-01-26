@@ -1,8 +1,8 @@
 import UIKit
 import SnapKit
 
-open class A11Cell: BaseThemeCell {
-    private let leftView = LeftAView()
+open class B11Cell: BaseThemeCell {
+    private let leftView = LeftBView()
     private let rightView = Right11View()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -18,11 +18,6 @@ open class A11Cell: BaseThemeCell {
     public var title: String? {
         get { leftView.text }
         set { leftView.text = newValue }
-    }
-
-    public var titleImage: UIImage? {
-        get { leftView.image }
-        set { leftView.image = newValue }
     }
 
     public var rightImage: UIImage? {
