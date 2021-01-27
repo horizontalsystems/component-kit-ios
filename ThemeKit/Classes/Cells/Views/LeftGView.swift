@@ -1,10 +1,9 @@
 import UIKit
 import SnapKit
 
-open class LeftGRankedView: UIView {
+open class LeftGView: UIView {
     private let imageView = UIImageView()
     private let topLabel = UILabel()
-    private let rankView = BadgeView()
     private let bottomLabel = UILabel()
 
     override public init(frame: CGRect) {
@@ -29,19 +28,11 @@ open class LeftGRankedView: UIView {
         topLabel.font = .body
         topLabel.textColor = .themeOz
 
-        addSubview(rankView)
-        rankView.snp.makeConstraints { maker in
-            maker.leading.equalTo(imageView.snp.trailing).offset(CGFloat.margin16)
-            maker.top.equalTo(topLabel.snp.bottom).offset(CGFloat.margin6)
-        }
-
-        rankView.font = .microSB
-
         addSubview(bottomLabel)
         bottomLabel.snp.makeConstraints { maker in
-            maker.leading.equalTo(rankView.snp.trailing).offset(CGFloat.margin8)
+            maker.leading.equalTo(topLabel.snp.leading)
+            maker.top.equalTo(topLabel.snp.bottom).offset(5)
             maker.trailing.equalToSuperview()
-            maker.centerY.equalTo(rankView)
         }
 
         bottomLabel.font = .subhead2
@@ -60,21 +51,6 @@ open class LeftGRankedView: UIView {
     public var topText: String? {
         get { topLabel.text }
         set { topLabel.text = newValue }
-    }
-
-    public var rankText: String? {
-        get { rankView.text }
-        set { rankView.text = newValue }
-    }
-
-    public var rankTextColor: UIColor {
-        get { rankView.textColor }
-        set { rankView.textColor = newValue }
-    }
-
-    public var rankBackgroundColor: UIColor? {
-        get { rankView.backgroundColor }
-        set { rankView.backgroundColor = newValue }
     }
 
     public var bottomText: String? {

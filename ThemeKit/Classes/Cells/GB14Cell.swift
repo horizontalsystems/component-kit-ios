@@ -1,8 +1,8 @@
 import UIKit
 import SnapKit
 
-open class GRanked14Cell: BaseThemeCell {
-    private let leftView = LeftGRankedView()
+open class GB14Cell: BaseSelectableThemeCell {
+    private let leftView = LeftGBView()
     private let rightView = Right14TitledView()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -25,19 +25,19 @@ open class GRanked14Cell: BaseThemeCell {
         set { leftView.topText = newValue }
     }
 
-    public var rankText: String? {
-        get { leftView.rankText }
-        set { leftView.rankText = newValue }
+    public var badgeText: String? {
+        get { leftView.badgeText }
+        set { leftView.badgeText = newValue }
     }
 
-    public var rankTextColor: UIColor {
-        get { leftView.rankTextColor }
-        set { leftView.rankTextColor = newValue }
+    public var badgeTextColor: UIColor {
+        get { leftView.badgeTextColor }
+        set { leftView.badgeTextColor = newValue }
     }
 
-    public var rankBackgroundColor: UIColor? {
-        get { leftView.rankBackgroundColor }
-        set { leftView.rankBackgroundColor = newValue }
+    public var badgeBackgroundColor: UIColor? {
+        get { leftView.badgeBackgroundColor }
+        set { leftView.badgeBackgroundColor = newValue }
     }
 
     public var bottomText: String? {
