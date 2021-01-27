@@ -25,7 +25,7 @@ class BaseCurrencySettingsViewController: ThemeViewController {
 
         title = "settings_base_currency.title".localized
 
-        tableView.registerCell(forClass: ImageDoubleLineCheckmarkCell.self)
+        tableView.registerCell(forClass: G4Cell.self)
         tableView.registerHeaderFooter(forClass: BottomDescriptionHeaderFooterView.self)
         tableView.sectionDataSource = self
 
@@ -64,17 +64,18 @@ extension BaseCurrencySettingsViewController: SectionsDataSource {
                     headerState: .margin(height: .margin3x),
                     footerState: footer(hash: "currencies_footer", text: "settings_base_currency.provided_by".localized),
                     rows: items.enumerated().map { (index, item) in
-                        Row<ImageDoubleLineCheckmarkCell>(
+                        let isFirst = index == 0
+                        let isLast = index == items.count - 1
+
+                        return Row<G4Cell>(
                                 id: item.code,
                                 height: .heightDoubleLineCell,
-                                bind: { [unowned self] cell, _ in
-                                    cell.bind(
-                                            image: CurrencyKit.image(named: item.code),
-                                            title: item.code,
-                                            subtitle: item.symbol,
-                                            checkmarkVisible: item.selected,
-                                            last: index == self.items.count - 1
-                                    )
+                                bind: { [weak self] cell, _ in
+                                    cell.set(backgroundStyle: .lawrence, isFirst: isFirst, isLast: isLast)
+                                    cell.titleImage = CurrencyKit.image(named: item.code)
+                                    cell.title = item.code
+                                    cell.subtitle = item.symbol
+                                    cell.valueImage = item.selected ? ThemeKit.image(named: "check_1_20")?.tinted(with: .themeJacob) : nil
                                 },
                                 action: { [weak self] _ in
                                     self?.delegate.didSelect(index: index)
@@ -90,7 +91,7 @@ extension BaseCurrencySettingsViewController: SectionsDataSource {
 extension BaseCurrencySettingsViewController: IBaseCurrencySettingsView {
 
     func show(viewItems: [CurrencyViewItem]) {
-        self.items = viewItems
+        items = viewItems
     }
 
 }
