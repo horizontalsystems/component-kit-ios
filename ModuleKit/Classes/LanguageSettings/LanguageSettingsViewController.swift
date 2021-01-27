@@ -25,7 +25,7 @@ class LanguageSettingsViewController: ThemeViewController {
 
         title = "settings_language.title".localized
 
-        tableView.registerCell(forClass: ImageDoubleLineCheckmarkCell.self)
+        tableView.registerCell(forClass: G4Cell.self)
         tableView.sectionDataSource = self
 
         tableView.backgroundColor = .clear
@@ -51,17 +51,18 @@ extension LanguageSettingsViewController: SectionsDataSource {
                     headerState: .margin(height: .margin3x),
                     footerState: .margin(height: .margin8x),
                     rows: items.enumerated().map { (index, item) in
-                        Row<ImageDoubleLineCheckmarkCell>(
+                        let isFirst = index == 0
+                        let isLast = index == items.count - 1
+
+                        return Row<G4Cell>(
                                 id: item.language,
                                 height: .heightDoubleLineCell,
                                 bind: { [unowned self] cell, _ in
-                                    cell.bind(
-                                            image: ModuleKit.image(named: item.language),
-                                            title: item.name,
-                                            subtitle: item.nativeName,
-                                            checkmarkVisible: item.selected,
-                                            last: index == self.items.count - 1
-                                    )
+                                    cell.set(backgroundStyle: .lawrence, isFirst: isFirst, isLast: isLast)
+                                    cell.titleImage = ModuleKit.image(named: item.language)
+                                    cell.title = item.name
+                                    cell.subtitle = item.nativeName
+                                    cell.valueImage = item.selected ? ThemeKit.image(named: "check_1_20")?.tinted(with: .themeJacob) : nil
                                 },
                                 action: { [weak self] _ in
                                     self?.delegate.didSelect(index: index)
