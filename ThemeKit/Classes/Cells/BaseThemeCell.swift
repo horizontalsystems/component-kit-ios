@@ -82,12 +82,12 @@ open class BaseThemeCell: UITableViewCell {
         case .claude:
             wrapperView.backgroundColor = .themeClaude
             margin = UIEdgeInsets.zero
-            topSeparator = true
+            topSeparator = !isFirst
             bottomSeparator = isLast
         case .transparent:
             wrapperView.backgroundColor = .clear
             margin = UIEdgeInsets.zero
-            topSeparator = true
+            topSeparator = !isFirst
             bottomSeparator = isLast
         }
 

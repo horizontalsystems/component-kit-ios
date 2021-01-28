@@ -17,7 +17,7 @@ class CellsController: ThemeViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ImageDoubleLineCheckmarkCell.self, forCellReuseIdentifier: String(describing: ImageDoubleLineCheckmarkCell.self))
+        tableView.registerCell(forClass: A1Cell.self)
 
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
@@ -38,7 +38,7 @@ extension CellsController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ImageDoubleLineCheckmarkCell.self)) {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: A1Cell.self)) {
             return cell
         }
 
@@ -46,21 +46,17 @@ extension CellsController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? ImageDoubleLineCheckmarkCell else {
+        guard let cell = cell as? A1Cell else {
             return
         }
 
-        cell.bind(
-                image: UIImage(named: "Cell Icon")?.tinted(with: .themeJacob),
-                title: "Image Double Line Checkmark",
-                subtitle: "Image Double Line Checkmark",
-                checkmarkVisible: true,
-                last: true
-        )
+        cell.set(backgroundStyle: .lawrence)
+        cell.title = "A1"
+        cell.titleImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        .heightDoubleLineCell
+        .heightCell48
     }
 
 }
