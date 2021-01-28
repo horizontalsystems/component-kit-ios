@@ -39,9 +39,9 @@ open class D7Cell: BaseThemeCell {
 
 extension D7Cell {
 
-    public static func height(containerWidth: CGFloat, title: String, value: String?, valueItalic: Bool = false) -> CGFloat {
+    public static func height(containerWidth: CGFloat, backgroundStyle: BackgroundStyle, title: String, value: String?, valueItalic: Bool = false) -> CGFloat {
         let titleWidth = LeftDView.width(text: title)
-        let valueWidth = containerWidth - titleWidth - Self.leftInset - Self.middleInset - Self.rightInset
+        let valueWidth = containerWidth - Self.margin(backgroundStyle: backgroundStyle).width - titleWidth - Self.leftInset - Self.middleInset - Self.rightInset
         return Right7View.height(containerWidth: valueWidth, text: value, italic: valueItalic)
     }
 

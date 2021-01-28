@@ -55,7 +55,6 @@ open class BaseThemeCell: UITableViewCell {
     }
 
     open func set(backgroundStyle: BackgroundStyle, isFirst: Bool = false, isLast: Bool = false) {
-        let margin: UIEdgeInsets
         let topSeparator: Bool
         let bottomSeparator: Bool
         var maskedCorners: CACornerMask = []
@@ -64,7 +63,6 @@ open class BaseThemeCell: UITableViewCell {
         switch backgroundStyle {
         case .lawrence:
             wrapperView.backgroundColor = .themeLawrence
-            margin = UIEdgeInsets(top: 0, left: .margin16, bottom: 0, right: .margin16)
             topSeparator = !isFirst
             bottomSeparator = false
 
@@ -81,18 +79,16 @@ open class BaseThemeCell: UITableViewCell {
             }
         case .claude:
             wrapperView.backgroundColor = .themeClaude
-            margin = UIEdgeInsets.zero
             topSeparator = !isFirst
             bottomSeparator = isLast
         case .transparent:
             wrapperView.backgroundColor = .clear
-            margin = UIEdgeInsets.zero
             topSeparator = !isFirst
             bottomSeparator = isLast
         }
 
         wrapperView.snp.remakeConstraints { maker in
-            maker.edges.equalToSuperview().inset(margin)
+            maker.edges.equalToSuperview().inset(Self.margin(backgroundStyle: backgroundStyle))
         }
         wrapperView.layer.cornerRadius = cornerRadius
         wrapperView.layer.maskedCorners = maskedCorners
@@ -118,6 +114,15 @@ open class BaseThemeCell: UITableViewCell {
             maker.leading.equalTo(leftView.snp.trailing).offset(Self.middleInset)
             maker.trailing.equalToSuperview().inset(Self.rightInset)
             maker.top.bottom.equalToSuperview()
+        }
+    }
+
+    public static func margin(backgroundStyle: BackgroundStyle) -> UIEdgeInsets {
+        switch backgroundStyle {
+        case .lawrence:
+            return UIEdgeInsets(top: 0, left: .margin16, bottom: 0, right: .margin16)
+        case .claude, .transparent:
+            return UIEdgeInsets.zero
         }
     }
 
