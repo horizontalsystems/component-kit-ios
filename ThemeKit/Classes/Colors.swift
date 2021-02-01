@@ -8,6 +8,7 @@ extension UIColor {
     public static let themeRedD = UIColor(hex: 0xff4820)
     public static let themeRedL = UIColor(hex: 0xed402e)
     public static let themeBlack = UIColor(hex: 0x000000)
+    public static let themeIssykBlue = UIColor(hex: 0x3372FF)
     public static let themeGray = UIColor(hex: 0x808085)
     public static let themeLightGray = UIColor(hex: 0xc8c7cc)
     public static let themeWhite = UIColor(hex: 0xffffff)
