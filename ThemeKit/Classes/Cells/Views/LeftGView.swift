@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import SkeletonView
 
 open class LeftGView: UIView {
     private let imageView = UIImageView()
@@ -12,14 +13,19 @@ open class LeftGView: UIView {
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
+        isSkeletonable = true
+
         addSubview(imageView)
         imageView.snp.makeConstraints { maker in
             maker.leading.equalToSuperview()
             maker.centerY.equalToSuperview()
+            maker.size.equalTo(24)
         }
 
         imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         imageView.setContentHuggingPriority(.required, for: .horizontal)
+        imageView.isHiddenWhenSkeletonIsActive = true
+        imageView.isSkeletonable = true
 
         addSubview(topLabel)
         topLabel.snp.makeConstraints { maker in
@@ -30,6 +36,8 @@ open class LeftGView: UIView {
 
         topLabel.font = .body
         topLabel.textColor = .themeOz
+        topLabel.isHiddenWhenSkeletonIsActive = true
+        topLabel.isSkeletonable = true
 
         addSubview(stackView)
         stackView.snp.makeConstraints { maker in
@@ -42,6 +50,8 @@ open class LeftGView: UIView {
         stackView.distribution = .fill
         stackView.alignment = .center
         stackView.spacing = .margin8
+        stackView.isHiddenWhenSkeletonIsActive = true
+        stackView.isSkeletonable = true
 
         stackView.addArrangedSubview(leftBadgeView)
         leftBadgeView.isHidden = true
@@ -56,10 +66,64 @@ open class LeftGView: UIView {
         rightBadgeView.font = .microSB
 
         stackView.addArrangedSubview(UIView())
+
+        buildSkeleton()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func buildSkeleton() {
+        let imageSkeleton = UIView()
+
+        addSubview(imageSkeleton)
+        imageSkeleton.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview()
+            maker.centerY.equalToSuperview()
+            maker.size.equalTo(24)
+        }
+
+        imageSkeleton.isSkeletonable = true
+        imageSkeleton.skeletonCornerRadius = 12
+
+        let titleSkeleton = UIView()
+
+        addSubview(titleSkeleton)
+        titleSkeleton.snp.makeConstraints { maker in
+            maker.leading.equalTo(imageSkeleton.snp.trailing).offset(CGFloat.margin16)
+            maker.top.equalToSuperview().offset(CGFloat.margin12)
+            maker.width.equalTo(90)
+            maker.height.equalTo(16)
+        }
+
+        titleSkeleton.isSkeletonable = true
+        titleSkeleton.skeletonCornerRadius = 8
+
+        let badgeSkeleton = UIView()
+
+        addSubview(badgeSkeleton)
+        badgeSkeleton.snp.makeConstraints { maker in
+            maker.leading.equalTo(titleSkeleton)
+            maker.top.equalTo(titleSkeleton.snp.bottom).offset(6)
+            maker.size.equalTo(14)
+        }
+
+        badgeSkeleton.isSkeletonable = true
+        badgeSkeleton.skeletonCornerRadius = 7
+
+        let subtitleSkeleton = UIView()
+
+        addSubview(subtitleSkeleton)
+        subtitleSkeleton.snp.makeConstraints { maker in
+            maker.leading.equalTo(badgeSkeleton.snp.trailing).offset(6)
+            maker.top.equalTo(badgeSkeleton)
+            maker.width.equalTo(42)
+            maker.height.equalTo(14)
+        }
+
+        subtitleSkeleton.isSkeletonable = true
+        subtitleSkeleton.skeletonCornerRadius = 7
     }
 
     public var image: UIImage? {

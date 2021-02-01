@@ -20,4 +20,5 @@ Pod::Spec.new do |s|
   s.dependency 'HUD.swift', '~> 1.2'
   s.dependency 'LanguageKit.swift', '~> 1.0'
   s.dependency 'SnapKit', '~> 5.0'
+  s.dependency 'SkeletonView', '~> 1.11'
 end

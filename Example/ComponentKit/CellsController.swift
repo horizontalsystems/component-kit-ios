@@ -2,12 +2,15 @@ import UIKit
 import ThemeKit
 import SnapKit
 import SectionsTableView
+import SkeletonView
 
 class CellsController: ThemeViewController {
     private let tableView = SectionsTableView(style: .grouped)
 
     private let a1Cell = A1Cell()
     private let g14Cell = G14Cell()
+
+    private var isSkeletoned = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +55,16 @@ class CellsController: ThemeViewController {
     }
 
     @objc func onToggleShimmer() {
+        if isSkeletoned {
+            g14Cell.hideSkeleton()
+
+            isSkeletoned = false
+        } else {
+            let gradient = SkeletonGradient(baseColor: .themeJeremy)
+            g14Cell.showAnimatedGradientSkeleton(usingGradient: gradient)
+
+            isSkeletoned = true
+        }
     }
 
 }

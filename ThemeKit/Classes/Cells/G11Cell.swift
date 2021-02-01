@@ -75,4 +75,8 @@ open class G11Cell: BaseThemeCell {
         set { rightView.onToggle = newValue }
     }
 
+    public func set(isOn: Bool, animated: Bool) {
+        rightView.set(isOn: isOn, animated: animated)
+    }
+
 }
