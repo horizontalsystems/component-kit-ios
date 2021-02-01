@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import SkeletonView
 
 open class Right14View: UIView {
     private let topLabel = UILabel()
@@ -10,6 +11,8 @@ open class Right14View: UIView {
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
+        isSkeletonable = true
+
         addSubview(topLabel)
         topLabel.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
@@ -19,6 +22,8 @@ open class Right14View: UIView {
         topLabel.textAlignment = .right
         topLabel.font = .body
         topLabel.textColor = .themeLeah
+        topLabel.isHiddenWhenSkeletonIsActive = true
+        topLabel.isSkeletonable = true
 
         addSubview(stackView)
         stackView.snp.makeConstraints { maker in
@@ -30,6 +35,8 @@ open class Right14View: UIView {
         stackView.distribution = .fill
         stackView.alignment = .center
         stackView.spacing = .margin4
+        stackView.isHiddenWhenSkeletonIsActive = true
+        stackView.isSkeletonable = true
 
         stackView.addArrangedSubview(UIView())
 
@@ -40,10 +47,53 @@ open class Right14View: UIView {
         stackView.addArrangedSubview(bottomLabel)
         bottomLabel.font = .caption
         bottomLabel.textColor = .themeGray
+
+        buildSkeleton()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func buildSkeleton() {
+        let topSkeleton = UIView()
+
+        addSubview(topSkeleton)
+        topSkeleton.snp.makeConstraints { maker in
+            maker.trailing.equalToSuperview()
+            maker.top.equalToSuperview().offset(CGFloat.margin12)
+            maker.width.equalTo(88)
+            maker.height.equalTo(16)
+        }
+
+        topSkeleton.isSkeletonable = true
+        topSkeleton.skeletonCornerRadius = 8
+
+        let bottomValueSkeleton = UIView()
+
+        addSubview(bottomValueSkeleton)
+        bottomValueSkeleton.snp.makeConstraints { maker in
+            maker.trailing.equalToSuperview()
+            maker.top.equalTo(topSkeleton.snp.bottom).offset(6)
+            maker.width.equalTo(32)
+            maker.height.equalTo(14)
+        }
+
+        bottomValueSkeleton.isSkeletonable = true
+        bottomValueSkeleton.skeletonCornerRadius = 7
+
+        let bottomTitleSkeleton = UIView()
+
+        addSubview(bottomTitleSkeleton)
+        bottomTitleSkeleton.snp.makeConstraints { maker in
+            maker.trailing.equalTo(bottomValueSkeleton.snp.leading).offset(-6)
+            maker.top.equalTo(bottomValueSkeleton)
+            maker.width.equalTo(32)
+            maker.height.equalTo(14)
+        }
+
+        bottomTitleSkeleton.isSkeletonable = true
+        bottomTitleSkeleton.skeletonCornerRadius = 7
     }
 
     public var topText: String? {
