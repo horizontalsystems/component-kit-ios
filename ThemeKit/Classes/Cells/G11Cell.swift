@@ -30,6 +30,36 @@ open class G11Cell: BaseThemeCell {
         set { leftView.bottomText = newValue }
     }
 
+    public var leftBadgeText: String? {
+        get { leftView.leftBadgeText }
+        set { leftView.leftBadgeText = newValue }
+    }
+
+    public var leftBadgeTextColor: UIColor {
+        get { leftView.leftBadgeTextColor }
+        set { leftView.leftBadgeTextColor = newValue }
+    }
+
+    public var leftBadgeBackgroundColor: UIColor? {
+        get { leftView.leftBadgeBackgroundColor }
+        set { leftView.leftBadgeBackgroundColor = newValue }
+    }
+
+    public var rightBadgeText: String? {
+        get { leftView.rightBadgeText }
+        set { leftView.rightBadgeText = newValue }
+    }
+
+    public var rightBadgeTextColor: UIColor {
+        get { leftView.rightBadgeTextColor }
+        set { leftView.rightBadgeTextColor = newValue }
+    }
+
+    public var rightBadgeBackgroundColor: UIColor? {
+        get { leftView.rightBadgeBackgroundColor }
+        set { leftView.rightBadgeBackgroundColor = newValue }
+    }
+
     public var rightImage: UIImage? {
         get { rightView.image }
         set { rightView.image = newValue }

@@ -13,6 +13,7 @@ target 'ComponentKitExample' do
   # pod 'UIExtensions.swift', path: '../../gui-kit/'
   pod 'HUD.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
   # pod 'HUD.swift', path: '../../gui-kit/'
+  pod 'SectionsTableView.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
 end
 
 def testPods
