@@ -263,7 +263,7 @@ extension ThemeButton {
             setBackgroundColor(.themeLawrence, forState: .normal)
             setBackgroundColor(.themeLawrence, forState: .highlighted)
             setBackgroundColor(.themeLawrence, forState: .disabled)
-            setBackgroundColor(.themeJacob, forState: .selected)
+            setBackgroundColor(.themeYellowD, forState: .selected)
 
             setTitleColor(.themeNina, for: .normal)
             setTitleColor(.themeGray50, for: .highlighted)
