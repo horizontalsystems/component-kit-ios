@@ -9,6 +9,7 @@ public enum ThemeButtonStyle {
     case primaryTransparent
     case secondaryDefault
     case secondaryTransparent
+    case secondaryTransparentIcon
     case secondaryIcon
     case tertiary
 }
@@ -167,6 +168,20 @@ extension ThemeButton {
             self.borderWidth = 1
         }
 
+        let applySecondaryTransparentBackground = {
+            self.setBackgroundColor(.clear, forState: .normal)
+            self.setBackgroundColor(.themeJeremy, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .selected)
+            self.setBackgroundColor(.clear, forState: .highlighted)
+            self.setBackgroundColor(.clear, forState: .disabled)
+        }
+
+        let applyPrioritiesRequired = {
+            self.setContentCompressionResistancePriority(.required, for: .horizontal)
+            self.setContentCompressionResistancePriority(.required, for: .vertical)
+            self.setContentHuggingPriority(.required, for: .horizontal)
+            self.setContentHuggingPriority(.required, for: .vertical)
+        }
+
         contentEdgeInsets = ThemeButton.contentEdgeInsets(for: style)
         titleLabel?.font = ThemeButton.titleFont(for: style)
 
@@ -231,10 +246,7 @@ extension ThemeButton {
 
             cornerRadius = 14
 
-            setBackgroundColor(.clear, forState: .normal)
-            setBackgroundColor(.themeJeremy, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .selected)
-            setBackgroundColor(.clear, forState: .highlighted)
-            setBackgroundColor(.clear, forState: .disabled)
+            applySecondaryTransparentBackground()
 
             setBorderColor(.themeSteel20, forState: .selected)
             updateBorderColor()
@@ -245,15 +257,34 @@ extension ThemeButton {
             setTitleColor(.themeGray50, for: .disabled)
             setTitleColor(.themeOz, for: .selected)
 
+        case .secondaryTransparentIcon:
+            applySecondary()
+
+            cornerRadius = 14
+
+            applySecondaryTransparentBackground()
+
+            setBorderColor(.themeSteel20, forState: .selected)
+            updateBorderColor()
+            borderWidth = 1
+
+            setTitleColor(.themeGray, for: .normal)
+            setTitleColor(.themeGray50, for: .highlighted)
+            setTitleColor(.themeGray50, for: .disabled)
+            setTitleColor(.themeGray, for: .selected)
+
+            semanticContentAttribute = .forceRightToLeft
+            applyPrioritiesRequired()
+
+            titleEdgeInsets = UIEdgeInsets(top: 0, left: -.margin4, bottom: 0, right: .margin4)
+
         case .secondaryIcon:
+            applySecondary()
             applySecondaryBackground()
 
             cornerRadius = 4
 
-            setContentCompressionResistancePriority(.required, for: .horizontal)
-            setContentCompressionResistancePriority(.required, for: .vertical)
-            setContentHuggingPriority(.required, for: .horizontal)
-            setContentHuggingPriority(.required, for: .vertical)
+            applyPrioritiesRequired()
 
         case .tertiary:
             applySecondary()
@@ -290,6 +321,7 @@ extension ThemeButton {
         switch style {
         case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin2x, bottom: 15, right: .margin2x)
         case .secondaryDefault, .secondaryTransparent: return UIEdgeInsets(top: 5.5, left: .margin4x, bottom: 5.5, right: .margin4x)
+        case .secondaryTransparentIcon: return UIEdgeInsets(top: 5.5, left: .margin16 + .margin4, bottom: 5.5, right: .margin8)
         case .tertiary: return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         case .secondaryIcon: return UIEdgeInsets(top: .margin1x, left: .margin1x, bottom: .margin1x, right: .margin1x)
         }
@@ -298,7 +330,7 @@ extension ThemeButton {
     private static func titleFont(for style: ThemeButtonStyle) -> UIFont {
         switch style {
         case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return .headline2
-        case .secondaryDefault, .secondaryTransparent: return .subhead1
+        case .secondaryDefault, .secondaryTransparent, .secondaryTransparentIcon: return .subhead1
         case .tertiary: return .captionSB
         case .secondaryIcon: return .systemFont(ofSize: 1) // titleLabel should not affect button size, that is why we set smallest font
         }
