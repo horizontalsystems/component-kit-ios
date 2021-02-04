@@ -9,8 +9,8 @@ open class BaseThemeCell: UITableViewCell {
 
     public let wrapperView = UIView()
 
-    let topSeparatorView = UIView()
-    let bottomSeparatorView = UIView()
+    public let topSeparatorView = UIView()
+    public let bottomSeparatorView = UIView()
 
     public var isVisible = true
 
