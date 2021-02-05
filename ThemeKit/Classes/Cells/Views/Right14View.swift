@@ -22,6 +22,7 @@ open class Right14View: UIView {
         topLabel.textAlignment = .right
         topLabel.font = .body
         topLabel.textColor = .themeLeah
+        topLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         topLabel.isHiddenWhenSkeletonIsActive = true
         topLabel.isSkeletonable = true
 
@@ -43,10 +44,12 @@ open class Right14View: UIView {
         stackView.addArrangedSubview(bottomTitleLabel)
         bottomTitleLabel.font = .caption
         bottomTitleLabel.textColor = .themeJacob
+        bottomTitleLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         stackView.addArrangedSubview(bottomLabel)
         bottomLabel.font = .caption
         bottomLabel.textColor = .themeGray
+        bottomLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         buildSkeleton()
     }
