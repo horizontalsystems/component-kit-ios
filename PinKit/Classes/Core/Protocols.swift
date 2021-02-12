@@ -19,7 +19,7 @@ public protocol IPinKit: class {
 
     var editPinModule: UIViewController { get }
     func setPinModule(delegate: ISetPinDelegate) -> UIViewController
-    func unlockPinModule(delegate: IUnlockDelegate, biometryUnlockMode: BiometryUnlockMode, insets: UIEdgeInsets, cancellable: Bool) -> UIViewController
+    func unlockPinModule(delegate: IUnlockDelegate, biometryUnlockMode: BiometryUnlockMode, insets: UIEdgeInsets, cancellable: Bool, autoDismiss: Bool) -> UIViewController
 }
 
 public protocol ILockManager: AnyObject {
