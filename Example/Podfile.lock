@@ -1,4 +1,7 @@
 PODS:
+  - Alamofire (5.4.1)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
   - Cuckoo (1.4.1):
     - Cuckoo/Swift (= 1.4.1)
   - Cuckoo/Swift (1.4.1)
@@ -40,6 +43,7 @@ PODS:
     - LanguageKit.swift (~> 1.0)
     - ThemeKit.swift (~> 1.0)
   - ThemeKit.swift (1.0):
+    - AlamofireImage (~> 4.1)
     - HUD.swift (~> 1.2)
     - LanguageKit.swift (~> 1.0)
     - SkeletonView (~> 1.11)
@@ -64,6 +68,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - AlamofireImage
     - Cuckoo
     - KeychainAccess
     - Nimble
@@ -105,6 +111,8 @@ CHECKOUT OPTIONS:
     :git: https://github.com/horizontalsystems/gui-kit/
 
 SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   Cuckoo: 4625f7f54d9bb880123270e8969898d6c1d036b5
   CurrencyKit.swift: c1a37e0e43eac3828be95c8348693f192d67b376
   HUD.swift: 0260e8e89a290380fd23d95002b0ddbea890b6c9
@@ -120,9 +128,9 @@ SPEC CHECKSUMS:
   SkeletonView: cc84ce90a804dd0dd7198dd802833411c8a64eaf
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   StorageKit.swift: 1b618d59978510ac2f32971a01f87e54cddbe0da
-  ThemeKit.swift: 8f61fc73aeebccb9e4bf4976dbdc60046e81300b
+  ThemeKit.swift: 0420634f3f3f5a0d500912760beef7ba4bfb7bd0
   UIExtensions.swift: 3ed084c0343ddd0f86c7c558d37759e1fd7d5778
 
 PODFILE CHECKSUM: 462ef13a823392e553dbb445f7a1e92532186ec1
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
