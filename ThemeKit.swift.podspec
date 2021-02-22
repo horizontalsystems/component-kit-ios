@@ -21,4 +21,5 @@ Pod::Spec.new do |s|
   s.dependency 'LanguageKit.swift', '~> 1.0'
   s.dependency 'SnapKit', '~> 5.0'
   s.dependency 'SkeletonView', '~> 1.11'
+  s.dependency 'AlamofireImage', '~> 4.1'
 end

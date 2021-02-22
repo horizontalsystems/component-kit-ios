@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import SkeletonView
+import AlamofireImage
 
 open class LeftGView: UIView {
     private let imageView = UIImageView()
@@ -22,6 +23,7 @@ open class LeftGView: UIView {
             maker.size.equalTo(24)
         }
 
+        imageView.clipsToBounds = true
         imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         imageView.setContentHuggingPriority(.required, for: .horizontal)
         imageView.isHiddenWhenSkeletonIsActive = true
@@ -131,6 +133,11 @@ open class LeftGView: UIView {
         set { imageView.image = newValue }
     }
 
+    public var imageCornerRadius: CGFloat {
+        get { imageView.layer.cornerRadius }
+        set { imageView.layer.cornerRadius = newValue }
+    }
+
     public var topText: String? {
         get { topLabel.text }
         set { topLabel.text = newValue }
@@ -175,6 +182,14 @@ open class LeftGView: UIView {
     public var rightBadgeBackgroundColor: UIColor? {
         get { rightBadgeView.backgroundColor }
         set { rightBadgeView.backgroundColor = newValue }
+    }
+
+    public func setImage(urlString: String?) {
+        imageView.af.cancelImageRequest()
+
+        if let urlString = urlString, let url = URL(string: urlString) {
+            imageView.af.setImage(withURL: url)
+        }
     }
 
 }
