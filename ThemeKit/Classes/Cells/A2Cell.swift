@@ -35,4 +35,9 @@ open class A2Cell: BaseSelectableThemeCell {
         set { rightView.textColor = newValue }
     }
 
+    public var disclosureImageTintColor: UIColor? {
+        get { rightView.disclosureImageTintColor }
+        set { rightView.disclosureImageTintColor = newValue }
+    }
+
 }
