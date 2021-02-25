@@ -50,4 +50,13 @@ open class Right2View: UIView {
         }
     }
 
+    public var disclosureImageTintColor: UIColor? {
+        get {
+            disclosureImageView.tintColor
+        }
+        set {
+            disclosureImageView.tintColor = newValue
+        }
+    }
+
 }
