@@ -186,6 +186,7 @@ open class LeftGView: UIView {
 
     public func setImage(urlString: String?) {
         imageView.af.cancelImageRequest()
+        imageView.image = nil
 
         if let urlString = urlString, let url = URL(string: urlString) {
             imageView.af.setImage(withURL: url)
