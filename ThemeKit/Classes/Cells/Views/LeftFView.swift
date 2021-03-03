@@ -41,4 +41,14 @@ open class LeftFView: UIView {
         set { bottomLabel.text = newValue }
     }
 
+    public var topTextColor: UIColor {
+        get { topLabel.textColor }
+        set { topLabel.textColor = newValue }
+    }
+
+    public var bottomTextColor: UIColor {
+        get { bottomLabel.textColor }
+        set { bottomLabel.textColor = newValue }
+    }
+
 }
