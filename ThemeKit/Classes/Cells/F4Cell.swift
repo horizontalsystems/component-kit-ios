@@ -25,6 +25,16 @@ open class F4Cell: BaseSelectableThemeCell {
         set { leftView.bottomText = newValue }
     }
 
+    public var titleColor: UIColor {
+        get { leftView.topTextColor }
+        set { leftView.topTextColor = newValue }
+    }
+
+    public var subtitleColor: UIColor {
+        get { leftView.bottomTextColor }
+        set { leftView.bottomTextColor = newValue }
+    }
+
     public var valueImage: UIImage? {
         get { rightView.image }
         set { rightView.image = newValue }

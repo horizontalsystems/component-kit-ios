@@ -20,6 +20,12 @@ open class B4Cell: BaseSelectableThemeCell {
         set { leftView.text = newValue }
     }
 
+    public var titleColor: UIColor {
+        get { leftView.textColor }
+        set { leftView.textColor = newValue }
+    }
+
+
     public var valueImage: UIImage? {
         get { rightView.image }
         set { rightView.image = newValue }
