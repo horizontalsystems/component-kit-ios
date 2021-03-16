@@ -29,6 +29,7 @@ class LightTheme: ITheme {
     var colorCassandra: UIColor = .themeLightGray
     var colorRaina: UIColor = .themeWhite50
     var colorBran: UIColor = .themeDark
+    var colorBlake: UIColor = .themeSteelLight10
 
     let alphaSecondaryButtonGradient: CGFloat = 1
 }

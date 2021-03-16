@@ -29,6 +29,8 @@ extension UIColor {
     public static let themeLawrencePressedD = UIColor(hex: 0x353842)
     public static let themeLawrencePressedL = UIColor(hex: 0xe3e4e8)
     public static let themeStronbuy = UIColor(hex: 0x1a60ff)
+    public static let themeSteelDark10 = UIColor(hex: 0x1C1F27)
+    public static let themeSteelLight10 = UIColor(hex: 0xE7E9EC)
 }
 
 extension UIColor {
@@ -49,6 +51,7 @@ extension UIColor {
     public static var themeCassandra: UIColor { Theme.current.colorCassandra }
     public static var themeRaina: UIColor { Theme.current.colorRaina }
     public static var themeBran: UIColor { Theme.current.colorBran }
+    public static var themeBlake: UIColor { Theme.current.colorBlake }
 }
 
 extension UIColor {
