@@ -138,6 +138,11 @@ open class LeftGView: UIView {
         set { imageView.layer.cornerRadius = newValue }
     }
 
+    public var imageBackgroundColor: UIColor? {
+        get { imageView.backgroundColor }
+        set { imageView.backgroundColor = newValue }
+    }
+
     public var topText: String? {
         get { topLabel.text }
         set { topLabel.text = newValue }
