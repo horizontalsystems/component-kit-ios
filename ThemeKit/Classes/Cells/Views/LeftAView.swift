@@ -37,6 +37,11 @@ open class LeftAView: UIView {
         set { label.text = newValue }
     }
 
+    public var textColor: UIColor {
+        get { label.textColor }
+        set { label.textColor = newValue }
+    }
+
     public var image: UIImage? {
         get { imageView.image }
         set { imageView.image = newValue }

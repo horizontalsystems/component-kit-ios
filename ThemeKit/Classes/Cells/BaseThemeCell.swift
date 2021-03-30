@@ -121,6 +121,15 @@ open class BaseThemeCell: UITableViewCell {
         }
     }
 
+    public func layout(singleView: UIView) {
+        wrapperView.addSubview(singleView)
+        singleView.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview().inset(Self.leftInset)
+            maker.trailing.equalToSuperview().inset(Self.rightInset)
+            maker.top.bottom.equalToSuperview()
+        }
+    }
+
     public static func margin(backgroundStyle: BackgroundStyle) -> UIEdgeInsets {
         switch backgroundStyle {
         case .lawrence:

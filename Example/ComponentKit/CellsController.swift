@@ -7,6 +7,7 @@ import SkeletonView
 class CellsController: ThemeViewController {
     private let tableView = SectionsTableView(style: .grouped)
 
+    private let aCell = ACell()
     private let a1Cell = A1Cell()
     private let g14Cell = G14Cell()
 
@@ -34,7 +35,12 @@ class CellsController: ThemeViewController {
     }
 
     private func configureCells() {
-        a1Cell.set(backgroundStyle: .lawrence, isFirst: true)
+        aCell.set(backgroundStyle: .lawrence, isFirst: true)
+        aCell.titleImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
+        aCell.title = "A - Title"
+        aCell.titleColor = .themeJacob
+
+        a1Cell.set(backgroundStyle: .lawrence)
         a1Cell.titleImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
         a1Cell.title = "A1 - Title"
 
@@ -77,6 +83,12 @@ extension CellsController: SectionsDataSource {
                     id: "main",
                     headerState: .margin(height: .margin12),
                     rows: [
+                        StaticRow(
+                                cell: aCell,
+                                id: "a",
+                                height: .heightCell48,
+                                autoDeselect: true
+                        ),
                         StaticRow(
                                 cell: a1Cell,
                                 id: "a1",
