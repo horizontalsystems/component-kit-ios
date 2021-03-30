@@ -106,7 +106,7 @@ open class BaseThemeCell: UITableViewCell {
         }
     }
 
-    public func layout(leftView: UIView, leftInset: CGFloat = BaseThemeCell.leftInset, rightView: UIView) {
+    public func layout(leftView: UIView, leftInset: CGFloat = BaseThemeCell.leftInset, rightView: UIView, rightInset: CGFloat = BaseThemeCell.rightInset, middleInset: CGFloat = BaseThemeCell.middleInset) {
         wrapperView.addSubview(leftView)
         leftView.snp.makeConstraints { maker in
             maker.leading.equalToSuperview().inset(leftInset)
@@ -115,8 +115,8 @@ open class BaseThemeCell: UITableViewCell {
 
         wrapperView.addSubview(rightView)
         rightView.snp.makeConstraints { maker in
-            maker.leading.equalTo(leftView.snp.trailing).offset(Self.middleInset)
-            maker.trailing.equalToSuperview().inset(Self.rightInset)
+            maker.leading.equalTo(leftView.snp.trailing).offset(middleInset)
+            maker.trailing.equalToSuperview().inset(rightInset)
             maker.top.bottom.equalToSuperview()
         }
     }
