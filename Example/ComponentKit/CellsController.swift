@@ -11,6 +11,7 @@ class CellsController: ThemeViewController {
     private let a1Cell = A1Cell()
     private let g14Cell = G14Cell()
     private let g19Cell = G19Cell()
+    private let g21Cell = G21Cell()
 
     private var isSkeletoned = false
 
@@ -55,13 +56,21 @@ class CellsController: ThemeViewController {
         g14Cell.secondaryTitleText = "Title"
         g14Cell.secondaryValueText = "Value"
 
-        g19Cell.set(backgroundStyle: .lawrence, isLast: true)
+        g19Cell.set(backgroundStyle: .lawrence)
         g19Cell.titleImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
         g19Cell.title = "G19 - Title"
         g19Cell.subtitle = "Subtitle"
         g19Cell.valueButtonImage = UIImage(named: "icon_20")
         g19Cell.valueImage = UIImage(named: "icon_20")?.tinted(with: .themeLucian)
         g19Cell.onTapValue = { print("Tap G19") }
+
+        g21Cell.set(backgroundStyle: .lawrence, isLast: true)
+        g21Cell.titleImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
+        g21Cell.title = "G21 - Title G21 - Title G21 - Title G21 - Title G21 - Title G21 - Title"
+        g21Cell.subtitle = "Subtitle"
+        g21Cell.rightButtonImage = UIImage(named: "icon_20")
+        g21Cell.onTapRightButton = { print("Tap G21 Button") }
+        g21Cell.onToggle = { print("Toggle G21: \($0)") }
     }
 
     @objc func onToggleLightMode() {
@@ -113,6 +122,12 @@ extension CellsController: SectionsDataSource {
                         StaticRow(
                                 cell: g19Cell,
                                 id: "g19",
+                                height: .heightDoubleLineCell,
+                                autoDeselect: true
+                        ),
+                        StaticRow(
+                                cell: g21Cell,
+                                id: "g21",
                                 height: .heightDoubleLineCell,
                                 autoDeselect: true
                         ),
