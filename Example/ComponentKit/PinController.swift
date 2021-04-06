@@ -14,10 +14,14 @@ class PinController: ThemeViewController {
     private let setPinButton = ThemeButton()
     private let editPinButton = ThemeButton()
 
+    private var themeModeIterator = 0
+    private var themeBarButtonItem: UIBarButtonItem?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(onToggleLightMode))
+        themeBarButtonItem = UIBarButtonItem(title: ThemeManager.shared.themeMode.rawValue, style: .plain, target: self, action: #selector(onToggleLightMode))
+        navigationItem.rightBarButtonItem = themeBarButtonItem
 
         view.addSubview(pinLabel)
         pinLabel.snp.makeConstraints { maker in
@@ -84,8 +88,25 @@ class PinController: ThemeViewController {
     }
 
     @objc func onToggleLightMode() {
-        ThemeManager.shared.lightMode = !ThemeManager.shared.lightMode
-        UIApplication.shared.keyWindow?.set(newRootController: MainController(selectedIndex: 3))
+        themeModeIterator += 1
+        if themeModeIterator > 2 {
+            themeModeIterator = 0
+        }
+
+        if themeModeIterator == 0 {
+            ThemeManager.shared.themeMode = .system
+            UIApplication.shared.windows.first(where: \.isKeyWindow)?.overrideUserInterfaceStyle = .unspecified
+        }
+        if themeModeIterator == 1 {
+            ThemeManager.shared.themeMode = .dark
+            UIApplication.shared.windows.first(where: \.isKeyWindow)?.overrideUserInterfaceStyle = .dark
+        }
+        if themeModeIterator == 2 {
+            ThemeManager.shared.themeMode = .light
+            UIApplication.shared.windows.first(where: \.isKeyWindow)?.overrideUserInterfaceStyle = .light
+        }
+
+        themeBarButtonItem?.title = ThemeManager.shared.themeMode.rawValue
     }
 
     @objc func onClearPin() {

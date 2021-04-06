@@ -20,6 +20,11 @@ open class G14Cell: BaseSelectableThemeCell {
         set { leftView.image = newValue }
     }
 
+    public var leftImageTintColor: UIColor? {
+        get { leftView.tintColor }
+        set { leftView.tintColor = newValue }
+    }
+
     public var titleImageCornerRadius: CGFloat {
         get { leftView.imageCornerRadius }
         set { leftView.imageCornerRadius = newValue }

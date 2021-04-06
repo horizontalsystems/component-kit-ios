@@ -43,7 +43,8 @@ public class NoPasscodeViewController: ThemeViewController {
         }
 
         iconImageView.contentMode = .center
-        iconImageView.image = StorageKit.image(named: "attention_48")?.tinted(with: .themeGray)
+        iconImageView.image = StorageKit.image(named: "attention_48")?.withRenderingMode(.alwaysTemplate)
+        iconImageView.tintColor = .themeGray
 
         infoLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(42)

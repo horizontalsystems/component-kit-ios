@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 open class LeftCView: UIView {
-    private let imageButton = UIButton()
+    private let imageButton = ThemeButton()
     private let label = UILabel()
 
     public var imageAction: (() -> ())?
@@ -46,6 +46,11 @@ open class LeftCView: UIView {
     public var image: UIImage? {
         get { imageButton.image(for: .normal) }
         set { imageButton.setImage(newValue, for: .normal) }
+    }
+
+    public var imageTintColor: UIColor? {
+        get { imageButton.imageTintColor(for: .normal) }
+        set { imageButton.setImageTintColor(newValue, for: .normal) }
     }
 
 }

@@ -25,4 +25,9 @@ open class A1Cell: BaseSelectableThemeCell {
         set { leftView.image = newValue }
     }
 
+    public var titleImageTintColor: UIColor? {
+        get { leftView.imageTintColor }
+        set { leftView.imageTintColor = newValue }
+    }
+
 }

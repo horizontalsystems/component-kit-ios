@@ -133,6 +133,11 @@ open class LeftGView: UIView {
         set { imageView.image = newValue }
     }
 
+    public var imageTintColor: UIColor? {
+        get { imageView.tintColor }
+        set { imageView.tintColor = newValue }
+    }
+
     public var imageCornerRadius: CGFloat {
         get { imageView.layer.cornerRadius }
         set { imageView.layer.cornerRadius = newValue }

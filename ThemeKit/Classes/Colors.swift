@@ -15,8 +15,10 @@ extension UIColor {
     public static let themeSteelDark = UIColor(hex: 0x252933)
     public static let themeSteelLight = UIColor(hex: 0xefeff4)
     public static let themeDark = UIColor(hex: 0x13151a)
+    public static let themeDark96 = UIColor(hex: 0x13151a, alpha: 0.96)
     public static let themeDarker = UIColor(hex: 0x0f1014)
     public static let themeLight = UIColor(hex: 0xf5f5f5)
+    public static let themeLight96 = UIColor(hex: 0xf5f5f5, alpha: 0.96)
     public static let themeBlack50 = UIColor(hex: 0x000000, alpha: 0.5)
     public static let themeWhite50 = UIColor(hex: 0xffffff, alpha: 0.5)
     public static let themeSteel10 = UIColor(hex: 0x73798c, alpha: 0.1)
@@ -34,24 +36,32 @@ extension UIColor {
 }
 
 extension UIColor {
-    public static var themeJacob: UIColor { Theme.current.colorJacob }
-    public static var themeRemus: UIColor { Theme.current.colorRemus }
-    public static var themeLucian: UIColor { Theme.current.colorLucian }
-    public static var themeOz: UIColor { Theme.current.colorOz }
-    public static var themeLeah: UIColor { Theme.current.colorLeah }
-    public static var themeJeremy: UIColor { Theme.current.colorJeremy }
-    public static var themeElena: UIColor { Theme.current.colorElena }
-    public static var themeLawrence: UIColor { Theme.current.colorLawrence }
-    public static var themeLawrencePressed: UIColor { Theme.current.colorLawrencePressed }
-    public static var themeClaude: UIColor { Theme.current.colorClaude }
-    public static var themeAndy: UIColor { Theme.current.colorAndy }
-    public static var themeTyler: UIColor { Theme.current.colorTyler }
-    public static var themeNina: UIColor { Theme.current.colorNina }
-    public static var themeHelsing: UIColor { Theme.current.colorHelsing }
-    public static var themeCassandra: UIColor { Theme.current.colorCassandra }
-    public static var themeRaina: UIColor { Theme.current.colorRaina }
-    public static var themeBran: UIColor { Theme.current.colorBran }
-    public static var themeBlake: UIColor { Theme.current.colorBlake }
+    public static var themeJacob: UIColor { color(dark: .themeYellowD, light: .themeYellowL) }
+    public static var themeRemus: UIColor { color(dark: .themeGreenD, light: .themeGreenL) }
+    public static var themeLucian: UIColor { color(dark: .themeRedD, light: .themeRedL) }
+    public static var themeOz: UIColor { color(dark: .themeLight, light: .themeDark) }
+    public static var themeLeah: UIColor { color(dark: .themeSteelLight, light: .themeSteelDark) }
+    public static var themeJeremy: UIColor { color(dark: .themeSteel20, light: .themeSteelLight) }
+    public static var themeElena: UIColor { color(dark: .themeSteel20, light: .themeLightGray) }
+    public static var themeLawrence: UIColor { color(dark: .themeSteelDark, light: .themeWhite) }
+    public static var themeLawrencePressed: UIColor { color(dark: .themeLawrencePressedD, light: .themeLawrencePressedL) }
+    public static var themeClaude: UIColor { color(dark: .themeDark, light: .themeWhite) }
+    public static var themeAndy: UIColor { color(dark: .themeBlack50, light: .themeSteel20) }
+    public static var themeTyler: UIColor { color(dark: .themeDark, light: .themeLight) }
+    public static var themeTyler96: UIColor { color(dark: .themeDark96, light: .themeLight96) }
+    public static var themeNina: UIColor { color(dark: .themeWhite50, light: .themeBlack50) }
+    public static var themeHelsing: UIColor { color(dark: .themeDark, light: .themeSteelLight) }
+    public static var themeCassandra: UIColor { color(dark: .themeDark, light: .themeLightGray) }
+    public static var themeRaina: UIColor { color(dark: .themeSteel10, light: .themeWhite50) }
+    public static var themeBran: UIColor { color(dark: .themeLightGray, light: .themeDark) }
+    public static var themeBlake: UIColor { color(dark: .themeSteelDark10, light: .themeSteelLight10) }
+
+    private static func color(dark: UIColor, light: UIColor) -> UIColor {
+        UIColor { traits in
+            traits.userInterfaceStyle == .dark ? dark : light
+        }
+    }
+
 }
 
 extension UIColor {
@@ -59,5 +69,5 @@ extension UIColor {
     public static var themeBackgroundToGradient: UIColor { .themeHelsing }
 
     public static var themeInputFieldTintColor: UIColor { .themeJacob }
-    public static var themeNavigationBarBackground: UIColor { UIColor.themeTyler.withAlphaComponent(0.96) }
+    public static var themeNavigationBarBackground: UIColor { UIColor.themeTyler96 }
 }

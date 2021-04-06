@@ -26,4 +26,9 @@ open class Right4View: UIView {
         set { imageView.image = newValue }
     }
 
+    public var imageTintColor: UIColor? {
+        get { imageView.tintColor }
+        set { imageView.tintColor = newValue }
+    }
+
 }

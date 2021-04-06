@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         App.shared.pinKit.didFinishLaunching()
 
-        window = UIWindow(frame: UIScreen.main.bounds)
+        window = ThemeWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
 
         window?.backgroundColor = .white

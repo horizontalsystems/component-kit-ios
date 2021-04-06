@@ -40,4 +40,9 @@ open class F4Cell: BaseSelectableThemeCell {
         set { rightView.image = newValue }
     }
 
+    public var valueImageTintColor: UIColor? {
+        get { rightView.imageTintColor }
+        set { rightView.imageTintColor = newValue }
+    }
+
 }

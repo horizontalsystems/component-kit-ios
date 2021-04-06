@@ -25,6 +25,11 @@ open class C5Cell: BaseThemeCell {
         set { leftView.image = newValue }
     }
 
+    public var titleImageTintColor: UIColor? {
+        get { leftView.imageTintColor }
+        set { leftView.imageTintColor = newValue }
+    }
+
     public var titleImageAction: (() -> ())? {
         get { leftView.imageAction }
         set { leftView.imageAction = newValue }

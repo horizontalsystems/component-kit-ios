@@ -14,9 +14,21 @@ public enum ThemeButtonStyle {
     case tertiary
 }
 
+extension UIControl.State: Hashable {
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(rawValue)
+    }
+
+}
+
 open class ThemeButton: UIButton {
     private var backgroundGradients = [UInt: [UIColor]]()
     private var borderColors: [UInt: UIColor] = [UIControl.State.normal.rawValue: .clear]
+
+    private var imageTintColors = [UIControl.State: UIColor]()
+
+    private var style: ThemeButtonStyle?
 
     public func setBackgroundColor(_ color: UIColor, bottomColor: UIColor? = nil, forState state: UIControl.State) {
         var colors = [color]
@@ -143,11 +155,51 @@ open class ThemeButton: UIButton {
         }
     }
 
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard let style = style else {
+            return
+        }
+
+        apply(style: style)
+        updateImageTintColor()
+    }
+
+    public func setImageTintColor(_ tintColor: UIColor?, for state: UIControl.State) {
+        imageTintColors[state] = tintColor
+
+        if let image = imageView?.image, let color = tintColor {
+            super.setImage(image.tinted(with: color), for: state)
+        }
+    }
+
+    public func imageTintColor(for state: UIControl.State) -> UIColor? {
+        imageTintColors[state]
+    }
+
+    open override func setImage(_ image: UIImage?, for state: State) {
+        super.setImage(image, for: state)
+
+        updateImageTintColor()
+    }
+
+    private func updateImageTintColor() {
+        guard let image = imageView?.image else {
+            return
+        }
+
+        imageTintColors.forEach { state, tintColor in
+            super.setImage(image.tinted(with: tintColor), for: state)
+        }
+    }
+
 }
 
 extension ThemeButton {
 
     @discardableResult public func apply(style: ThemeButtonStyle) -> Self {
+        self.style = style
         let applyPrimary = {
             self.cornerRadius = 8
             self.titleLabel?.textAlignment = .center
@@ -306,9 +358,11 @@ extension ThemeButton {
     }
 
     @discardableResult public func apply(secondaryIconImage: UIImage?) -> Self {
+        setImageTintColor(.themeLeah, for: .normal)
+        setImageTintColor(.themeLeah, for: .highlighted)
+        setImageTintColor(.themeGray50, for: .disabled)
+
         setImage(secondaryIconImage?.tinted(with: .themeLeah), for: .normal)
-        setImage(secondaryIconImage?.tinted(with: .themeLeah), for: .highlighted)
-        setImage(secondaryIconImage?.tinted(with: .themeGray50), for: .disabled)
 
         return self
     }

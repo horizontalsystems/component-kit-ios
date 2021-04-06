@@ -93,7 +93,7 @@ public class HudHelper {
         config.startAdjustSize = 0.8
         config.finishAdjustSize = 0.8
         config.preferredSize = CGSize(width: 146, height: 114)
-        config.backgroundColor = UIColor.themeTyler.withAlphaComponent(0.4)
+        config.backgroundColor = UIColor.themeTyler.withAlphaComponent(0.4)//todo .4 does not work for theme, it needs themed color. But it's not working without 0.4 as well
         config.blurEffectStyle = .themeHud
 
         return config

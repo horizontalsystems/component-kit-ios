@@ -25,6 +25,11 @@ open class C6Cell: BaseThemeCell {
         set { leftView.image = newValue }
     }
 
+    public var titleImageTintColor: UIColor? {
+        get { leftView.imageTintColor }
+        set { leftView.imageTintColor = newValue }
+    }
+
     public var titleImageAction: (() -> ())? {
         get { leftView.imageAction }
         set { leftView.imageAction = newValue }
@@ -43,6 +48,11 @@ open class C6Cell: BaseThemeCell {
     public var valueImage: UIImage? {
         get { rightView.image }
         set { rightView.image = newValue }
+    }
+
+    public var valueImageTintColor: UIColor? {
+        get { rightView.imageTintColor }
+        set { rightView.imageTintColor = newValue }
     }
 
 }

@@ -21,30 +21,22 @@ open class ThemeNavigationController: UINavigationController {
         navigationBar.prefersLargeTitles = true
         modalPresentationStyle = .overFullScreen
         navigationBar.tintColor = .themeJacob
-        // set navigation theme for iOS less than 13
-        guard #available(iOS 13.0, *) else {
-            navigationBar.barStyle = Theme.current.navigationBarStyle
-            let colorImage = UIImage(color: .themeNavigationBarBackground)
-            navigationBar.setBackgroundImage(colorImage, for: .default)
-            navigationBar.shadowImage = UIImage()
-            return
-        }
     }
 
     override open var childForStatusBarStyle: UIViewController? {
-        self.topViewController
+        topViewController
     }
 
     override open var childForStatusBarHidden: UIViewController? {
-        self.topViewController
+        topViewController
     }
 
     override open var preferredStatusBarStyle: UIStatusBarStyle {
-        self.topViewController?.preferredStatusBarStyle ?? .themeDefault
+        topViewController?.preferredStatusBarStyle ?? .themeDefault
     }
 
     override open var prefersStatusBarHidden: Bool {
-        self.topViewController?.prefersStatusBarHidden ?? false
+        topViewController?.prefersStatusBarHidden ?? false
     }
 
     open override func viewWillAppear(_ animated: Bool) {
@@ -77,10 +69,11 @@ open class ThemeTabBarController: UITabBarController {
         tabBar.addSubview(separator)
 
         tabBar.barTintColor = .clear
-        tabBar.backgroundImage = UIImage(color: .themeNavigationBarBackground)
 
         tabBar.tintColor = .themeJacob
         tabBar.unselectedItemTintColor = .themeGray
+
+        updateUITheme()
     }
 
     override open func viewWillAppear(_ animated: Bool) {
@@ -93,10 +86,21 @@ open class ThemeTabBarController: UITabBarController {
         .themeDefault
     }
 
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        updateUITheme()
+    }
+
+    private func updateUITheme() {
+        tabBar.backgroundImage = UIImage(color: .themeNavigationBarBackground)
+    }
+
 }
 
 open class ThemeViewController: UIViewController {
     private let gradient: Bool
+    private var gradientLayer = CAGradientLayer()
 
     public init(gradient: Bool = true) {
         self.gradient = gradient
@@ -113,26 +117,32 @@ open class ThemeViewController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
 
-        guard gradient else {
-            return
-        }
+        view.layer.insertSublayer(gradientLayer, at: 0)
 
-        let bounds = view.bounds
-        let gradientStartY = 160 / bounds.height
-        let image = UIImage(
-                fromColor: .themeTyler,
-                toColor: .themeHelsing,
-                size: CGSize(width: view.bounds.size.width, height: view.bounds.size.height),
-                startPoint: CGPoint(x: 0.5, y: gradientStartY)
-        )
-        let gradientImageView = UIImageView(image: image)
-
-        view = gradientImageView
-        gradientImageView.isUserInteractionEnabled = true
+        updateUITheme()
     }
 
     override open var preferredStatusBarStyle: UIStatusBarStyle {
         .themeDefault
+    }
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        updateUITheme()
+    }
+
+    private func updateUITheme() {
+        guard gradient else {
+            return
+        }
+
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+            gradientLayer.frame = view.bounds
+            gradientLayer.startPoint = CGPoint(x: 0, y: 160 / view.bounds.height)
+            gradientLayer.colors = [UIColor.themeTyler.cgColor, UIColor.themeHelsing.cgColor]
+        CATransaction.commit()
     }
 
 }

@@ -1,8 +1,8 @@
 import UIKit
 import SnapKit
 
-open class B4Cell: BaseSelectableThemeCell {
-    private let leftView = LeftBView()
+open class A4Cell: BaseSelectableThemeCell {
+    private let leftView = LeftAView()
     private let rightView = Right4View()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -20,9 +20,14 @@ open class B4Cell: BaseSelectableThemeCell {
         set { leftView.text = newValue }
     }
 
-    public var titleColor: UIColor {
-        get { leftView.textColor }
-        set { leftView.textColor = newValue }
+    public var titleImage: UIImage? {
+        get { leftView.image }
+        set { leftView.image = newValue }
+    }
+
+    public var titleImageTintColor: UIColor? {
+        get { leftView.imageTintColor }
+        set { leftView.imageTintColor = newValue }
     }
 
     public var valueImage: UIImage? {

@@ -35,4 +35,9 @@ open class D6Cell: BaseThemeCell {
         set { rightView.image = newValue }
     }
 
+    public var valueImageTintColor: UIColor? {
+        get { rightView.imageTintColor }
+        set { rightView.imageTintColor = newValue }
+    }
+
 }
