@@ -22,5 +22,5 @@ Pod::Spec.new do |s|
   s.dependency 'SnapKit', '~> 5.0'
   s.dependency 'SkeletonView', '~> 1.11'
   s.dependency 'AlamofireImage', '~> 4.1'
-  s.dependency 'RxCocoa', '~> 5'
+  s.dependency 'RxCocoa', '~> 5.0'
 end
