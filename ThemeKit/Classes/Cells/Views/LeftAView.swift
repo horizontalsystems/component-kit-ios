@@ -47,4 +47,9 @@ open class LeftAView: UIView {
         set { imageView.image = newValue }
     }
 
+    public var imageTintColor: UIColor? {
+        get { imageView.tintColor }
+        set { imageView.tintColor = newValue }
+    }
+
 }

@@ -30,6 +30,11 @@ open class A11Cell: BaseThemeCell {
         set { rightView.image = newValue }
     }
 
+    public var rightImageTintColor: UIColor? {
+        get { rightView.imageTintColor }
+        set { rightView.imageTintColor = newValue }
+    }
+
     public var isOn: Bool {
         get { rightView.isOn }
         set { rightView.isOn = newValue }

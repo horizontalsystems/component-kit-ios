@@ -16,7 +16,6 @@ open class CardView: UIView {
 
         roundedBackground.backgroundColor = .themeLawrence
         roundedBackground.layer.cornerRadius = .cornerRadius4x
-        roundedBackground.layer.shadowColor = UIColor.themeAndy.cgColor
         roundedBackground.layer.shadowRadius = .cornerRadius1x
         roundedBackground.layer.shadowOffset = CGSize(width: 0, height: 4)
         roundedBackground.layer.shadowOpacity = 1
@@ -36,10 +35,22 @@ open class CardView: UIView {
         }
 
         contentView.backgroundColor = .clear
+
+        updateUI()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        updateUI()
+    }
+
+    private func updateUI() {
+        roundedBackground.layer.shadowColor = UIColor.themeAndy.cgColor
     }
 
 }

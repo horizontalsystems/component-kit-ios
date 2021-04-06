@@ -20,7 +20,6 @@ open class CardCell: UITableViewCell {
 
         roundedBackground.backgroundColor = .themeLawrence
         roundedBackground.layer.cornerRadius = .cornerRadius4x
-        roundedBackground.layer.shadowColor = UIColor.themeAndy.cgColor
         roundedBackground.layer.shadowRadius = .cornerRadius1x
         roundedBackground.layer.shadowOffset = CGSize(width: 0, height: 4)
         roundedBackground.layer.shadowOpacity = 1
@@ -48,6 +47,8 @@ open class CardCell: UITableViewCell {
         selectView.snp.makeConstraints { maker in
             maker.leading.top.trailing.bottom.equalToSuperview()
         }
+
+        updateUI()
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -74,6 +75,16 @@ open class CardCell: UITableViewCell {
         } else {
             selectView.alpha = selected ? 1 : 0
         }
+    }
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        updateUI()
+    }
+
+    private func updateUI() {
+        roundedBackground.layer.shadowColor = UIColor.themeAndy.cgColor
     }
 
 }

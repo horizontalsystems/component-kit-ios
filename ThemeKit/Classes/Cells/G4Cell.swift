@@ -20,6 +20,11 @@ open class G4Cell: BaseSelectableThemeCell {
         set { leftView.image = newValue }
     }
 
+    public var titleImageTintColor: UIColor? {
+        get { leftView.tintColor }
+        set { leftView.tintColor = newValue }
+    }
+
     public var title: String? {
         get { leftView.topText }
         set { leftView.topText = newValue }

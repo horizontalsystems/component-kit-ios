@@ -30,4 +30,9 @@ open class A3Cell: BaseSelectableThemeCell {
         set { rightView.image = newValue }
     }
 
+    public var valueImageTintColor: UIColor? {
+        get { rightView.imageTintColor }
+        set { rightView.imageTintColor = newValue }
+    }
+
 }

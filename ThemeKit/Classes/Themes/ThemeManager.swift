@@ -1,28 +1,50 @@
+import RxCocoa
+
 public class ThemeManager {
-    private static let defaultLightMode = false
-    private static let userDefaultsKey = "light_mode"
+    private static let defaultLightMode: ThemeMode = .system
+    private static let userDefaultsKey = "theme_mode"
+
+    private let changeThemeRelay = PublishRelay<ThemeMode>()
 
     public static var shared = ThemeManager()
 
-    public var lightMode: Bool {
+    public var themeMode: ThemeMode {
         didSet {
-            UserDefaults.standard.set(lightMode, forKey: ThemeManager.userDefaultsKey)
-            currentTheme = ThemeManager.theme(lightMode: lightMode)
+            UserDefaults.standard.set(themeMode.rawValue, forKey: ThemeManager.userDefaultsKey)
+            currentTheme = ThemeManager.theme(mode: themeMode)
             Theme.updateNavigationBarTheme()
+
+            changeThemeRelay.accept(themeMode)
         }
     }
 
     private(set) var currentTheme: ITheme
 
     init() {
-        let storedLightMode = UserDefaults.standard.value(forKey: ThemeManager.userDefaultsKey) as? Bool
+        var storedThemeMode: ThemeMode?
 
-        lightMode = storedLightMode ?? ThemeManager.defaultLightMode
-        currentTheme = ThemeManager.theme(lightMode: lightMode)
+        //migrate from custom theme to system supported
+        if let oldLightMode = UserDefaults.standard.value(forKey: "light_mode") as? Bool {
+            storedThemeMode = oldLightMode ? .light : .dark
+            UserDefaults.standard.set(nil, forKey: "light_mode")
+        } else if let newLightMode = UserDefaults.standard.value(forKey: ThemeManager.userDefaultsKey) as? String {
+            storedThemeMode = ThemeMode(rawValue: newLightMode)
+        }
+
+        themeMode = storedThemeMode ?? ThemeManager.defaultLightMode
+        currentTheme = ThemeManager.theme(mode: themeMode)
     }
 
-    private static func theme(lightMode: Bool) -> ITheme {
-        lightMode ? LightTheme() : DarkTheme()
+    private static func theme(mode: ThemeMode) -> ITheme {
+        switch mode {
+        case .light: return LightTheme()
+        case .dark: return DarkTheme()
+        case .system: return SystemTheme()
+        }
+    }
+
+    public var changeThemeSignal: Signal<ThemeMode> {
+        changeThemeRelay.asSignal()
     }
 
 }
@@ -34,18 +56,20 @@ public class Theme {
     }
 
     public static func updateNavigationBarTheme() {
-        UIApplication.shared.keyWindow?.backgroundColor = .themeTyler
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithTransparentBackground()
+        coloredAppearance.backgroundColor = .themeNavigationBarBackground
+        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.themeOz]
+        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.themeOz]
 
-        if #available(iOS 13.0, *) {
-            let coloredAppearance = UINavigationBarAppearance()
-            coloredAppearance.configureWithTransparentBackground()
-            coloredAppearance.backgroundColor = .themeNavigationBarBackground
-            coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.themeOz]
-            coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.themeOz]
-
-            UINavigationBar.appearance().standardAppearance = coloredAppearance
-            UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
-        }
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
     }
 
+}
+
+public enum ThemeMode: String {
+    case light
+    case dark
+    case system
 }

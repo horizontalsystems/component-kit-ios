@@ -13,13 +13,17 @@ class CellsController: ThemeViewController {
     private let g19Cell = G19Cell()
     private let g21Cell = G21Cell()
 
+    private var themeModeIterator = 0
+    private var themeBarButtonItem: UIBarButtonItem?
+
     private var isSkeletoned = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        themeBarButtonItem = UIBarButtonItem(title: ThemeManager.shared.themeMode.rawValue, style: .plain, target: self, action: #selector(onToggleLightMode))
 
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(onToggleLightMode)),
+            themeBarButtonItem!,
             UIBarButtonItem(barButtonSystemItem: .fastForward, target: self, action: #selector(onToggleShimmer))
         ]
 
@@ -38,16 +42,19 @@ class CellsController: ThemeViewController {
 
     private func configureCells() {
         aCell.set(backgroundStyle: .lawrence, isFirst: true)
-        aCell.titleImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
+        aCell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        aCell.titleImageTintColor = .themeJacob
         aCell.title = "A - Title"
         aCell.titleColor = .themeJacob
 
         a1Cell.set(backgroundStyle: .lawrence)
-        a1Cell.titleImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
+        a1Cell.titleImageTintColor = .themeJacob
+        a1Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         a1Cell.title = "A1 - Title"
 
         g14Cell.set(backgroundStyle: .lawrence)
-        g14Cell.leftImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
+        g14Cell.leftImageTintColor = .themeJacob
+        g14Cell.leftImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         g14Cell.topText = "G14 - Title"
         g14Cell.bottomText = "Subtitle"
         g14Cell.leftBadgeText = "123"
@@ -74,8 +81,25 @@ class CellsController: ThemeViewController {
     }
 
     @objc func onToggleLightMode() {
-        ThemeManager.shared.lightMode = !ThemeManager.shared.lightMode
-        UIApplication.shared.keyWindow?.set(newRootController: MainController(selectedIndex: 2))
+        themeModeIterator += 1
+        if themeModeIterator > 2 {
+            themeModeIterator = 0
+        }
+
+        if themeModeIterator == 0 {
+            ThemeManager.shared.themeMode = .system
+            UIApplication.shared.windows.first(where: \.isKeyWindow)?.overrideUserInterfaceStyle = .unspecified
+        }
+        if themeModeIterator == 1 {
+            ThemeManager.shared.themeMode = .dark
+            UIApplication.shared.windows.first(where: \.isKeyWindow)?.overrideUserInterfaceStyle = .dark
+        }
+        if themeModeIterator == 2 {
+            ThemeManager.shared.themeMode = .light
+            UIApplication.shared.windows.first(where: \.isKeyWindow)?.overrideUserInterfaceStyle = .light
+        }
+
+        themeBarButtonItem?.title = ThemeManager.shared.themeMode.rawValue
     }
 
     @objc func onToggleShimmer() {
