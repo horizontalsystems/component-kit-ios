@@ -47,3 +47,11 @@ extension CopyableSecondaryButton {
     }
 
 }
+
+extension CopyableSecondaryButton {
+
+    public static func height(containerWidth: CGFloat, viewItem: ViewItem) -> CGFloat {
+        ThemeButton.size(containerWidth: containerWidth, text: viewItem.text, style: .secondaryDefault).height
+    }
+
+}

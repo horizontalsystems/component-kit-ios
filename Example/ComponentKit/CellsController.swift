@@ -9,6 +9,10 @@ class CellsController: ThemeViewController {
 
     private let aCell = ACell()
     private let a1Cell = A1Cell()
+    private let dCell = DCell()
+    private let cell9ViewItem = CopyableSecondaryButton.ViewItem(value: "0xa1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6")
+    private let cell9 = Cell9()
+    private let emptyCell = EmptyCell()
     private let g14Cell = G14Cell()
     private let g19Cell = G19Cell()
     private let g21Cell = G21Cell()
@@ -52,7 +56,13 @@ class CellsController: ThemeViewController {
         a1Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         a1Cell.title = "A1 - Title"
 
-        g14Cell.set(backgroundStyle: .lawrence)
+        dCell.set(backgroundStyle: .lawrence)
+        dCell.title = "D - Title"
+
+        cell9.set(backgroundStyle: .lawrence, isLast: true)
+        cell9.viewItem = cell9ViewItem
+
+        g14Cell.set(backgroundStyle: .lawrence, isFirst: true)
         g14Cell.leftImageTintColor = .themeJacob
         g14Cell.leftImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         g14Cell.topText = "G14 - Title"
@@ -125,36 +135,16 @@ extension CellsController: SectionsDataSource {
                     id: "main",
                     headerState: .margin(height: .margin12),
                     rows: [
-                        StaticRow(
-                                cell: aCell,
-                                id: "a",
-                                height: .heightCell48,
-                                autoDeselect: true
-                        ),
-                        StaticRow(
-                                cell: a1Cell,
-                                id: "a1",
-                                height: .heightCell48,
-                                autoDeselect: true
-                        ),
-                        StaticRow(
-                                cell: g14Cell,
-                                id: "g14",
-                                height: .heightDoubleLineCell,
-                                autoDeselect: true
-                        ),
-                        StaticRow(
-                                cell: g19Cell,
-                                id: "g19",
-                                height: .heightDoubleLineCell,
-                                autoDeselect: true
-                        ),
-                        StaticRow(
-                                cell: g21Cell,
-                                id: "g21",
-                                height: .heightDoubleLineCell,
-                                autoDeselect: true
-                        ),
+                        StaticRow(cell: aCell, id: "a", height: .heightCell48, autoDeselect: true),
+                        StaticRow(cell: a1Cell, id: "a1", height: .heightCell48, autoDeselect: true),
+                        StaticRow(cell: dCell, id: "d", height: .heightCell48),
+                        StaticRow(cell: cell9, id: "9", dynamicHeight: { [unowned self] in
+                            Cell9.height(containerWidth: $0, backgroundStyle: .lawrence, viewItem: self.cell9ViewItem)
+                        }),
+                        StaticRow(cell: emptyCell, id: "empty", height: 12),
+                        StaticRow(cell: g14Cell, id: "g14", height: .heightDoubleLineCell, autoDeselect: true),
+                        StaticRow(cell: g19Cell, id: "g19", height: .heightDoubleLineCell, autoDeselect: true),
+                        StaticRow(cell: g21Cell, id: "g21", height: .heightDoubleLineCell),
                     ]
             )
         ]
