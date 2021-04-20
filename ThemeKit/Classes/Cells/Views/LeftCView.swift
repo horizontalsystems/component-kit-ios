@@ -5,7 +5,11 @@ open class LeftCView: UIView {
     private let imageButton = ThemeButton()
     private let label = UILabel()
 
-    public var imageAction: (() -> ())?
+    public var imageAction: (() -> ())? {
+        didSet {
+            imageButton.isUserInteractionEnabled = imageAction != nil
+        }
+    }
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,6 +22,7 @@ open class LeftCView: UIView {
         }
 
         imageButton.addTarget(self, action: #selector(onTapButton), for: .touchUpInside)
+        imageButton.isUserInteractionEnabled = false
 
         addSubview(label)
         label.snp.makeConstraints { maker in
