@@ -9,6 +9,7 @@ class CellsController: ThemeViewController {
 
     private let aCell = ACell()
     private let a1Cell = A1Cell()
+    private let c9Cell = C9Cell()
     private let dCell = DCell()
     private let cell9ViewItem = CopyableSecondaryButton.ViewItem(value: "0xa1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6")
     private let cell9 = Cell9()
@@ -55,6 +56,13 @@ class CellsController: ThemeViewController {
         a1Cell.titleImageTintColor = .themeJacob
         a1Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         a1Cell.title = "A1 - Title"
+
+        c9Cell.set(backgroundStyle: .lawrence)
+        c9Cell.titleImageTintColor = .themeGray
+        c9Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        c9Cell.title = "C9 - Title"
+        c9Cell.titleImageAction = { print("C9 - Title Image Tap") }
+        c9Cell.viewItem = .init(value: "this-is-value")
 
         dCell.set(backgroundStyle: .lawrence)
         dCell.title = "D - Title"
@@ -137,9 +145,10 @@ extension CellsController: SectionsDataSource {
                     rows: [
                         StaticRow(cell: aCell, id: "a", height: .heightCell48, autoDeselect: true),
                         StaticRow(cell: a1Cell, id: "a1", height: .heightCell48, autoDeselect: true),
+                        StaticRow(cell: c9Cell, id: "c9", height: .heightCell48),
                         StaticRow(cell: dCell, id: "d", height: .heightCell48),
                         StaticRow(cell: cell9, id: "9", dynamicHeight: { [unowned self] in
-                            Cell9.height(containerWidth: $0, backgroundStyle: .lawrence, viewItem: self.cell9ViewItem)
+                            Cell9.height(containerWidth: $0, backgroundStyle: .lawrence, viewItem: cell9ViewItem)
                         }),
                         StaticRow(cell: emptyCell, id: "empty", height: 12),
                         StaticRow(cell: g14Cell, id: "g14", height: .heightDoubleLineCell, autoDeselect: true),
