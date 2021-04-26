@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-open class D6Cell: BaseThemeCell {
+open class D6Cell: BaseSelectableThemeCell {
     private let leftView = LeftDView()
     private let rightView = Right6View()
 
