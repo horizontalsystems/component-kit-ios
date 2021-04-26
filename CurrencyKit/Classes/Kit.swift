@@ -4,29 +4,34 @@ import RxSwift
 
 public class Kit {
     private static let supportedCurrencies = [
-        Currency(code: "USD", symbol: "\u{0024}", decimal: 2),
-        Currency(code: "EUR", symbol: "\u{20AC}", decimal: 2),
-        Currency(code: "GBP", symbol: "\u{00A3}", decimal: 2),
-        Currency(code: "JPY", symbol: "\u{00A5}", decimal: 2)
+        Currency(code: "AUD", symbol: "A$",  decimal: 2),
+        Currency(code: "BRL", symbol: "R$",  decimal: 2),
+        Currency(code: "CAD", symbol: "C$",  decimal: 2),
+        Currency(code: "CHF", symbol: "₣",   decimal: 2),
+        Currency(code: "CNY", symbol: "¥",   decimal: 2),
+        Currency(code: "EUR", symbol: "€",   decimal: 2),
+        Currency(code: "GBP", symbol: "£",   decimal: 2),
+        Currency(code: "HKD", symbol: "HK$", decimal: 2),
+        Currency(code: "ILS", symbol: "₪",   decimal: 2),
+        Currency(code: "JPY", symbol: "¥",   decimal: 2),
+        Currency(code: "RUB", symbol: "₽",   decimal: 2),
+        Currency(code: "SGD", symbol: "S$",  decimal: 2),
+        Currency(code: "USD", symbol: "$",   decimal: 2),
+
+        Currency(code: "BTC", symbol: "₿",   decimal: 8),
+        Currency(code: "ETH", symbol: "Ξ",   decimal: 8),
+        Currency(code: "BNB", symbol: "BNB", decimal: 8),
     ]
 
     private let currencyManager: CurrencyManager
 
-    public init(localStorage: ILocalStorage, currencyCodes: [String] = []) {
-        var currencies = currencyCodes.compactMap { code in
-            Kit.supportedCurrencies.first { $0.code == code }
-        }
-
-        if currencies.isEmpty {
-            currencies = Kit.supportedCurrencies
-        }
-
-        currencyManager = CurrencyManager(currencies: currencies, localStorage: localStorage)
+    public init(localStorage: ILocalStorage) {
+        currencyManager = CurrencyManager(currencies: Kit.supportedCurrencies, localStorage: localStorage)
     }
 
 }
 
-extension Kit: ICurrencyKit {
+extension Kit {
 
     public var baseCurrency: Currency {
         get {
@@ -45,8 +50,8 @@ extension Kit: ICurrencyKit {
         currencyManager.baseCurrencyUpdatedObservable
     }
 
-    public var baseCurrencySettingsModule: UIViewController {
-        BaseCurrencySettingsRouter.module(currencyManager: currencyManager)
+    public static func currencyIcon(code: String) -> UIImage? {
+        CurrencyKit.image(named: code)
     }
 
 }
