@@ -17,10 +17,5 @@ Pod::Spec.new do |s|
   s.resource_bundle = { 'ThemeKit' => ['ThemeKit/Assets/*.xcassets', 'ThemeKit/Assets/*.lproj/*.strings'] }
 
   s.dependency 'UIExtensions.swift', '~> 1.1'
-  s.dependency 'HUD.swift', '~> 1.2'
-  s.dependency 'LanguageKit.swift', '~> 1.0'
-  s.dependency 'SnapKit', '~> 5.0'
-  s.dependency 'SkeletonView', '~> 1.11'
-  s.dependency 'AlamofireImage', '~> 4.1'
   s.dependency 'RxCocoa', '~> 5.0'
 end

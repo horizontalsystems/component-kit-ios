@@ -1,5 +1,6 @@
 import UIKit
 import UIExtensions
+import ThemeKit
 
 public enum ThemeButtonStyle {
     case primaryYellow

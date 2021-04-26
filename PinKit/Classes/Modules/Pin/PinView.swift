@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import UIExtensions
 import ThemeKit
+import ComponentKit
 
 class PinView: UIView {
 

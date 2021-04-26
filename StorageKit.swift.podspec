@@ -19,4 +19,5 @@ Pod::Spec.new do |s|
   s.dependency 'ThemeKit.swift', '~> 1.0'
   s.dependency 'LanguageKit.swift', '~> 1.0'
   s.dependency 'KeychainAccess', '~> 4.1'
+  s.dependency 'SnapKit', '~> 5.0'
 end

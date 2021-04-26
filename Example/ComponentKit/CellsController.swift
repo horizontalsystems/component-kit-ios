@@ -3,6 +3,7 @@ import ThemeKit
 import SnapKit
 import SectionsTableView
 import SkeletonView
+import ComponentKit
 
 class CellsController: ThemeViewController {
     private let tableView = SectionsTableView(style: .grouped)
