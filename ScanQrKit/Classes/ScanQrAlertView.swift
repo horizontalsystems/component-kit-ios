@@ -1,5 +1,6 @@
 import UIKit
 import ThemeKit
+import ComponentKit
 import SnapKit
 
 public protocol IScanQrCodeDelegate: AnyObject {

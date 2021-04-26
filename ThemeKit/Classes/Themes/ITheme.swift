@@ -1,6 +1,6 @@
 import UIKit
 
-protocol ITheme {
+public protocol ITheme {
     var hudBlurStyle: UIBlurEffect.Style { get }
     var keyboardAppearance: UIKeyboardAppearance { get }
     var statusBarStyle: UIStatusBarStyle { get }

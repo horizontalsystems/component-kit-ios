@@ -51,7 +51,7 @@ public class ThemeManager {
 
 public class Theme {
 
-    static var current: ITheme {
+    public static var current: ITheme {
         ThemeManager.shared.currentTheme
     }
 

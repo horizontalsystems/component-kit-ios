@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import ThemeKit
 
 open class RestoreWordsViewController: ThemeViewController {
     private let minimalTextViewHeight: CGFloat = 88

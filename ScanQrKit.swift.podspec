@@ -18,5 +18,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'UIExtensions.swift', '~> 1.1'
   s.dependency 'ThemeKit.swift', '~> 1.0'
+  s.dependency 'ComponentKit.swift', '~> 1.0'
   s.dependency 'LanguageKit.swift', '~> 1.0'
 end

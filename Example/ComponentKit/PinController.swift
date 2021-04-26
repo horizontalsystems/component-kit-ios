@@ -4,6 +4,7 @@ import SnapKit
 import PinKit
 import StorageKit
 import RxSwift
+import ComponentKit
 
 class PinController: ThemeViewController {
     private let disposeBag = DisposeBag()

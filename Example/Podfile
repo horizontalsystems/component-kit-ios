@@ -8,6 +8,7 @@ target 'ComponentKitExample' do
   pod 'PinKit.swift', path: '../'
   pod 'CurrencyKit.swift', path: '../'
   pod 'ModuleKit.swift', path: '../'
+  pod 'ComponentKit.swift', path: '../'
 
   pod 'UIExtensions.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
   # pod 'UIExtensions.swift', path: '../../gui-kit/'
