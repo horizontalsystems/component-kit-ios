@@ -14,11 +14,8 @@ Pod::Spec.new do |s|
   s.swift_version = '5'
 
   s.source_files = 'CurrencyKit/Classes/**/*'
-  s.resource_bundle = { 'CurrencyKit' => ['CurrencyKit/Assets/*.xcassets', 'CurrencyKit/Assets/*.lproj/*.strings'] }
+  s.resource_bundle = { 'CurrencyKit' => ['CurrencyKit/Assets/*.xcassets'] }
 
-  s.dependency 'SectionsTableView.swift', '~> 1.1'
-  s.dependency 'ThemeKit.swift', '~> 1.0'
-  s.dependency 'LanguageKit.swift', '~> 1.0'
   s.dependency 'StorageKit.swift', '~> 1.0'
   s.dependency 'RxSwift', '~> 5.0'
 end
