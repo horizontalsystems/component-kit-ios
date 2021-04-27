@@ -20,7 +20,7 @@ public class CurrencyManager {
                 return currency
             }
 
-            return currencies[0]
+            return currencies.first(where: { $0.code == "USD" }) ?? currencies[0]
         }
         set {
             localStorage.set(value: newValue.code, for: keyBaseCurrencyCode)
