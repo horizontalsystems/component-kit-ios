@@ -25,6 +25,10 @@ open class G14Cell: BaseSelectableThemeCell {
         set { leftView.tintColor = newValue }
     }
 
+    public func setTitleImage(urlString: String?) {
+        leftView.setImage(urlString: urlString)
+    }
+
     public var titleImageCornerRadius: CGFloat {
         get { leftView.imageCornerRadius }
         set { leftView.imageCornerRadius = newValue }
