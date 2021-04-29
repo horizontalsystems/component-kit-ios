@@ -12,16 +12,19 @@ open class Right5View: UIView {
         addSubview(button)
         button.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
-            maker.centerY.equalToSuperview()
+            maker.top.bottom.equalToSuperview()
         }
 
         button.titleLabel?.font = .subhead1
         button.setTitleColor(defaultTextColor, for: .normal)
         button.semanticContentAttribute = .forceRightToLeft
-        button.setImage(UIImage(named: "arrow_small_down_20"), for: .normal)
+        button.setImage(ComponentKit.image(named: "arrow_small_down_20"), for: .normal)
         button.addTarget(self, action: #selector(onTapButton), for: .touchUpInside)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: .margin8, bottom: 0, right: 0)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: .margin8 + .margin16, bottom: 0, right: .margin16)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -.margin8, bottom: 0, right: .margin8)
+        button.setContentCompressionResistancePriority(.required, for: .horizontal)
+
+        button.isUserInteractionEnabled = false
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -32,7 +35,11 @@ open class Right5View: UIView {
         onTap?()
     }
 
-    public var onTap: (() -> ())?
+    public var onTap: (() -> ())? {
+        didSet {
+            button.isUserInteractionEnabled = onTap != nil
+        }
+    }
 
     public var text: String? {
         get { button.title(for: .normal) }
@@ -42,11 +49,6 @@ open class Right5View: UIView {
     public var textColor: UIColor {
         get { button.titleColor(for: .normal) ?? defaultTextColor }
         set { button.setTitleColor(newValue, for: .normal) }
-    }
-
-    public var enabled: Bool {
-        get { button.isUserInteractionEnabled }
-        set { button.isUserInteractionEnabled = newValue }
     }
 
 }

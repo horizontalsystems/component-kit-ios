@@ -1,14 +1,14 @@
 import UIKit
 import SnapKit
 
-open class B5Cell: BaseThemeCell {
+open class B5Cell: BaseSelectableThemeCell {
     private let leftView = LeftBView()
     private let rightView = Right5View()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        layout(leftView: leftView, rightView: rightView)
+        layout(leftView: leftView, rightView: rightView, rightInset: 0, middleInset: 0)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -33,11 +33,6 @@ open class B5Cell: BaseThemeCell {
     public var valueAction: (() -> ())? {
         get { rightView.onTap }
         set { rightView.onTap = newValue }
-    }
-
-    public var valueActionEnabled: Bool {
-        get { rightView.enabled }
-        set { rightView.enabled = newValue }
     }
 
 }
