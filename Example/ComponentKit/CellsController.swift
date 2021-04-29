@@ -10,7 +10,10 @@ class CellsController: ThemeViewController {
 
     private let aCell = ACell()
     private let a1Cell = A1Cell()
+    private let a5Cell = A5Cell()
     private let a9Cell = A9Cell()
+    private let b5Cell = B5Cell()
+    private let c5Cell = C5Cell()
     private let c9Cell = C9Cell()
     private let dCell = DCell()
     private let cell9ViewItem = CopyableSecondaryButton.ViewItem(value: "0xa1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6")
@@ -59,11 +62,32 @@ class CellsController: ThemeViewController {
         a1Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         a1Cell.title = "A1 - Title"
 
+        a5Cell.set(backgroundStyle: .lawrence)
+        a5Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        a5Cell.titleImageTintColor = .themeJacob
+        a5Cell.title = "A5 - Title A5 - Title A5 - Title"
+        a5Cell.value = "Some Value"
+
         a9Cell.set(backgroundStyle: .lawrence)
         a9Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         a9Cell.titleImageTintColor = .themeGray
         a9Cell.title = "A9 - Title"
         a9Cell.viewItem = .init(value: "this-is-value")
+
+        b5Cell.set(backgroundStyle: .lawrence)
+        b5Cell.title = "B5 - Title"
+        b5Cell.value = "Some Value"
+        b5Cell.valueAction = { print("On Tap B5") }
+        b5Cell.selectionStyle = .none
+
+        c5Cell.set(backgroundStyle: .lawrence)
+        c5Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        c5Cell.titleImageTintColor = .themeGray
+        c5Cell.title = "C5 - Title"
+        c5Cell.titleImageAction = { print("C5 - Title Image Tap") }
+        c5Cell.value = "Some Value"
+        c5Cell.valueAction = { print("On Tap C5") }
+        c5Cell.selectionStyle = .none
 
         c9Cell.set(backgroundStyle: .lawrence)
         c9Cell.titleImageTintColor = .themeGray
@@ -153,7 +177,10 @@ extension CellsController: SectionsDataSource {
                     rows: [
                         StaticRow(cell: aCell, id: "a", height: .heightCell48, autoDeselect: true),
                         StaticRow(cell: a1Cell, id: "a1", height: .heightCell48, autoDeselect: true),
+                        StaticRow(cell: a5Cell, id: "a5", height: .heightCell48, autoDeselect: true, action: { print("On Tap A5") }),
                         StaticRow(cell: a9Cell, id: "a9", height: .heightCell48),
+                        StaticRow(cell: b5Cell, id: "b5", height: .heightCell48),
+                        StaticRow(cell: c5Cell, id: "c5", height: .heightCell48),
                         StaticRow(cell: c9Cell, id: "c9", height: .heightCell48),
                         StaticRow(cell: dCell, id: "d", height: .heightCell48),
                         StaticRow(cell: cell9, id: "9", dynamicHeight: { [unowned self] in

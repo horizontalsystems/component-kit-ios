@@ -1,14 +1,14 @@
 import UIKit
 import SnapKit
 
-open class A5Cell: BaseThemeCell {
+open class A5Cell: BaseSelectableThemeCell {
     private let leftView = LeftAView()
     private let rightView = Right5View()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        layout(leftView: leftView, rightView: rightView)
+        layout(leftView: leftView, rightView: rightView, rightInset: 0, middleInset: 0)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -25,6 +25,11 @@ open class A5Cell: BaseThemeCell {
         set { leftView.image = newValue }
     }
 
+    public var titleImageTintColor: UIColor? {
+        get { leftView.imageTintColor }
+        set { leftView.imageTintColor = newValue }
+    }
+
     public var value: String? {
         get { rightView.text }
         set { rightView.text = newValue }
@@ -38,11 +43,6 @@ open class A5Cell: BaseThemeCell {
     public var valueAction: (() -> ())? {
         get { rightView.onTap }
         set { rightView.onTap = newValue }
-    }
-
-    public var valueActionEnabled: Bool {
-        get { rightView.enabled }
-        set { rightView.enabled = newValue }
     }
 
 }
