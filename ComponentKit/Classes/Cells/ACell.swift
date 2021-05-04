@@ -34,4 +34,8 @@ open class ACell: BaseSelectableThemeCell {
         set { leftView.imageTintColor = newValue }
     }
 
+    public func set(titleImageSize: CGFloat) {
+        leftView.set(imageSize: titleImageSize)
+    }
+
 }

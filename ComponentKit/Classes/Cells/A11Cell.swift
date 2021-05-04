@@ -25,6 +25,10 @@ open class A11Cell: BaseThemeCell {
         set { leftView.image = newValue }
     }
 
+    public func set(titleImageSize: CGFloat) {
+        leftView.set(imageSize: titleImageSize)
+    }
+
     public var rightImage: UIImage? {
         get { rightView.image }
         set { rightView.image = newValue }

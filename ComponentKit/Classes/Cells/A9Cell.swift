@@ -30,6 +30,10 @@ open class A9Cell: BaseThemeCell {
         set { leftView.imageTintColor = newValue }
     }
 
+    public func set(titleImageSize: CGFloat) {
+        leftView.set(imageSize: titleImageSize)
+    }
+
     public var viewItem: CopyableSecondaryButton.ViewItem? {
         get { rightView.viewItem }
         set { rightView.viewItem = newValue }

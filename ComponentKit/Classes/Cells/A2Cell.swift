@@ -25,6 +25,10 @@ open class A2Cell: BaseSelectableThemeCell {
         set { leftView.image = newValue }
     }
 
+    public func set(titleImageSize: CGFloat) {
+        leftView.set(imageSize: titleImageSize)
+    }
+
     public var value: String? {
         get { rightView.text }
         set { rightView.text = newValue }
