@@ -22,6 +22,7 @@ open class Right6View: UIView {
             maker.leading.equalTo(label.snp.trailing).offset(CGFloat.margin2x)
             maker.trailing.equalToSuperview()
             maker.centerY.equalToSuperview()
+            maker.size.equalTo(CGFloat.iconSize20)
         }
     }
 

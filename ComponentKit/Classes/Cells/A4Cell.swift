@@ -30,6 +30,10 @@ open class A4Cell: BaseSelectableThemeCell {
         set { leftView.imageTintColor = newValue }
     }
 
+    public func set(titleImageSize: CGFloat) {
+        leftView.set(imageSize: titleImageSize)
+    }
+
     public var valueImage: UIImage? {
         get { rightView.image }
         set { rightView.image = newValue }

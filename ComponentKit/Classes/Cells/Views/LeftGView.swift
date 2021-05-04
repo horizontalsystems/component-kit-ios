@@ -20,7 +20,7 @@ open class LeftGView: UIView {
         imageView.snp.makeConstraints { maker in
             maker.leading.equalToSuperview()
             maker.centerY.equalToSuperview()
-            maker.size.equalTo(24)
+            maker.size.equalTo(CGFloat.iconSize24)
         }
 
         imageView.clipsToBounds = true
@@ -83,7 +83,7 @@ open class LeftGView: UIView {
         imageSkeleton.snp.makeConstraints { maker in
             maker.leading.equalToSuperview()
             maker.centerY.equalToSuperview()
-            maker.size.equalTo(24)
+            maker.size.equalTo(CGFloat.iconSize24)
         }
 
         imageSkeleton.isSkeletonable = true

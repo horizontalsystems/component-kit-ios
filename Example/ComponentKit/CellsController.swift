@@ -14,11 +14,13 @@ class CellsController: ThemeViewController {
     private let a9Cell = A9Cell()
     private let b5Cell = B5Cell()
     private let c5Cell = C5Cell()
+    private let c6Cell = C6Cell()
     private let c9Cell = C9Cell()
     private let dCell = DCell()
     private let cell9ViewItem = CopyableSecondaryButton.ViewItem(value: "0xa1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6")
     private let cell9 = Cell9()
     private let emptyCell = EmptyCell()
+    private let g12Cell = G12Cell()
     private let g14Cell = G14Cell()
     private let g19Cell = G19Cell()
     private let g21Cell = G21Cell()
@@ -56,6 +58,7 @@ class CellsController: ThemeViewController {
         aCell.titleImageTintColor = .themeJacob
         aCell.title = "A - Title"
         aCell.titleColor = .themeJacob
+        aCell.set(titleImageSize: .iconSize24)
 
         a1Cell.set(backgroundStyle: .lawrence)
         a1Cell.titleImageTintColor = .themeJacob
@@ -89,6 +92,16 @@ class CellsController: ThemeViewController {
         c5Cell.valueAction = { print("On Tap C5") }
         c5Cell.selectionStyle = .none
 
+        c6Cell.set(backgroundStyle: .lawrence)
+        c6Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        c6Cell.titleImageTintColor = .themeJacob
+        c6Cell.title = "C6 - Title"
+        c6Cell.titleImageAction = { print("C6 - Title Image Tap") }
+        c6Cell.value = "Some Value"
+        c6Cell.valueImage = UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate)
+        c6Cell.valueImageTintColor = .themeLucian
+        c6Cell.selectionStyle = .none
+
         c9Cell.set(backgroundStyle: .lawrence)
         c9Cell.titleImageTintColor = .themeGray
         c9Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
@@ -102,7 +115,17 @@ class CellsController: ThemeViewController {
         cell9.set(backgroundStyle: .lawrence, isLast: true)
         cell9.viewItem = cell9ViewItem
 
-        g14Cell.set(backgroundStyle: .lawrence, isFirst: true)
+        g12Cell.set(backgroundStyle: .lawrence, isFirst: true)
+        g12Cell.leftImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        g12Cell.leftImageTintColor = .themeJacob
+        g12Cell.topText = "G12 - Title"
+        g12Cell.bottomText = "Subtitle"
+        g12Cell.leftBadgeText = "123"
+        g12Cell.rightBadgeText = "456"
+        g12Cell.valueTopText = "Top"
+        g12Cell.valueBottomText = "Bottom"
+
+        g14Cell.set(backgroundStyle: .lawrence)
         g14Cell.leftImageTintColor = .themeJacob
         g14Cell.leftImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         g14Cell.topText = "G14 - Title"
@@ -181,12 +204,14 @@ extension CellsController: SectionsDataSource {
                         StaticRow(cell: a9Cell, id: "a9", height: .heightCell48),
                         StaticRow(cell: b5Cell, id: "b5", height: .heightCell48),
                         StaticRow(cell: c5Cell, id: "c5", height: .heightCell48),
+                        StaticRow(cell: c6Cell, id: "c6", height: .heightCell48),
                         StaticRow(cell: c9Cell, id: "c9", height: .heightCell48),
                         StaticRow(cell: dCell, id: "d", height: .heightCell48),
                         StaticRow(cell: cell9, id: "9", dynamicHeight: { [unowned self] in
                             Cell9.height(containerWidth: $0, backgroundStyle: .lawrence, viewItem: cell9ViewItem)
                         }),
                         StaticRow(cell: emptyCell, id: "empty", height: 12),
+                        StaticRow(cell: g12Cell, id: "g12", height: .heightDoubleLineCell, autoDeselect: true),
                         StaticRow(cell: g14Cell, id: "g14", height: .heightDoubleLineCell, autoDeselect: true),
                         StaticRow(cell: g19Cell, id: "g19", height: .heightDoubleLineCell, autoDeselect: true),
                         StaticRow(cell: g21Cell, id: "g21", height: .heightDoubleLineCell),

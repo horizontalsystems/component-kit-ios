@@ -12,7 +12,7 @@ open class LeftAView: UIView {
         imageView.snp.makeConstraints { maker in
             maker.leading.equalToSuperview()
             maker.centerY.equalToSuperview()
-            maker.size.equalTo(20)
+            maker.size.equalTo(CGFloat.iconSize20)
         }
 
         imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -51,6 +51,12 @@ open class LeftAView: UIView {
     public var imageTintColor: UIColor? {
         get { imageView.tintColor }
         set { imageView.tintColor = newValue }
+    }
+
+    public func set(imageSize: CGFloat) {
+        imageView.snp.updateConstraints { maker in
+            maker.size.equalTo(imageSize)
+        }
     }
 
 }

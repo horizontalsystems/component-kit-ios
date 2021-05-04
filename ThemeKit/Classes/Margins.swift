@@ -43,4 +43,7 @@ extension CGFloat {
     public static let heightDoubleLineCell: CGFloat = 60
     public static let heightButton: CGFloat = 50
     public static let heightBottomWrapperBar: CGFloat = 98
+
+    public static let iconSize20: CGFloat = 20
+    public static let iconSize24: CGFloat = 24
 }
