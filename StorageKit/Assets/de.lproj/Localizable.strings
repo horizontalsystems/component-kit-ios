@@ -1,3 +1,3 @@
 "no_passcode.info_text" = "Für diese App ist es erforderlich, dass auf diesem Telefon die Zugangssperre (Bildschirmsperre) aktiviert ist.\n\nSie können die Bildschirmsperre in den iOS-Einstellungen ein- und ausschalten.\n\nBitte beachten Sie: Wenn Sie die PIN im Betriebssystem (dem OS Ihres Telefons) ausgeschaltet haben, sind die Sicherheitsmaßnahmen im Safe Storage Ihres Telefons für vorher gespeicherte Daten ungültig geworden. Sie müssen daher Ihre Wallet-Keys wiederherstellen, um an Ihr Wallet zu gelangen.";
-"jailbreak.info_text" = "The Unstoppable team recommends running app only on non-rooted (not jailbroken) phones.\n\nPlease note when you use a rooted device the app can no longer guarantee the safety of your cryptocurrency from malicious software.";
-"button.i_understand" = "I Understand";
+"jailbreak.info_text" = "Das Unstoppable-Team empfiehlt, die App nur auf nicht gerooteten (nicht jailbroken) Mobiltelefonen auszuführen.\n\nBitte beachten Sie, wenn Sie ein gerootetes Gerät verwenden, kann die App die Sicherheit Ihrer Kryptowährung vor bösartiger Software nicht mehr garantieren.";
+"button.i_understand" = "Ich stimme zu";
