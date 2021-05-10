@@ -17,6 +17,7 @@ class CellsController: ThemeViewController {
     private let c6Cell = C6Cell()
     private let c9Cell = C9Cell()
     private let dCell = DCell()
+    private let d20Cell = D20Cell()
     private let cell9ViewItem = CopyableSecondaryButton.ViewItem(value: "0xa1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6")
     private let cell9 = Cell9()
     private let emptyCell = EmptyCell()
@@ -111,6 +112,12 @@ class CellsController: ThemeViewController {
 
         dCell.set(backgroundStyle: .lawrence)
         dCell.title = "D - Title"
+
+        d20Cell.set(backgroundStyle: .lawrence)
+        d20Cell.title = "D 20 - Title"
+        d20Cell.value = "BADGE"
+        d20Cell.valueBackground = .themeRemus
+        d20Cell.image = UIImage(named: "icon_20")
 
         cell9.set(backgroundStyle: .lawrence, isLast: true)
         cell9.viewItem = cell9ViewItem
@@ -207,6 +214,7 @@ extension CellsController: SectionsDataSource {
                         StaticRow(cell: c6Cell, id: "c6", height: .heightCell48),
                         StaticRow(cell: c9Cell, id: "c9", height: .heightCell48),
                         StaticRow(cell: dCell, id: "d", height: .heightCell48),
+                        StaticRow(cell: d20Cell, id: "d20", height: .heightCell48, autoDeselect: true),
                         StaticRow(cell: cell9, id: "9", dynamicHeight: { [unowned self] in
                             Cell9.height(containerWidth: $0, backgroundStyle: .lawrence, viewItem: cell9ViewItem)
                         }),
