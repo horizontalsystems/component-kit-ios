@@ -1,0 +1,3 @@
+"access_camera.message" = "Bu uygulama için kameranıza erişim reddedildi, ayarlara gidip erişime izin verebilirsiniz";
+"access_camera.not_supported" = "Cihazınız bir öğeden kod taramayı desteklemiyor. Lütfen kameralı bir cihaz kullanın.";
+"access_camera.settings" = "Ayarları'na gidin";

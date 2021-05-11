@@ -1,0 +1,3 @@
+"access_camera.message" = "Zugriff auf Ihre Kamera für diese App wurde verweigert, Sie können zu Einstellungen gehen und den Zugriff erlauben";
+"access_camera.not_supported" = "Ihr Gerät unterstützt kein Scannen eines Codes von einem Element. Bitte verwenden Sie ein Gerät mit einer Kamera.";
+"access_camera.settings" = "Geh zu den Einstellungen";

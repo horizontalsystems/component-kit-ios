@@ -1,0 +1,3 @@
+"access_camera.message" = "L'accès à votre caméra pour cette application a été refusé, vous pouvez aller dans les paramètres et autoriser l'accès";
+"access_camera.not_supported" = "Votre appareil ne prend pas en charge la numérisation d'un code à partir d'un objet. Veuillez utiliser un appareil avec une caméra.";
+"access_camera.settings" = "Accéder aux paramètres";
