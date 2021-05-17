@@ -76,6 +76,31 @@ class PinController: ThemeViewController {
         updateUI()
 
         App.shared.pinKit.lock()
+
+        let stabView = UIView()
+
+        let fixedSizeView = UIView()
+        stabView.addSubview(fixedSizeView)
+        fixedSizeView.snp.makeConstraints { maker in
+            maker.edges.equalToSuperview()
+            maker.width.height.equalTo(50)
+        }
+
+        let testButton = ThemeButton()
+
+        stabView.addSubview(testButton)
+        testButton.snp.makeConstraints { maker in
+            maker.edges.equalToSuperview()
+        }
+
+        testButton.setImage(UIImage(named: "Cell Icon"), for: .normal)
+        testButton.setImageTintColor(.red, for: .normal)
+
+        view.addSubview(stabView)
+        stabView.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview()
+            maker.top.equalTo(clearPinButton.snp.bottom).offset(CGFloat.margin32)
+        }
     }
 
     private func updateUI() {

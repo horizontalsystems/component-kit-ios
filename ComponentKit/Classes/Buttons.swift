@@ -27,6 +27,7 @@ open class ThemeButton: UIButton {
     private var backgroundGradients = [UInt: [UIColor]]()
     private var borderColors: [UInt: UIColor] = [UIControl.State.normal.rawValue: .clear]
 
+    private var originalButtonImage: UIImage?
     private var imageTintColors = [UIControl.State: UIColor]()
 
     private var style: ThemeButtonStyle?
@@ -170,8 +171,8 @@ open class ThemeButton: UIButton {
     public func setImageTintColor(_ tintColor: UIColor?, for state: UIControl.State) {
         imageTintColors[state] = tintColor
 
-        if let image = imageView?.image, let color = tintColor {
-            super.setImage(image.tinted(with: color), for: state)
+        if let color = tintColor {
+            super.setImage(originalButtonImage?.tinted(with: color), for: state)
         }
     }
 
@@ -180,9 +181,13 @@ open class ThemeButton: UIButton {
     }
 
     open override func setImage(_ image: UIImage?, for state: State) {
-        super.setImage(image, for: state)
+        originalButtonImage = image
 
-        updateImageTintColor()
+        if let tintColor = imageTintColors[state] {
+            super.setImage(image?.tinted(with: tintColor), for: state)
+        } else {
+            super.setImage(image, for: state)
+        }
     }
 
     private func updateImageTintColor() {
