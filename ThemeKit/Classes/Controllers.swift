@@ -99,12 +99,8 @@ open class ThemeTabBarController: UITabBarController {
 }
 
 open class ThemeViewController: UIViewController {
-    private let gradient: Bool
-    private var gradientLayer = CAGradientLayer()
 
-    public init(gradient: Bool = true) {
-        self.gradient = gradient
-
+    public init() {
         super.init(nibName: nil, bundle: nil)
 
         modalPresentationStyle = .overFullScreen
@@ -114,35 +110,14 @@ open class ThemeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override open func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.layer.insertSublayer(gradientLayer, at: 0)
-
-        updateUITheme()
+        view.backgroundColor = .themeTyler
     }
 
     override open var preferredStatusBarStyle: UIStatusBarStyle {
         .themeDefault
-    }
-
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        updateUITheme()
-    }
-
-    private func updateUITheme() {
-        guard gradient else {
-            return
-        }
-
-        CATransaction.begin()
-        CATransaction.setDisableActions(true)
-            gradientLayer.frame = view.bounds
-            gradientLayer.startPoint = CGPoint(x: 0, y: 160 / view.bounds.height)
-            gradientLayer.colors = [UIColor.themeTyler.cgColor, UIColor.themeHelsing.cgColor]
-        CATransaction.commit()
     }
 
 }

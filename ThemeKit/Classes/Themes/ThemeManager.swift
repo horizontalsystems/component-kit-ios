@@ -56,14 +56,19 @@ public class Theme {
     }
 
     public static func updateNavigationBarTheme() {
-        let coloredAppearance = UINavigationBarAppearance()
-        coloredAppearance.configureWithTransparentBackground()
-        coloredAppearance.backgroundColor = .themeNavigationBarBackground
-        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.themeOz]
-        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.themeOz]
+        let standardAppearance = UINavigationBarAppearance()
+        standardAppearance.configureWithTransparentBackground()
+        standardAppearance.backgroundColor = .themeNavigationBarBackground
+        standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.themeOz]
+        standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.themeOz]
 
-        UINavigationBar.appearance().standardAppearance = coloredAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+        let scrollEdgeAppearance = UINavigationBarAppearance()
+        scrollEdgeAppearance.configureWithTransparentBackground()
+        scrollEdgeAppearance.titleTextAttributes = [.foregroundColor: UIColor.themeOz]
+        scrollEdgeAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.themeOz]
+
+        UINavigationBar.appearance().standardAppearance = standardAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = scrollEdgeAppearance
     }
 
 }

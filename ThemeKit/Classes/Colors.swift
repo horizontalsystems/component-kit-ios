@@ -13,12 +13,12 @@ extension UIColor {
     public static let themeLightGray = UIColor(hex: 0xc8c7cc)
     public static let themeWhite = UIColor(hex: 0xffffff)
     public static let themeSteelDark = UIColor(hex: 0x252933)
-    public static let themeSteelLight = UIColor(hex: 0xefeff4)
+    public static let themeSteelLight = UIColor(hex: 0xe1e1e5)
     public static let themeDark = UIColor(hex: 0x13151a)
     public static let themeDark96 = UIColor(hex: 0x13151a, alpha: 0.96)
     public static let themeDarker = UIColor(hex: 0x0f1014)
-    public static let themeLight = UIColor(hex: 0xf5f5f5)
-    public static let themeLight96 = UIColor(hex: 0xf5f5f5, alpha: 0.96)
+    public static let themeLight = UIColor(hex: 0xf0f0f0)
+    public static let themeLight96 = UIColor(hex: 0xf0f0f0, alpha: 0.96)
     public static let themeBlack50 = UIColor(hex: 0x000000, alpha: 0.5)
     public static let themeWhite50 = UIColor(hex: 0xffffff, alpha: 0.5)
     public static let themeSteel10 = UIColor(hex: 0x73798c, alpha: 0.1)
@@ -31,8 +31,8 @@ extension UIColor {
     public static let themeLawrencePressedD = UIColor(hex: 0x353842)
     public static let themeLawrencePressedL = UIColor(hex: 0xe3e4e8)
     public static let themeStronbuy = UIColor(hex: 0x1a60ff)
-    public static let themeSteelDark10 = UIColor(hex: 0x1C1F27)
-    public static let themeSteelLight10 = UIColor(hex: 0xE7E9EC)
+    public static let themeSteelDark10 = UIColor(hex: 0x1c1f27)
+    public static let themeSteelLight10 = UIColor(hex: 0xd6d7dd)
 }
 
 extension UIColor {
