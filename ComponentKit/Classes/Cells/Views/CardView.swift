@@ -16,9 +16,6 @@ open class CardView: UIView {
 
         roundedBackground.backgroundColor = .themeLawrence
         roundedBackground.layer.cornerRadius = .cornerRadius4x
-        roundedBackground.layer.shadowRadius = .cornerRadius1x
-        roundedBackground.layer.shadowOffset = CGSize(width: 0, height: 4)
-        roundedBackground.layer.shadowOpacity = 1
 
         addSubview(clippingView)
         clippingView.snp.makeConstraints { maker in
