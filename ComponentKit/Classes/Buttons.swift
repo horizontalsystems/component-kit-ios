@@ -183,6 +183,8 @@ open class ThemeButton: UIButton {
     open override func setImage(_ image: UIImage?, for state: State) {
         originalButtonImage = image
 
+        super.setImage(image, for: state)
+
         updateImageTintColor()
     }
 
@@ -371,9 +373,9 @@ extension ThemeButton {
 
     private static func contentEdgeInsets(for style: ThemeButtonStyle) -> UIEdgeInsets {
         switch style {
-        case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin2x, bottom: 15, right: .margin2x)
-        case .secondaryDefault, .secondaryTransparent: return UIEdgeInsets(top: 5.5, left: .margin4x, bottom: 5.5, right: .margin4x)
-        case .secondaryTransparentIcon: return UIEdgeInsets(top: 5.5, left: .margin16 + .margin4, bottom: 5.5, right: .margin8)
+        case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 13, left: .margin2x, bottom: 13, right: .margin2x)
+        case .secondaryDefault, .secondaryTransparent: return UIEdgeInsets(top: 4, left: .margin4x, bottom: 4, right: .margin4x)
+        case .secondaryTransparentIcon: return UIEdgeInsets(top: 4, left: .margin16 + .margin4, bottom: 4, right: .margin8)
         case .tertiary: return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         case .secondaryIcon: return UIEdgeInsets(top: .margin1x, left: .margin1x, bottom: .margin1x, right: .margin1x)
         }
