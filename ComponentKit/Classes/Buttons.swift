@@ -183,20 +183,12 @@ open class ThemeButton: UIButton {
     open override func setImage(_ image: UIImage?, for state: State) {
         originalButtonImage = image
 
-        if let tintColor = imageTintColors[state] {
-            super.setImage(image?.tinted(with: tintColor), for: state)
-        } else {
-            super.setImage(image, for: state)
-        }
+        updateImageTintColor()
     }
 
     private func updateImageTintColor() {
-        guard let image = imageView?.image else {
-            return
-        }
-
         imageTintColors.forEach { state, tintColor in
-            super.setImage(image.tinted(with: tintColor), for: state)
+            super.setImage(originalButtonImage?.tinted(with: tintColor), for: state)
         }
     }
 
