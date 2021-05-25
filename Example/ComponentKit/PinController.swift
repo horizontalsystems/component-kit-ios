@@ -102,6 +102,19 @@ class PinController: ThemeViewController {
             maker.leading.equalToSuperview()
             maker.top.equalTo(clearPinButton.snp.bottom).offset(CGFloat.margin32)
         }
+
+        let primaryTestButton = ThemeButton()
+
+        view.addSubview(primaryTestButton)
+        primaryTestButton.snp.makeConstraints { maker in
+            maker.top.equalTo(stabView)
+            maker.leading.equalTo(stabView.snp.trailing).offset(16)
+            maker.width.equalTo(100)
+            maker.height.equalTo(50)
+        }
+
+        primaryTestButton.apply(style: .primaryGreen)
+        primaryTestButton.setImage(UIImage(named: "arrow_swap_2_24"), for: .normal)
     }
 
     private func updateUI() {
