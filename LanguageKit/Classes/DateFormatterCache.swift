@@ -3,22 +3,26 @@ import Foundation
 class DateFormatterCache {
     static let shared = DateFormatterCache()
 
+    private let queue = DispatchQueue(label: "io.horizontalsystems.language_kit.date_formatter_cache", qos: .userInitiated)
+
     private var formatters = [CacheKey: DateFormatter]()
 
     func getFormatter(forFormat format: String) -> DateFormatter {
-        let key = CacheKey(format: format, language: LanguageManager.shared.currentLanguage)
+        queue.sync {
+            let key = CacheKey(format: format, language: LanguageManager.shared.currentLanguage)
 
-        if let formatter = formatters[key] {
+            if let formatter = formatters[key] {
+                return formatter
+            }
+
+            let formatter = DateFormatter()
+            formatter.locale = LanguageManager.shared.currentLocale
+            formatter.setLocalizedDateFormatFromTemplate(format)
+
+            formatters[key] = formatter
+
             return formatter
         }
-
-        let formatter = DateFormatter()
-        formatter.locale = LanguageManager.shared.currentLocale
-        formatter.setLocalizedDateFormatFromTemplate(format)
-
-        formatters[key] = formatter
-
-        return formatter
     }
 
     private struct CacheKey: Hashable {
