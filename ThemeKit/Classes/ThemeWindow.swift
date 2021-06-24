@@ -14,8 +14,6 @@ open class ThemeWindow: UIWindow {
                     self?.update(themeMode: themeMode)
                 })
                 .disposed(by: disposeBag)
-
-        backgroundColor = .themeTyler
     }
 
     required public init?(coder aDecoder: NSCoder) {
