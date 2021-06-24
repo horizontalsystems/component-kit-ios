@@ -84,6 +84,11 @@ open class G14Cell: BaseSelectableThemeCell {
         set { rightView.topText = newValue }
     }
 
+    public var primaryValueTextColor: UIColor {
+        get { rightView.topTextColor }
+        set { rightView.topTextColor = newValue }
+    }
+
     public var secondaryTitleText: String? {
         get { rightView.bottomTitleText }
         set { rightView.bottomTitleText = newValue }

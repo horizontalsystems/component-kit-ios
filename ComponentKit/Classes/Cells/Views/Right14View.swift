@@ -104,6 +104,11 @@ open class Right14View: UIView {
         set { topLabel.text = newValue }
     }
 
+    public var topTextColor: UIColor {
+        get { topLabel.textColor }
+        set { topLabel.textColor = newValue }
+    }
+    
     public var bottomTitleText: String? {
         get { bottomTitleLabel.text }
         set { bottomTitleLabel.text = newValue }
