@@ -63,7 +63,7 @@ public class HudHelper {
         switch type {
         case .success: statusImage = ComponentKit.image(named: "checkmark_48")
         case .error: statusImage = ComponentKit.image(named: "close_48")?.tinted(with: .themeOz)
-        case .attention: statusImage = ComponentKit.image(named: "Hud Attention Icon")
+        case .attention: statusImage = ComponentKit.image(named: "attention_48")
         }
 
         guard let image = statusImage else {
