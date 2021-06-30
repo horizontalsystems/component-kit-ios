@@ -36,7 +36,9 @@ extension SetPinRouter {
         presenter.view = viewController
         router.viewController = viewController
 
-        return ThemeNavigationController(rootViewController: viewController)
+        let navigationController = ThemeNavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        return navigationController
     }
 
 }

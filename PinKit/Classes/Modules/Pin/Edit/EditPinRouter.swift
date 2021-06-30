@@ -22,7 +22,7 @@ extension EditPinRouter {
         let controller = PinViewController(delegate: presenter)
 
         let navigationController = ThemeNavigationController(rootViewController: controller)
-        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.modalPresentationStyle = .fullScreen
 
         interactor.delegate = presenter
         presenter.view = controller

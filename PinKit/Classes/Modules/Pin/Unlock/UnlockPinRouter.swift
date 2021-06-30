@@ -47,7 +47,7 @@ extension UnlockPinRouter {
         presenter.view = viewController
         router.viewController = viewController
 
-        viewController.modalTransitionStyle = .crossDissolve
+        viewController.modalPresentationStyle = .fullScreen
 
         return viewController
     }

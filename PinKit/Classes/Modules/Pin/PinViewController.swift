@@ -136,7 +136,6 @@ extension PinViewController: IPinView {
             }
             previousView = view
         }
-        view.layoutIfNeeded()
     }
 
     func show(page index: Int) {
