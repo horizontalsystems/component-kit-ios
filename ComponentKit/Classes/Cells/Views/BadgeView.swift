@@ -22,7 +22,7 @@ public class BadgeView: UIView {
 
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.setContentHuggingPriority(.required, for: .horizontal)
-        label.textColor = .themeGray
+        label.textColor = .themeBran
         label.font = .microSB
     }
 
