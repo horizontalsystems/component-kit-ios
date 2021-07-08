@@ -20,9 +20,19 @@ open class A7Cell: BaseThemeCell {
         set { leftView.text = newValue }
     }
 
+    public var titleColor: UIColor {
+        get { leftView.textColor }
+        set { leftView.textColor = newValue }
+    }
+
     public var titleImage: UIImage? {
         get { leftView.image }
         set { leftView.image = newValue }
+    }
+
+    public var titleImageTintColor: UIColor? {
+        get { leftView.imageTintColor }
+        set { leftView.imageTintColor = newValue }
     }
 
     public func set(titleImageSize: CGFloat) {
