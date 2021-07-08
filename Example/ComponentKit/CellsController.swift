@@ -11,6 +11,7 @@ class CellsController: ThemeViewController {
     private let aCell = ACell()
     private let a1Cell = A1Cell()
     private let a5Cell = A5Cell()
+    private let a7Cell = A7Cell()
     private let a9Cell = A9Cell()
     private let b5Cell = B5Cell()
     private let c5Cell = C5Cell()
@@ -70,8 +71,15 @@ class CellsController: ThemeViewController {
         a5Cell.set(backgroundStyle: .lawrence)
         a5Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         a5Cell.titleImageTintColor = .themeJacob
-        a5Cell.title = "A5 - Title A5 - Title A5 - Title"
+        a5Cell.title = "A5 - Title"
         a5Cell.value = "Some Value"
+
+        a7Cell.set(backgroundStyle: .lawrence)
+        a7Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        a7Cell.titleImageTintColor = .themeJacob
+        a7Cell.title = "A7 - Title"
+        a7Cell.titleColor = .themeGray
+        a7Cell.value = "Some Value"
 
         a9Cell.set(backgroundStyle: .lawrence)
         a9Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
@@ -214,6 +222,7 @@ extension CellsController: SectionsDataSource {
                         StaticRow(cell: aCell, id: "a", height: .heightCell48, autoDeselect: true),
                         StaticRow(cell: a1Cell, id: "a1", height: .heightCell48, autoDeselect: true),
                         StaticRow(cell: a5Cell, id: "a5", height: .heightCell48, autoDeselect: true, action: { print("On Tap A5") }),
+                        StaticRow(cell: a7Cell, id: "a7", height: .heightCell48, autoDeselect: true, action: { print("On Tap A7") }),
                         StaticRow(cell: a9Cell, id: "a9", height: .heightCell48),
                         StaticRow(cell: b5Cell, id: "b5", height: .heightCell48),
                         StaticRow(cell: c5Cell, id: "c5", height: .heightCell48),
