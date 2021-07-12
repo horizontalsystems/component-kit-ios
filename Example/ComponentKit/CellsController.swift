@@ -131,7 +131,9 @@ class CellsController: ThemeViewController {
         d20Cell.title = "D 20 - Title"
         d20Cell.value = "BADGE"
         d20Cell.valueBackground = .themeRemus
-        d20Cell.image = UIImage(named: "icon_20")
+        d20Cell.image = UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate)
+        d20Cell.imageTintColor = .themeLucian
+        d20Cell.onTapIcon = { print("Tap D20 Icon") }
 
         cell9.set(backgroundStyle: .lawrence, isLast: true)
         cell9.viewItem = cell9ViewItem
@@ -230,7 +232,7 @@ extension CellsController: SectionsDataSource {
                         StaticRow(cell: c9Cell, id: "c9", height: .heightCell48),
                         StaticRow(cell: dCell, id: "d", height: .heightCell48),
                         StaticRow(cell: db7Cell, id: "db7", height: .heightCell48),
-                        StaticRow(cell: d20Cell, id: "d20", height: .heightCell48, autoDeselect: true),
+                        StaticRow(cell: d20Cell, id: "d20", height: .heightCell48),
                         StaticRow(cell: cell9, id: "9", dynamicHeight: { [unowned self] in
                             Cell9.height(containerWidth: $0, backgroundStyle: .lawrence, viewItem: cell9ViewItem)
                         }),
