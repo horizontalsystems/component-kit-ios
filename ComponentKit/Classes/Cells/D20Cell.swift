@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-open class D20Cell: BaseSelectableThemeCell {
+open class D20Cell: BaseThemeCell {
     private let leftView = LeftDView()
     private let rightView = Right20View()
 
@@ -43,6 +43,11 @@ open class D20Cell: BaseSelectableThemeCell {
     public var imageTintColor: UIColor? {
         get { rightView.imageTintColor }
         set { rightView.imageTintColor = newValue }
+    }
+
+    public var onTapIcon: (() -> ())? {
+        get { rightView.onTapIcon }
+        set { rightView.onTapIcon = newValue }
     }
 
 }
