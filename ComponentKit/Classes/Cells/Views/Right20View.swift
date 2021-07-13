@@ -3,9 +3,7 @@ import SnapKit
 
 open class Right20View: UIView {
     private let badgeView = BadgeView()
-    private let button = UIButton()
-
-    var onTapIcon: (() -> ())?
+    private let iconImageView = UIImageView()
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,24 +17,19 @@ open class Right20View: UIView {
         badgeView.font = .microSB
         badgeView.textColor = .themeTyler
 
-        addSubview(button)
-        button.snp.makeConstraints { maker in
+        addSubview(iconImageView)
+        iconImageView.snp.makeConstraints { maker in
             maker.leading.equalTo(badgeView.snp.trailing).offset(CGFloat.margin6)
             maker.trailing.equalToSuperview()
             maker.centerY.equalToSuperview()
             maker.size.equalTo(CGFloat.iconSize20)
         }
 
-        button.tintColor = .themeGray
-        button.addTarget(self, action: #selector(_onTapIcon), for: .touchUpInside)
+        iconImageView.tintColor = .themeGray
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    @objc private func _onTapIcon() {
-        onTapIcon?()
     }
 
     public var text: String? {
@@ -55,13 +48,13 @@ open class Right20View: UIView {
     }
 
     public var image: UIImage? {
-        get { button.image(for: .normal) }
-        set { button.setImage(newValue, for: .normal) }
+        get { iconImageView.image }
+        set { iconImageView.image = newValue }
     }
 
     public var imageTintColor: UIColor? {
-        get { button.tintColor }
-        set { button.tintColor = newValue }
+        get { iconImageView.tintColor }
+        set { iconImageView.tintColor = newValue }
     }
 
 }
