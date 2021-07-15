@@ -14,6 +14,7 @@ open class Right2View: UIView {
             maker.centerY.equalToSuperview()
         }
 
+        label.setContentHuggingPriority(.required, for: .horizontal)
         label.font = .subhead1
         label.textColor = .themeGray
 
