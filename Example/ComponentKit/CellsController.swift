@@ -28,6 +28,7 @@ class CellsController: ThemeViewController {
     private let g14Cell = G14Cell()
     private let g19Cell = G19Cell()
     private let g21Cell = G21Cell()
+    private let h23Cell = H23Cell()
 
     private var themeModeIterator = 0
     private var themeBarButtonItem: UIBarButtonItem?
@@ -172,13 +173,28 @@ class CellsController: ThemeViewController {
         g19Cell.valueImage = UIImage(named: "icon_20")?.tinted(with: .themeLucian)
         g19Cell.onTapValue = { print("Tap G19") }
 
-        g21Cell.set(backgroundStyle: .lawrence, isLast: true)
+        g21Cell.set(backgroundStyle: .lawrence)
         g21Cell.titleImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
         g21Cell.title = "G21 - Title G21 - Title G21 - Title G21 - Title G21 - Title G21 - Title"
         g21Cell.subtitle = "Subtitle"
         g21Cell.rightButtonImage = UIImage(named: "icon_20")
         g21Cell.onTapRightButton = { print("Tap G21 Button") }
         g21Cell.onToggle = { print("Toggle G21: \($0)") }
+
+        h23Cell.set(backgroundStyle: .lawrence, isLast: true)
+        h23Cell.set(spinnerProgress: 0.25)
+        h23Cell.leftImage = UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate)
+        h23Cell.leftImageTintColor = .themeJacob
+        h23Cell.topText = "H23 - Title"
+        h23Cell.bottomText = "Subtitle"
+        h23Cell.valueTopText = "Top"
+        h23Cell.valueTopTextColor = .themeRemus
+        h23Cell.valueLeftIconImage = UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate)
+        h23Cell.valueLeftIconTinColor = .themeJacob
+        h23Cell.valueRightIconImage = UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate)
+        h23Cell.valueRightIconTinColor = .themeLucian
+        h23Cell.valueBottomText = "Bottom"
+        h23Cell.valueBottomTextColor = .themeLucian
     }
 
     @objc func onToggleLightMode() {
@@ -225,6 +241,7 @@ extension CellsController: SectionsDataSource {
             Section(
                     id: "main",
                     headerState: .margin(height: .margin12),
+                    footerState: .margin(height: .margin32),
                     rows: [
                         StaticRow(cell: aCell, id: "a", height: .heightCell48, autoDeselect: true),
                         StaticRow(cell: a1Cell, id: "a1", height: .heightCell48, autoDeselect: true),
@@ -247,6 +264,7 @@ extension CellsController: SectionsDataSource {
                         StaticRow(cell: g14Cell, id: "g14", height: .heightDoubleLineCell, autoDeselect: true),
                         StaticRow(cell: g19Cell, id: "g19", height: .heightDoubleLineCell, autoDeselect: true),
                         StaticRow(cell: g21Cell, id: "g21", height: .heightDoubleLineCell),
+                        StaticRow(cell: h23Cell, id: "h23", height: .heightDoubleLineCell, autoDeselect: true, action: { [weak self] in self?.h23Cell.set(spinnerProgress: 0.75) }),
                     ]
             )
         ]
