@@ -67,6 +67,9 @@
 		79E8B43CE76304E677BE5B77 /* Pods-ComponentKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentKitExample.debug.xcconfig"; path = "Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample.debug.xcconfig"; sourceTree = "<group>"; };
 		7EC8ADF13B81AF3CD95CD5DF /* Pods-PinKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinKitTests.release.xcconfig"; path = "Target Support Files/Pods-PinKitTests/Pods-PinKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		BF959EB2797C954E19B19758 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		D316631526A16F4500E6630B /* ComponentKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = ComponentKit.swift.podspec; path = ../ComponentKit.swift.podspec; sourceTree = "<group>"; };
+		D316631626A16F4500E6630B /* ScanQrKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = ScanQrKit.swift.podspec; path = ../ScanQrKit.swift.podspec; sourceTree = "<group>"; };
+		D316631726A16F4500E6630B /* ModuleKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = ModuleKit.swift.podspec; path = ../ModuleKit.swift.podspec; sourceTree = "<group>"; };
 		D3A8073D23DFF92900BD50FB /* LanguageKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = LanguageKit.swift.podspec; path = ../LanguageKit.swift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D3A807AB23E93D0E00BD50FB /* StorageKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = StorageKit.swift.podspec; path = ../StorageKit.swift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D3F0072F23F11A2400AB7250 /* PinKit.swift.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = PinKit.swift.podspec; path = ../PinKit.swift.podspec; sourceTree = "<group>"; };
@@ -192,6 +195,9 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				D316631526A16F4500E6630B /* ComponentKit.swift.podspec */,
+				D316631726A16F4500E6630B /* ModuleKit.swift.podspec */,
+				D316631626A16F4500E6630B /* ScanQrKit.swift.podspec */,
 				D3F0073023F11A2400AB7250 /* CurrencyKit.swift.podspec */,
 				D3F0072F23F11A2400AB7250 /* PinKit.swift.podspec */,
 				D3A807AB23E93D0E00BD50FB /* StorageKit.swift.podspec */,
