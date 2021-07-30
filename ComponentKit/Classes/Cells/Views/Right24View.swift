@@ -1,9 +1,17 @@
 import UIKit
 import SnapKit
+import HUD
 
-open class Right6View: UIView {
+open class Right24View: UIView {
     private let label = UILabel()
-    private let imageView = UIImageView()
+    private let spinnerView = HUDProgressView(
+            progress: 0,
+            strokeLineWidth: 2,
+            radius: 7,
+            strokeColor: .themeGray,
+            donutColor: .themeSteel10,
+            duration: 2
+    )
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,12 +26,12 @@ open class Right6View: UIView {
         label.textColor = .themeLeah
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
 
-        addSubview(imageView)
-        imageView.snp.makeConstraints { maker in
-            maker.leading.equalTo(label.snp.trailing).offset(CGFloat.margin2x)
+        addSubview(spinnerView)
+        spinnerView.snp.makeConstraints { maker in
+            maker.leading.equalTo(label.snp.trailing).offset(CGFloat.margin8)
             maker.trailing.equalToSuperview()
             maker.centerY.equalToSuperview()
-            maker.size.equalTo(CGFloat.iconSize20)
+            maker.size.equalTo(16)
         }
     }
 
@@ -36,19 +44,14 @@ open class Right6View: UIView {
         set { label.text = newValue }
     }
 
-    public var image: UIImage? {
-        get { imageView.image }
-        set { imageView.image = newValue }
-    }
-
-    public var imageTintColor: UIColor? {
-        get { imageView.tintColor }
-        set { imageView.tintColor = newValue }
-    }
-
     public var textColor: UIColor {
         get { label.textColor }
         set { label.textColor = newValue }
+    }
+
+    public func set(progress: Double) {
+        spinnerView.set(progress: Float(progress))
+        spinnerView.startAnimating()
     }
 
 }

@@ -14,14 +14,19 @@ class CellsController: ThemeViewController {
     private let a7Cell = A7Cell()
     private let a9Cell = A9Cell()
     private let b5Cell = B5Cell()
+    private let cCell = CCell()
+    private let c4Cell = C4Cell()
     private let c5Cell = C5Cell()
     private let c6Cell = C6Cell()
     private let c9Cell = C9Cell()
+    private let c24Cell = C24Cell()
     private let dCell = DCell()
     private let db7Cell = DB7Cell()
+    private let d9Cell = D9Cell()
+    private let d10Cell = D10Cell()
     private let d20Cell = D20Cell()
     private let f2Cell = F2Cell()
-    private let cell9ViewItem = CopyableSecondaryButton.ViewItem(value: "0xa1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6")
+    private let cell9ViewItem = CopyableSecondaryButton.ViewItem(type: .raw, value: "0xa1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6")
     private let cell9 = Cell9()
     private let emptyCell = EmptyCell()
     private let g12Cell = G12Cell()
@@ -87,13 +92,27 @@ class CellsController: ThemeViewController {
         a9Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         a9Cell.titleImageTintColor = .themeGray
         a9Cell.title = "A9 - Title"
-        a9Cell.viewItem = .init(value: "this-is-value")
+        a9Cell.viewItem = .init(type: .raw, value: "this-is-value")
 
         b5Cell.set(backgroundStyle: .lawrence)
         b5Cell.title = "B5 - Title"
         b5Cell.value = "Some Value"
         b5Cell.valueAction = { print("On Tap B5") }
         b5Cell.selectionStyle = .none
+
+        cCell.set(backgroundStyle: .lawrence)
+        cCell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        cCell.titleImageTintColor = .themeGray
+        cCell.title = "C - Title"
+//        cCell.titleImageAction = { print("C - Title Image Tap") }
+
+        c4Cell.set(backgroundStyle: .lawrence)
+        c4Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        c4Cell.titleImageTintColor = .themeGray
+        c4Cell.title = "C4 - Title"
+//        c4Cell.titleImageAction = { print("C4 - Title Image Tap") }
+        c4Cell.valueImage = UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate)
+        c4Cell.valueImageTintColor = .themeLucian
 
         c5Cell.set(backgroundStyle: .lawrence)
         c5Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
@@ -119,7 +138,16 @@ class CellsController: ThemeViewController {
         c9Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         c9Cell.title = "C9 - Title"
         c9Cell.titleImageAction = { print("C9 - Title Image Tap") }
-        c9Cell.viewItem = .init(value: "this-is-value")
+        c9Cell.viewItem = .init(type: .title(text: "Value Title"), value: "this-is-value")
+
+        c24Cell.set(backgroundStyle: .lawrence)
+        c24Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        c24Cell.titleImageTintColor = .themeJacob
+        c24Cell.title = "C24 - Title"
+        c24Cell.titleImageAction = { print("C24 - Title Image Tap") }
+        c24Cell.value = "Some Value"
+        c24Cell.set(progress: 0.75)
+        c24Cell.selectionStyle = .none
 
         dCell.set(backgroundStyle: .lawrence)
         dCell.title = "D - Title"
@@ -128,6 +156,16 @@ class CellsController: ThemeViewController {
         db7Cell.title = "DB7 - Title"
         db7Cell.titleBadgeText = "#123"
         db7Cell.value = "Some Value"
+
+        d9Cell.set(backgroundStyle: .lawrence)
+        d9Cell.title = "D9 - Title"
+        d9Cell.viewItem = .init(type: .image, value: "this-is-value")
+
+        d10Cell.set(backgroundStyle: .lawrence)
+        d10Cell.title = "D10 - Title"
+        d10Cell.viewItem = .init(type: .raw, value: "this-is-value")
+        d10Cell.set(iconButtonImage: UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate))
+        d10Cell.onTapIconButton = { print("D10 - on tap icon") }
 
         d20Cell.set(backgroundStyle: .lawrence)
         d20Cell.title = "D 20 - Title"
@@ -249,11 +287,16 @@ extension CellsController: SectionsDataSource {
                         StaticRow(cell: a7Cell, id: "a7", height: .heightCell48, autoDeselect: true, action: { print("On Tap A7") }),
                         StaticRow(cell: a9Cell, id: "a9", height: .heightCell48),
                         StaticRow(cell: b5Cell, id: "b5", height: .heightCell48),
+                        StaticRow(cell: cCell, id: "c", height: .heightCell48),
+                        StaticRow(cell: c4Cell, id: "c4", height: .heightCell48, autoDeselect: true, action: { print("On Tap C4") }),
                         StaticRow(cell: c5Cell, id: "c5", height: .heightCell48),
                         StaticRow(cell: c6Cell, id: "c6", height: .heightCell48),
                         StaticRow(cell: c9Cell, id: "c9", height: .heightCell48),
+                        StaticRow(cell: c24Cell, id: "c24", height: .heightCell48),
                         StaticRow(cell: dCell, id: "d", height: .heightCell48),
                         StaticRow(cell: db7Cell, id: "db7", height: .heightCell48),
+                        StaticRow(cell: d9Cell, id: "d9", height: .heightCell48),
+                        StaticRow(cell: d10Cell, id: "d10", height: .heightCell48),
                         StaticRow(cell: d20Cell, id: "d20", height: .heightCell48, autoDeselect: true),
                         StaticRow(cell: f2Cell, id: "f2", height: .heightDoubleLineCell, autoDeselect: true),
                         StaticRow(cell: cell9, id: "9", dynamicHeight: { [unowned self] in

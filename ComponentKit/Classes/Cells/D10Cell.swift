@@ -1,9 +1,9 @@
 import UIKit
 import SnapKit
 
-open class D7Cell: BaseThemeCell {
+open class D10Cell: BaseThemeCell {
     private let leftView = LeftDView()
-    private let rightView = Right7View()
+    private let rightView = Right10View()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -20,19 +20,18 @@ open class D7Cell: BaseThemeCell {
         set { leftView.text = newValue }
     }
 
-    public var value: String? {
-        get { rightView.text }
-        set { rightView.text = newValue }
+    public var viewItem: CopyableSecondaryButton.ViewItem {
+        get { rightView.viewItem }
+        set { rightView.viewItem = newValue }
     }
 
-    public var valueColor: UIColor {
-        get { rightView.textColor }
-        set { rightView.textColor = newValue }
+    public func set(iconButtonImage: UIImage?) {
+        rightView.set(iconButtonImage: iconButtonImage)
     }
 
-    public var valueItalic: Bool {
-        get { rightView.italic }
-        set { rightView.italic = newValue }
+    public var onTapIconButton: (() -> ())? {
+        get { rightView.onTapIconButton }
+        set { rightView.onTapIconButton = newValue }
     }
 
 }

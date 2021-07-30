@@ -14,6 +14,7 @@ open class Right1View: UIView {
         }
 
         disclosureImageView.tintColor = .themeGray
+        disclosureImageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         disclosureImageView.setContentHuggingPriority(.required, for: .horizontal)
     }
 

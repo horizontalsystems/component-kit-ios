@@ -1,9 +1,9 @@
 import UIKit
 import SnapKit
 
-open class C9Cell: BaseThemeCell {
-    private let leftView = LeftCView()
-    private let rightView = Right9View()
+open class C4MultiLineCell: BaseSelectableThemeCell {
+    private let leftView = LeftCMultiLineView()
+    private let rightView = Right4View()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,9 +35,23 @@ open class C9Cell: BaseThemeCell {
         set { leftView.imageAction = newValue }
     }
 
-    public var viewItem: CopyableSecondaryButton.ViewItem {
-        get { rightView.viewItem }
-        set { rightView.viewItem = newValue }
+    public var valueImage: UIImage? {
+        get { rightView.image }
+        set { rightView.image = newValue }
+    }
+
+    public var valueImageTintColor: UIColor? {
+        get { rightView.imageTintColor }
+        set { rightView.imageTintColor = newValue }
+    }
+
+}
+
+extension C4MultiLineCell {
+
+    public static func height(containerWidth: CGFloat, backgroundStyle: BackgroundStyle, title: String) -> CGFloat {
+        let titleWidth = containerWidth - Self.margin(backgroundStyle: backgroundStyle).width - Right4View.width - Self.middleInset - Self.rightInset
+        return LeftCMultiLineView.height(containerWidth: titleWidth, text: title)
     }
 
 }

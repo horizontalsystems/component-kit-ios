@@ -20,7 +20,7 @@ open class D9Cell: BaseThemeCell {
         set { leftView.text = newValue }
     }
 
-    public var viewItem: CopyableSecondaryButton.ViewItem? {
+    public var viewItem: CopyableSecondaryButton.ViewItem {
         get { rightView.viewItem }
         set { rightView.viewItem = newValue }
     }

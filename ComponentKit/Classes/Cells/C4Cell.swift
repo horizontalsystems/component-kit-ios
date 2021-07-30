@@ -1,14 +1,14 @@
 import UIKit
 import SnapKit
 
-open class A9Cell: BaseThemeCell {
-    private let leftView = LeftAView()
-    private let rightView = Right9View()
+open class C4Cell: BaseSelectableThemeCell {
+    private let leftView = LeftCView()
+    private let rightView = Right4View()
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        layout(leftView: leftView, rightView: rightView)
+        layout(leftView: leftView, leftInset: 0, rightView: rightView)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -30,13 +30,19 @@ open class A9Cell: BaseThemeCell {
         set { leftView.imageTintColor = newValue }
     }
 
-    public func set(titleImageSize: CGFloat) {
-        leftView.set(imageSize: titleImageSize)
+    public var titleImageAction: (() -> ())? {
+        get { leftView.imageAction }
+        set { leftView.imageAction = newValue }
     }
 
-    public var viewItem: CopyableSecondaryButton.ViewItem {
-        get { rightView.viewItem }
-        set { rightView.viewItem = newValue }
+    public var valueImage: UIImage? {
+        get { rightView.image }
+        set { rightView.image = newValue }
+    }
+
+    public var valueImageTintColor: UIColor? {
+        get { rightView.imageTintColor }
+        set { rightView.imageTintColor = newValue }
     }
 
 }

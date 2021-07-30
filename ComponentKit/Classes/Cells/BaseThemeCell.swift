@@ -121,10 +121,10 @@ open class BaseThemeCell: UITableViewCell {
         }
     }
 
-    public func layout(singleView: UIView) {
+    public func layout(singleView: UIView, leftInset: CGFloat = BaseThemeCell.leftInset) {
         wrapperView.addSubview(singleView)
         singleView.snp.makeConstraints { maker in
-            maker.leading.equalToSuperview().inset(Self.leftInset)
+            maker.leading.equalToSuperview().inset(leftInset)
             maker.trailing.equalToSuperview().inset(Self.rightInset)
             maker.top.bottom.equalToSuperview()
         }

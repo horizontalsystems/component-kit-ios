@@ -1,7 +1,9 @@
 import UIKit
 import SnapKit
 
-open class LeftCView: UIView {
+open class LeftCMultiLineView: UIView {
+    private static let font: UIFont = .subhead2
+
     private let imageButton = ThemeButton()
     private let label = UILabel()
 
@@ -27,11 +29,11 @@ open class LeftCView: UIView {
         addSubview(label)
         label.snp.makeConstraints { maker in
             maker.leading.equalTo(imageButton.snp.trailing)
-            maker.trailing.equalToSuperview()
-            maker.centerY.equalToSuperview()
+            maker.top.trailing.bottom.equalToSuperview()
         }
 
-        label.font = .subhead2
+        label.numberOfLines = 0
+        label.font = Self.font
         label.textColor = .themeGray
     }
 
@@ -56,6 +58,16 @@ open class LeftCView: UIView {
     public var imageTintColor: UIColor? {
         get { imageButton.imageTintColor(for: .normal) }
         set { imageButton.setImageTintColor(newValue, for: .normal) }
+    }
+
+}
+
+extension LeftCMultiLineView {
+
+    public static func height(containerWidth: CGFloat, text: String) -> CGFloat {
+        let textWidth = containerWidth - CGFloat.margin16 - CGFloat.iconSize20 - CGFloat.margin16
+        let textHeight = text.height(forContainerWidth: textWidth, font: font)
+        return textHeight + 31
     }
 
 }
