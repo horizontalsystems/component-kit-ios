@@ -15,6 +15,7 @@ open class LeftBView: UIView {
 
         label.font = .body
         label.textColor = .themeOz
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
 
     required public init?(coder aDecoder: NSCoder) {
