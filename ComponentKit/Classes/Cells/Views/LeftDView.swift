@@ -17,6 +17,7 @@ open class LeftDView: UIView {
 
         label.font = Self.font
         label.textColor = .themeGray
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
     }
 
     required public init?(coder aDecoder: NSCoder) {

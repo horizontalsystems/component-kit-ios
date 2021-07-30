@@ -35,13 +35,9 @@ open class Right10View: UIView {
         onTapIconButton?()
     }
 
-    public var viewItem: CopyableSecondaryButton.ViewItem? {
-        get {
-            button.viewItem
-        }
-        set {
-            button.viewItem = newValue
-        }
+    public var viewItem: CopyableSecondaryButton.ViewItem {
+        get { button.viewItem }
+        set { button.viewItem = newValue }
     }
 
     public func set(iconButtonImage: UIImage?) {

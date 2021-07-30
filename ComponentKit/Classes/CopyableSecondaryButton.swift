@@ -2,16 +2,25 @@ import UIKit
 
 public class CopyableSecondaryButton: ThemeButton {
 
-    public var viewItem: ViewItem? {
+    public var viewItem = ViewItem(type: .raw, value: "") {
         didSet {
-            setTitle(viewItem?.text, for: .normal)
+            switch viewItem.type {
+            case .image:
+                apply(style: .secondaryIcon)
+                apply(secondaryIconImage: ComponentKit.image(named: "copy_20"))
+            case .title(let text):
+                apply(style: .secondaryDefault)
+                setTitle(text, for: .normal)
+            case .raw:
+                apply(style: .secondaryDefault)
+                setTitle(viewItem.value, for: .normal)
+            }
         }
     }
 
     public override init() {
         super.init()
 
-        apply(style: .secondaryDefault)
         addTarget(self, action: #selector(onTapButton), for: .touchUpInside)
     }
 
@@ -20,10 +29,6 @@ public class CopyableSecondaryButton: ThemeButton {
     }
 
     @objc private func onTapButton() {
-        guard let viewItem = viewItem else {
-            return
-        }
-
         UIPasteboard.general.setValue(viewItem.value, forPasteboardType: "public.plain-text")
         HudHelper.instance.showSuccess(title: "alert.copied".localized)
     }
@@ -32,17 +37,19 @@ public class CopyableSecondaryButton: ThemeButton {
 
 extension CopyableSecondaryButton {
 
+    public enum ViewItemType {
+        case image
+        case title(text: String)
+        case raw
+    }
+
     public struct ViewItem {
-        public let title: String?
+        public let type: ViewItemType
         public let value: String
 
-        public init(title: String? = nil, value: String) {
-            self.title = title
+        public init(type: ViewItemType, value: String) {
+            self.type = type
             self.value = value
-        }
-
-        var text: String {
-            title ?? value
         }
     }
 
@@ -51,7 +58,14 @@ extension CopyableSecondaryButton {
 extension CopyableSecondaryButton {
 
     public static func height(containerWidth: CGFloat, viewItem: ViewItem) -> CGFloat {
-        ThemeButton.size(containerWidth: containerWidth, text: viewItem.text, style: .secondaryDefault).height
+        switch viewItem.type {
+        case .image:
+            return 28
+        case .title(let text):
+            return ThemeButton.size(containerWidth: containerWidth, text: text, style: .secondaryDefault).height
+        case .raw:
+            return ThemeButton.size(containerWidth: containerWidth, text: viewItem.value, style: .secondaryDefault).height
+        }
     }
 
 }

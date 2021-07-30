@@ -18,7 +18,7 @@ open class Right9View: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public var viewItem: CopyableSecondaryButton.ViewItem? {
+    public var viewItem: CopyableSecondaryButton.ViewItem {
         get {
             button.viewItem
         }

@@ -23,7 +23,7 @@ open class Cell9: BaseThemeCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public var viewItem: CopyableSecondaryButton.ViewItem? {
+    public var viewItem: CopyableSecondaryButton.ViewItem {
         get { button.viewItem }
         set { button.viewItem = newValue }
     }

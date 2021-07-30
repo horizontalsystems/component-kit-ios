@@ -1,7 +1,9 @@
 import UIKit
 import SnapKit
 
-open class Right7View: UIView {
+open class Right7MultiLineView: UIView {
+    private static let insets = UIEdgeInsets(top: 14, left: 0, bottom: 13, right: 0)
+
     private let label = UILabel()
 
     override public init(frame: CGRect) {
@@ -12,10 +14,12 @@ open class Right7View: UIView {
             maker.edges.equalToSuperview()
         }
 
+        label.lineBreakMode = .byTruncatingMiddle
+        label.numberOfLines = 0
         label.textAlignment = .right
         label.font = Self.font(italic: false)
         label.textColor = .themeLeah
-        label.setContentCompressionResistancePriority(.required, for: .horizontal)
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -39,10 +43,16 @@ open class Right7View: UIView {
 
 }
 
-extension Right7View {
+extension Right7MultiLineView {
 
     private static func font(italic: Bool) -> UIFont {
         italic ? .subhead1I : .subhead1
+    }
+
+    public static func height(containerWidth: CGFloat, text: String?, italic: Bool = false) -> CGFloat {
+        let text = text ?? ""
+        let textHeight = text.height(forContainerWidth: containerWidth, font: Right7MultiLineView.font(italic: italic))
+        return textHeight + insets.height
     }
 
 }

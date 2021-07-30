@@ -11,6 +11,7 @@ open class Right4View: UIView {
         imageView.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
             maker.centerY.equalToSuperview()
+            maker.size.equalTo(CGFloat.iconSize20)
         }
 
         imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -29,6 +30,14 @@ open class Right4View: UIView {
     public var imageTintColor: UIColor? {
         get { imageView.tintColor }
         set { imageView.tintColor = newValue }
+    }
+
+}
+
+extension Right4View {
+
+    public static var width: CGFloat {
+        CGFloat.iconSize20
     }
 
 }
