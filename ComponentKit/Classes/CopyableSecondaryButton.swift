@@ -2,7 +2,7 @@ import UIKit
 
 public class CopyableSecondaryButton: ThemeButton {
 
-    public var viewItem = ViewItem(type: .raw, value: "") {
+    public var viewItem = ViewItem(type: .raw, value: { "" }) {
         didSet {
             switch viewItem.type {
             case .image:
@@ -13,7 +13,7 @@ public class CopyableSecondaryButton: ThemeButton {
                 setTitle(text, for: .normal)
             case .raw:
                 apply(style: .secondaryDefault)
-                setTitle(viewItem.value, for: .normal)
+                setTitle(viewItem.value(), for: .normal)
             }
         }
     }
@@ -29,7 +29,7 @@ public class CopyableSecondaryButton: ThemeButton {
     }
 
     @objc private func onTapButton() {
-        UIPasteboard.general.setValue(viewItem.value, forPasteboardType: "public.plain-text")
+        UIPasteboard.general.setValue(viewItem.value(), forPasteboardType: "public.plain-text")
         HudHelper.instance.showSuccess(title: "alert.copied".localized)
     }
 
@@ -45,9 +45,9 @@ extension CopyableSecondaryButton {
 
     public struct ViewItem {
         public let type: ViewItemType
-        public let value: String
+        public let value: () -> String
 
-        public init(type: ViewItemType, value: String) {
+        public init(type: ViewItemType, value: @escaping () -> String) {
             self.type = type
             self.value = value
         }
@@ -64,7 +64,7 @@ extension CopyableSecondaryButton {
         case .title(let text):
             return ThemeButton.size(containerWidth: containerWidth, text: text, style: .secondaryDefault).height
         case .raw:
-            return ThemeButton.size(containerWidth: containerWidth, text: viewItem.value, style: .secondaryDefault).height
+            return ThemeButton.size(containerWidth: containerWidth, text: viewItem.value(), style: .secondaryDefault).height
         }
     }
 

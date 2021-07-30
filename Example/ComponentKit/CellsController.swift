@@ -27,7 +27,7 @@ class CellsController: ThemeViewController {
     private let d10Cell = D10Cell()
     private let d20Cell = D20Cell()
     private let f2Cell = F2Cell()
-    private let cell9ViewItem = CopyableSecondaryButton.ViewItem(type: .raw, value: "0xa1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6")
+    private let cell9ViewItem = CopyableSecondaryButton.ViewItem(type: .raw, value: { "0xa1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6a1b2d3c4e5f6" })
     private let cell9 = Cell9()
     private let emptyCell = EmptyCell()
     private let g12Cell = G12Cell()
@@ -93,7 +93,7 @@ class CellsController: ThemeViewController {
         a9Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         a9Cell.titleImageTintColor = .themeGray
         a9Cell.title = "A9 - Title"
-        a9Cell.viewItem = .init(type: .raw, value: "this-is-value")
+        a9Cell.viewItem = .init(type: .raw, value: { "this-is-value" })
 
         b5Cell.set(backgroundStyle: .lawrence)
         b5Cell.title = "B5 - Title"
@@ -143,7 +143,7 @@ class CellsController: ThemeViewController {
         c9Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
         c9Cell.title = "C9 - Title"
         c9Cell.titleImageAction = { print("C9 - Title Image Tap") }
-        c9Cell.viewItem = .init(type: .title(text: "Value Title"), value: "this-is-value")
+        c9Cell.viewItem = .init(type: .title(text: "Value Title"), value: { "this-is-value" })
 
         c24Cell.set(backgroundStyle: .lawrence)
         c24Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
@@ -164,11 +164,11 @@ class CellsController: ThemeViewController {
 
         d9Cell.set(backgroundStyle: .lawrence)
         d9Cell.title = "D9 - Title"
-        d9Cell.viewItem = .init(type: .image, value: "this-is-value")
+        d9Cell.viewItem = .init(type: .image, value: { "this-is-value" })
 
         d10Cell.set(backgroundStyle: .lawrence)
         d10Cell.title = "D10 - Title"
-        d10Cell.viewItem = .init(type: .raw, value: "this-is-value")
+        d10Cell.viewItem = .init(type: .raw, value: { "this-is-value" })
         d10Cell.set(iconButtonImage: UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate))
         d10Cell.onTapIconButton = { print("D10 - on tap icon") }
 
