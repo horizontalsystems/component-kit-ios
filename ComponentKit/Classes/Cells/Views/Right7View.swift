@@ -13,9 +13,10 @@ open class Right7View: UIView {
         }
 
         label.textAlignment = .right
+        label.lineBreakMode = .byTruncatingMiddle
         label.font = Self.font(italic: false)
         label.textColor = .themeLeah
-        label.setContentCompressionResistancePriority(.required, for: .horizontal)
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
     }
 
     required public init?(coder aDecoder: NSCoder) {
