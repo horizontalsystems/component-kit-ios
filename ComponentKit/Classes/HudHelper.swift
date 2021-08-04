@@ -52,17 +52,21 @@ public class HudHelper {
         })
 
         activityView.startAnimating()
-   }
+    }
 
     public func hide() {
         HUD.instance.hide()
     }
 
     private func show(type: ImageType, title: String?, subtitle: String?) {
+        var statusConfig = configStatusModel()
+
         let statusImage: UIImage?
         switch type {
         case .success: statusImage = ComponentKit.image(named: "checkmark_48")
-        case .error: statusImage = ComponentKit.image(named: "close_48")?.tinted(with: .themeOz)
+        case .error:
+            statusImage = ComponentKit.image(named: "close_48")
+            statusConfig.imageTintColor = .themeOz
         case .attention: statusImage = ComponentKit.image(named: "attention_48")
         }
 
@@ -71,8 +75,6 @@ public class HudHelper {
         }
 
         HUD.instance.config = themeConfigHud()
-
-        let statusConfig = configStatusModel()
 
         let textLength = (title?.count ?? 0) + (subtitle?.count ?? 0)
         let textReadDelay = min(max(1, Double(textLength) / 10), 3)

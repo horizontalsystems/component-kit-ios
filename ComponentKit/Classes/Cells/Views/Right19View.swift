@@ -59,4 +59,9 @@ open class Right19View: UIView {
         }
     }
 
+    public var imageTintColor: UIColor? {
+        get { imageView.tintColor }
+        set { imageView.tintColor = newValue }
+    }
+
 }

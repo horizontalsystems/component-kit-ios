@@ -20,6 +20,11 @@ open class G19Cell: BaseSelectableThemeCell {
         set { leftView.image = newValue }
     }
 
+    public var titleImageTintColor: UIColor? {
+        get { leftView.imageTintColor }
+        set { leftView.imageTintColor = newValue }
+    }
+
     public var title: String? {
         get { leftView.topText }
         set { leftView.topText = newValue }
@@ -73,6 +78,11 @@ open class G19Cell: BaseSelectableThemeCell {
     public var valueImage: UIImage? {
         get { rightView.image }
         set { rightView.image = newValue }
+    }
+
+    public var valueImageTintColor: UIColor? {
+        get { rightView.imageTintColor }
+        set { rightView.imageTintColor = newValue }
     }
 
 }
