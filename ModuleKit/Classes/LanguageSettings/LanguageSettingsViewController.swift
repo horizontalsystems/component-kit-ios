@@ -58,12 +58,13 @@ extension LanguageSettingsViewController: SectionsDataSource {
                         return Row<G4Cell>(
                                 id: item.language,
                                 height: .heightDoubleLineCell,
-                                bind: { [unowned self] cell, _ in
+                                bind: { cell, _ in
                                     cell.set(backgroundStyle: .lawrence, isFirst: isFirst, isLast: isLast)
                                     cell.titleImage = ModuleKit.image(named: item.language)
                                     cell.title = item.name
                                     cell.subtitle = item.nativeName
-                                    cell.valueImage = item.selected ? ComponentKit.image(named: "check_1_20")?.tinted(with: .themeJacob) : nil
+                                    cell.valueImage = item.selected ? ComponentKit.image(named: "check_1_20")?.withRenderingMode(.alwaysTemplate) : nil
+                                    cell.valueImageTintColor = .themeJacob
                                 },
                                 action: { [weak self] _ in
                                     self?.delegate.didSelect(index: index)
