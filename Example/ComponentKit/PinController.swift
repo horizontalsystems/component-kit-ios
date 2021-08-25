@@ -65,7 +65,7 @@ class PinController: ThemeViewController {
 
         clearPinButton.setTitle("Clear Pin", for: .normal)
         setPinButton.setTitle("Set Pin", for: .normal)
-        setPinButton.apply(style: .primaryGreen)
+        setPinButton.apply(style: .primaryGray)
         editPinButton.setTitle("Edit Pin", for: .normal)
         editPinButton.apply(style: .primaryYellow)
 
@@ -113,7 +113,7 @@ class PinController: ThemeViewController {
             maker.height.equalTo(50)
         }
 
-        primaryTestButton.apply(style: .primaryGreen)
+        primaryTestButton.apply(style: .primaryGray)
         primaryTestButton.setImage(UIImage(named: "arrow_swap_2_24"), for: .normal)
     }
 
