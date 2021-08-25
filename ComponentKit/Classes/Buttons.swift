@@ -4,7 +4,6 @@ import ThemeKit
 
 public enum ThemeButtonStyle {
     case primaryYellow
-    case primaryGreen
     case primaryRed
     case primaryGray
     case primaryTransparent
@@ -12,7 +11,7 @@ public enum ThemeButtonStyle {
     case secondaryTransparent
     case secondaryTransparentIcon
     case secondaryIcon
-    case tertiary
+    case tab
 }
 
 extension UIControl.State: Hashable {
@@ -201,28 +200,31 @@ extension ThemeButton {
     @discardableResult public func apply(style: ThemeButtonStyle) -> Self {
         self.style = style
         let applyPrimary = {
-            self.cornerRadius = 8
+            self.cornerRadius = 25
             self.titleLabel?.textAlignment = .center
         }
 
         let applySecondary = {
-            self.cornerRadius = 4
+            self.cornerRadius = 14
             self.titleLabel?.textAlignment = .center
         }
 
         let applySecondaryBackground = {
-            self.setBackgroundColor(.themeJeremy, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .normal)
-            self.setBackgroundColor(.themeJeremy, forState: .highlighted)
-            self.setBackgroundColor(.themeJeremy, forState: .disabled)
+            self.setBackgroundColor(.themeSteel20, forState: .normal)
+            self.setBackgroundColor(.themeSteel20, forState: .highlighted)
+            self.setBackgroundColor(.themeSteel20, forState: .disabled)
+            self.setBackgroundColor(.themeYellowD, forState: .selected)
+        }
 
-            self.setBorderColor(.themeSteel20, forState: .normal)
-            self.updateBorderColor()
-            self.borderWidth = 1
+        let applySecondaryTitleColor = {
+            self.setTitleColor(.themeOz, for: .normal)
+            self.setTitleColor(.themeGray, for: .highlighted)
+            self.setTitleColor(.themeGray50, for: .disabled)
         }
 
         let applySecondaryTransparentBackground = {
             self.setBackgroundColor(.clear, forState: .normal)
-            self.setBackgroundColor(.themeJeremy, blendColor: UIColor(white: 1, alpha: Theme.current.alphaSecondaryButtonGradient), forState: .selected)
+            self.setBackgroundColor(.clear, forState: .selected)
             self.setBackgroundColor(.clear, forState: .highlighted)
             self.setBackgroundColor(.clear, forState: .disabled)
         }
@@ -242,41 +244,31 @@ extension ThemeButton {
         case .primaryYellow:
             applyPrimary()
 
-            setTitleColor(.black, for: .normal)
+            setTitleColor(.themeDark, for: .normal)
             setTitleColor(.themeGray50, for: .disabled)
 
-            setBackgroundColor(.themeYellowD, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
-            setBackgroundColor(.themeYellowD, forState: .highlighted)
-            setBackgroundColor(.themeSteel20, forState: .disabled)
-
-        case .primaryGreen:
-            applyPrimary()
-
-            setTitleColor(.black, for: .normal)
-            setTitleColor(.themeGray50, for: .disabled)
-
-            setBackgroundColor(.themeGreenL, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
-            setBackgroundColor(.themeGreenL, forState: .highlighted)
+            setBackgroundColor(.themeYellowD, forState: .normal)
+            setBackgroundColor(.themeYellow50, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
         case .primaryRed:
             applyPrimary()
 
-            setTitleColor(.white, for: .normal)
+            setTitleColor(.themeDark, for: .normal)
             setTitleColor(.themeGray50, for: .disabled)
 
-            setBackgroundColor(.themeRedL, blendColor: UIColor(white: 1, alpha: 0.4), forState: .normal)
-            setBackgroundColor(.themeRedL, forState: .highlighted)
+            setBackgroundColor(.themeRedD, forState: .normal)
+            setBackgroundColor(.themeRed50, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
         case .primaryGray:
             applyPrimary()
 
-            setTitleColor(.black, for: .normal)
+            setTitleColor(.themeDark, for: .normal)
             setTitleColor(.themeGray50, for: .disabled)
 
-            setBackgroundColor(.themeLightGray, blendColor: UIColor.themeLight.withAlphaComponent(1), forState: .normal)
-            setBackgroundColor(.themeLightGray, forState: .highlighted)
+            setBackgroundColor(.themeLeah, forState: .normal)
+            setBackgroundColor(.themeNina, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
         case .primaryTransparent:
@@ -289,41 +281,20 @@ extension ThemeButton {
         case .secondaryDefault:
             applySecondary()
             applySecondaryBackground()
-
-            setTitleColor(.themeOz, for: .normal)
-            setTitleColor(.themeGray50, for: .disabled)
+            applySecondaryTitleColor()
 
         case .secondaryTransparent:
             applySecondary()
 
-            cornerRadius = 14
-
             applySecondaryTransparentBackground()
 
-            setBorderColor(.themeSteel20, forState: .selected)
-            updateBorderColor()
-            borderWidth = 1
-
-            setTitleColor(.themeOz, for: .normal)
-            setTitleColor(.themeNina, for: .highlighted)
-            setTitleColor(.themeGray50, for: .disabled)
-            setTitleColor(.themeOz, for: .selected)
+            applySecondaryTitleColor()
+            setTitleColor(.themeJacob, for: .selected)
 
         case .secondaryTransparentIcon:
             applySecondary()
-
-            cornerRadius = 14
-
             applySecondaryTransparentBackground()
-
-            setBorderColor(.themeSteel20, forState: .selected)
-            updateBorderColor()
-            borderWidth = 1
-
-            setTitleColor(.themeGray, for: .normal)
-            setTitleColor(.themeGray50, for: .highlighted)
-            setTitleColor(.themeGray50, for: .disabled)
-            setTitleColor(.themeGray, for: .selected)
+            applySecondaryTitleColor()
 
             semanticContentAttribute = .forceRightToLeft
             applyPrioritiesRequired()
@@ -334,24 +305,14 @@ extension ThemeButton {
             applySecondary()
             applySecondaryBackground()
 
-            cornerRadius = 4
-
             applyPrioritiesRequired()
 
-        case .tertiary:
+        case .tab:
             applySecondary()
+            applySecondaryTransparentBackground()
 
-            cornerRadius = 12
-
-            setBackgroundColor(.themeLawrence, forState: .normal)
-            setBackgroundColor(.themeLawrence, forState: .highlighted)
-            setBackgroundColor(.themeLawrence, forState: .disabled)
-            setBackgroundColor(.themeYellowD, forState: .selected)
-
-            setTitleColor(.themeNina, for: .normal)
-            setTitleColor(.themeGray50, for: .highlighted)
-            setTitleColor(.themeGray50, for: .disabled)
-            setTitleColor(.black, for: .selected)
+            setTitleColor(.themeGray, for: .normal)
+            setTitleColor(.themeOz, for: .selected)
         }
 
         return self
@@ -373,19 +334,17 @@ extension ThemeButton {
 
     private static func contentEdgeInsets(for style: ThemeButtonStyle) -> UIEdgeInsets {
         switch style {
-        case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 13, left: .margin2x, bottom: 13, right: .margin2x)
-        case .secondaryDefault, .secondaryTransparent: return UIEdgeInsets(top: 5.5, left: .margin3x, bottom: 5.5, right: .margin3x)
-        case .secondaryTransparentIcon: return UIEdgeInsets(top: 4, left: .margin16 + .margin4, bottom: 4, right: .margin8)
-        case .tertiary: return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        case .secondaryIcon: return UIEdgeInsets(top: .margin1x, left: .margin1x, bottom: .margin1x, right: .margin1x)
+        case .primaryYellow, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin16, bottom: 15, right: .margin16)
+        case .secondaryDefault, .secondaryTransparent, .tab: return UIEdgeInsets(top: 5.5, left: .margin16, bottom: 5.5, right: .margin16)
+        case .secondaryTransparentIcon: return UIEdgeInsets(top: .margin4, left: .margin16 + .margin4, bottom: .margin4, right: .margin8)
+        case .secondaryIcon: return UIEdgeInsets(top: .margin4, left: .margin4, bottom: .margin4, right: .margin4)
         }
     }
 
     private static func titleFont(for style: ThemeButtonStyle) -> UIFont {
         switch style {
-        case .primaryYellow, .primaryGreen, .primaryRed, .primaryGray, .primaryTransparent: return .headline2
-        case .secondaryDefault, .secondaryTransparent, .secondaryTransparentIcon: return .subhead1
-        case .tertiary: return .captionSB
+        case .primaryYellow, .primaryRed, .primaryGray, .primaryTransparent: return .headline2
+        case .secondaryDefault, .secondaryTransparent, .secondaryTransparentIcon, .tab: return .subhead1
         case .secondaryIcon: return .systemFont(ofSize: 1) // titleLabel should not affect button size, that is why we set smallest font
         }
     }
