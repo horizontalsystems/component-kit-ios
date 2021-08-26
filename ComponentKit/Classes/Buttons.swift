@@ -282,6 +282,7 @@ extension ThemeButton {
             applySecondary()
             applySecondaryBackground()
             applySecondaryTitleColor()
+            setTitleColor(.themeClaude, for: .selected)
 
         case .secondaryTransparent:
             applySecondary()
