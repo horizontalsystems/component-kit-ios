@@ -257,7 +257,7 @@ extension ThemeButton {
             setTitleColor(.themeDark, for: .normal)
             setTitleColor(.themeGray50, for: .disabled)
 
-            setBackgroundColor(.themeRedD, forState: .normal)
+            setBackgroundColor(.themeLucian, forState: .normal)
             setBackgroundColor(.themeRed50, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
