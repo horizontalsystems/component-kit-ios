@@ -264,7 +264,7 @@ extension ThemeButton {
         case .primaryGray:
             applyPrimary()
 
-            setTitleColor(.themeDark, for: .normal)
+            setTitleColor(.themeClaude, for: .normal)
             setTitleColor(.themeGray50, for: .disabled)
 
             setBackgroundColor(.themeLeah, forState: .normal)
