@@ -28,6 +28,11 @@ open class Cell9: BaseThemeCell {
         set { button.viewItem = newValue }
     }
 
+    public var handler: ((CopyableSecondaryButton.ViewItem) -> ())? {
+        get { button.handler }
+        set { button.handler = newValue }
+    }
+
 }
 
 extension Cell9 {

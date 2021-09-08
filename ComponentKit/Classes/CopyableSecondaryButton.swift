@@ -18,6 +18,8 @@ public class CopyableSecondaryButton: ThemeButton {
         }
     }
 
+    public var handler: ((ViewItem) -> ())?
+
     public override init() {
         super.init()
 
@@ -29,8 +31,13 @@ public class CopyableSecondaryButton: ThemeButton {
     }
 
     @objc private func onTapButton() {
-        UIPasteboard.general.setValue(viewItem.value(), forPasteboardType: "public.plain-text")
-        HudHelper.instance.showSuccess(title: "alert.copied".localized)
+        guard let handler = handler else {
+            UIPasteboard.general.setValue(viewItem.value(), forPasteboardType: "public.plain-text")
+            HudHelper.instance.showSuccess(title: "alert.copied".localized)
+            return
+        }
+
+        handler(viewItem)
     }
 
 }
