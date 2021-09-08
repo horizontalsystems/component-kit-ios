@@ -26,7 +26,6 @@ open class ThemeButton: UIButton {
     private var backgroundGradients = [UInt: [UIColor]]()
     private var borderColors: [UInt: UIColor] = [UIControl.State.normal.rawValue: .clear]
 
-    private var originalButtonImage: UIImage?
     private var imageTintColors = [UIControl.State: UIColor]()
 
     private var style: ThemeButtonStyle?
@@ -141,18 +140,21 @@ open class ThemeButton: UIButton {
     open override var isSelected: Bool {
         didSet {
             updateBorderColor()
+            updateImageTintColor(state: state)
         }
     }
 
     open override var isHighlighted: Bool {
         didSet {
             updateBorderColor()
+            updateImageTintColor(state: state)
         }
     }
 
     open override var isEnabled: Bool {
         didSet {
             updateBorderColor()
+            updateImageTintColor(state: state)
         }
     }
 
@@ -164,15 +166,13 @@ open class ThemeButton: UIButton {
         }
 
         apply(style: style)
-        updateImageTintColor()
+        updateImageTintColor(state: state)
     }
 
     public func setImageTintColor(_ tintColor: UIColor?, for state: UIControl.State) {
         imageTintColors[state] = tintColor
 
-        if let color = tintColor {
-            super.setImage(originalButtonImage?.tinted(with: color), for: state)
-        }
+        updateImageTintColor(state: state)
     }
 
     public func imageTintColor(for state: UIControl.State) -> UIColor? {
@@ -180,16 +180,14 @@ open class ThemeButton: UIButton {
     }
 
     open override func setImage(_ image: UIImage?, for state: State) {
-        originalButtonImage = image
+        super.setImage(image?.withRenderingMode(.alwaysTemplate), for: state)
 
-        super.setImage(image, for: state)
-
-        updateImageTintColor()
+        updateImageTintColor(state: state)
     }
 
-    private func updateImageTintColor() {
-        imageTintColors.forEach { state, tintColor in
-            super.setImage(originalButtonImage?.tinted(with: tintColor), for: state)
+    private func updateImageTintColor(state: UIControl.State) {
+        if self.state == state, let color = imageTintColors[state] {
+            imageView?.tintColor = color
         }
     }
 
@@ -270,6 +268,10 @@ extension ThemeButton {
             setBackgroundColor(.themeLeah, forState: .normal)
             setBackgroundColor(.themeNina, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
+
+            setImageTintColor(.themeClaude, for: .normal)
+            setImageTintColor(.themeClaude, for: .highlighted)
+            setImageTintColor(.themeGray50, for: .disabled)
 
         case .primaryTransparent:
             applyPrimary()
