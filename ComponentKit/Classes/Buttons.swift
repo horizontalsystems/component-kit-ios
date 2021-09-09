@@ -326,7 +326,7 @@ extension ThemeButton {
         setImageTintColor(.themeLeah, for: .highlighted)
         setImageTintColor(.themeGray50, for: .disabled)
 
-        setImage(secondaryIconImage?.tinted(with: .themeLeah), for: .normal)
+        setImage(secondaryIconImage, for: .normal)
 
         return self
     }

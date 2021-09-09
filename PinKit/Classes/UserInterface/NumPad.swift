@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import ComponentKit
 
 class NumPad: UICollectionView {
     private var enabled = true
@@ -11,7 +12,7 @@ class NumPad: UICollectionView {
 
     private enum Cell {
         case number(number: String, letters: String?, filled: Bool, action: () -> ())
-        case image(image: UIImage?, pressedImage: UIImage?, disabled: Bool, action: (() -> ())?)
+        case image(image: UIImage?, pressedTintColor: UIColor, disabled: Bool, action: (() -> ())?)
     }
 
     public struct Style: OptionSet {
@@ -54,6 +55,12 @@ class NumPad: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        reloadData()
+    }
+
     private func buildItems() {
         cells = [Cell]()
 
@@ -73,13 +80,13 @@ class NumPad: UICollectionView {
                 case .none: return nil
                 }
             }
-            cells.append(.image(image: image, pressedImage: image?.tinted(with: .themeGray50), disabled: false, action: { [weak self] in self?.numPadDelegate?.numPadDidClickBiometry() }))
+            cells.append(.image(image: image, pressedTintColor: .themeGray50, disabled: false, action: { [weak self] in self?.numPadDelegate?.numPadDidClickBiometry() }))
         } else {
-            cells.append(.image(image: nil, pressedImage: nil, disabled: false, action: nil))
+            cells.append(.image(image: nil, pressedTintColor: .white, disabled: false, action: nil))
         }
         let localizedZero = format(number: 0)
         cells.append(.number(number: localizedZero, letters: nil, filled: true, action: { [weak self] in self?.numPadDidClick(digit: localizedZero) }))
-        cells.append(.image(image: PinKit.image(named: "Backspace Medium")?.withRenderingMode(.alwaysTemplate), pressedImage: PinKit.image(named: "Backspace Medium")?.tinted(with: .themeGray50), disabled: enabled, action: { [weak self] in self?.numPadDidClickBackspace() }))
+        cells.append(.image(image: PinKit.image(named: "Backspace Medium"), pressedTintColor: .themeGray50, disabled: enabled, action: { [weak self] in self?.numPadDidClickBackspace() }))
     }
 
     private var itemWidth: CGFloat {
@@ -178,9 +185,9 @@ extension NumPad: UICollectionViewDelegate {
             if let cell = cell as? NumPadNumberCell {
                 cell.bind(number: number, letters: letters, filled: filled, enabled: enabled, cornerRadius: ceil(itemWidth / 2), onTap: action)
             }
-        case .image(let image, let pressedImage, let disabled, let action):
+        case .image(let image, let pressedTintColor, let disabled, let action):
             if let cell = cell as? NumPadImageCell {
-                cell.bind(image: image, pressedImage: pressedImage, enabled: disabled, onTap: action)
+                cell.bind(image: image, pressedTintColor: pressedTintColor, enabled: disabled, onTap: action)
             }
         }
     }
@@ -245,18 +252,15 @@ class NumPadNumberCell: UICollectionViewCell {
     }
 
     func bind(number: String, letters: String?, filled: Bool, enabled: Bool, cornerRadius: CGFloat, onTap: @escaping () -> ()) {
+        button.isEnabled = enabled
         button.cornerRadius = cornerRadius
         button.setBackgroundColor(color: .clear, forState: .normal)
 
         if filled {
             button.borderColor = .themeSteel20
+            button.setBackgroundColor(color: .themeJeremy, forState: .highlighted)
         } else {
             button.borderColor = .clear
-        }
-
-        if filled && enabled {
-            button.setBackgroundColor(color: .themeLawrence, forState: .highlighted)
-        } else {
             button.setBackgroundColor(color: .clear, forState: .highlighted)
         }
 
@@ -301,7 +305,7 @@ class NumPadNumberCell: UICollectionViewCell {
 
 class NumPadImageCell: UICollectionViewCell {
 
-    private let button = UIButton()
+    private let button = ThemeButton()
     private var onTap: (() -> ())?
 
     override init(frame: CGRect) {
@@ -312,6 +316,8 @@ class NumPadImageCell: UICollectionViewCell {
             maker.edges.equalToSuperview()
         }
 
+        button.setImageTintColor(.themeGray, for: .normal)
+        button.setImageTintColor(.themeSteel20, for: .disabled)
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
     }
 
@@ -319,16 +325,11 @@ class NumPadImageCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func bind(image: UIImage?, pressedImage: UIImage?, enabled: Bool, onTap: (() -> ())?) {
+    func bind(image: UIImage?, pressedTintColor: UIColor, enabled: Bool, onTap: (() -> ())?) {
         self.onTap = onTap
-        button.setImage(image, for: .normal)
-        if enabled {
-            button.tintColor = .themeGray
-            button.setImage(pressedImage, for: .highlighted)
-        } else {
-            button.tintColor = .themeSteel20
-            button.setImage(image, for: .highlighted)
-        }
+        button.isEnabled = enabled
+        button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImageTintColor(pressedTintColor, for: .highlighted)
     }
 
     @objc func didTapButton() {
@@ -337,7 +338,7 @@ class NumPadImageCell: UICollectionViewCell {
 
 }
 
-protocol NumPadDelegate: class {
+protocol NumPadDelegate: AnyObject {
     func numPadDidClick(digit: String)
     func numPadDidClickBackspace()
     func numPadDidClickBiometry()
