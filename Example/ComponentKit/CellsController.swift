@@ -209,15 +209,18 @@ class CellsController: ThemeViewController {
         g14Cell.secondaryValueText = "Value"
 
         g19Cell.set(backgroundStyle: .lawrence)
-        g19Cell.titleImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
+        g19Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        g19Cell.tintColor = .themeJacob
         g19Cell.title = "G19 - Title"
         g19Cell.subtitle = "Subtitle"
         g19Cell.valueButtonImage = UIImage(named: "icon_20")
-        g19Cell.valueImage = UIImage(named: "icon_20")?.tinted(with: .themeLucian)
+        g19Cell.valueImage = UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate)
+        g19Cell.tintColor = .themeLucian
         g19Cell.onTapValue = { print("Tap G19") }
 
         g21Cell.set(backgroundStyle: .lawrence)
-        g21Cell.titleImage = UIImage(named: "Cell Icon")?.tinted(with: .themeJacob)
+        g21Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        g21Cell.tintColor = .themeJacob
         g21Cell.title = "G21 - Title G21 - Title G21 - Title G21 - Title G21 - Title G21 - Title"
         g21Cell.subtitle = "Subtitle"
         g21Cell.rightButtonImage = UIImage(named: "icon_20")
