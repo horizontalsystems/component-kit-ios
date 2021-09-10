@@ -187,7 +187,7 @@ open class ThemeButton: UIButton {
 
     private func updateImageTintColor(state: UIControl.State) {
         if self.state == state, let color = imageTintColors[state] {
-            imageView?.tintColor = color
+            tintColor = color
         }
     }
 
