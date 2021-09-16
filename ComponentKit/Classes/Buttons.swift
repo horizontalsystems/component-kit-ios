@@ -7,6 +7,7 @@ public enum ThemeButtonStyle {
     case primaryRed
     case primaryGray
     case primaryTransparent
+    case primaryIconGray
     case secondaryDefault
     case secondaryDefaultIcon
     case secondaryTransparent
@@ -263,7 +264,7 @@ extension ThemeButton {
             setBackgroundColor(.themeRed50, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
-        case .primaryGray:
+        case .primaryGray, .primaryIconGray:
             applyPrimary()
 
             setTitleColor(.themeClaude, for: .normal)
@@ -351,6 +352,7 @@ extension ThemeButton {
     private static func contentEdgeInsets(for style: ThemeButtonStyle) -> UIEdgeInsets {
         switch style {
         case .primaryYellow, .primaryRed, .primaryGray, .primaryTransparent: return UIEdgeInsets(top: 15, left: .margin16, bottom: 15, right: .margin16)
+        case .primaryIconGray: return UIEdgeInsets(top: 13, left: 13, bottom: 13, right: 13)
         case .secondaryDefault, .secondaryTransparent, .tab: return UIEdgeInsets(top: 5.5, left: .margin16, bottom: 5.5, right: .margin16)
         case .secondaryTransparentIcon, .secondaryDefaultIcon: return UIEdgeInsets(top: .margin4, left: .margin16 + .margin4, bottom: .margin4, right: .margin8)
         case .secondaryIcon: return UIEdgeInsets(top: .margin4, left: .margin4, bottom: .margin4, right: .margin4)
@@ -359,7 +361,7 @@ extension ThemeButton {
 
     private static func titleFont(for style: ThemeButtonStyle) -> UIFont {
         switch style {
-        case .primaryYellow, .primaryRed, .primaryGray, .primaryTransparent: return .headline2
+        case .primaryYellow, .primaryRed, .primaryGray, .primaryTransparent, .primaryIconGray: return .headline2
         case .secondaryDefault, .secondaryDefaultIcon, .secondaryTransparent, .secondaryTransparentIcon, .tab: return .subhead1
         case .secondaryIcon: return .systemFont(ofSize: 1) // titleLabel should not affect button size, that is why we set smallest font
         }
