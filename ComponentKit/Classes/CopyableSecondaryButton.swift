@@ -7,7 +7,7 @@ public class CopyableSecondaryButton: ThemeButton {
             switch viewItem.type {
             case .image:
                 apply(style: .secondaryIcon)
-                apply(secondaryIconImage: ComponentKit.image(named: "copy_20"))
+                setImage(ComponentKit.image(named: "copy_20"), for: .normal)
             case .title(let text):
                 apply(style: .secondaryDefault)
                 setTitle(text, for: .normal)

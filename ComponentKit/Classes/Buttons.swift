@@ -314,6 +314,10 @@ extension ThemeButton {
             applySecondary()
             applySecondaryBackground()
 
+            setImageTintColor(.themeLeah, for: .normal)
+            setImageTintColor(.themeLeah, for: .highlighted)
+            setImageTintColor(.themeGray50, for: .disabled)
+
             applyPrioritiesRequired()
 
         case .tab:
@@ -324,16 +328,6 @@ extension ThemeButton {
             setTitleColor(.themeGray, for: .normal)
             setTitleColor(.themeOz, for: .selected)
         }
-
-        return self
-    }
-
-    @discardableResult public func apply(secondaryIconImage: UIImage?) -> Self {
-        setImageTintColor(.themeLeah, for: .normal)
-        setImageTintColor(.themeLeah, for: .highlighted)
-        setImageTintColor(.themeGray50, for: .disabled)
-
-        setImage(secondaryIconImage, for: .normal)
 
         return self
     }
