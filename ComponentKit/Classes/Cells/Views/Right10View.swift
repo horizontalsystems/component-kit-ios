@@ -41,7 +41,7 @@ open class Right10View: UIView {
     }
 
     public func set(iconButtonImage: UIImage?) {
-        iconButton.apply(secondaryIconImage: iconButtonImage)
+        iconButton.setImage(iconButtonImage, for: .normal)
     }
 
 }
