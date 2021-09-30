@@ -29,6 +29,10 @@ open class A11Cell: BaseThemeCell {
         leftView.set(imageSize: titleImageSize)
     }
 
+    public func setTitleImage(urlString: String?, placeholder: UIImage?) {
+        leftView.setImage(urlString: urlString, placeholder: placeholder)
+    }
+
     public var rightImage: UIImage? {
         get { rightView.image }
         set { rightView.image = newValue }
