@@ -29,6 +29,10 @@ open class A3Cell: BaseSelectableThemeCell {
         leftView.set(imageSize: titleImageSize)
     }
 
+    public func setTitleImage(urlString: String?, placeholder: UIImage?) {
+        leftView.setImage(urlString: urlString, placeholder: placeholder)
+    }
+
     public var valueImage: UIImage? {
         get { rightView.image }
         set { rightView.image = newValue }

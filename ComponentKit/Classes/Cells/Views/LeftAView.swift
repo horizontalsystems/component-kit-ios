@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import AlamofireImage
 
 open class LeftAView: UIView {
     private let imageView = UIImageView()
@@ -51,6 +52,15 @@ open class LeftAView: UIView {
     public var imageTintColor: UIColor? {
         get { imageView.tintColor }
         set { imageView.tintColor = newValue }
+    }
+
+    public func setImage(urlString: String?, placeholder: UIImage?) {
+        imageView.af.cancelImageRequest()
+        imageView.image = placeholder
+
+        if let urlString = urlString, let url = URL(string: urlString) {
+            imageView.af.setImage(withURL: url, placeholderImage: placeholder)
+        }
     }
 
     public func set(imageSize: CGFloat) {

@@ -34,6 +34,10 @@ open class A9Cell: BaseThemeCell {
         leftView.set(imageSize: titleImageSize)
     }
 
+    public func setTitleImage(urlString: String?, placeholder: UIImage?) {
+        leftView.setImage(urlString: urlString, placeholder: placeholder)
+    }
+
     public var viewItem: CopyableSecondaryButton.ViewItem {
         get { rightView.viewItem }
         set { rightView.viewItem = newValue }

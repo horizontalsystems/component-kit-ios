@@ -38,4 +38,8 @@ open class ACell: BaseSelectableThemeCell {
         leftView.set(imageSize: titleImageSize)
     }
 
+    public func setTitleImage(urlString: String?, placeholder: UIImage?) {
+        leftView.setImage(urlString: urlString, placeholder: placeholder)
+    }
+
 }
