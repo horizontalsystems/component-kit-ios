@@ -194,12 +194,12 @@ open class LeftGView: UIView {
         set { rightBadgeView.backgroundColor = newValue }
     }
 
-    public func setImage(urlString: String?) {
+    public func setImage(urlString: String?, placeholder: UIImage?) {
         imageView.af.cancelImageRequest()
-        imageView.image = nil
+        imageView.image = placeholder
 
         if let urlString = urlString, let url = URL(string: urlString) {
-            imageView.af.setImage(withURL: url)
+            imageView.af.setImage(withURL: url, placeholderImage: placeholder)
         }
     }
 

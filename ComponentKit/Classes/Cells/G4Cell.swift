@@ -25,6 +25,10 @@ open class G4Cell: BaseSelectableThemeCell {
         set { leftView.tintColor = newValue }
     }
 
+    public func setTitleImage(urlString: String?, placeholder: UIImage?) {
+        leftView.setImage(urlString: urlString, placeholder: placeholder)
+    }
+
     public var title: String? {
         get { leftView.topText }
         set { leftView.topText = newValue }

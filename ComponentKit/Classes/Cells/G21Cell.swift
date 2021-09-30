@@ -15,6 +15,10 @@ open class G21Cell: BaseThemeCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    public func setTitleImage(urlString: String?, placeholder: UIImage?) {
+        leftView.setImage(urlString: urlString, placeholder: placeholder)
+    }
+
     public var titleImage: UIImage? {
         get { leftView.image }
         set { leftView.image = newValue }

@@ -65,8 +65,8 @@ open class G1Cell: BaseSelectableThemeCell {
         set { leftView.rightBadgeBackgroundColor = newValue }
     }
 
-    public func setTitleImage(urlString: String?) {
-        leftView.setImage(urlString: urlString)
+    public func setTitleImage(urlString: String?, placeholder: UIImage?) {
+        leftView.setImage(urlString: urlString, placeholder: placeholder)
     }
 
 }
