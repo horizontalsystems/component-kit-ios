@@ -31,7 +31,6 @@ open class ThemeButton: UIButton {
     private var imageTintColors = [UIControl.State: UIColor]()
 
     private var style: ThemeButtonStyle?
-    public var tinted: Bool = true
 
     public func setBackgroundColor(_ color: UIColor, bottomColor: UIColor? = nil, forState state: UIControl.State) {
         var colors = [color]
@@ -143,56 +142,36 @@ open class ThemeButton: UIButton {
     open override var isSelected: Bool {
         didSet {
             updateBorderColor()
-            updateImageTintColor(state: state)
         }
     }
 
     open override var isHighlighted: Bool {
         didSet {
             updateBorderColor()
-            updateImageTintColor(state: state)
         }
     }
 
     open override var isEnabled: Bool {
         didSet {
             updateBorderColor()
-            updateImageTintColor(state: state)
         }
     }
 
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        guard let style = style else {
-            return
-        }
-
-        apply(style: style)
-        updateImageTintColor(state: state)
-    }
-
-    public func setImageTintColor(_ tintColor: UIColor?, for state: UIControl.State) {
+    private func setImageTintColor(_ tintColor: UIColor?, for state: UIControl.State) {
         imageTintColors[state] = tintColor
 
-        updateImageTintColor(state: state)
-    }
-
-    public func imageTintColor(for state: UIControl.State) -> UIColor? {
-        imageTintColors[state]
+        if let tintColor = tintColor {
+            super.setImage(imageView?.image?.withTintColor(tintColor), for: state)
+        }
     }
 
     open override func setImage(_ image: UIImage?, for state: State) {
-        let image = tinted ? image?.withRenderingMode(.alwaysTemplate) : image
+        var image = image
+        if let color = imageTintColors[state] {
+            image = image?.withTintColor(color)
+        }
         super.setImage(image, for: state)
 
-        updateImageTintColor(state: state)
-    }
-
-    private func updateImageTintColor(state: UIControl.State) {
-        if self.state == state, let color = imageTintColors[state] {
-            tintColor = color
-        }
     }
 
 }

@@ -93,9 +93,8 @@ class PinController: ThemeViewController {
             maker.edges.equalToSuperview()
         }
 
-        testButton.setImageTintColor(.red, for: .normal)
-        testButton.setImageTintColor(.green, for: .highlighted)
-        testButton.setImage(UIImage(named: "Cell Icon"), for: .normal)
+        testButton.setImage(UIImage(named: "Cell Icon")?.withTintColor(.red), for: .normal)
+        testButton.setImage(UIImage(named: "Cell Icon")?.withTintColor(.green), for: .highlighted)
 
         view.addSubview(stabView)
         stabView.snp.makeConstraints { maker in
