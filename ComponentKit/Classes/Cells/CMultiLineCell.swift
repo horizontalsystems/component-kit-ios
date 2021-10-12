@@ -24,11 +24,6 @@ open class CMultiLineCell: BaseThemeCell {
         set { view.image = newValue }
     }
 
-    public var titleImageTintColor: UIColor? {
-        get { view.imageTintColor }
-        set { view.imageTintColor = newValue }
-    }
-
     public var titleImageAction: (() -> ())? {
         get { view.imageAction }
         set { view.imageAction = newValue }

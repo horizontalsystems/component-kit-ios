@@ -107,22 +107,18 @@ class CellsController: ThemeViewController {
         b7Cell.value = "Some Value"
 
         cCell.set(backgroundStyle: .lawrence)
-        cCell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
-        cCell.titleImageTintColor = .themeGray
+        cCell.titleImage = UIImage(named: "Cell Icon")?.withTintColor(.themeGray)
         cCell.title = "C - Title"
 //        cCell.titleImageAction = { print("C - Title Image Tap") }
 
         c4Cell.set(backgroundStyle: .lawrence)
-        c4Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
-        c4Cell.titleImageTintColor = .themeGray
+        c4Cell.titleImage = UIImage(named: "Cell Icon")?.withTintColor(.themeGray)
         c4Cell.title = "C4 - Title"
 //        c4Cell.titleImageAction = { print("C4 - Title Image Tap") }
-        c4Cell.valueImage = UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate)
-        c4Cell.valueImageTintColor = .themeLucian
+        c4Cell.valueImage = UIImage(named: "icon_20")?.withTintColor(.themeLucian)
 
         c5Cell.set(backgroundStyle: .lawrence)
-        c5Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
-        c5Cell.titleImageTintColor = .themeGray
+        c5Cell.titleImage = UIImage(named: "Cell Icon")?.withTintColor(.themeGray)
         c5Cell.title = "C5 - Title"
         c5Cell.titleImageAction = { print("C5 - Title Image Tap") }
         c5Cell.value = "Some Value"
@@ -130,25 +126,21 @@ class CellsController: ThemeViewController {
         c5Cell.selectionStyle = .none
 
         c6Cell.set(backgroundStyle: .lawrence)
-        c6Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
-        c6Cell.titleImageTintColor = .themeJacob
+        c6Cell.titleImage = UIImage(named: "Cell Icon")?.withTintColor(.themeJacob)
         c6Cell.title = "C6 - Title"
         c6Cell.titleImageAction = { print("C6 - Title Image Tap") }
         c6Cell.value = "Some Value"
-        c6Cell.valueImage = UIImage(named: "icon_20")?.withRenderingMode(.alwaysTemplate)
-        c6Cell.valueImageTintColor = .themeLucian
+        c6Cell.valueImage = UIImage(named: "icon_20")?.withTintColor(.themeLucian)
         c6Cell.selectionStyle = .none
 
         c9Cell.set(backgroundStyle: .lawrence)
-        c9Cell.titleImageTintColor = .themeGray
-        c9Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
+        c9Cell.titleImage = UIImage(named: "Cell Icon")?.withTintColor(.themeGray)
         c9Cell.title = "C9 - Title"
         c9Cell.titleImageAction = { print("C9 - Title Image Tap") }
         c9Cell.viewItem = .init(type: .title(text: "Value Title"), value: { "this-is-value" })
 
         c24Cell.set(backgroundStyle: .lawrence)
-        c24Cell.titleImage = UIImage(named: "Cell Icon")?.withRenderingMode(.alwaysTemplate)
-        c24Cell.titleImageTintColor = .themeJacob
+        c24Cell.titleImage = UIImage(named: "Cell Icon")?.withTintColor(.themeJacob)
         c24Cell.title = "C24 - Title"
         c24Cell.titleImageAction = { print("C24 - Title Image Tap") }
         c24Cell.value = "Some Value"

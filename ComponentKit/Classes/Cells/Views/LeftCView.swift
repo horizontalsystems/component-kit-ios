@@ -53,9 +53,4 @@ open class LeftCView: UIView {
         set { imageButton.setImage(newValue, for: .normal) }
     }
 
-    public var imageTintColor: UIColor? {
-        get { imageButton.imageTintColor(for: .normal) }
-        set { imageButton.setImageTintColor(newValue, for: .normal) }
-    }
-
 }

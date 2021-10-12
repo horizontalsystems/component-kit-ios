@@ -316,8 +316,6 @@ class NumPadImageCell: UICollectionViewCell {
             maker.edges.equalToSuperview()
         }
 
-        button.setImageTintColor(.themeGray, for: .normal)
-        button.setImageTintColor(.themeSteel20, for: .disabled)
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
     }
 
@@ -328,8 +326,9 @@ class NumPadImageCell: UICollectionViewCell {
     func bind(image: UIImage?, pressedTintColor: UIColor, enabled: Bool, onTap: (() -> ())?) {
         self.onTap = onTap
         button.isEnabled = enabled
-        button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.setImageTintColor(pressedTintColor, for: .highlighted)
+        button.setImage(image?.withTintColor(.themeGray), for: .normal)
+        button.setImage(image?.withTintColor(.themeSteel20), for: .disabled)
+        button.setImage(image?.withTintColor(pressedTintColor), for: .highlighted)
     }
 
     @objc func didTapButton() {
