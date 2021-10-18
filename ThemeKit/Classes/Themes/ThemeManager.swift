@@ -62,13 +62,8 @@ public class Theme {
         standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.themeOz]
         standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.themeOz]
 
-        let scrollEdgeAppearance = UINavigationBarAppearance()
-        scrollEdgeAppearance.configureWithTransparentBackground()
-        scrollEdgeAppearance.titleTextAttributes = [.foregroundColor: UIColor.themeOz]
-        scrollEdgeAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.themeOz]
-
         UINavigationBar.appearance().standardAppearance = standardAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = scrollEdgeAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = standardAppearance
     }
 
 }
