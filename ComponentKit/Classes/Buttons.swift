@@ -157,21 +157,12 @@ open class ThemeButton: UIButton {
         }
     }
 
-    private func setImageTintColor(_ tintColor: UIColor?, for state: UIControl.State) {
-        imageTintColors[state] = tintColor
-
-        if let tintColor = tintColor {
-            super.setImage(imageView?.image?.withTintColor(tintColor), for: state)
-        }
-    }
-
     open override func setImage(_ image: UIImage?, for state: State) {
         var image = image
         if let color = imageTintColors[state] {
             image = image?.withTintColor(color)
         }
         super.setImage(image, for: state)
-
     }
 
 }
@@ -246,9 +237,9 @@ extension ThemeButton {
             setBackgroundColor(.themeNina, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
-            setImageTintColor(.themeClaude, for: .normal)
-            setImageTintColor(.themeClaude, for: .highlighted)
-            setImageTintColor(.themeGray50, for: .disabled)
+            imageTintColors[.normal] = .themeClaude
+            imageTintColors[.highlighted] = .themeClaude
+            imageTintColors[.disabled] = .themeGray50
 
         case .primaryTransparent:
             applyPrimary()
@@ -293,9 +284,9 @@ extension ThemeButton {
             applySecondary()
             applySecondaryBackground()
 
-            setImageTintColor(.themeLeah, for: .normal)
-            setImageTintColor(.themeLeah, for: .highlighted)
-            setImageTintColor(.themeGray50, for: .disabled)
+            imageTintColors[.normal] = .themeLeah
+            imageTintColors[.highlighted] = .themeLeah
+            imageTintColors[.disabled] = .themeGray50
 
             applyPrioritiesRequired()
 
