@@ -20,6 +20,7 @@
 "unlock_pin.cant_save_pin" = "Ouch! We cannot save your passcode, please contact us asap!";
 "unlock_pin.blocked_until" = "Disabled until: %@";
 "rate_list.updated" = "updated";
+"biometric_usage_reason" = "Unlock wallet";
 
 //NumPad
 

@@ -12,7 +12,7 @@ class NumPad: UICollectionView {
 
     private enum Cell {
         case number(number: String, letters: String?, filled: Bool, action: () -> ())
-        case image(image: UIImage?, pressedTintColor: UIColor, disabled: Bool, action: (() -> ())?)
+        case image(image: UIImage?, pressedTintColor: UIColor, enabled: Bool, action: (() -> ())?)
     }
 
     public struct Style: OptionSet {
@@ -80,13 +80,13 @@ class NumPad: UICollectionView {
                 case .none: return nil
                 }
             }
-            cells.append(.image(image: image, pressedTintColor: .themeGray50, disabled: false, action: { [weak self] in self?.numPadDelegate?.numPadDidClickBiometry() }))
+            cells.append(.image(image: image, pressedTintColor: .themeGray50, enabled: true, action: { [weak self] in self?.numPadDelegate?.numPadDidClickBiometry() }))
         } else {
-            cells.append(.image(image: nil, pressedTintColor: .white, disabled: false, action: nil))
+            cells.append(.image(image: nil, pressedTintColor: .white, enabled: false, action: nil))
         }
         let localizedZero = format(number: 0)
         cells.append(.number(number: localizedZero, letters: nil, filled: true, action: { [weak self] in self?.numPadDidClick(digit: localizedZero) }))
-        cells.append(.image(image: PinKit.image(named: "Backspace Medium"), pressedTintColor: .themeGray50, disabled: enabled, action: { [weak self] in self?.numPadDidClickBackspace() }))
+        cells.append(.image(image: PinKit.image(named: "Backspace Medium"), pressedTintColor: .themeGray50, enabled: enabled, action: { [weak self] in self?.numPadDidClickBackspace() }))
     }
 
     private var itemWidth: CGFloat {
