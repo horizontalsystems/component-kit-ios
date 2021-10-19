@@ -20,6 +20,7 @@
 "unlock_pin.cant_save_pin" = "¡Ups! ¡No podemos guardar su código, póngase en contacto con nosotros lo antes posible!";
 "unlock_pin.blocked_until" = "Inhabilitado hasta: %@";
 "rate_list.updated" = "actualizado";
+"biometric_usage_reason" = "Desbloquear monedero";
 
 //NumPad
 

@@ -20,6 +20,7 @@
 "unlock_pin.cant_save_pin" = "Eyvah! PİNninizi kaydetemiyoruz, acilen bizimle iletişime geçin!";
 "unlock_pin.blocked_until" = "Engellendi: %@";
 "rate_list.updated" = "güncellendi";
+"biometric_usage_reason" = "Cüzdan kilidini aç";
 
 //NumPad
 

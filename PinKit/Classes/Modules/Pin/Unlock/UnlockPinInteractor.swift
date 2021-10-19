@@ -70,7 +70,7 @@ extension UnlockPinInteractor: IUnlockPinInteractor {
     }
 
     func biometricUnlock() {
-        biometricManager.validate(reason: "biometric_usage_reason")
+        biometricManager.validate(reason: "biometric_usage_reason")//
     }
 
 }
