@@ -20,6 +20,7 @@
 "unlock_pin.cant_save_pin" = "Ой! Мы не можем сохранить ваш код. Пожалуйста, свяжитесь с нами как можно скорее!";
 "unlock_pin.blocked_until" = "Отключено до: %@";
 "rate_list.updated" = "обновлено";
+"biometric_usage_reason" = "Unlock wallet";
 
 //NumPad
 
