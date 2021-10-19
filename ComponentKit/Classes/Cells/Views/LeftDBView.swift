@@ -14,6 +14,7 @@ open class LeftDBView: UIView {
             maker.centerY.equalToSuperview()
         }
 
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         label.font = .subhead2
         label.textColor = .themeGray
 
