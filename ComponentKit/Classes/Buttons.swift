@@ -158,11 +158,15 @@ open class ThemeButton: UIButton {
     }
 
     open override func setImage(_ image: UIImage?, for state: State) {
-        var image = image
-        if let color = imageTintColors[state] {
-            image = image?.withTintColor(color)
+        var isStateSet = false
+        imageTintColors.forEach { tintState, color in
+            super.setImage(image?.withTintColor(color), for: tintState)
+            isStateSet = isStateSet || state == tintState
         }
-        super.setImage(image, for: state)
+
+        if !isStateSet {
+            super.setImage(image, for: state)
+        }
     }
 
 }
@@ -285,7 +289,7 @@ extension ThemeButton {
             applySecondaryBackground()
 
             imageTintColors[.normal] = .themeLeah
-            imageTintColors[.highlighted] = .themeLeah
+            imageTintColors[.highlighted] = .themeGray50
             imageTintColors[.disabled] = .themeGray50
 
             applyPrioritiesRequired()
