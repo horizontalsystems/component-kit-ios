@@ -21,6 +21,7 @@ class CellsController: ThemeViewController {
     private let c6Cell = C6Cell()
     private let c9Cell = C9Cell()
     private let c24Cell = C24Cell()
+    private let c85Cell = C85CellNew()
     private let dCell = DCell()
     private let db7Cell = DB7Cell()
     private let d9Cell = D9Cell()
@@ -146,6 +147,17 @@ class CellsController: ThemeViewController {
         c24Cell.value = "Some Value"
         c24Cell.set(progress: 0.75)
         c24Cell.selectionStyle = .none
+
+        c85Cell.set(backgroundStyle: .lawrence)
+        c85Cell.titleStyle = .subhead2Grey
+        c85Cell.titleImage = UIImage(named: "Cell Icon")?.withTintColor(.themeJacob)
+        c85Cell.title = "C85 - Title"
+        c85Cell.titleImageAction = { print("C85 - Title Image Tap") }
+        c85Cell.firstImage = UIImage(named: "icon_20")
+        c85Cell.secondImage = UIImage(named: "icon_20")
+        c85Cell.selectionStyle = .none
+        c85Cell.leftAction = { print("C85 - left tap") }
+        c85Cell.rightAction = { print("C85 - right tap") }
 
         dCell.set(backgroundStyle: .lawrence)
         dCell.title = "D - Title"
@@ -300,6 +312,7 @@ extension CellsController: SectionsDataSource {
                         StaticRow(cell: c6Cell, id: "c6", height: .heightCell48),
                         StaticRow(cell: c9Cell, id: "c9", height: .heightCell48),
                         StaticRow(cell: c24Cell, id: "c24", height: .heightCell48),
+                        StaticRow(cell: c85Cell, id: "c24", height: .heightCell48),
                         StaticRow(cell: dCell, id: "d", height: .heightCell48),
                         StaticRow(cell: db7Cell, id: "db7", height: .heightCell48),
                         StaticRow(cell: d9Cell, id: "d9", height: .heightCell48),
