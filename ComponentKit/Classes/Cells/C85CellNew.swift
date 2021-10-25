@@ -26,6 +26,11 @@ open class C85CellNew: BaseSelectableThemeCell {
         set { leftView.text = newValue }
     }
 
+    public var lineBreadMode: NSLineBreakMode {
+        get { leftView.lineBreakMode }
+        set { leftView.lineBreakMode = newValue }
+    }
+
     public var titleImage: UIImage? {
         get { leftView.image }
         set { leftView.image = newValue }

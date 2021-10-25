@@ -41,6 +41,7 @@ open class LeftCViewNew: UIView {
         }
 
         label.textColor = .themeGray
+        label.lineBreakMode = .byTruncatingMiddle
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -65,6 +66,11 @@ open class LeftCViewNew: UIView {
     public var text: String? {
         get { label.text }
         set { label.text = newValue }
+    }
+
+    public var lineBreakMode: NSLineBreakMode {
+        get { label.lineBreakMode }
+        set { label.lineBreakMode = newValue }
     }
 
     public var image: UIImage? {
