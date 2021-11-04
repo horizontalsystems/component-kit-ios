@@ -20,6 +20,11 @@ open class B7Cell: BaseThemeCell {
         set { leftView.text = newValue }
     }
 
+    public var titleTextColor: UIColor {
+        get { leftView.textColor }
+        set { leftView.textColor = newValue }
+    }
+
     public var value: String? {
         get { rightView.text }
         set { rightView.text = newValue }
