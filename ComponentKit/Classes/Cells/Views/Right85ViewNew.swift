@@ -21,7 +21,7 @@ open class Right85ViewNew: UIView {
 
         addSubview(leftButton)
         leftButton.snp.makeConstraints { maker in
-            maker.trailing.equalTo(rightButton.snp.leading).offset(-CGFloat.margin8)
+            maker.trailing.equalTo(rightButton.snp.leading).offset(-CGFloat.margin16)
             maker.leading.centerY.equalToSuperview()
         }
 
