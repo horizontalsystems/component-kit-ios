@@ -9,7 +9,7 @@ open class BaseSelectableThemeCell: BaseThemeCell {
 
         selectionStyle = .default
 
-        wrapperView.addSubview(selectView)
+        wrapperView.insertSubview(selectView, at: 0)
         selectView.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
             maker.top.equalTo(topSeparatorView.snp.bottom)

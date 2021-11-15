@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'ThemeKit.swift', '~> 1.0'
   s.dependency 'UIExtensions.swift', '~> 1.1'
+  s.dependency 'SectionsTableView.swift', '~> 1.1'
   s.dependency 'HUD.swift', '~> 1.2'
   s.dependency 'LanguageKit.swift', '~> 1.0'
   s.dependency 'SnapKit', '~> 5.0'

@@ -8,11 +8,13 @@ open class BaseThemeCell: UITableViewCell {
     public static let middleInset: CGFloat = .margin16
 
     public let wrapperView = UIView()
+    let componentView = UIView()
 
     public let topSeparatorView = UIView()
     public let bottomSeparatorView = UIView()
 
     public var isVisible = true
+    var id: String?
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,6 +34,11 @@ open class BaseThemeCell: UITableViewCell {
 
         wrapperView.clipsToBounds = true
         wrapperView.isSkeletonable = true
+
+        wrapperView.addSubview(componentView)
+        componentView.snp.makeConstraints { maker in
+            maker.edges.equalToSuperview()
+        }
 
         wrapperView.addSubview(topSeparatorView)
         topSeparatorView.snp.makeConstraints { maker in
@@ -104,6 +111,15 @@ open class BaseThemeCell: UITableViewCell {
         bottomSeparatorView.snp.updateConstraints { maker in
             maker.height.equalTo(bottomSeparator ? CGFloat.heightOneDp : 0)
         }
+    }
+
+    public func bind<T>(index: Int, block: (T) -> ()) {
+        guard index < componentView.subviews.count, let view = componentView.subviews[index] as? T else {
+            print("Cannot cast component view: \(T.self)")
+            return
+        }
+
+        block(view)
     }
 
     public func layout(leftView: UIView, leftInset: CGFloat = BaseThemeCell.leftInset, rightView: UIView, rightInset: CGFloat = BaseThemeCell.rightInset, middleInset: CGFloat = BaseThemeCell.middleInset) {
