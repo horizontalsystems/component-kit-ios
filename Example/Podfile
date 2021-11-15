@@ -15,6 +15,7 @@ target 'ComponentKitExample' do
   pod 'HUD.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
   # pod 'HUD.swift', path: '../../gui-kit/'
   pod 'SectionsTableView.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
+  # pod 'SectionsTableView.swift', path: '../../gui-kit/'
 end
 
 def testPods

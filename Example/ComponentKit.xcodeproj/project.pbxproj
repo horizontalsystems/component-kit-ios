@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11B358DF6B669D448D3EBC1E /* CellsControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B354942A5CF8695D61485E /* CellsControllerNew.swift */; };
 		3A73904C23ED71A00034C30C /* PinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73903E23ED71A00034C30C /* PinController.swift */; };
 		3A73904D23ED71A00034C30C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73903F23ED71A00034C30C /* MainController.swift */; };
 		3A73904F23ED71A00034C30C /* FontsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73904123ED71A00034C30C /* FontsController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11B354942A5CF8695D61485E /* CellsControllerNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsControllerNew.swift; sourceTree = "<group>"; };
 		2E8459D833C0E7FE385EF63B /* Pods_ComponentKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComponentKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39F2700F2E37C6E78D0F195B /* Pods-ComponentKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentKitExample.release.xcconfig"; path = "Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample.release.xcconfig"; sourceTree = "<group>"; };
 		3A73903E23ED71A00034C30C /* PinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				3A73903E23ED71A00034C30C /* PinController.swift */,
 				3A73904423ED71A00034C30C /* PinKitDelegate.swift */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				11B354942A5CF8695D61485E /* CellsControllerNew.swift */,
 			);
 			name = "Example for ComponentKit";
 			path = ComponentKit;
@@ -388,6 +391,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SectionsTableView.swift/SectionsTableView.framework",
 				"${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/StorageKit.swift/StorageKit.framework",
@@ -410,6 +414,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SectionsTableView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkeletonView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StorageKit.framework",
@@ -527,6 +532,7 @@
 				3A73905523ED71A00034C30C /* FontCell.swift in Sources */,
 				3A73905223ED71A00034C30C /* PinKitDelegate.swift in Sources */,
 				3A73905723ED71A00034C30C /* ColorsController.swift in Sources */,
+				11B358DF6B669D448D3EBC1E /* CellsControllerNew.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
