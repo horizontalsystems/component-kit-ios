@@ -150,7 +150,11 @@ public class CellBuilder {
         case .multiText6: return MultiText6Component()
         case .image: return ImageComponent()
         case .switch: return SwitchComponent()
-        case .button: return ButtonComponent()
+        case .primaryButton: return PrimaryButtonComponent()
+        case .primaryCircleButton: return PrimaryCircleButtonComponent()
+        case .secondaryButton: return SecondaryButtonComponent()
+        case .secondaryCircleButton: return SecondaryCircleButtonComponent()
+        case .transparentIconButton: return TransparentIconButtonComponent()
         case .badge: return BadgeComponent()
         default: return nil
         }
@@ -170,7 +174,11 @@ extension CellBuilder {
         case multiText6
         case image
         case `switch`
-        case button
+        case primaryButton
+        case primaryCircleButton
+        case secondaryButton
+        case secondaryCircleButton
+        case transparentIconButton
         case badge
 
         case margin0

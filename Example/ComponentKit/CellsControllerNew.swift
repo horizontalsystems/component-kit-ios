@@ -68,7 +68,7 @@ extension CellsControllerNew: SectionsDataSource {
 
     private func rowContract() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .text, .button, .button],
+                elements: [.image, .text, .secondaryCircleButton, .secondaryCircleButton],
                 tableView: tableView,
                 id: "row-contract",
                 height: .heightCell48,
@@ -84,14 +84,12 @@ extension CellsControllerNew: SectionsDataSource {
                         component.text = "0xai9823nfw2873dmn3498cm3498jf938hdfh98hwe8"
                         component.lineBreakMode = .byTruncatingMiddle
                     }
-                    cell.bind(index: 2) { (component: ButtonComponent) in
-                        component.button.apply(style: .secondaryIcon)
-                        component.button.setImage(UIImage(systemName: "shippingbox")?.withRenderingMode(.alwaysOriginal), for: .normal)
+                    cell.bind(index: 2) { (component: SecondaryCircleButtonComponent) in
+                        component.button.set(image: UIImage(systemName: "shippingbox"))
                         component.onTap = { print("Did tap copy") }
                     }
-                    cell.bind(index: 3) { (component: ButtonComponent) in
-                        component.button.apply(style: .secondaryIcon)
-                        component.button.setImage(UIImage(systemName: "globe")?.withRenderingMode(.alwaysOriginal), for: .normal)
+                    cell.bind(index: 3) { (component: SecondaryCircleButtonComponent) in
+                        component.button.set(image: UIImage(systemName: "globe"))
                         component.onTap = { print("Did tap globe") }
                     }
                 }

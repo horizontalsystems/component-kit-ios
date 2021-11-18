@@ -1,8 +1,8 @@
 import UIKit
 import SnapKit
 
-public class ButtonComponent: UIView {
-    public let button = ThemeButton()
+public class TransparentIconButtonComponent: UIView {
+    public let button = TransparentIconButton()
 
     public var onTap: (() -> ())?
 
@@ -11,8 +11,7 @@ public class ButtonComponent: UIView {
 
         addSubview(button)
         button.snp.makeConstraints { maker in
-            maker.leading.trailing.equalToSuperview()
-            maker.centerY.equalToSuperview()
+            maker.edges.equalToSuperview()
         }
 
         button.addTarget(self, action: #selector(_onTap), for: .touchUpInside)

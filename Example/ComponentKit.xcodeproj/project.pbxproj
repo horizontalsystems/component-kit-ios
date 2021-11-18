@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11B3526FDCFFE11409D49716 /* ButtonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3524D6ABEB41030A99BD0 /* ButtonsController.swift */; };
 		11B358DF6B669D448D3EBC1E /* CellsControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B354942A5CF8695D61485E /* CellsControllerNew.swift */; };
 		3A73904C23ED71A00034C30C /* PinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73903E23ED71A00034C30C /* PinController.swift */; };
 		3A73904D23ED71A00034C30C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73903F23ED71A00034C30C /* MainController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11B3524D6ABEB41030A99BD0 /* ButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsController.swift; sourceTree = "<group>"; };
 		11B354942A5CF8695D61485E /* CellsControllerNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsControllerNew.swift; sourceTree = "<group>"; };
 		2E8459D833C0E7FE385EF63B /* Pods_ComponentKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComponentKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39F2700F2E37C6E78D0F195B /* Pods-ComponentKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentKitExample.release.xcconfig"; path = "Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				3A73904423ED71A00034C30C /* PinKitDelegate.swift */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				11B354942A5CF8695D61485E /* CellsControllerNew.swift */,
+				11B3524D6ABEB41030A99BD0 /* ButtonsController.swift */,
 			);
 			name = "Example for ComponentKit";
 			path = ComponentKit;
@@ -533,6 +536,7 @@
 				3A73905223ED71A00034C30C /* PinKitDelegate.swift in Sources */,
 				3A73905723ED71A00034C30C /* ColorsController.swift in Sources */,
 				11B358DF6B669D448D3EBC1E /* CellsControllerNew.swift in Sources */,
+				11B3526FDCFFE11409D49716 /* ButtonsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
