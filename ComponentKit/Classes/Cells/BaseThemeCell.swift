@@ -8,7 +8,7 @@ open class BaseThemeCell: UITableViewCell {
     public static let middleInset: CGFloat = .margin16
 
     public let wrapperView = UIView()
-    let componentView = UIView()
+    let stackView = UIStackView()
 
     public let topSeparatorView = UIView()
     public let bottomSeparatorView = UIView()
@@ -35,8 +35,8 @@ open class BaseThemeCell: UITableViewCell {
         wrapperView.clipsToBounds = true
         wrapperView.isSkeletonable = true
 
-        wrapperView.addSubview(componentView)
-        componentView.snp.makeConstraints { maker in
+        wrapperView.addSubview(stackView)
+        stackView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
 
@@ -114,7 +114,7 @@ open class BaseThemeCell: UITableViewCell {
     }
 
     public func bind<T>(index: Int, block: (T) -> ()) {
-        guard index < componentView.subviews.count, let view = componentView.subviews[index] as? T else {
+        guard index < stackView.arrangedSubviews.count, let view = stackView.arrangedSubviews[index] as? T else {
             print("Cannot cast component view: \(T.self)")
             return
         }

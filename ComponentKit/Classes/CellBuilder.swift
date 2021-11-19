@@ -77,7 +77,7 @@ public class CellBuilder {
         }
 
         var lastView: UIView?
-        var lastMargin = defaultMargin
+        var lastMargin: CGFloat?
 
         for element in elements {
             switch element {
@@ -89,25 +89,20 @@ public class CellBuilder {
             case .margin24: lastMargin = .margin24
             default:
                 if let view = view(element: element) {
-                    cell.componentView.addSubview(view)
-                    view.snp.makeConstraints { maker in
-                        if let lastView = lastView {
-                            maker.leading.equalTo(lastView.snp.trailing).offset(lastMargin)
-                        } else {
-                            maker.leading.equalToSuperview().inset(lastMargin)
-                        }
-                        maker.top.bottom.equalToSuperview()
+                    if let last = lastMargin, let lastView = lastView {
+                        cell.stackView.setCustomSpacing(last, after: lastView)
+                        lastMargin = nil
                     }
 
+                    cell.stackView.addArrangedSubview(view)
                     lastView = view
-                    lastMargin = defaultMargin
                 }
             }
         }
 
-        lastView?.snp.makeConstraints { maker in
-            maker.trailing.equalToSuperview().inset(lastMargin)
-        }
+        cell.stackView.spacing = defaultMargin
+        cell.stackView.layoutMargins = UIEdgeInsets(top: 0, left: .margin16, bottom: 0, right: .margin16)
+        cell.stackView.isLayoutMarginsRelativeArrangement = true
 
         cell.id = elements.cellId
     }
@@ -142,12 +137,7 @@ public class CellBuilder {
     private static func view(element: CellElement) -> UIView? {
         switch element {
         case .text: return TextComponent()
-        case .multiText1: return MultiText1Component()
-        case .multiText2: return MultiText2Component()
-        case .multiText3: return MultiText3Component()
-        case .multiText4: return MultiText4Component()
-        case .multiText5: return MultiText5Component()
-        case .multiText6: return MultiText6Component()
+        case .multiText: return MultiTextComponent()
         case .image: return ImageComponent()
         case .switch: return SwitchComponent()
         case .primaryButton: return PrimaryButtonComponent()
@@ -166,12 +156,7 @@ extension CellBuilder {
 
     public enum CellElement: String {
         case text
-        case multiText1
-        case multiText2
-        case multiText3
-        case multiText4
-        case multiText5
-        case multiText6
+        case multiText
         case image
         case `switch`
         case primaryButton
