@@ -8,9 +8,12 @@ class CellsControllerNew: ThemeViewController {
     private let tableView = SectionsTableView(style: .grouped)
 
     private let staticCell = BaseThemeCell()
+    private var hiddenMode = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(onChange))
 
         view.addSubview(tableView)
         tableView.snp.makeConstraints { maker in
@@ -34,6 +37,11 @@ class CellsControllerNew: ThemeViewController {
         }
 
         tableView.buildSections()
+    }
+
+    @objc private func onChange() {
+        hiddenMode = !hiddenMode
+        tableView.reload()
     }
 
 }
@@ -84,7 +92,8 @@ extension CellsControllerNew: SectionsDataSource {
                         component.text = "0xai9823nfw2873dmn3498cm3498jf938hdfh98hwe8"
                         component.lineBreakMode = .byTruncatingMiddle
                     }
-                    cell.bind(index: 2) { (component: SecondaryCircleButtonComponent) in
+                    cell.bind(index: 2) { [unowned self] (component: SecondaryCircleButtonComponent) in
+                        component.isHidden = self.hiddenMode
                         component.button.set(image: UIImage(systemName: "shippingbox"))
                         component.onTap = { print("Did tap copy") }
                     }
@@ -98,7 +107,7 @@ extension CellsControllerNew: SectionsDataSource {
 
     private func rowMarket1() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .multiText3, .multiText1],
+                elements: [.image, .multiText, .multiText],
                 tableView: tableView,
                 id: "row-market-1",
                 height: .heightDoubleLineCell,
@@ -109,15 +118,18 @@ extension CellsControllerNew: SectionsDataSource {
                         component.imageView.image = UIImage(systemName: "bitcoinsign.circle")
                         component.imageView.tintColor = .themeGray
                     }
-                    cell.bind(index: 1) { (component: MultiText3Component) in
+                    cell.bind(index: 1) { (component: MultiTextComponent) in
+                        component.set(style: .m3)
                         component.title.set(style: .b2)
                         component.subtitle.set(style: .d1)
 
                         component.title.text = "Bitcoin"
+                        component.title.setContentHuggingPriority(.defaultHigh, for: .horizontal)
                         component.subtitle.text = "BTC"
-                        component.badge.text = "123"
+                        component.subtitleBadge.text = "123"
                     }
-                    cell.bind(index: 2) { (component: MultiText1Component) in
+                    cell.bind(index: 2) { (component: MultiTextComponent) in
+                        component.set(style: .m1)
                         component.title.set(style: .b2)
                         component.subtitle.set(style: .d4)
 
@@ -135,7 +147,7 @@ extension CellsControllerNew: SectionsDataSource {
 
     private func rowMarket2() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .multiText3, .multiText2],
+                elements: [.image, .multiText, .multiText],
                 tableView: tableView,
                 id: "row-market-2",
                 height: .heightDoubleLineCell,
@@ -146,15 +158,17 @@ extension CellsControllerNew: SectionsDataSource {
                         component.imageView.image = UIImage(systemName: "bitcoinsign.circle.fill")
                         component.imageView.tintColor = .themeGray
                     }
-                    cell.bind(index: 1) { (component: MultiText3Component) in
+                    cell.bind(index: 1) { (component: MultiTextComponent) in
+                        component.set(style: .m3)
                         component.title.set(style: .b2)
                         component.subtitle.set(style: .d1)
 
                         component.title.text = "Ethereum"
                         component.subtitle.text = "ETH"
-                        component.badge.text = "2"
+                        component.subtitleBadge.text = "2"
                     }
-                    cell.bind(index: 2) { (component: MultiText2Component) in
+                    cell.bind(index: 2) { (component: MultiTextComponent) in
+                        component.set(style: .m2)
                         component.title.set(style: .b2)
                         component.subtitleLeft.set(style: .d3)
                         component.subtitleRight.set(style: .d1)
@@ -304,7 +318,7 @@ extension CellsControllerNew: SectionsDataSource {
 
     private func rowSettings4() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .multiText1, .image],
+                elements: [.image, .multiText, .image],
                 tableView: tableView,
                 id: "row-settings-4",
                 height: .heightDoubleLineCell,
@@ -315,7 +329,8 @@ extension CellsControllerNew: SectionsDataSource {
                         component.imageView.image = UIImage(systemName: "circle")
                         component.imageView.tintColor = .themeGray
                     }
-                    cell.bind(index: 1) { (component: MultiText1Component) in
+                    cell.bind(index: 1) { (component: MultiTextComponent) in
+                        component.set(style: .m1)
                         component.title.set(style: .b2)
                         component.subtitle.set(style: .d1)
                         component.title.text = "Wallet 1"
@@ -331,7 +346,7 @@ extension CellsControllerNew: SectionsDataSource {
 
     private func rowSettings5() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .multiText1, .image, .image],
+                elements: [.image, .multiText, .image, .image],
                 tableView: tableView,
                 id: "row-settings-5",
                 height: .heightDoubleLineCell,
@@ -342,7 +357,8 @@ extension CellsControllerNew: SectionsDataSource {
                         component.imageView.image = UIImage(systemName: "circle.inset.filled")
                         component.imageView.tintColor = .themeJacob
                     }
-                    cell.bind(index: 1) { (component: MultiText1Component) in
+                    cell.bind(index: 1) { (component: MultiTextComponent) in
+                        component.set(style: .m1)
                         component.title.set(style: .b2)
                         component.subtitle.set(style: .d1)
                         component.title.text = "Wallet 2"
@@ -389,162 +405,6 @@ extension CellsControllerNew: SectionsDataSource {
         )
     }
 
-    private func rowText() -> RowProtocol {
-        CellBuilder.row(
-                elements: [.image, .text],
-                tableView: tableView,
-                id: "row-text",
-                height: .heightCell48,
-                bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
-
-                    cell.bind(index: 0) { (component: ImageComponent) in
-                        component.imageView.image = UIImage(systemName: "pencil.circle")
-                    }
-                    cell.bind(index: 1) { (component: TextComponent) in
-                        component.set(style: .c3)
-                        component.text = "I am TextComponent"
-                    }
-                }
-        )
-    }
-
-    private func rowMultiText1() -> RowProtocol {
-        CellBuilder.row(
-                elements: [.multiText1, .image],
-                tableView: tableView,
-                id: "row-multi-text-1",
-                height: .heightDoubleLineCell,
-                bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
-
-                    cell.bind(index: 0) { (component: MultiText1Component) in
-                        component.title.set(style: .b2)
-                        component.subtitle.set(style: .d1)
-                        component.title.text = "MultiText1Component"
-                        component.subtitle.text = "Subtitle"
-                    }
-
-                    cell.bind(index: 1) { (component: ImageComponent) in
-                        component.imageView.image = UIImage(systemName: "pencil.circle")
-                    }
-                }
-        )
-    }
-
-    private func rowMultiText2() -> RowProtocol {
-        CellBuilder.row(
-                elements: [.multiText2],
-                tableView: tableView,
-                id: "row-multi-text-2",
-                height: .heightDoubleLineCell,
-                bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
-
-                    cell.bind(index: 0) { (component: MultiText2Component) in
-                        component.title.set(style: .b2)
-                        component.subtitleLeft.set(style: .d1)
-                        component.subtitleRight.set(style: .d1)
-
-                        component.title.text = "MultiText2Component"
-                        component.subtitleLeft.text = "Left"
-                        component.subtitleRight.text = "Right"
-                    }
-                }
-        )
-    }
-
-    private func rowMultiText3() -> RowProtocol {
-        CellBuilder.row(
-                elements: [.multiText3],
-                tableView: tableView,
-                id: "row-multi-text-3",
-                height: .heightDoubleLineCell,
-                bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
-
-                    cell.bind(index: 0) { (component: MultiText3Component) in
-                        component.title.set(style: .b2)
-                        component.subtitle.set(style: .d1)
-
-                        component.title.text = "MultiText3Component"
-                        component.badge.text = "1"
-                        component.subtitle.text = "Subtitle"
-                    }
-                }
-        )
-    }
-
-    private func rowMultiText4() -> RowProtocol {
-        CellBuilder.row(
-                elements: [.multiText4, .image],
-                tableView: tableView,
-                id: "row-multi-text-4",
-                height: .heightDoubleLineCell,
-                bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
-
-                    cell.bind(index: 0) { (component: MultiText4Component) in
-                        component.title.set(style: .b2)
-                        component.subtitleLeft.set(style: .d1)
-                        component.subtitleRight.set(style: .d1)
-
-                        component.title.text = "MultiText4Component"
-                        component.badge.text = "ERC20"
-                        component.subtitleLeft.text = "Subtitle Left"
-                        component.subtitleRight.text = "Subtitle Right"
-                    }
-
-                    cell.bind(index: 1) { (component: ImageComponent) in
-                        component.imageView.image = UIImage(systemName: "pencil.circle")
-                    }
-                }
-        )
-    }
-
-    private func rowMultiText5() -> RowProtocol {
-        CellBuilder.row(
-                elements: [.multiText5],
-                tableView: tableView,
-                id: "row-multi-text-5",
-                height: .heightDoubleLineCell,
-                bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
-
-                    cell.bind(index: 0) { (component: MultiText5Component) in
-                        component.title.set(style: .b2)
-                        component.subtitle.set(style: .d1)
-
-                        component.title.text = "MultiText5Component"
-                        component.image.imageView.image = UIImage(systemName: "bag.badge.plus")
-                        component.subtitle.text = "Subtitle"
-                    }
-                }
-        )
-    }
-
-    private func rowMultiText6() -> RowProtocol {
-        CellBuilder.row(
-                elements: [.multiText6],
-                tableView: tableView,
-                id: "row-multi-text-6",
-                height: .heightDoubleLineCell,
-                bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
-
-                    cell.bind(index: 0) { (component: MultiText6Component) in
-                        component.title.set(style: .b2)
-                        component.subtitle.set(style: .d1)
-
-                        component.title.text = "MultiText6Component"
-                        component.imageLeft.imageView.image = UIImage(systemName: "lock")
-                        component.imageRight.imageView.image = UIImage(systemName: "arrow.down.left")
-                        component.subtitle.text = "Subtitle"
-                    }
-                }
-        )
-    }
-
     func buildSections() -> [SectionProtocol] {
         [
             Section(
@@ -564,13 +424,6 @@ extension CellsControllerNew: SectionsDataSource {
                         rowSettings4(),
                         rowSettings5(),
                         rowSettings6(),
-                        rowText(),
-                        rowMultiText1(),
-                        rowMultiText2(),
-                        rowMultiText3(),
-                        rowMultiText4(),
-                        rowMultiText5(),
-                        rowMultiText6(),
                     ]
             )
         ]
