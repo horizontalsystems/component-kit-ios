@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11B3526FDCFFE11409D49716 /* ButtonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3524D6ABEB41030A99BD0 /* ButtonsController.swift */; };
-		11B358DF6B669D448D3EBC1E /* CellsControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B354942A5CF8695D61485E /* CellsControllerNew.swift */; };
+		11B358DF6B669D448D3EBC1E /* CellsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B354942A5CF8695D61485E /* CellsController.swift */; };
 		3A73904C23ED71A00034C30C /* PinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73903E23ED71A00034C30C /* PinController.swift */; };
 		3A73904D23ED71A00034C30C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73903F23ED71A00034C30C /* MainController.swift */; };
 		3A73904F23ED71A00034C30C /* FontsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73904123ED71A00034C30C /* FontsController.swift */; };
@@ -20,7 +20,6 @@
 		3A73905623ED71A00034C30C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73904823ED71A00034C30C /* App.swift */; };
 		3A73905723ED71A00034C30C /* ColorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73904923ED71A00034C30C /* ColorsController.swift */; };
 		3A73905823ED71A00034C30C /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73904A23ED71A00034C30C /* ColorCell.swift */; };
-		3A73905923ED71A00034C30C /* CellsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73904B23ED71A00034C30C /* CellsController.swift */; };
 		3ACFA8EF23E93F3000180FDF /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACFA8EE23E93F3000180FDF /* GeneratedMocks.swift */; };
 		4CC180168D0D85881C8E634A /* Pods_ComponentKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8459D833C0E7FE385EF63B /* Pods_ComponentKitExample.framework */; };
 		58AAA532722A25F75165E9CD /* LockoutManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA4ABB4EE8FB398136754 /* LockoutManagerTests.swift */; };
@@ -41,7 +40,7 @@
 
 /* Begin PBXFileReference section */
 		11B3524D6ABEB41030A99BD0 /* ButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsController.swift; sourceTree = "<group>"; };
-		11B354942A5CF8695D61485E /* CellsControllerNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsControllerNew.swift; sourceTree = "<group>"; };
+		11B354942A5CF8695D61485E /* CellsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsController.swift; sourceTree = "<group>"; };
 		2E8459D833C0E7FE385EF63B /* Pods_ComponentKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComponentKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39F2700F2E37C6E78D0F195B /* Pods-ComponentKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentKitExample.release.xcconfig"; path = "Target Support Files/Pods-ComponentKitExample/Pods-ComponentKitExample.release.xcconfig"; sourceTree = "<group>"; };
 		3A73903E23ED71A00034C30C /* PinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinController.swift; sourceTree = "<group>"; };
@@ -55,7 +54,6 @@
 		3A73904823ED71A00034C30C /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		3A73904923ED71A00034C30C /* ColorsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsController.swift; sourceTree = "<group>"; };
 		3A73904A23ED71A00034C30C /* ColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
-		3A73904B23ED71A00034C30C /* CellsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsController.swift; sourceTree = "<group>"; };
 		3A73906023ED78090034C30C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = ComponentKit/Info.plist; sourceTree = SOURCE_ROOT; };
 		3A73906223ED79620034C30C /* PinKitTests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = PinKitTests.plist; path = Tests/PinKitTests.plist; sourceTree = SOURCE_ROOT; };
 		3ACFA8E423E9359800180FDF /* PinKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,7 +152,6 @@
 			children = (
 				3A73904823ED71A00034C30C /* App.swift */,
 				3A73904223ED71A00034C30C /* AppDelegate.swift */,
-				3A73904B23ED71A00034C30C /* CellsController.swift */,
 				3A73904A23ED71A00034C30C /* ColorCell.swift */,
 				3A73904923ED71A00034C30C /* ColorsController.swift */,
 				3A73904723ED71A00034C30C /* FontCell.swift */,
@@ -165,7 +162,7 @@
 				3A73903E23ED71A00034C30C /* PinController.swift */,
 				3A73904423ED71A00034C30C /* PinKitDelegate.swift */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				11B354942A5CF8695D61485E /* CellsControllerNew.swift */,
+				11B354942A5CF8695D61485E /* CellsController.swift */,
 				11B3524D6ABEB41030A99BD0 /* ButtonsController.swift */,
 			);
 			name = "Example for ComponentKit";
@@ -526,7 +523,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A73904D23ED71A00034C30C /* MainController.swift in Sources */,
-				3A73905923ED71A00034C30C /* CellsController.swift in Sources */,
 				3A73904F23ED71A00034C30C /* FontsController.swift in Sources */,
 				3A73905823ED71A00034C30C /* ColorCell.swift in Sources */,
 				3A73905023ED71A00034C30C /* AppDelegate.swift in Sources */,
@@ -535,7 +531,7 @@
 				3A73905523ED71A00034C30C /* FontCell.swift in Sources */,
 				3A73905223ED71A00034C30C /* PinKitDelegate.swift in Sources */,
 				3A73905723ED71A00034C30C /* ColorsController.swift in Sources */,
-				11B358DF6B669D448D3EBC1E /* CellsControllerNew.swift in Sources */,
+				11B358DF6B669D448D3EBC1E /* CellsController.swift in Sources */,
 				11B3526FDCFFE11409D49716 /* ButtonsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,7 +25,7 @@ class MainController: ThemeTabBarController {
         fontsController.tabBarItem = UITabBarItem(title: fontsTitle, image: UIImage(named: "TabBar Icon"), tag: 2)
 
         let cellsTitle = "Cells"
-        let cellsController = CellsControllerNew()
+        let cellsController = CellsController()
         cellsController.title = cellsTitle
         cellsController.tabBarItem = UITabBarItem(title: cellsTitle, image: UIImage(named: "TabBar Icon"), tag: 3)
 

@@ -4,9 +4,11 @@ import SectionsTableView
 
 public class CellBuilder {
     public static let defaultMargin: CGFloat = .margin16
+    public static let defaultLayoutMargins = UIEdgeInsets(top: 0, left: defaultMargin, bottom: 0, right: defaultMargin)
 
     public static func row(
             elements: [CellElement],
+            layoutMargins: UIEdgeInsets = defaultLayoutMargins,
             tableView: UITableView,
             id: String,
             hash: String? = nil,
@@ -15,7 +17,7 @@ public class CellBuilder {
             dynamicHeight: ((CGFloat) -> CGFloat)? = nil,
             bind: ((BaseThemeCell) -> ())? = nil
     ) -> RowProtocol {
-        let cellId = elements.cellId
+        let cellId = cellId(elements: elements, layoutMargins: layoutMargins)
 
         tableView.register(BaseThemeCell.self, forCellReuseIdentifier: cellId)
 
@@ -29,7 +31,7 @@ public class CellBuilder {
                         return
                     }
 
-                    build(cell: cell, elements: elements)
+                    build(cell: cell, elements: elements, layoutMargins: layoutMargins)
                 }),
                 dynamicHeight: dynamicHeight,
                 bind: { cell, _ in bind?(cell) }
@@ -38,6 +40,7 @@ public class CellBuilder {
 
     public static func selectableRow(
             elements: [CellElement],
+            layoutMargins: UIEdgeInsets = defaultLayoutMargins,
             tableView: UITableView,
             id: String,
             hash: String? = nil,
@@ -48,7 +51,7 @@ public class CellBuilder {
             bind: ((BaseThemeCell) -> ())? = nil,
             action: (() -> ())? = nil
     ) -> RowProtocol {
-        let cellId = elements.cellId
+        let cellId = cellId(elements: elements, layoutMargins: layoutMargins)
 
         tableView.register(BaseSelectableThemeCell.self, forCellReuseIdentifier: cellId)
 
@@ -63,7 +66,7 @@ public class CellBuilder {
                         return
                     }
 
-                    build(cell: cell, elements: elements)
+                    build(cell: cell, elements: elements, layoutMargins: layoutMargins)
                 }),
                 dynamicHeight: dynamicHeight,
                 bind: { cell, _ in bind?(cell) },
@@ -71,7 +74,7 @@ public class CellBuilder {
         )
     }
 
-    public static func build(cell: BaseThemeCell, elements: [CellElement]) {
+    public static func build(cell: BaseThemeCell, elements: [CellElement], layoutMargins: UIEdgeInsets = defaultLayoutMargins) {
         if cell.id != nil {
             return
         }
@@ -101,10 +104,10 @@ public class CellBuilder {
         }
 
         cell.stackView.spacing = defaultMargin
-        cell.stackView.layoutMargins = UIEdgeInsets(top: 0, left: .margin16, bottom: 0, right: .margin16)
+        cell.stackView.layoutMargins = layoutMargins
         cell.stackView.isLayoutMarginsRelativeArrangement = true
 
-        cell.id = elements.cellId
+        cell.id = cellId(elements: elements, layoutMargins: layoutMargins)
     }
 
     public static func height(containerWidth: CGFloat, backgroundStyle: BaseThemeCell.BackgroundStyle, text: String, textStyle: TextComponent.Style, verticalPadding: CGFloat = defaultMargin, elements: [LayoutElement]) -> CGFloat {
@@ -150,6 +153,10 @@ public class CellBuilder {
         }
     }
 
+    private static func cellId(elements: [CellElement], layoutMargins: UIEdgeInsets) -> String {
+        "\(elements.map { $0.rawValue }.joined(separator: "-"));\(layoutMargins.top)-\(layoutMargins.left)-\(layoutMargins.bottom)-\(layoutMargins.right)"
+    }
+
 }
 
 extension CellBuilder {
@@ -184,14 +191,6 @@ extension CellBuilder {
         case margin12
         case margin16
         case margin24
-    }
-
-}
-
-extension Collection where Self.Element == CellBuilder.CellElement {
-
-    var cellId: String {
-        map { $0.rawValue }.joined(separator: "-")
     }
 
 }
