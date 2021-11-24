@@ -12,7 +12,7 @@ public class PrimaryButton: UIButton {
 
         titleLabel?.font = .headline2
 
-        setTitleColor(.themeClaude, for: .normal)
+        setTitleColor(.themeDark, for: .normal)
         setTitleColor(.themeGray50, for: .disabled)
 
         setBackgroundColor(.themeSteel20, for: .disabled)
