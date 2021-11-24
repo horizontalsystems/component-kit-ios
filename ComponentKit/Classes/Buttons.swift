@@ -178,7 +178,7 @@ extension ThemeButton {
         let applyPrimary = {
             self.cornerRadius = 25
             self.titleLabel?.textAlignment = .center
-            self.setTitleColor(.themeClaude, for: .normal)
+            self.setTitleColor(.themeDark, for: .normal)
             self.setTitleColor(.themeGray50, for: .disabled)
         }
 
