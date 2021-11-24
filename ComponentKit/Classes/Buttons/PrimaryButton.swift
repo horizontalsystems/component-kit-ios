@@ -12,7 +12,6 @@ public class PrimaryButton: UIButton {
 
         titleLabel?.font = .headline2
 
-        setTitleColor(.themeDark, for: .normal)
         setTitleColor(.themeGray50, for: .disabled)
 
         setBackgroundColor(.themeSteel20, for: .disabled)
@@ -29,12 +28,15 @@ public class PrimaryButton: UIButton {
     public func set(style: Style) {
         switch style {
         case .yellow:
+            setTitleColor(.themeDark, for: .normal)
             setBackgroundColor(.themeYellowD, for: .normal)
             setBackgroundColor(.themeYellow50, for: .highlighted)
         case .red:
+            setTitleColor(.themeDark, for: .normal)
             setBackgroundColor(.themeLucian, for: .normal)
             setBackgroundColor(.themeRed50, for: .highlighted)
         case .gray:
+            setTitleColor(.themeClaude, for: .normal)
             setBackgroundColor(.themeLeah, for: .normal)
             setBackgroundColor(.themeNina, for: .highlighted)
         }
