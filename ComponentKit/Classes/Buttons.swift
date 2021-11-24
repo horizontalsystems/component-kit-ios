@@ -178,7 +178,6 @@ extension ThemeButton {
         let applyPrimary = {
             self.cornerRadius = 25
             self.titleLabel?.textAlignment = .center
-            self.setTitleColor(.themeDark, for: .normal)
             self.setTitleColor(.themeGray50, for: .disabled)
         }
 
@@ -223,6 +222,8 @@ extension ThemeButton {
         case .primaryYellow:
             applyPrimary()
 
+            setTitleColor(.themeDark, for: .normal)
+
             setBackgroundColor(.themeYellowD, forState: .normal)
             setBackgroundColor(.themeYellow50, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
@@ -230,12 +231,16 @@ extension ThemeButton {
         case .primaryRed:
             applyPrimary()
 
+            setTitleColor(.themeDark, for: .normal)
+
             setBackgroundColor(.themeLucian, forState: .normal)
             setBackgroundColor(.themeRed50, forState: .highlighted)
             setBackgroundColor(.themeSteel20, forState: .disabled)
 
         case .primaryGray, .primaryIconGray:
             applyPrimary()
+
+            setTitleColor(.themeClaude, for: .normal)
 
             setBackgroundColor(.themeLeah, forState: .normal)
             setBackgroundColor(.themeNina, forState: .highlighted)
@@ -247,6 +252,8 @@ extension ThemeButton {
 
         case .primaryTransparent:
             applyPrimary()
+
+            setTitleColor(.themeClaude, for: .normal)
 
             setTitleColor(.themeOz, for: .normal)
             setTitleColor(.themeNina, for: .highlighted)
