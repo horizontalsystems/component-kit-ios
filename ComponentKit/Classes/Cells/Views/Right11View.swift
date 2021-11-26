@@ -25,6 +25,7 @@ open class Right11View: UIView {
 
         toggleView.setContentCompressionResistancePriority(.required, for: .horizontal)
         toggleView.tintColor = .themeSteel20
+        toggleView.onTintColor = .themeYellowD
         toggleView.addTarget(self, action: #selector(onSwitch), for: .valueChanged)
     }
 
