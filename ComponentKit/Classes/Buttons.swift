@@ -197,7 +197,7 @@ extension ThemeButton {
             self.setTitleColor(.themeOz, for: .normal)
             self.setTitleColor(.themeGray, for: .highlighted)
             self.setTitleColor(.themeGray50, for: .disabled)
-            self.setTitleColor(.themeClaude, for: .selected)
+            self.setTitleColor(.themeDark, for: .selected)
         }
 
         let applySecondaryTransparentBackground = {
