@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 import SkeletonView
-import AlamofireImage
+import Kingfisher
 
 open class LeftGView: UIView {
     private let imageView = UIImageView()
@@ -195,11 +195,10 @@ open class LeftGView: UIView {
     }
 
     public func setImage(urlString: String?, placeholder: UIImage?) {
-        imageView.af.cancelImageRequest()
         imageView.image = placeholder
 
         if let urlString = urlString, let url = URL(string: urlString) {
-            imageView.af.setImage(withURL: url, placeholderImage: placeholder)
+            imageView.kf.setImage(with: url, placeholder: placeholder)
         }
     }
 

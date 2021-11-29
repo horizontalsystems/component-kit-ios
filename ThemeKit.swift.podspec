@@ -19,5 +19,5 @@ Pod::Spec.new do |s|
   s.dependency 'UIExtensions.swift', '~> 1.1'
   s.dependency 'RxCocoa', '~> 5.0'
   s.dependency 'Alamofire', '~> 5.4'
-  s.dependency 'AlamofireImage', '~> 4.2'
+  s.dependency 'Kingfisher', '~> 7.0'
 end

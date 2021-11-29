@@ -1,6 +1,6 @@
 import UIKit
 import SnapKit
-import AlamofireImage
+import Kingfisher
 
 public class ImageComponent: UIView {
     public let imageView = UIImageView()
@@ -23,11 +23,10 @@ public class ImageComponent: UIView {
     }
 
     public func setImage(urlString: String?, placeholder: UIImage?) {
-        imageView.af.cancelImageRequest()
         imageView.image = placeholder
 
         if let urlString = urlString, let url = URL(string: urlString) {
-            imageView.af.setImage(withURL: url, placeholderImage: placeholder)
+            imageView.kf.setImage(with: url, placeholder: placeholder)
         }
     }
 
