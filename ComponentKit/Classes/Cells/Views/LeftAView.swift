@@ -1,6 +1,6 @@
 import UIKit
 import SnapKit
-import AlamofireImage
+import Kingfisher
 
 open class LeftAView: UIView {
     private let imageView = UIImageView()
@@ -55,11 +55,10 @@ open class LeftAView: UIView {
     }
 
     public func setImage(urlString: String?, placeholder: UIImage?) {
-        imageView.af.cancelImageRequest()
         imageView.image = placeholder
 
         if let urlString = urlString, let url = URL(string: urlString) {
-            imageView.af.setImage(withURL: url, placeholderImage: placeholder)
+            imageView.kf.setImage(with: url, placeholder: placeholder)
         }
     }
 

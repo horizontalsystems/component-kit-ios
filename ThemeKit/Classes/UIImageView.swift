@@ -1,6 +1,6 @@
 import UIKit
 import Alamofire
-import AlamofireImage
+import Kingfisher
 
 extension UIImageView {
 
@@ -18,7 +18,7 @@ extension UIImageView {
         image = placeholder
 
         if let url = URL(string: urlString) {
-            af.setImage(withURL: url, placeholderImage: placeholder)
+            kf.setImage(with: url, placeholder: placeholder)
         }
     }
 
