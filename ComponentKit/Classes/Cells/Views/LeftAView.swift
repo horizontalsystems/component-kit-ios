@@ -55,11 +55,7 @@ open class LeftAView: UIView {
     }
 
     public func setImage(urlString: String?, placeholder: UIImage?) {
-        imageView.image = placeholder
-
-        if let urlString = urlString, let url = URL(string: urlString) {
-            imageView.kf.setImage(with: url, placeholder: placeholder)
-        }
+        imageView.kf.setImage(with: urlString.flatMap { URL(string: $0) }, placeholder: placeholder)
     }
 
     public func set(imageSize: CGFloat) {
