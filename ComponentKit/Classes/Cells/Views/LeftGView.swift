@@ -195,7 +195,7 @@ open class LeftGView: UIView {
     }
 
     public func setImage(urlString: String?, placeholder: UIImage?) {
-        imageView.kf.setImage(with: urlString.flatMap { URL(string: $0) }, placeholder: placeholder)
+        imageView.kf.setImage(with: urlString.flatMap { URL(string: $0) }, placeholder: placeholder, options: [.scaleFactor(UIScreen.main.scale)])
     }
 
 }
