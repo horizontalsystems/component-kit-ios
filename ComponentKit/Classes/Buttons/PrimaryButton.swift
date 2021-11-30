@@ -32,7 +32,7 @@ public class PrimaryButton: UIButton {
             setBackgroundColor(.themeYellowD, for: .normal)
             setBackgroundColor(.themeYellow50, for: .highlighted)
         case .red:
-            setTitleColor(.themeDark, for: .normal)
+            setTitleColor(.themeClaude, for: .normal)
             setBackgroundColor(.themeLucian, for: .normal)
             setBackgroundColor(.themeRed50, for: .highlighted)
         case .gray:
