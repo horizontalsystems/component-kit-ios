@@ -17,10 +17,9 @@ public class SecondaryButton: UIButton {
         syncInsets()
 
         setTitleColor(.themeOz, for: .normal)
-        setTitleColor(.themeGray, for: .highlighted)
         setTitleColor(.themeGray50, for: .disabled)
-        setTitleColor(.themeClaude, for: .selected)
-        setTitleColor(.themeClaude, for: [.selected, .highlighted])
+        setTitleColor(.themeDark, for: .selected)
+        setTitleColor(.themeClaude, for: .highlighted)
 
         setBackgroundColor(.themeYellowD, for: .selected)
         setBackgroundColor(.themeYellow50, for: [.selected, .highlighted])
@@ -37,8 +36,8 @@ public class SecondaryButton: UIButton {
     public func set(image: UIImage?) {
         setImage(image?.withTintColor(.themeGray), for: .normal)
         setImage(image?.withTintColor(.themeGray50), for: .disabled)
-        setImage(image?.withTintColor(.themeClaude), for: .selected)
-        setImage(image?.withTintColor(.themeClaude), for: [.selected, .highlighted])
+        setImage(image?.withTintColor(.themeDark), for: .selected)
+        setImage(image?.withTintColor(.themeClaude), for: .highlighted)
 
         syncInsets()
     }
