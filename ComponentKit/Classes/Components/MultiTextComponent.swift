@@ -9,6 +9,7 @@ public class MultiTextComponent: UIView {
     public let titleBadge = BadgeView()
     public let titleImageLeft = ImageComponent()
     public let titleImageRight = ImageComponent()
+    public let titleSpacingView = UIView()
 
     public let subtitleBadge = BadgeView()
     public let subtitleLeft = TextComponent()
@@ -28,7 +29,7 @@ public class MultiTextComponent: UIView {
         container.addSubview(titleStackView)
         titleStackView.snp.makeConstraints { maker in
             maker.leading.top.equalToSuperview()
-            maker.trailing.equalToSuperview().priority(.medium)
+            maker.trailing.equalToSuperview()
         }
 
         titleStackView.alignment = .center
@@ -53,12 +54,15 @@ public class MultiTextComponent: UIView {
 
         titleStackView.addArrangedSubview(titleImageRight)
 
+        titleStackView.addArrangedSubview(titleSpacingView)
+
         subtitleStackView.addArrangedSubview(subtitleBadge)
         subtitleStackView.setCustomSpacing(.margin8, after: subtitleBadge)
 
         subtitleStackView.addArrangedSubview(subtitleLeft)
         subtitleStackView.setCustomSpacing(.margin4, after: subtitleLeft)
 
+        subtitleLeft.setContentCompressionResistancePriority(.required, for: .horizontal)
         subtitleLeft.setContentHuggingPriority(.required, for: .horizontal)
 
         subtitleStackView.addArrangedSubview(subtitleRight)
