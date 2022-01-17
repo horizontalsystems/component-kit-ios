@@ -48,23 +48,29 @@ class CellsController: ThemeViewController {
 
 extension CellsController: SectionsDataSource {
 
-    private func rowWallet() -> RowProtocol {
+    private func rowWallet(style: MultiTextComponent.Style, long: Bool, subtitleLong: Bool = false) -> RowProtocol {
         CellBuilder.row(
                 elements: [.multiText, .image, .margin4, .transparentIconButton, .margin4],
                 layoutMargins: UIEdgeInsets(top: 0, left: CellBuilder.defaultMargin, bottom: 0, right: .margin4),
                 tableView: tableView,
-                id: "row-wallet",
+                id: "row-wallet-\(style)-\(long)-\(subtitleLong)",
                 height: .heightDoubleLineCell,
                 bind: { cell in
                     cell.set(backgroundStyle: .lawrence)
 
                     cell.bind(index: 0) { (component: MultiTextComponent) in
-                        component.set(style: .m1)
+                        component.set(style: style)
                         component.title.set(style: .b2)
                         component.subtitle.set(style: .d1)
+                        component.subtitleLeft.set(style: .d3)
 
-                        component.title.text = "Wallet 1"
-                        component.subtitle.text = "12 words"
+                        component.title.text = "\(style) " + (long ? "Wallet One Wallet One Wallet One Wallet One Wallet One Wallet One Wallet One" : "Wallet")
+                        component.titleBadge.text = "ERC20"
+                        component.titleImageLeft.imageView.image = UIImage(systemName: "bitcoinsign.circle.fill")
+                        component.titleImageRight.imageView.image = UIImage(systemName: "bitcoinsign.circle.fill")
+                        component.subtitle.text = subtitleLong ? "Right words of sword and game of thrones by Arslan Corporation" : "Right"
+                        component.subtitleLeft.text = subtitleLong ? "Left Nizhurin" : "Left"
+                        component.subtitleBadge.text = "123"
                     }
                     cell.bind(index: 1) { [unowned self] (component: ImageComponent) in
                         component.isHidden = hiddenMode
@@ -161,6 +167,7 @@ extension CellsController: SectionsDataSource {
                     }
                     cell.bind(index: 2) { (component: MultiTextComponent) in
                         component.set(style: .m1)
+                        component.titleSpacingView.isHidden = true
                         component.title.set(style: .b2)
                         component.subtitle.set(style: .d4)
 
@@ -200,6 +207,7 @@ extension CellsController: SectionsDataSource {
                     }
                     cell.bind(index: 2) { (component: MultiTextComponent) in
                         component.set(style: .m2)
+                        component.titleSpacingView.isHidden = true
                         component.title.set(style: .b2)
                         component.subtitleLeft.set(style: .d3)
                         component.subtitleRight.set(style: .d1)
@@ -443,7 +451,24 @@ extension CellsController: SectionsDataSource {
                     headerState: .margin(height: .margin12),
                     footerState: .margin(height: .margin32),
                     rows: [
-                        rowWallet(),
+                        rowWallet(style: .m1, long: true),
+                        rowWallet(style: .m1, long: false),
+                        rowWallet(style: .m1, long: false, subtitleLong: true),
+                        rowWallet(style: .m2, long: true),
+                        rowWallet(style: .m2, long: false),
+                        rowWallet(style: .m2, long: false, subtitleLong: true),
+                        rowWallet(style: .m3, long: true),
+                        rowWallet(style: .m3, long: false),
+                        rowWallet(style: .m3, long: false, subtitleLong: true),
+                        rowWallet(style: .m4, long: true),
+                        rowWallet(style: .m4, long: false),
+                        rowWallet(style: .m4, long: false, subtitleLong: true),
+                        rowWallet(style: .m5, long: true),
+                        rowWallet(style: .m5, long: false),
+                        rowWallet(style: .m5, long: false, subtitleLong: true),
+                        rowWallet(style: .m6, long: true),
+                        rowWallet(style: .m6, long: false),
+                        rowWallet(style: .m6, long: false, subtitleLong: true),
                         rowMarketCap(),
                         rowContract(),
                         rowMarket1(),
