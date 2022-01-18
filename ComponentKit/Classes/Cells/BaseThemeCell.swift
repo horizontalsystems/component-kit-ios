@@ -40,6 +40,8 @@ open class BaseThemeCell: UITableViewCell {
             maker.edges.equalToSuperview()
         }
 
+        stackView.insetsLayoutMarginsFromSafeArea = false
+
         wrapperView.addSubview(topSeparatorView)
         topSeparatorView.snp.makeConstraints { maker in
             maker.leading.top.trailing.equalToSuperview()
