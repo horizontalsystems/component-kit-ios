@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import SectionsTableView
+import ThemeKit
 
 public class CellBuilder {
     public static let defaultMargin: CGFloat = .margin16
@@ -141,7 +142,9 @@ public class CellBuilder {
         switch element {
         case .text: return TextComponent()
         case .multiText: return MultiTextComponent()
-        case .image: return ImageComponent()
+        case .image16: return ImageComponent(size: .iconSize16)
+        case .image20: return ImageComponent(size: .iconSize20)
+        case .image24: return ImageComponent(size: .iconSize24)
         case .switch: return SwitchComponent()
         case .primaryButton: return PrimaryButtonComponent()
         case .primaryCircleButton: return PrimaryCircleButtonComponent()
@@ -164,7 +167,9 @@ extension CellBuilder {
     public enum CellElement: String {
         case text
         case multiText
-        case image
+        case image16
+        case image20
+        case image24
         case `switch`
         case primaryButton
         case primaryCircleButton

@@ -1,4 +1,5 @@
 import UIKit
+import ThemeKit
 import SnapKit
 
 public class MultiTextComponent: UIView {
@@ -7,8 +8,8 @@ public class MultiTextComponent: UIView {
 
     public let title = TextComponent()
     public let titleBadge = BadgeView()
-    public let titleImageLeft = ImageComponent()
-    public let titleImageRight = ImageComponent()
+    public let titleImageLeft = ImageComponent(size: .iconSize20)
+    public let titleImageRight = ImageComponent(size: .iconSize20)
     public let titleSpacingView = UIView()
 
     public let subtitleBadge = BadgeView()

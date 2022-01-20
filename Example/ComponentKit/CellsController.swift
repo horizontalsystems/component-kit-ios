@@ -25,11 +25,12 @@ class CellsController: ThemeViewController {
         tableView.sectionDataSource = self
 
         staticCell.set(backgroundStyle: .lawrence)
-        CellBuilder.build(cell: staticCell, elements: [.image, .text])
+        CellBuilder.build(cell: staticCell, elements: [.image20, .text])
 
         staticCell.bind(index: 0) { (component: ImageComponent) in
             component.imageView.image = UIImage(systemName: "airplane")
             component.imageView.tintColor = .themeGray
+            component.imageView.contentMode = .scaleAspectFit
         }
         staticCell.bind(index: 1) { (component: TextComponent) in
             component.set(style: .b2)
@@ -50,7 +51,7 @@ extension CellsController: SectionsDataSource {
 
     private func rowWallet(style: MultiTextComponent.Style, long: Bool, subtitleLong: Bool = false) -> RowProtocol {
         CellBuilder.row(
-                elements: [.multiText, .image, .margin4, .transparentIconButton, .margin4],
+                elements: [.multiText, .image20, .margin4, .transparentIconButton, .margin4],
                 layoutMargins: UIEdgeInsets(top: 0, left: CellBuilder.defaultMargin, bottom: 0, right: .margin4),
                 tableView: tableView,
                 id: "row-wallet-\(style)-\(long)-\(subtitleLong)",
@@ -67,7 +68,9 @@ extension CellsController: SectionsDataSource {
                         component.title.text = "\(style) " + (long ? "Wallet One Wallet One Wallet One Wallet One Wallet One Wallet One Wallet One" : "Wallet")
                         component.titleBadge.text = "ERC20"
                         component.titleImageLeft.imageView.image = UIImage(systemName: "bitcoinsign.circle.fill")
+                        component.titleImageLeft.imageView.contentMode = .scaleAspectFit
                         component.titleImageRight.imageView.image = UIImage(systemName: "bitcoinsign.circle.fill")
+                        component.titleImageRight.imageView.contentMode = .scaleAspectFit
                         component.subtitle.text = subtitleLong ? "Right words of sword and game of thrones by Arslan Corporation" : "Right"
                         component.subtitleLeft.text = subtitleLong ? "Left Nizhurin" : "Left"
                         component.subtitleBadge.text = "123"
@@ -76,6 +79,7 @@ extension CellsController: SectionsDataSource {
                         component.isHidden = hiddenMode
                         component.imageView.image = UIImage(systemName: "exclamationmark.triangle")
                         component.imageView.tintColor = .themeLucian
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 2) { (component: TransparentIconButtonComponent) in
                         component.button.set(image: UIImage(named: "icon_20"))
@@ -113,7 +117,7 @@ extension CellsController: SectionsDataSource {
 
     private func rowContract() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .text, .secondaryCircleButton, .secondaryCircleButton],
+                elements: [.image20, .text, .secondaryCircleButton, .secondaryCircleButton],
                 tableView: tableView,
                 id: "row-contract",
                 height: .heightCell48,
@@ -123,6 +127,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "bitcoinsign.square.fill")
                         component.imageView.tintColor = .themeJacob
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 1) { (component: TextComponent) in
                         component.set(style: .d1)
@@ -144,7 +149,7 @@ extension CellsController: SectionsDataSource {
 
     private func rowMarket1() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .multiText, .multiText],
+                elements: [.image20, .multiText, .multiText],
                 tableView: tableView,
                 id: "row-market-1",
                 height: .heightDoubleLineCell,
@@ -154,6 +159,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "bitcoinsign.circle")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 1) { (component: MultiTextComponent) in
                         component.set(style: .m3)
@@ -185,7 +191,7 @@ extension CellsController: SectionsDataSource {
 
     private func rowMarket2() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .multiText, .multiText],
+                elements: [.image20, .multiText, .multiText],
                 tableView: tableView,
                 id: "row-market-2",
                 height: .heightDoubleLineCell,
@@ -195,6 +201,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "bitcoinsign.circle.fill")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 1) { (component: MultiTextComponent) in
                         component.set(style: .m3)
@@ -242,7 +249,7 @@ extension CellsController: SectionsDataSource {
         let textStyle: TextComponent.Style = .d2
 
         return CellBuilder.row(
-                elements: [.image, .text],
+                elements: [.image20, .text],
                 tableView: tableView,
                 id: "row-multiline",
                 dynamicHeight: { containerWidth in
@@ -260,6 +267,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "square")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 1) { (component: TextComponent) in
                         component.set(style: textStyle)
@@ -272,7 +280,7 @@ extension CellsController: SectionsDataSource {
 
     private func rowSettings1() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .text, .image],
+                elements: [.image20, .text, .image16],
                 tableView: tableView,
                 id: "row-settings-1",
                 height: .heightCell48,
@@ -282,6 +290,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "book")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 1) { (component: TextComponent) in
                         component.set(style: .b2)
@@ -290,6 +299,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 2) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "chevron.forward")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                 }
         )
@@ -297,7 +307,7 @@ extension CellsController: SectionsDataSource {
 
     private func rowSettings2() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .text, .image, .margin12, .image],
+                elements: [.image20, .text, .image20, .margin12, .image16],
                 tableView: tableView,
                 id: "row-settings-2",
                 height: .heightCell48,
@@ -307,6 +317,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "shield")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 1) { (component: TextComponent) in
                         component.set(style: .b2)
@@ -315,10 +326,12 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 2) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "exclamationmark.triangle")
                         component.imageView.tintColor = .themeLucian
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 3) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "chevron.forward")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                 }
         )
@@ -326,7 +339,7 @@ extension CellsController: SectionsDataSource {
 
     private func rowSettings3() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .text, .text, .margin8, .image],
+                elements: [.image20, .text, .text, .margin8, .image16],
                 tableView: tableView,
                 id: "row-settings-3",
                 height: .heightCell48,
@@ -336,6 +349,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "globe")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 1) { (component: TextComponent) in
                         component.set(style: .b2)
@@ -350,6 +364,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 3) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "chevron.forward")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                 }
         )
@@ -357,7 +372,7 @@ extension CellsController: SectionsDataSource {
 
     private func rowSettings4() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .multiText, .image],
+                elements: [.image20, .multiText, .image16],
                 tableView: tableView,
                 id: "row-settings-4",
                 height: .heightDoubleLineCell,
@@ -367,6 +382,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "circle")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 1) { (component: MultiTextComponent) in
                         component.set(style: .m1)
@@ -378,6 +394,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 2) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "pencil")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                 }
         )
@@ -385,7 +402,7 @@ extension CellsController: SectionsDataSource {
 
     private func rowSettings5() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .multiText, .image, .image],
+                elements: [.image20, .multiText, .image20, .image16],
                 tableView: tableView,
                 id: "row-settings-5",
                 height: .heightDoubleLineCell,
@@ -395,6 +412,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "circle.inset.filled")
                         component.imageView.tintColor = .themeJacob
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 1) { (component: MultiTextComponent) in
                         component.set(style: .m1)
@@ -406,10 +424,12 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 2) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "exclamationmark.triangle")
                         component.imageView.tintColor = .themeLucian
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 3) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "pencil")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                 }
         )
@@ -417,7 +437,7 @@ extension CellsController: SectionsDataSource {
 
     private func rowSettings6() -> RowProtocol {
         CellBuilder.row(
-                elements: [.image, .text, .image, .switch],
+                elements: [.image20, .text, .image20, .switch],
                 tableView: tableView,
                 id: "row-settings-6",
                 height: .heightCell48,
@@ -427,6 +447,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "suit.spade")
                         component.imageView.tintColor = .themeGray
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 1) { (component: TextComponent) in
                         component.set(style: .b2)
@@ -435,6 +456,7 @@ extension CellsController: SectionsDataSource {
                     cell.bind(index: 2) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "exclamationmark.triangle")
                         component.imageView.tintColor = .themeLucian
+                        component.imageView.contentMode = .scaleAspectFit
                     }
                     cell.bind(index: 3) { (component: SwitchComponent) in
                         component.switchView.isOn = true
