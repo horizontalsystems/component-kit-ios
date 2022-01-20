@@ -5,17 +5,15 @@ import Kingfisher
 public class ImageComponent: UIView {
     public let imageView = UIImageView()
 
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
+    init(size: CGFloat) {
+        super.init(frame: .zero)
 
         addSubview(imageView)
         imageView.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
             maker.centerY.equalToSuperview()
+            maker.size.equalTo(size)
         }
-
-        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
-        imageView.setContentHuggingPriority(.required, for: .horizontal)
     }
 
     required public init?(coder aDecoder: NSCoder) {
