@@ -112,6 +112,10 @@ public class MultiTextComponent: UIView {
             titleImageLeft.isHidden = false
             titleImageRight.isHidden = false
             subtitleRight.isHidden = false
+        case .m7:
+            title.isHidden = false
+            titleBadge.isHidden = false
+            subtitleRight.isHidden = false
         }
     }
 
@@ -126,6 +130,7 @@ extension MultiTextComponent {
         case m4
         case m5
         case m6
+        case m7
     }
 
 }
