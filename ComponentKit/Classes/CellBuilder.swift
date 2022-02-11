@@ -152,6 +152,9 @@ public class CellBuilder {
         case .secondaryCircleButton: return SecondaryCircleButtonComponent()
         case .transparentIconButton: return TransparentIconButtonComponent()
         case .badge: return BadgeComponent()
+        case .spinner20: return SpinnerComponent(style: .small20)
+        case .spinner24: return SpinnerComponent(style: .medium24)
+        case .spinner48: return SpinnerComponent(style: .large48)
         default: return nil
         }
     }
@@ -177,6 +180,9 @@ extension CellBuilder {
         case secondaryCircleButton
         case transparentIconButton
         case badge
+        case spinner20
+        case spinner24
+        case spinner48
 
         case margin0
         case margin4
