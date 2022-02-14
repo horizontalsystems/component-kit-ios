@@ -14,7 +14,7 @@ open class Right20View: UIView {
             maker.centerY.equalToSuperview()
         }
 
-        badgeView.font = .microSB
+        badgeView.set(style: .small)
         badgeView.textColor = .themeTyler
 
         addSubview(iconImageView)

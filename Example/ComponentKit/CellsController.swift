@@ -121,6 +121,7 @@ extension CellsController: SectionsDataSource {
                         component.setContentHuggingPriority(.required, for: .horizontal)
                     }
                     cell.bind(index: 1) { (component: BadgeComponent) in
+                        component.badgeView.set(style: .small)
                         component.badgeView.text = "12"
                     }
                     cell.bind(index: 2) { (component: TextComponent) in

@@ -49,6 +49,7 @@ public class MultiTextComponent: UIView {
 
         titleStackView.addArrangedSubview(titleBadge)
         titleStackView.setCustomSpacing(.margin6, after: titleBadge)
+        titleBadge.set(style: .small)
 
         titleStackView.addArrangedSubview(titleImageLeft)
         titleStackView.setCustomSpacing(.margin6, after: titleImageLeft)
@@ -59,6 +60,7 @@ public class MultiTextComponent: UIView {
 
         subtitleStackView.addArrangedSubview(subtitleBadge)
         subtitleStackView.setCustomSpacing(.margin8, after: subtitleBadge)
+        subtitleBadge.set(style: .small)
 
         subtitleStackView.addArrangedSubview(subtitleLeft)
         subtitleStackView.setCustomSpacing(.margin4, after: subtitleLeft)
