@@ -24,6 +24,8 @@ open class LeftDBView: UIView {
             maker.trailing.equalToSuperview()
             maker.centerY.equalToSuperview()
         }
+
+        badgeView.set(style: .small)
     }
 
     required public init?(coder aDecoder: NSCoder) {

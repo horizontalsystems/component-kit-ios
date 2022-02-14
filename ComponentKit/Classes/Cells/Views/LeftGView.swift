@@ -56,6 +56,7 @@ open class LeftGView: UIView {
         stackView.isSkeletonable = true
 
         stackView.addArrangedSubview(leftBadgeView)
+        leftBadgeView.set(style: .small)
         leftBadgeView.isHidden = true
         leftBadgeView.font = .microSB
 
@@ -64,6 +65,7 @@ open class LeftGView: UIView {
         bottomLabel.textColor = .themeGray
 
         stackView.addArrangedSubview(rightBadgeView)
+        rightBadgeView.set(style: .small)
         rightBadgeView.isHidden = true
         rightBadgeView.font = .microSB
 

@@ -2,9 +2,7 @@ import UIKit
 import SnapKit
 
 public class BadgeView: UIView {
-    static private let sideMargin: CGFloat = .margin1x
-    static private let height: CGFloat = 15
-    static private let font: UIFont = .microSB
+    static private let sideMargin: CGFloat = .margin4
 
     private let label = UILabel()
 
@@ -12,11 +10,10 @@ public class BadgeView: UIView {
         super.init(frame: frame)
 
         snp.makeConstraints { maker in
-            maker.height.equalTo(Self.height)
+            maker.height.equalTo(0)
         }
 
         layer.cornerRadius = .cornerRadius1x
-        backgroundColor = .themeJeremy
 
         addSubview(label)
         label.snp.makeConstraints { maker in
@@ -26,8 +23,16 @@ public class BadgeView: UIView {
 
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.setContentHuggingPriority(.required, for: .horizontal)
-        label.textColor = .themeBran
-        label.font = Self.font
+    }
+
+    public func set(style: Style) {
+        backgroundColor = style.backgroundColor
+        label.textColor = style.textColor
+        label.font = style.font
+
+        snp.updateConstraints { maker in
+            maker.height.equalTo(style.height)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -55,8 +60,46 @@ public class BadgeView: UIView {
         set { label.text = newValue }
     }
 
-    static public func width(for text: String) -> CGFloat {
-        text.size(containerWidth: .greatestFiniteMagnitude, font: font).width + sideMargin * 2
+    static public func width(for text: String, style: Style) -> CGFloat {
+        text.size(containerWidth: .greatestFiniteMagnitude, font: style.font).width + sideMargin * 2
+    }
+
+}
+
+extension BadgeView {
+
+    public enum Style {
+        case small
+        case medium
+
+        var height: CGFloat {
+            switch self {
+            case .small: return 15
+            case .medium: return 18
+            }
+        }
+
+        var font: UIFont {
+            switch self {
+            case .small: return .microSB
+            case .medium: return .captionSB
+            }
+        }
+
+        var textColor: UIColor {
+            switch self {
+            case .small: return .themeBran
+            case .medium: return .themeWhite
+            }
+        }
+
+        var backgroundColor: UIColor {
+            switch self {
+            case .small: return .themeJeremy
+            case .medium: return .themeLucian
+            }
+        }
+
     }
 
 }
