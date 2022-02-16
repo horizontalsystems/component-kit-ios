@@ -18,16 +18,16 @@ public class CellBuilder {
             dynamicHeight: ((CGFloat) -> CGFloat)? = nil,
             bind: ((BaseThemeCell) -> ())? = nil
     ) -> RowProtocol {
-        let cellId = cellId(elements: elements, layoutMargins: layoutMargins)
+        let reuseIdentifier = "\(BaseThemeCell.self)|\(cellId(elements: elements, layoutMargins: layoutMargins))"
 
-        tableView.register(BaseThemeCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(BaseThemeCell.self, forCellReuseIdentifier: reuseIdentifier)
 
         return Row<BaseThemeCell>(
                 id: id,
                 hash: hash,
                 height: height,
                 rowActionProvider: rowActionProvider,
-                rowType: .dynamic(reuseIdentifier: cellId, prepare: { cell in
+                rowType: .dynamic(reuseIdentifier: reuseIdentifier, prepare: { cell in
                     guard let cell = cell as? BaseThemeCell else {
                         return
                     }
@@ -52,9 +52,9 @@ public class CellBuilder {
             bind: ((BaseThemeCell) -> ())? = nil,
             action: (() -> ())? = nil
     ) -> RowProtocol {
-        let cellId = cellId(elements: elements, layoutMargins: layoutMargins)
+        let reuseIdentifier = "\(BaseSelectableThemeCell.self)|\(cellId(elements: elements, layoutMargins: layoutMargins))"
 
-        tableView.register(BaseSelectableThemeCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(BaseSelectableThemeCell.self, forCellReuseIdentifier: reuseIdentifier)
 
         return Row<BaseSelectableThemeCell>(
                 id: id,
@@ -62,7 +62,7 @@ public class CellBuilder {
                 height: height,
                 autoDeselect: autoDeselect,
                 rowActionProvider: rowActionProvider,
-                rowType: .dynamic(reuseIdentifier: cellId, prepare: { cell in
+                rowType: .dynamic(reuseIdentifier: reuseIdentifier, prepare: { cell in
                     guard let cell = cell as? BaseThemeCell else {
                         return
                     }
@@ -160,7 +160,7 @@ public class CellBuilder {
     }
 
     private static func cellId(elements: [CellElement], layoutMargins: UIEdgeInsets) -> String {
-        "\(elements.map { $0.rawValue }.joined(separator: "-"));\(layoutMargins.top)-\(layoutMargins.left)-\(layoutMargins.bottom)-\(layoutMargins.right)"
+        "\(elements.map { $0.rawValue }.joined(separator: "-"))|\(Int(layoutMargins.top))-\(Int(layoutMargins.left))-\(Int(layoutMargins.bottom))-\(Int(layoutMargins.right))"
     }
 
 }
