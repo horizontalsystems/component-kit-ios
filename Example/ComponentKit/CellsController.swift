@@ -66,6 +66,23 @@ extension CellsController: SectionsDataSource {
         )
     }
 
+    private func rowSpinner2() -> RowProtocol {
+        CellBuilder.selectableRow(
+                elements: [.text, .spinner20],
+                tableView: tableView,
+                id: "row-spinner-2",
+                height: .heightCell48,
+                bind: { cell in
+                    cell.set(backgroundStyle: .lawrence)
+
+                    cell.bind(index: 0) { (component: TextComponent) in
+                        component.set(style: .d2)
+                        component.text = "Spinner 2"
+                    }
+                }
+        )
+    }
+
     private func rowWallet(style: MultiTextComponent.Style, long: Bool, subtitleLong: Bool = false) -> RowProtocol {
         CellBuilder.row(
                 elements: [.multiText, .image20, .margin4, .transparentIconButton, .margin4],
@@ -492,6 +509,7 @@ extension CellsController: SectionsDataSource {
                     footerState: .margin(height: .margin32),
                     rows: [
                         rowSpinner(),
+                        rowSpinner2(),
                         rowWallet(style: .m1, long: true),
                         rowWallet(style: .m1, long: false),
                         rowWallet(style: .m1, long: false, subtitleLong: true),
