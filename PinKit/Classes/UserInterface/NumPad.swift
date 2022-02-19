@@ -94,7 +94,7 @@ class NumPad: UICollectionView {
     }
 
     private var interitemSpacing: CGFloat {
-        floor((bounds.width - columnCount * bounds.width / (columnCount * itemSizeRatio)) / (columnCount - 1)) // width witout items divided on interitem spacing count
+        floor((bounds.width - columnCount * bounds.width / (columnCount * itemSizeRatio)) / (columnCount - 1)) // width without items divided on interitem spacing count
     }
 
     private var lineSpacing: CGFloat {
