@@ -9,8 +9,8 @@ open class SubtitleHeaderFooterView: UITableViewHeaderFooterView {
 
         addSubview(label)
         label.snp.makeConstraints { maker in
-            maker.leading.trailing.equalToSuperview().inset(CGFloat.margin4x)
-            maker.bottom.equalToSuperview().inset(CGFloat.margin2x)
+            maker.leading.trailing.equalToSuperview().inset(CGFloat.margin16)
+            maker.centerY.equalToSuperview()
         }
 
         label.font = .subhead1
@@ -22,11 +22,11 @@ open class SubtitleHeaderFooterView: UITableViewHeaderFooterView {
     }
 
     open func bind(text: String?) {
-        label.text = text
+        label.text = text?.uppercased()
     }
 
 }
 
 extension SubtitleHeaderFooterView {
-    public static let height: CGFloat = 32
+    public static let height: CGFloat = .heightSingleLineCell
 }
