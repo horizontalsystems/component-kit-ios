@@ -7,6 +7,26 @@ public class CellBuilder {
     public static let defaultMargin: CGFloat = .margin16
     public static let defaultLayoutMargins = UIEdgeInsets(top: 0, left: defaultMargin, bottom: 0, right: defaultMargin)
 
+    public static func preparedCell(tableView: UITableView, indexPath: IndexPath, elements: [CellElement], layoutMargins: UIEdgeInsets = defaultLayoutMargins) -> UITableViewCell {
+        let reuseIdentifier = reuseIdentifier(elements: elements, layoutMargins: layoutMargins)
+        tableView.register(BaseThemeCell.self, forCellReuseIdentifier: reuseIdentifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        if let cell = cell as? BaseThemeCell {
+            build(cell: cell, elements: elements, layoutMargins: layoutMargins)
+        }
+        return cell
+    }
+
+    public static func preparedSelectableCell(tableView: UITableView, indexPath: IndexPath, elements: [CellElement], layoutMargins: UIEdgeInsets = defaultLayoutMargins) -> UITableViewCell {
+        let reuseIdentifier = selectableReuseIdentifier(elements: elements, layoutMargins: layoutMargins)
+        tableView.register(BaseSelectableThemeCell.self, forCellReuseIdentifier: reuseIdentifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        if let cell = cell as? BaseThemeCell {
+            build(cell: cell, elements: elements, layoutMargins: layoutMargins)
+        }
+        return cell
+    }
+
     public static func row(
             elements: [CellElement],
             layoutMargins: UIEdgeInsets = defaultLayoutMargins,
@@ -18,7 +38,7 @@ public class CellBuilder {
             dynamicHeight: ((CGFloat) -> CGFloat)? = nil,
             bind: ((BaseThemeCell) -> ())? = nil
     ) -> RowProtocol {
-        let reuseIdentifier = "\(BaseThemeCell.self)|\(cellId(elements: elements, layoutMargins: layoutMargins))"
+        let reuseIdentifier = reuseIdentifier(elements: elements, layoutMargins: layoutMargins)
 
         tableView.register(BaseThemeCell.self, forCellReuseIdentifier: reuseIdentifier)
 
@@ -52,7 +72,7 @@ public class CellBuilder {
             bind: ((BaseThemeCell) -> ())? = nil,
             action: (() -> ())? = nil
     ) -> RowProtocol {
-        let reuseIdentifier = "\(BaseSelectableThemeCell.self)|\(cellId(elements: elements, layoutMargins: layoutMargins))"
+        let reuseIdentifier = selectableReuseIdentifier(elements: elements, layoutMargins: layoutMargins)
 
         tableView.register(BaseSelectableThemeCell.self, forCellReuseIdentifier: reuseIdentifier)
 
@@ -145,6 +165,7 @@ public class CellBuilder {
         case .image16: return ImageComponent(size: .iconSize16)
         case .image20: return ImageComponent(size: .iconSize20)
         case .image24: return ImageComponent(size: .iconSize24)
+        case .transactionImage: return TransactionImageComponent()
         case .switch: return SwitchComponent()
         case .primaryButton: return PrimaryButtonComponent()
         case .primaryCircleButton: return PrimaryCircleButtonComponent()
@@ -157,6 +178,14 @@ public class CellBuilder {
         case .spinner48: return SpinnerComponent(style: .large48)
         default: return nil
         }
+    }
+
+    private static func reuseIdentifier(elements: [CellElement], layoutMargins: UIEdgeInsets = defaultLayoutMargins) -> String {
+        "\(BaseThemeCell.self)|\(cellId(elements: elements, layoutMargins: layoutMargins))"
+    }
+
+    private static func selectableReuseIdentifier(elements: [CellElement], layoutMargins: UIEdgeInsets = defaultLayoutMargins) -> String {
+        "\(BaseSelectableThemeCell.self)|\(cellId(elements: elements, layoutMargins: layoutMargins))"
     }
 
     private static func cellId(elements: [CellElement], layoutMargins: UIEdgeInsets) -> String {
@@ -173,6 +202,7 @@ extension CellBuilder {
         case image16
         case image20
         case image24
+        case transactionImage
         case `switch`
         case primaryButton
         case primaryCircleButton

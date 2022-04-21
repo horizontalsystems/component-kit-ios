@@ -1,6 +1,5 @@
 import UIKit
 import SnapKit
-import Kingfisher
 import HUD
 
 public class SpinnerComponent: UIView {
