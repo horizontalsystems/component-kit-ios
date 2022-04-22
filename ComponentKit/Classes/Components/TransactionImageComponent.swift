@@ -43,25 +43,27 @@ public class TransactionImageComponent: UIView {
 
         doubleImageWrapper.addSubview(backImageView)
         backImageView.snp.makeConstraints { maker in
-            maker.trailing.bottom.equalToSuperview()
+            maker.leading.top.equalToSuperview()
             maker.size.equalTo(CGFloat.iconSize20)
         }
 
         let frontImageMask = UIView()
 
         doubleImageWrapper.addSubview(frontImageMask)
-        frontImageMask.snp.makeConstraints { maker in
-            maker.leading.top.equalToSuperview()
+        doubleImageWrapper.addSubview(frontImageView)
+
+        frontImageView.snp.makeConstraints { maker in
+            maker.trailing.bottom.equalToSuperview()
             maker.size.equalTo(CGFloat.iconSize20)
+        }
+
+        frontImageMask.snp.makeConstraints { maker in
+            maker.size.equalTo(frontImageView)
+            maker.center.equalTo(frontImageView).offset(-1)
         }
 
         frontImageMask.backgroundColor = .themeTyler
         frontImageMask.cornerRadius = 10
-
-        doubleImageWrapper.addSubview(frontImageView)
-        frontImageView.snp.makeConstraints { maker in
-            maker.edges.equalTo(frontImageMask)
-        }
     }
 
     required public init?(coder aDecoder: NSCoder) {
