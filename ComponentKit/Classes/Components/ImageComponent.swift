@@ -20,6 +20,14 @@ public class ImageComponent: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    public var imageRatio: CGFloat? {
+        if let image = imageView.image {
+            return image.size.height / image.size.width
+        }
+
+        return nil
+    }
+
     public func setImage(urlString: String?, placeholder: UIImage?) {
         imageView.kf.setImage(with: urlString.flatMap { URL(string: $0) }, placeholder: placeholder, options: [.scaleFactor(UIScreen.main.scale)])
     }
