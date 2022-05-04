@@ -70,7 +70,8 @@ public class CellBuilder {
             rowActionProvider: (() -> [RowAction])? = nil,
             dynamicHeight: ((CGFloat) -> CGFloat)? = nil,
             bind: ((BaseThemeCell) -> ())? = nil,
-            action: (() -> ())? = nil
+            action: (() -> ())? = nil,
+            actionWithCell: ((BaseThemeCell) -> ())? = nil
     ) -> RowProtocol {
         let reuseIdentifier = selectableReuseIdentifier(elements: elements, layoutMargins: layoutMargins)
 
@@ -91,7 +92,10 @@ public class CellBuilder {
                 }),
                 dynamicHeight: dynamicHeight,
                 bind: { cell, _ in bind?(cell) },
-                action: { _ in action?() }
+                action: { cell in
+                    action?()
+                    actionWithCell?(cell)
+                }
         )
     }
 

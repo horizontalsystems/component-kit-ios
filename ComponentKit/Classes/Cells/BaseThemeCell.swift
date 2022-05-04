@@ -124,6 +124,15 @@ open class BaseThemeCell: UITableViewCell {
         block(view)
     }
 
+    public func component<T>(index: Int) -> T? {
+        guard index < stackView.arrangedSubviews.count, let view = stackView.arrangedSubviews[index] as? T else {
+            print("Cannot cast component view: \(T.self)")
+            return nil
+        }
+
+        return view
+    }
+
     public func layout(leftView: UIView, leftInset: CGFloat = BaseThemeCell.leftInset, rightView: UIView, rightInset: CGFloat = BaseThemeCell.rightInset, middleInset: CGFloat = BaseThemeCell.middleInset) {
         wrapperView.addSubview(leftView)
         leftView.snp.makeConstraints { maker in
