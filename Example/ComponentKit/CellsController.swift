@@ -66,18 +66,21 @@ extension CellsController: SectionsDataSource {
         )
     }
 
-    private func rowSpinner2() -> RowProtocol {
+    private func rowDeterminiteSpinner() -> RowProtocol {
         CellBuilder.selectableRow(
-                elements: [.text, .spinner20],
+                elements: [.text, .determiniteSpinner20],
                 tableView: tableView,
-                id: "row-spinner-2",
+                id: "row-determinite-spinner",
                 height: .heightCell48,
                 bind: { cell in
                     cell.set(backgroundStyle: .lawrence)
 
                     cell.bind(index: 0) { (component: TextComponent) in
                         component.set(style: .d2)
-                        component.text = "Spinner 2"
+                        component.text = "Determinite Spinner"
+                    }
+                    cell.bind(index: 1) { (component: DeterminiteSpinnerComponent) in
+                        component.set(progress: 0.75)
                     }
                 }
         )
@@ -509,7 +512,7 @@ extension CellsController: SectionsDataSource {
                     footerState: .margin(height: .margin32),
                     rows: [
                         rowSpinner(),
-                        rowSpinner2(),
+                        rowDeterminiteSpinner(),
                         rowWallet(style: .m1, long: true),
                         rowWallet(style: .m1, long: false),
                         rowWallet(style: .m1, long: false, subtitleLong: true),
