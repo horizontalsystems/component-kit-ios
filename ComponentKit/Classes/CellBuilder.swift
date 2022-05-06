@@ -180,6 +180,9 @@ public class CellBuilder {
         case .spinner20: return SpinnerComponent(style: .small20)
         case .spinner24: return SpinnerComponent(style: .medium24)
         case .spinner48: return SpinnerComponent(style: .large48)
+        case .determiniteSpinner20: return DeterminiteSpinnerComponent(size: .iconSize20)
+        case .determiniteSpinner24: return DeterminiteSpinnerComponent(size: .iconSize24)
+        case .determiniteSpinner48: return DeterminiteSpinnerComponent(size: .iconSize48)
         default: return nil
         }
     }
@@ -217,6 +220,9 @@ extension CellBuilder {
         case spinner20
         case spinner24
         case spinner48
+        case determiniteSpinner20
+        case determiniteSpinner24
+        case determiniteSpinner48
 
         case margin0
         case margin4
