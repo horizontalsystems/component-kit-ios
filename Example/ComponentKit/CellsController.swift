@@ -316,6 +316,42 @@ extension CellsController: SectionsDataSource {
         )
     }
 
+    private func rowMultiline2() -> RowProtocol {
+        let backgroundStyle: BaseThemeCell.BackgroundStyle = .lawrence
+        let titleTextStyle: TextComponent.Style = .d1
+        let titleText = "Title"
+        let textStyle: TextComponent.Style = .g2
+        let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+
+        return CellBuilder.row(
+                elements: [.text, .text],
+                tableView: tableView,
+                id: "row-multiline-2",
+                dynamicHeight: { containerWidth in
+                    CellBuilder.height(
+                            containerWidth: containerWidth,
+                            backgroundStyle: backgroundStyle,
+                            text: text,
+                            textStyle: textStyle,
+                            elements: [.fixed(width: TextComponent.width(style: titleTextStyle, text: titleText)), .multiline]
+                    )
+                },
+                bind: { cell in
+                    cell.set(backgroundStyle: backgroundStyle)
+
+                    cell.bind(index: 0) { (component: TextComponent) in
+                        component.set(style: titleTextStyle)
+                        component.text = titleText
+                    }
+                    cell.bind(index: 1) { (component: TextComponent) in
+                        component.set(style: textStyle)
+                        component.text = text
+                        component.numberOfLines = 0
+                    }
+                }
+        )
+    }
+
     private func rowSettings1() -> RowProtocol {
         CellBuilder.row(
                 elements: [.image20, .text, .image16],
@@ -537,6 +573,7 @@ extension CellsController: SectionsDataSource {
                         rowMarket2(),
                         rowStatic(),
                         rowMultiline(),
+                        rowMultiline2(),
                         rowSettings1(),
                         rowSettings2(),
                         rowSettings3(),
