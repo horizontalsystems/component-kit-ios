@@ -17,9 +17,10 @@ public class SecondaryButton: UIButton {
         syncInsets()
 
         setTitleColor(.themeOz, for: .normal)
+        setTitleColor(.themeGray, for: .highlighted)
         setTitleColor(.themeGray50, for: .disabled)
         setTitleColor(.themeDark, for: .selected)
-        setTitleColor(.themeClaude, for: .highlighted)
+        setTitleColor(.themeDark, for: [.selected, .highlighted])
 
         setBackgroundColor(.themeYellowD, for: .selected)
         setBackgroundColor(.themeYellow50, for: [.selected, .highlighted])
@@ -35,9 +36,10 @@ public class SecondaryButton: UIButton {
 
     public func set(image: UIImage?) {
         setImage(image?.withTintColor(.themeGray), for: .normal)
+        setImage(image?.withTintColor(.themeGray), for: .highlighted)
         setImage(image?.withTintColor(.themeGray50), for: .disabled)
         setImage(image?.withTintColor(.themeDark), for: .selected)
-        setImage(image?.withTintColor(.themeClaude), for: .highlighted)
+        setImage(image?.withTintColor(.themeDark), for: [.selected, .highlighted])
 
         syncInsets()
     }
@@ -56,7 +58,7 @@ public class SecondaryButton: UIButton {
         switch style {
         case .default:
             setBackgroundColor(.themeSteel20, for: .normal)
-            setBackgroundColor(.themeSteel20, for: .highlighted)
+            setBackgroundColor(.themeSteel10, for: .highlighted)
             setBackgroundColor(.themeSteel20, for: .disabled)
         case .transparent:
             setBackgroundColor(.clear, for: .normal)
