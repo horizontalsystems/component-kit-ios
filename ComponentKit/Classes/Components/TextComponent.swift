@@ -59,4 +59,8 @@ extension TextComponent {
         text.height(forContainerWidth: width, font: style.font)
     }
 
+    public static func width(style: Style, text: String) -> CGFloat {
+        text.size(containerWidth: CGFloat.greatestFiniteMagnitude, font: style.font).width
+    }
+
 }
