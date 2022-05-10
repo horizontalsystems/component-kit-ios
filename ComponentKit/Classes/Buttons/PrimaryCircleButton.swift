@@ -24,8 +24,10 @@ public class PrimaryCircleButton: UIButton {
     public func set(image: UIImage?) {
         if let style = style, case .yellow = style {
             setImage(image?.withTintColor(.themeDark), for: .normal)
+            setImage(image?.withTintColor(.themeDark), for: .highlighted)
         } else {
             setImage(image?.withTintColor(.themeClaude), for: .normal)
+            setImage(image?.withTintColor(.themeClaude), for: .highlighted)
         }
         setImage(image?.withTintColor(.themeSteel20), for: .disabled)
     }

@@ -10,6 +10,8 @@ public class SecondaryCircleButton: UIButton {
         cornerRadius = 14
 
         setBackgroundColor(.themeSteel20, for: .normal)
+        setBackgroundColor(.themeSteel10, for: .highlighted)
+        setBackgroundColor(.themeSteel20, for: .disabled)
 
         snp.makeConstraints { maker in
             maker.size.equalTo(28)
