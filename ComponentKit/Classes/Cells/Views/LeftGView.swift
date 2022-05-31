@@ -58,7 +58,6 @@ open class LeftGView: UIView {
         stackView.addArrangedSubview(leftBadgeView)
         leftBadgeView.set(style: .small)
         leftBadgeView.isHidden = true
-        leftBadgeView.font = .microSB
 
         stackView.addArrangedSubview(bottomLabel)
         bottomLabel.font = .subhead2
@@ -67,7 +66,6 @@ open class LeftGView: UIView {
         stackView.addArrangedSubview(rightBadgeView)
         rightBadgeView.set(style: .small)
         rightBadgeView.isHidden = true
-        rightBadgeView.font = .microSB
 
         stackView.addArrangedSubview(UIView())
 
