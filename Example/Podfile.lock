@@ -119,7 +119,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HUD.swift:
-    :commit: 08fe412470d42eb097d2643cc7f2850098c739b4
+    :commit: bb4f7adaa7d0b341a3c535a28e2e8368fb0a32b2
     :git: https://github.com/horizontalsystems/gui-kit/
   SectionsTableView.swift:
     :commit: 08fe412470d42eb097d2643cc7f2850098c739b4
