@@ -33,7 +33,7 @@ public class CopyableSecondaryButton: ThemeButton {
     @objc private func onTapButton() {
         guard let handler = handler else {
             UIPasteboard.general.setValue(viewItem.value(), forPasteboardType: "public.plain-text")
-            HudHelper.instance.showSuccess(title: "alert.copied".localized)
+            HudHelper.instance.showSuccessBanner()
             return
         }
 

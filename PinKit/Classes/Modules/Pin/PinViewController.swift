@@ -153,7 +153,7 @@ extension PinViewController: IPinView {
     }
 
     func show(error: String) {
-        HudHelper.instance.showError(title: error.localized)
+        HudHelper.instance.showErrorBanner(title: error.localized)
     }
 
     func showPinWrong(page index: Int) {
@@ -166,10 +166,6 @@ extension PinViewController: IPinView {
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "pin.button.cancel".localized, style: .plain, target: self, action: #selector(onCancelTap))
         }
-    }
-
-    func showSuccess() {
-        HudHelper.instance.showSuccess()
     }
 
     func showLockView(till date: Date) {
