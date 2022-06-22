@@ -28,7 +28,6 @@ class EditPinPresenter: ManagePinPresenter {
     }
 
     override func didSavePin() {
-        view?.showSuccess()
         router.dismiss()
     }
 

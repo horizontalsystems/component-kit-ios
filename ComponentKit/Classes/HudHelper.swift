@@ -1,6 +1,5 @@
 import UIKit
 import HUD
-import SnapKit
 
 public class HudHelper {
     public static let instance = HudHelper()
@@ -78,6 +77,14 @@ extension HudHelper {
         show(type: .attention, title: title, subtitle: subtitle)
     }
 
+    public func showSuccessBanner() {
+        show(banner: .success)
+    }
+
+    public func showErrorBanner(title: String) {
+        show(banner: .error(string: title))
+    }
+
     public func showSpinner(title: String? = nil, userInteractionEnabled: Bool = false) {
         var customConfig = themeConfigHud()
         customConfig.hapticType = nil
@@ -115,6 +122,84 @@ extension HudHelper {
 
     public func hide() {
         HUD.instance.hide()
+    }
+
+}
+
+extension HudHelper {
+
+    private func show(banner: BannerType) {
+        var config = HUDConfig()
+
+        config.style = .banner(.top)
+        config.appearStyle = .moveOut
+        config.userInteractionEnabled = banner.isUserInteractionEnabled
+        config.preferredSize = CGSize(width: 114, height: 56)
+
+        config.coverBlurEffectStyle = nil
+        config.coverBlurEffectIntensity = nil
+        config.coverBackgroundColor = .themeBlack50
+
+        config.blurEffectStyle = .themeHud
+        config.backgroundColor = .themeAndy
+        config.blurEffectIntensity = 0.4
+
+        config.cornerRadius = 28
+
+        let viewItem = HUD.ViewItem(
+                icon: banner.icon,
+                iconColor: banner.color,
+                title: banner.title,
+                showingTime: banner.showingTime,
+                isLoading: banner.isLoading
+        )
+
+        HUD.instance.show(config: config, viewItem: viewItem, forced: banner.forced)
+    }
+
+    private enum BannerType {
+        case success
+        case error(string: String)
+
+        var icon: UIImage? {
+            let image: UIImage?
+            switch self {
+            case .success: image = UIImage(named: "circle_check_24")
+            case .error: image = UIImage(named: "warning_2_24")
+            }
+            return image?.withRenderingMode(.alwaysTemplate)
+        }
+
+        var color: UIColor {
+            switch self {
+            case .error: return .themeLucian
+            case .success: return .themeRemus
+            }
+        }
+
+        var title: String {
+            switch self {
+            case .success: return "alert.copied".localized
+            case .error(let description): return description
+            }
+        }
+
+        var showingTime: TimeInterval? {
+            2
+        }
+
+        var isLoading: Bool {
+            false
+        }
+
+        var isUserInteractionEnabled: Bool {
+            true
+        }
+
+        var forced: Bool {
+            true
+        }
+
     }
 
 }
