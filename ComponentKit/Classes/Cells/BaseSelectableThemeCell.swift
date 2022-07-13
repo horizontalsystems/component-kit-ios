@@ -35,6 +35,8 @@ open class BaseSelectableThemeCell: BaseThemeCell {
 
         selectView.snp.updateConstraints { maker in
             maker.top.equalToSuperview().inset(wrapperView.viewBorders.contains(.top) ? wrapperView.viewBorderWidth : 0)
+            maker.leading.equalToSuperview().inset(wrapperView.viewBorders.contains(.left) ? wrapperView.viewBorderWidth : 0)
+            maker.trailing.equalToSuperview().inset(wrapperView.viewBorders.contains(.right) ? wrapperView.viewBorderWidth : 0)
             maker.bottom.equalToSuperview().inset(wrapperView.viewBorders.contains(.bottom) ? wrapperView.viewBorderWidth : 0).priority(.high)
         }
 
