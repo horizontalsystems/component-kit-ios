@@ -12,8 +12,8 @@ open class BaseSelectableThemeCell: BaseThemeCell {
         wrapperView.insertSubview(selectView, at: 0)
         selectView.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
-            maker.top.equalTo(topSeparatorView.snp.bottom)
-            maker.bottom.equalTo(bottomSeparatorView.snp.top).priority(.high)
+            maker.top.equalToSuperview()
+            maker.bottom.equalToSuperview().priority(.high)
         }
 
         selectView.alpha = 0
@@ -27,10 +27,8 @@ open class BaseSelectableThemeCell: BaseThemeCell {
         super.set(backgroundStyle: backgroundStyle, isFirst: isFirst, isLast: isLast)
 
         switch backgroundStyle {
-        case .lawrence:
+        case .lawrence, .bordered:
             selectView.backgroundColor = .themeLawrencePressed
-        case .claude:
-            selectView.backgroundColor = .themeJeremy
         case .transparent:
             selectView.backgroundColor = .themeLawrencePressed
         }
