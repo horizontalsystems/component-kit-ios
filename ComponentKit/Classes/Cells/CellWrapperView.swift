@@ -36,7 +36,7 @@ public class CellWrapperView: UIView {
             return
         }
 
-        let offset: CGFloat = viewBorderWidth / 2
+        let offset: CGFloat = min(viewBorderWidth, 1) / 2
         let topCorner = viewCornerEdges.contains(.top) ? viewCornerRadius : 0
         let bottomCorner = viewCornerEdges.contains(.bottom) ? viewCornerRadius : 0
 

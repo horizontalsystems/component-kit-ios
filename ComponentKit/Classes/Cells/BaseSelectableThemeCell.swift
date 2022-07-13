@@ -32,6 +32,13 @@ open class BaseSelectableThemeCell: BaseThemeCell {
         case .transparent:
             selectView.backgroundColor = .themeLawrencePressed
         }
+
+        selectView.snp.updateConstraints { maker in
+            maker.top.equalToSuperview().inset(wrapperView.viewBorders.contains(.top) ? wrapperView.viewBorderWidth : 0)
+            maker.bottom.equalToSuperview().inset(wrapperView.viewBorders.contains(.bottom) ? wrapperView.viewBorderWidth : 0).priority(.high)
+        }
+
+        layoutIfNeeded()
     }
 
     override open func setHighlighted(_ highlighted: Bool, animated: Bool) {

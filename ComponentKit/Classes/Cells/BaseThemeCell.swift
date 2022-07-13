@@ -38,7 +38,7 @@ open class BaseThemeCell: UITableViewCell {
         stackView.insetsLayoutMarginsFromSafeArea = false
 
         wrapperView.viewBorderColor = .themeSteel10
-        wrapperView.viewBorderWidth = .heightOnePixel
+        wrapperView.viewBorderWidth = .heightOneDp
     }
 
     @available(*, unavailable)
