@@ -56,7 +56,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-spinner",
                 height: .heightCell48,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .lawrence, isFirst: true)
 
                     cell.bind(index: 0) { (component: TextComponent) in
                         component.set(style: .d2)
@@ -516,7 +516,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-settings-6",
                 height: .heightCell48,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .lawrence, isLast: true)
 
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "suit.spade")
