@@ -24,7 +24,7 @@ open class RightValueCellView: UIView {
 
     open func bind(text: String?, highlighted: Bool = false) {
         label.text = text
-        label.textColor = highlighted ? .themeOz : .themeGray
+        label.textColor = highlighted ? .themeLeah : .themeGray
     }
 
 }

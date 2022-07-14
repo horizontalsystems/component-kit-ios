@@ -238,7 +238,7 @@ class NumPadNumberCell: UICollectionViewCell {
 
         textHolderView.addSubview(numberLabel)
         numberLabel.font = .title2R
-        numberLabel.textColor = .themeOz
+        numberLabel.textColor = .themeLeah
 
         textHolderView.addSubview(lettersLabel)
         lettersLabel.font = .micro
@@ -267,7 +267,7 @@ class NumPadNumberCell: UICollectionViewCell {
         numberLabel.text = number
         lettersLabel.text = letters
         if enabled {
-            numberLabel.textColor = .themeOz
+            numberLabel.textColor = .themeLeah
             lettersLabel.textColor = .themeGray50
         } else {
             numberLabel.textColor = .themeSteel10

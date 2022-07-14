@@ -15,7 +15,7 @@ open class LeftFView: UIView {
         }
 
         topLabel.font = .body
-        topLabel.textColor = .themeOz
+        topLabel.textColor = .themeLeah
 
         addSubview(bottomLabel)
         bottomLabel.snp.makeConstraints { maker in
