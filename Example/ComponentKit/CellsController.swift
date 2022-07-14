@@ -50,7 +50,7 @@ class CellsController: ThemeViewController {
 extension CellsController: SectionsDataSource {
 
     private func rowSpinner() -> RowProtocol {
-        CellBuilder.row(
+        CellBuilder.selectableRow(
                 elements: [.text, .spinner20],
                 tableView: tableView,
                 id: "row-spinner",
@@ -510,7 +510,7 @@ extension CellsController: SectionsDataSource {
     }
 
     private func rowSettings6() -> RowProtocol {
-        CellBuilder.row(
+        CellBuilder.selectableRow(
                 elements: [.image20, .text, .image20, .switch],
                 tableView: tableView,
                 id: "row-settings-6",

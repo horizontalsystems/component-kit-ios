@@ -50,7 +50,7 @@ open class BaseThemeCell: UITableViewCell {
         isVisible ? .heightSingleLineCell : 0
     }
 
-    private func corners(isFirst: Bool, isLast: Bool) -> CACornerMask {
+    func corners(isFirst: Bool, isLast: Bool) -> CACornerMask {
         var maskedCorners: CACornerMask = []
         if isFirst {
             maskedCorners.insert(.layerMinXMinYCorner)
