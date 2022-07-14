@@ -37,8 +37,10 @@ open class BaseThemeCell: UITableViewCell {
 
         stackView.insetsLayoutMarginsFromSafeArea = false
 
-        wrapperView.viewBorderColor = .themeSteel10
+        wrapperView.viewSeparatorColor = .themeSteel10
+
         wrapperView.viewBorderWidth = .heightOneDp
+        wrapperView.viewSeparatorWidth = .heightOneDp
     }
 
     @available(*, unavailable)
@@ -77,6 +79,7 @@ open class BaseThemeCell: UITableViewCell {
                 cornerRadius = .cornerRadius12
             }
             maskedCorners = corners(isFirst: isFirst, isLast: isLast)
+            wrapperView.viewBorderColor = .themeSteel10
             wrapperView.viewBorders = isFirst ? [] : [.top]
         case .bordered:
             wrapperView.backgroundColor = .clear
@@ -97,6 +100,7 @@ open class BaseThemeCell: UITableViewCell {
 
             wrapperView.viewCornerEdges = viewCornerEdges
             wrapperView.viewCornerRadius = cornerRadius
+            wrapperView.viewBorderColor = .themeSteel20
             wrapperView.viewBorders = viewBorders
         case .transparent:
             wrapperView.backgroundColor = .clear
@@ -108,6 +112,8 @@ open class BaseThemeCell: UITableViewCell {
             if isLast {
                 viewBorders.formUnion(.bottom)
             }
+
+            wrapperView.viewBorderColor = .themeSteel10
             wrapperView.viewBorders = viewBorders
         }
 

@@ -24,7 +24,7 @@ class CellsController: ThemeViewController {
         tableView.backgroundColor = .clear
         tableView.sectionDataSource = self
 
-        staticCell.set(backgroundStyle: .lawrence)
+        staticCell.set(backgroundStyle: .bordered)
         CellBuilder.build(cell: staticCell, elements: [.image20, .text])
 
         staticCell.bind(index: 0) { (component: ImageComponent) in
@@ -56,7 +56,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-spinner",
                 height: .heightCell48,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence, isFirst: true)
+                    cell.set(backgroundStyle: .bordered, isFirst: true)
 
                     cell.bind(index: 0) { (component: TextComponent) in
                         component.set(style: .d2)
@@ -73,7 +73,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-determinite-spinner",
                 height: .heightCell48,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: TextComponent) in
                         component.set(style: .d2)
@@ -94,7 +94,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-wallet-\(style)-\(long)-\(subtitleLong)",
                 height: .heightDoubleLineCell,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: MultiTextComponent) in
                         component.set(style: style)
@@ -133,7 +133,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-market-cap",
                 height: .heightCell48,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: TextComponent) in
                         component.set(style: .d1)
@@ -160,7 +160,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-contract",
                 height: .heightCell48,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "bitcoinsign.square.fill")
@@ -192,7 +192,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-market-1",
                 height: .heightDoubleLineCell,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "bitcoinsign.circle")
@@ -234,7 +234,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-market-2",
                 height: .heightDoubleLineCell,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "bitcoinsign.circle.fill")
@@ -282,7 +282,7 @@ extension CellsController: SectionsDataSource {
     }
 
     private func rowMultiline() -> RowProtocol {
-        let backgroundStyle: BaseThemeCell.BackgroundStyle = .lawrence
+        let backgroundStyle: BaseThemeCell.BackgroundStyle = .bordered
         let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         let textStyle: TextComponent.Style = .d2
 
@@ -317,7 +317,7 @@ extension CellsController: SectionsDataSource {
     }
 
     private func rowMultiline2() -> RowProtocol {
-        let backgroundStyle: BaseThemeCell.BackgroundStyle = .lawrence
+        let backgroundStyle: BaseThemeCell.BackgroundStyle = .bordered
         let titleTextStyle: TextComponent.Style = .d1
         let titleText = "Title"
         let textStyle: TextComponent.Style = .g2
@@ -359,7 +359,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-settings-1",
                 height: .heightCell48,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "book")
@@ -386,7 +386,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-settings-2",
                 height: .heightCell48,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "shield")
@@ -418,7 +418,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-settings-3",
                 height: .heightCell48,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "globe")
@@ -451,7 +451,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-settings-4",
                 height: .heightDoubleLineCell,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "circle")
@@ -481,7 +481,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-settings-5",
                 height: .heightDoubleLineCell,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence)
+                    cell.set(backgroundStyle: .bordered)
 
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "circle.inset.filled")
@@ -516,7 +516,7 @@ extension CellsController: SectionsDataSource {
                 id: "row-settings-6",
                 height: .heightCell48,
                 bind: { cell in
-                    cell.set(backgroundStyle: .lawrence, isLast: true)
+                    cell.set(backgroundStyle: .bordered, isLast: true)
 
                     cell.bind(index: 0) { (component: ImageComponent) in
                         component.imageView.image = UIImage(systemName: "suit.spade")
