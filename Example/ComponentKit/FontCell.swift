@@ -19,7 +19,7 @@ class FontCell: UITableViewCell {
         }
 
         nameLabel.font = .subhead1
-        nameLabel.textColor = .themeOz
+        nameLabel.textColor = .themeLeah
 
         contentView.addSubview(fontLabel)
         fontLabel.snp.makeConstraints { maker in
@@ -27,7 +27,7 @@ class FontCell: UITableViewCell {
             maker.centerY.equalToSuperview()
         }
 
-        fontLabel.textColor = .themeOz
+        fontLabel.textColor = .themeLeah
         fontLabel.text = "Hello World"
     }
 

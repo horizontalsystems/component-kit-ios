@@ -16,7 +16,7 @@ public class SecondaryButton: UIButton {
 
         syncInsets()
 
-        setTitleColor(.themeOz, for: .normal)
+        setTitleColor(.themeLeah, for: .normal)
         setTitleColor(.themeGray, for: .highlighted)
         setTitleColor(.themeGray50, for: .disabled)
         setTitleColor(.themeDark, for: .selected)

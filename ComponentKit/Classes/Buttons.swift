@@ -250,7 +250,7 @@ extension ThemeButton {
         case .primaryTransparent:
             applyPrimary()
 
-            setTitleColor(.themeOz, for: .normal)
+            setTitleColor(.themeLeah, for: .normal)
             setTitleColor(.themeNina, for: .highlighted)
             setTitleColor(.themeSteel20, for: .disabled)
 
@@ -301,7 +301,7 @@ extension ThemeButton {
             setBackgroundColor(.clear, forState: .selected)
 
             setTitleColor(.themeGray, for: .normal)
-            setTitleColor(.themeOz, for: .selected)
+            setTitleColor(.themeLeah, for: .selected)
         }
 
         return self

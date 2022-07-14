@@ -14,7 +14,7 @@ public class HudHelper {
         case .success: statusImage = ComponentKit.image(named: "checkmark_48")
         case .error:
             statusImage = ComponentKit.image(named: "close_48")
-            statusConfig.imageTintColor = .themeOz
+            statusConfig.imageTintColor = .themeLeah
         case .attention: statusImage = ComponentKit.image(named: "attention_48")
         }
 
@@ -53,10 +53,10 @@ public class HudHelper {
     private func configStatusModel() -> HUDStatusModel {
         let config = HUDStatusFactory.instance.config
         config.titleLabelFont = .subhead1
-        config.titleLabelColor = .themeOz
+        config.titleLabelColor = .themeLeah
 
         config.subtitleLabelFont = .subhead1
-        config.subtitleLabelColor = .themeOz
+        config.subtitleLabelColor = .themeLeah
 
         return config
     }

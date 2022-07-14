@@ -27,7 +27,7 @@ open class LeftBBView: UIView {
         }
 
         label.font = .body
-        label.textColor = .themeOz
+        label.textColor = .themeLeah
     }
 
     required public init?(coder aDecoder: NSCoder) {

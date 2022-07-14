@@ -19,7 +19,7 @@ class ColorCell: UITableViewCell {
         }
 
         nameLabel.font = .subhead1
-        nameLabel.textColor = .themeOz
+        nameLabel.textColor = .themeLeah
 
         contentView.addSubview(colorView)
         colorView.snp.makeConstraints { maker in

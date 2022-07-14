@@ -37,7 +37,7 @@ open class LeftGView: UIView {
         }
 
         topLabel.font = .body
-        topLabel.textColor = .themeOz
+        topLabel.textColor = .themeLeah
         topLabel.isHiddenWhenSkeletonIsActive = true
         topLabel.isSkeletonable = true
 

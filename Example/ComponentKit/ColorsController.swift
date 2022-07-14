@@ -8,7 +8,6 @@ class ColorsController: ThemeViewController {
         Color(name: "Jacob", value: .themeJacob),
         Color(name: "Remus", value: .themeRemus),
         Color(name: "Lucian", value: .themeLucian),
-        Color(name: "Oz", value: .themeOz),
         Color(name: "Leah", value: .themeLeah),
         Color(name: "Jeremy", value: .themeJeremy),
         Color(name: "Elena", value: .themeElena),

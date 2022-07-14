@@ -59,8 +59,8 @@ public class Theme {
         let standardAppearance = UINavigationBarAppearance()
         standardAppearance.configureWithTransparentBackground()
         standardAppearance.backgroundColor = .themeNavigationBarBackground
-        standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.themeOz]
-        standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.themeOz]
+        standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.themeLeah]
+        standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.themeLeah]
 
         UINavigationBar.appearance().standardAppearance = standardAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = standardAppearance
