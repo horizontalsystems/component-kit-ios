@@ -17,6 +17,7 @@ public class Kit {
         Currency(code: "RUB", symbol: "₽",   decimal: 2),
         Currency(code: "SGD", symbol: "S$",  decimal: 2),
         Currency(code: "USD", symbol: "$",   decimal: 2),
+        Currency(code: "ZAR", symbol: "R",   decimal: 2),
 
         Currency(code: "BTC", symbol: "₿",   decimal: 8),
         Currency(code: "ETH", symbol: "Ξ",   decimal: 8),
