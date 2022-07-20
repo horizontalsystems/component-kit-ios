@@ -52,7 +52,7 @@ class CellsController: ThemeViewController {
 extension CellsController: SectionsDataSource {
 
     private func rowSpinner() -> RowProtocol {
-        CellBuilderNew.selectableRow(
+        CellBuilderNew.row(
                 rootElement: .hStack([
                     .text,
                     .spinner20
@@ -60,6 +60,7 @@ extension CellsController: SectionsDataSource {
                 tableView: tableView,
                 id: "row-spinner",
                 height: .heightCell48,
+                autoDeselect: true,
                 bind: { cell in
                     cell.set(backgroundStyle: .bordered, isFirst: true)
 
@@ -69,12 +70,15 @@ extension CellsController: SectionsDataSource {
                             component.text = "Spinner"
                         }
                     }
+                },
+                action: {
+                    print("Did tap spinner row")
                 }
         )
     }
 
     private func rowDeterminiteSpinner() -> RowProtocol {
-        CellBuilderNew.selectableRow(
+        CellBuilderNew.row(
                 rootElement: .hStack([
                     .text,
                     .determiniteSpinner20
@@ -593,7 +597,7 @@ extension CellsController: SectionsDataSource {
     }
 
     private func rowSettings6() -> RowProtocol {
-        CellBuilderNew.selectableRow(
+        CellBuilderNew.row(
                 rootElement: .hStack([.image20, .text, .image20, .switch]),
                 tableView: tableView,
                 id: "row-settings-6",
