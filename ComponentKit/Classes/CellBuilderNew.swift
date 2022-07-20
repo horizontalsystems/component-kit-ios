@@ -7,19 +7,12 @@ public class CellBuilderNew {
     public static let defaultMargin: CGFloat = .margin16
     public static let defaultLayoutMargins = UIEdgeInsets(top: 0, left: defaultMargin, bottom: 0, right: defaultMargin)
 
-    public static func preparedCell(tableView: UITableView, indexPath: IndexPath, rootElement: CellElement, layoutMargins: UIEdgeInsets = defaultLayoutMargins) -> UITableViewCell {
-        let reuseIdentifier = reuseIdentifier(rootElement: rootElement, layoutMargins: layoutMargins)
-        tableView.register(BaseThemeCell.self, forCellReuseIdentifier: reuseIdentifier)
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        if let cell = cell as? BaseThemeCell {
-            build(cell: cell, rootElement: rootElement, layoutMargins: layoutMargins)
-        }
-        return cell
-    }
+    public static func preparedCell(tableView: UITableView, indexPath: IndexPath, selectable: Bool, rootElement: CellElement, layoutMargins: UIEdgeInsets = defaultLayoutMargins) -> UITableViewCell {
+        let cellClass = selectable ? BaseSelectableThemeCell.self : BaseThemeCell.self
 
-    public static func preparedSelectableCell(tableView: UITableView, indexPath: IndexPath, rootElement: CellElement, layoutMargins: UIEdgeInsets = defaultLayoutMargins) -> UITableViewCell {
-        let reuseIdentifier = selectableReuseIdentifier(rootElement: rootElement, layoutMargins: layoutMargins)
-        tableView.register(BaseSelectableThemeCell.self, forCellReuseIdentifier: reuseIdentifier)
+        let reuseIdentifier = reuseIdentifier(cellClass: cellClass, rootElement: rootElement, layoutMargins: layoutMargins)
+        tableView.register(cellClass, forCellReuseIdentifier: reuseIdentifier)
+
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         if let cell = cell as? BaseThemeCell {
             build(cell: cell, rootElement: rootElement, layoutMargins: layoutMargins)
@@ -34,38 +27,6 @@ public class CellBuilderNew {
             id: String,
             hash: String? = nil,
             height: CGFloat? = nil,
-            rowActionProvider: (() -> [RowAction])? = nil,
-            dynamicHeight: ((CGFloat) -> CGFloat)? = nil,
-            bind: ((BaseThemeCell) -> ())? = nil
-    ) -> RowProtocol {
-        let reuseIdentifier = reuseIdentifier(rootElement: rootElement, layoutMargins: layoutMargins)
-
-        tableView.register(BaseThemeCell.self, forCellReuseIdentifier: reuseIdentifier)
-
-        return Row<BaseThemeCell>(
-                id: id,
-                hash: hash,
-                height: height,
-                rowActionProvider: rowActionProvider,
-                rowType: .dynamic(reuseIdentifier: reuseIdentifier, prepare: { cell in
-                    guard let cell = cell as? BaseThemeCell else {
-                        return
-                    }
-
-                    build(cell: cell, rootElement: rootElement, layoutMargins: layoutMargins)
-                }),
-                dynamicHeight: dynamicHeight,
-                bind: { cell, _ in bind?(cell) }
-        )
-    }
-
-    public static func selectableRow(
-            rootElement: CellElement,
-            layoutMargins: UIEdgeInsets = defaultLayoutMargins,
-            tableView: UITableView,
-            id: String,
-            hash: String? = nil,
-            height: CGFloat? = nil,
             autoDeselect: Bool = false,
             rowActionProvider: (() -> [RowAction])? = nil,
             dynamicHeight: ((CGFloat) -> CGFloat)? = nil,
@@ -73,30 +34,48 @@ public class CellBuilderNew {
             action: (() -> ())? = nil,
             actionWithCell: ((BaseThemeCell) -> ())? = nil
     ) -> RowProtocol {
-        let reuseIdentifier = selectableReuseIdentifier(rootElement: rootElement, layoutMargins: layoutMargins)
+        let cellClass = action != nil || actionWithCell != nil ? BaseSelectableThemeCell.self : BaseThemeCell.self
+        let reuseIdentifier = reuseIdentifier(cellClass: cellClass, rootElement: rootElement, layoutMargins: layoutMargins)
+        tableView.register(cellClass, forCellReuseIdentifier: reuseIdentifier)
 
-        tableView.register(BaseSelectableThemeCell.self, forCellReuseIdentifier: reuseIdentifier)
+        if action != nil || actionWithCell != nil {
+            return Row<BaseSelectableThemeCell>(
+                    id: id,
+                    hash: hash,
+                    height: height,
+                    autoDeselect: autoDeselect,
+                    rowActionProvider: rowActionProvider,
+                    rowType: .dynamic(reuseIdentifier: reuseIdentifier, prepare: { cell in
+                        guard let cell = cell as? BaseThemeCell else {
+                            return
+                        }
 
-        return Row<BaseSelectableThemeCell>(
-                id: id,
-                hash: hash,
-                height: height,
-                autoDeselect: autoDeselect,
-                rowActionProvider: rowActionProvider,
-                rowType: .dynamic(reuseIdentifier: reuseIdentifier, prepare: { cell in
-                    guard let cell = cell as? BaseThemeCell else {
-                        return
+                        build(cell: cell, rootElement: rootElement, layoutMargins: layoutMargins)
+                    }),
+                    dynamicHeight: dynamicHeight,
+                    bind: { cell, _ in bind?(cell) },
+                    action: { cell in
+                        action?()
+                        actionWithCell?(cell)
                     }
+            )
+        } else {
+            return Row<BaseThemeCell>(
+                    id: id,
+                    hash: hash,
+                    height: height,
+                    rowActionProvider: rowActionProvider,
+                    rowType: .dynamic(reuseIdentifier: reuseIdentifier, prepare: { cell in
+                        guard let cell = cell as? BaseThemeCell else {
+                            return
+                        }
 
-                    build(cell: cell, rootElement: rootElement, layoutMargins: layoutMargins)
-                }),
-                dynamicHeight: dynamicHeight,
-                bind: { cell, _ in bind?(cell) },
-                action: { cell in
-                    action?()
-                    actionWithCell?(cell)
-                }
-        )
+                        build(cell: cell, rootElement: rootElement, layoutMargins: layoutMargins)
+                    }),
+                    dynamicHeight: dynamicHeight,
+                    bind: { cell, _ in bind?(cell) }
+            )
+        }
     }
 
     public static func build(cell: BaseThemeCell, rootElement: CellElement, layoutMargins: UIEdgeInsets = defaultLayoutMargins) {
@@ -211,12 +190,8 @@ public class CellBuilderNew {
         }
     }
 
-    private static func reuseIdentifier(rootElement: CellElement, layoutMargins: UIEdgeInsets = defaultLayoutMargins) -> String {
-        "\(BaseThemeCell.self)|\(cellId(rootElement: rootElement, layoutMargins: layoutMargins))"
-    }
-
-    private static func selectableReuseIdentifier(rootElement: CellElement, layoutMargins: UIEdgeInsets = defaultLayoutMargins) -> String {
-        "\(BaseSelectableThemeCell.self)|\(cellId(rootElement: rootElement, layoutMargins: layoutMargins))"
+    private static func reuseIdentifier(cellClass: AnyClass, rootElement: CellElement, layoutMargins: UIEdgeInsets = defaultLayoutMargins) -> String {
+        "\(cellClass)|\(cellId(rootElement: rootElement, layoutMargins: layoutMargins))"
     }
 
     private static func cellId(rootElement: CellElement, layoutMargins: UIEdgeInsets) -> String {
