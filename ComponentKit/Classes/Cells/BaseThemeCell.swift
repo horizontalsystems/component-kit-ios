@@ -10,6 +10,7 @@ open class BaseThemeCell: UITableViewCell {
     public let wrapperView = CellWrapperView()
 
     let stackView = UIStackView()
+    var rootView: UIView?
 
     public var isVisible = true
     var id: String?
@@ -123,6 +124,15 @@ open class BaseThemeCell: UITableViewCell {
 
         wrapperView.layer.cornerRadius = cornerRadius
         wrapperView.layer.maskedCorners = maskedCorners
+    }
+
+    public func bindRoot<T>(block: (T) -> Void) {
+        guard let view = rootView as? T else {
+            print("Cannot cast element view: \(T.self)")
+            return
+        }
+
+        block(view)
     }
 
     public func bind<T>(index: Int, block: (T) -> Void) {
