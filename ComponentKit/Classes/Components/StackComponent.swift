@@ -22,22 +22,4 @@ public class StackComponent: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func bind<T>(index: Int, block: (T) -> Void) {
-        guard index < stackView.arrangedSubviews.count, let view = stackView.arrangedSubviews[index] as? T else {
-            print("Cannot cast component view: \(T.self)")
-            return
-        }
-
-        block(view)
-    }
-
-    public func component<T>(index: Int) -> T? {
-        guard index < stackView.arrangedSubviews.count, let view = stackView.arrangedSubviews[index] as? T else {
-            print("Cannot cast component view: \(T.self)")
-            return nil
-        }
-
-        return view
-    }
-
 }

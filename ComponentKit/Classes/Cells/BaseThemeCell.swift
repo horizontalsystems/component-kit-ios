@@ -126,13 +126,12 @@ open class BaseThemeCell: UITableViewCell {
         wrapperView.layer.maskedCorners = maskedCorners
     }
 
-    public func bindRoot<T>(block: (T) -> Void) {
-        guard let view = rootView as? T else {
-            print("Cannot cast element view: \(T.self)")
+    public func bind(rootElement: CellBuilderNew.CellElement) {
+        guard let rootView = rootView else {
             return
         }
 
-        block(view)
+        rootElement.bind(view: rootView)
     }
 
     public func bind<T>(index: Int, block: (T) -> Void) {

@@ -53,7 +53,10 @@ public class CellBuilderNew {
                         build(cell: cell, rootElement: rootElement, layoutMargins: layoutMargins)
                     }),
                     dynamicHeight: dynamicHeight,
-                    bind: { cell, _ in bind?(cell) },
+                    bind: { cell, _ in
+                        bind?(cell)
+                        cell.bind(rootElement: rootElement)
+                    },
                     action: { cell in
                         action?()
                         actionWithCell?(cell)
@@ -73,7 +76,10 @@ public class CellBuilderNew {
                         build(cell: cell, rootElement: rootElement, layoutMargins: layoutMargins)
                     }),
                     dynamicHeight: dynamicHeight,
-                    bind: { cell, _ in bind?(cell) }
+                    bind: { cell, _ in
+                        bind?(cell)
+                        cell.bind(rootElement: rootElement)
+                    }
             )
         }
     }
@@ -93,6 +99,11 @@ public class CellBuilderNew {
         }
 
         cell.id = cellId(rootElement: rootElement, layoutMargins: layoutMargins)
+    }
+
+    public static func buildStatic(cell: BaseThemeCell, rootElement: CellElement, layoutMargins: UIEdgeInsets = defaultLayoutMargins) {
+        build(cell: cell, rootElement: rootElement, layoutMargins: layoutMargins)
+        cell.bind(rootElement: rootElement)
     }
 
     public static func height(containerWidth: CGFloat, backgroundStyle: BaseThemeCell.BackgroundStyle, text: String, textStyle: TextComponent.Style, verticalPadding: CGFloat = defaultMargin, elements: [LayoutElement]) -> CGFloat {
@@ -216,24 +227,24 @@ extension CellBuilderNew {
         case margin24
         case margin32
 
-        case text
-        case image16
-        case image20
-        case image24
-        case transactionImage
-        case `switch`
-        case primaryButton
-        case primaryCircleButton
-        case secondaryButton
-        case secondaryCircleButton
-        case transparentIconButton
-        case badge
-        case spinner20
-        case spinner24
-        case spinner48
-        case determiniteSpinner20
-        case determiniteSpinner24
-        case determiniteSpinner48
+        case text(_ bind: (TextComponent) ->  ())
+        case image16(_ bind: (ImageComponent) ->  ())
+        case image20(_ bind: (ImageComponent) ->  ())
+        case image24(_ bind: (ImageComponent) ->  ())
+        case transactionImage(_ bind: (TransactionImageComponent) ->  ())
+        case `switch`(_ bind: (SwitchComponent) ->  ())
+        case primaryButton(_ bind: (PrimaryButtonComponent) ->  ())
+        case primaryCircleButton(_ bind: (PrimaryCircleButtonComponent) ->  ())
+        case secondaryButton(_ bind: (SecondaryButtonComponent) ->  ())
+        case secondaryCircleButton(_ bind: (SecondaryCircleButtonComponent) ->  ())
+        case transparentIconButton(_ bind: (TransparentIconButtonComponent) ->  ())
+        case badge(_ bind: (BadgeComponent) ->  ())
+        case spinner20(_ bind: (SpinnerComponent) ->  ())
+        case spinner24(_ bind: (SpinnerComponent) ->  ())
+        case spinner48(_ bind: (SpinnerComponent) ->  ())
+        case determiniteSpinner20(_ bind: (DeterminiteSpinnerComponent) -> ())
+        case determiniteSpinner24(_ bind: (DeterminiteSpinnerComponent) -> ())
+        case determiniteSpinner48(_ bind: (DeterminiteSpinnerComponent) -> ())
 
         var id: String {
             switch self {
@@ -268,6 +279,73 @@ extension CellBuilderNew {
             case .determiniteSpinner20: return "determiniteSpinner20"
             case .determiniteSpinner24: return "determiniteSpinner24"
             case .determiniteSpinner48: return "determiniteSpinner48"
+            }
+        }
+
+        var isView: Bool {
+            switch self {
+            case .margin, .margin0, .margin4, .margin8, .margin12, .margin16, .margin24, .margin32: return false
+            default: return true
+            }
+        }
+
+        func bind(view: UIView) {
+            switch self {
+            case .hStack(let elements), .vStack(let elements), .vStackCentered(let elements):
+                if let component = view as? StackComponent {
+                    for (index, element) in elements.filter({ $0.isView }).enumerated() {
+                        element.bind(view: component.stackView.arrangedSubviews[index])
+                    }
+                }
+            case .text(let bind):
+                if let component = view as? TextComponent {
+                    bind(component)
+                }
+            case .image16(let bind), .image20(let bind), .image24(let bind):
+                if let component = view as? ImageComponent {
+                    bind(component)
+                }
+            case .transactionImage(let bind):
+                if let component = view as? TransactionImageComponent {
+                    bind(component)
+                }
+            case .switch(let bind):
+                if let component = view as? SwitchComponent {
+                    bind(component)
+                }
+            case .primaryButton(let bind):
+                if let component = view as? PrimaryButtonComponent {
+                    bind(component)
+                }
+            case .primaryCircleButton(let bind):
+                if let component = view as? PrimaryCircleButtonComponent {
+                    bind(component)
+                }
+            case .secondaryButton(let bind):
+                if let component = view as? SecondaryButtonComponent {
+                    bind(component)
+                }
+            case .secondaryCircleButton(let bind):
+                if let component = view as? SecondaryCircleButtonComponent {
+                    bind(component)
+                }
+            case .transparentIconButton(let bind):
+                if let component = view as? TransparentIconButtonComponent {
+                    bind(component)
+                }
+            case .badge(let bind):
+                if let component = view as? BadgeComponent {
+                    bind(component)
+                }
+            case .spinner20(let bind), .spinner24(let bind), .spinner48(let bind):
+                if let component = view as? SpinnerComponent {
+                    bind(component)
+                }
+            case .determiniteSpinner20(let bind), .determiniteSpinner24(let bind), .determiniteSpinner48(let bind):
+                if let component = view as? DeterminiteSpinnerComponent {
+                    bind(component)
+                }
+            default: ()
             }
         }
     }
