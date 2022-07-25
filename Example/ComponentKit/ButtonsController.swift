@@ -38,7 +38,8 @@ class ButtonsController: ThemeViewController {
         primaryYellowCell.set(backgroundStyle: .transparent)
         CellBuilder.build(cell: primaryYellowCell, elements: [.text, .primaryButton, .margin8, .primaryButton])
         primaryYellowCell.bind(index: 0, block: { (component: TextComponent) in
-            component.set(style: .c2)
+            component.font = .subhead1
+            component.textColor = .themeLeah
             component.text = "Primary"
         })
         primaryYellowCell.bind(index: 1, block: { (component: PrimaryButtonComponent) in
@@ -56,7 +57,8 @@ class ButtonsController: ThemeViewController {
         primaryRedCell.set(backgroundStyle: .transparent)
         CellBuilder.build(cell: primaryRedCell, elements: [.text, .primaryButton, .margin8, .primaryButton])
         primaryRedCell.bind(index: 0, block: { (component: TextComponent) in
-            component.set(style: .c2)
+            component.font = .subhead1
+            component.textColor = .themeLeah
             component.text = "Primary"
         })
         primaryRedCell.bind(index: 1, block: { (component: PrimaryButtonComponent) in
@@ -74,7 +76,8 @@ class ButtonsController: ThemeViewController {
         primaryGrayCell.set(backgroundStyle: .transparent)
         CellBuilder.build(cell: primaryGrayCell, elements: [.text, .primaryButton, .margin8, .primaryButton])
         primaryGrayCell.bind(index: 0, block: { (component: TextComponent) in
-            component.set(style: .c2)
+            component.font = .subhead1
+            component.textColor = .themeLeah
             component.text = "Primary"
         })
         primaryGrayCell.bind(index: 1, block: { (component: PrimaryButtonComponent) in
@@ -92,7 +95,8 @@ class ButtonsController: ThemeViewController {
         primaryTransparentCell.set(backgroundStyle: .transparent)
         CellBuilder.build(cell: primaryTransparentCell, elements: [.text, .primaryButton, .margin8, .primaryButton])
         primaryTransparentCell.bind(index: 0, block: { (component: TextComponent) in
-            component.set(style: .c2)
+            component.font = .subhead1
+            component.textColor = .themeLeah
             component.text = "Primary"
         })
         primaryTransparentCell.bind(index: 1, block: { (component: PrimaryButtonComponent) in
@@ -110,7 +114,8 @@ class ButtonsController: ThemeViewController {
         primaryCircleCell.set(backgroundStyle: .transparent)
         CellBuilder.build(cell: primaryCircleCell, elements: [.text, .primaryCircleButton, .margin4, .primaryCircleButton, .margin4, .primaryCircleButton, .margin4, .primaryCircleButton])
         primaryCircleCell.bind(index: 0, block: { (component: TextComponent) in
-            component.set(style: .c2)
+            component.font = .subhead1
+            component.textColor = .themeLeah
             component.text = "Primary Circle"
         })
         primaryCircleCell.bind(index: 1, block: { (component: PrimaryCircleButtonComponent) in
@@ -134,7 +139,8 @@ class ButtonsController: ThemeViewController {
         secondaryCell.set(backgroundStyle: .transparent)
         CellBuilder.build(cell: secondaryCell, elements: [.text, .secondaryButton, .margin4, .secondaryButton, .margin4, .secondaryButton])
         secondaryCell.bind(index: 0, block: { (component: TextComponent) in
-            component.set(style: .c2)
+            component.font = .subhead1
+            component.textColor = .themeLeah
             component.text = "Secondary"
         })
         secondaryCell.bind(index: 1, block: { (component: SecondaryButtonComponent) in
@@ -155,7 +161,8 @@ class ButtonsController: ThemeViewController {
         secondaryTransparentCell.set(backgroundStyle: .transparent)
         CellBuilder.build(cell: secondaryTransparentCell, elements: [.text, .secondaryButton, .margin4, .secondaryButton, .margin4, .secondaryButton])
         secondaryTransparentCell.bind(index: 0, block: { (component: TextComponent) in
-            component.set(style: .c2)
+            component.font = .subhead1
+            component.textColor = .themeLeah
             component.text = "Transparent"
         })
         secondaryTransparentCell.bind(index: 1, block: { (component: SecondaryButtonComponent) in
@@ -176,7 +183,8 @@ class ButtonsController: ThemeViewController {
         secondaryFullCell.set(backgroundStyle: .transparent)
         CellBuilder.build(cell: secondaryFullCell, elements: [.text, .secondaryButton, .margin4, .secondaryButton, .margin4, .secondaryButton])
         secondaryFullCell.bind(index: 0, block: { (component: TextComponent) in
-            component.set(style: .c2)
+            component.font = .subhead1
+            component.textColor = .themeLeah
             component.text = "Full"
         })
         secondaryFullCell.bind(index: 1, block: { (component: SecondaryButtonComponent) in
@@ -200,7 +208,8 @@ class ButtonsController: ThemeViewController {
         secondaryCircleCell.set(backgroundStyle: .transparent)
         CellBuilder.build(cell: secondaryCircleCell, elements: [.text, .secondaryCircleButton, .margin4, .secondaryCircleButton, .margin4, .secondaryCircleButton])
         secondaryCircleCell.bind(index: 0, block: { (component: TextComponent) in
-            component.set(style: .c2)
+            component.font = .subhead1
+            component.textColor = .themeLeah
             component.text = "Secondary Circle"
         })
         secondaryCircleCell.bind(index: 1, block: { (component: SecondaryCircleButtonComponent) in
@@ -218,7 +227,8 @@ class ButtonsController: ThemeViewController {
         transparentIconCell.set(backgroundStyle: .transparent)
         CellBuilder.build(cell: transparentIconCell, elements: [.text, .margin4, .transparentIconButton, .margin4, .transparentIconButton, .margin4, .transparentIconButton])
         transparentIconCell.bind(index: 0, block: { (component: TextComponent) in
-            component.set(style: .c2)
+            component.font = .subhead1
+            component.textColor = .themeLeah
             component.text = "Transparent Icon"
         })
         transparentIconCell.bind(index: 1, block: { (component: TransparentIconButtonComponent) in
