@@ -135,7 +135,7 @@ public class CellBuilder {
         cell.id = cellId(elements: elements, layoutMargins: layoutMargins)
     }
 
-    public static func height(containerWidth: CGFloat, backgroundStyle: BaseThemeCell.BackgroundStyle, text: String, textStyle: TextComponent.Style, verticalPadding: CGFloat = defaultMargin, elements: [LayoutElement]) -> CGFloat {
+    public static func height(containerWidth: CGFloat, backgroundStyle: BaseThemeCell.BackgroundStyle, text: String, font: UIFont, verticalPadding: CGFloat = defaultMargin, elements: [LayoutElement]) -> CGFloat {
         var textWidth = containerWidth - BaseThemeCell.margin(backgroundStyle: backgroundStyle).width
 
         var lastMargin = defaultMargin
@@ -159,7 +159,7 @@ public class CellBuilder {
 
         textWidth -= lastMargin
 
-        return text.height(forContainerWidth: textWidth, font: textStyle.font) + 2 * verticalPadding
+        return text.height(forContainerWidth: textWidth, font: font) + 2 * verticalPadding
     }
 
     private static func view(element: CellElement) -> UIView? {

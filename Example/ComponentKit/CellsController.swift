@@ -32,7 +32,8 @@ class CellsController: ThemeViewController {
                 component.imageView.contentMode = .scaleAspectFit
             },
             .text { component in
-                component.set(style: .b2)
+                component.font = .body
+                component.textColor = .themeLeah
                 component.text = "Static Airplane Cell"
             }
         ]))
@@ -53,7 +54,8 @@ extension CellsController: SectionsDataSource {
         CellBuilderNew.row(
                 rootElement: .hStack([
                     .text { component in
-                        component.set(style: .d2)
+                        component.font = .subhead2
+                        component.textColor = .themeLeah
                         component.text = "Spinner"
                     },
                     .spinner20 { _ in }
@@ -71,11 +73,38 @@ extension CellsController: SectionsDataSource {
         )
     }
 
+    private func rowTextButton() -> RowProtocol {
+        CellBuilderNew.row(
+                rootElement: .hStack([
+                    .text { component in
+                        component.font = .subhead2
+                        component.textColor = .themeLeah
+                        component.text = "Text Button"
+                    },
+                    .textButton { component in
+                        component.font = .subhead1
+                        component.textColor = .themeLucian
+                        component.text = "Press Me"
+                        component.onTap = {
+                            print("Did Tap")
+                        }
+                    }
+                ]),
+                tableView: tableView,
+                id: "row-text-button",
+                height: .heightCell48,
+                bind: { cell in
+                    cell.set(backgroundStyle: .bordered)
+                }
+        )
+    }
+
     private func rowDeterminiteSpinner() -> RowProtocol {
         CellBuilderNew.row(
                 rootElement: .hStack([
                     .text { component in
-                        component.set(style: .d2)
+                        component.font = .subhead2
+                        component.textColor = .themeLeah
                         component.text = "Determinite Spinner"
                     },
                     .determiniteSpinner20 { component in
@@ -96,12 +125,14 @@ extension CellsController: SectionsDataSource {
                 rootElement: .hStack([
                     .vStackCentered([
                         .text { component in
-                            component.set(style: .b2)
+                            component.font = .body
+                            component.textColor = .themeLeah
                             component.text = "Wallet One"
                         },
                         .margin(3),
                         .text { component in
-                            component.set(style: .d1)
+                            component.font = .subhead2
+                            component.textColor = .themeGray
                             component.text = "Subtitle"
                         },
                     ]),
@@ -130,7 +161,8 @@ extension CellsController: SectionsDataSource {
         CellBuilderNew.row(
                 rootElement: .hStack([
                     .text { component in
-                        component.set(style: .d1)
+                        component.font = .subhead2
+                        component.textColor = .themeGray
                         component.text = "Market Cap"
                         component.setContentHuggingPriority(.required, for: .horizontal)
                     },
@@ -140,7 +172,8 @@ extension CellsController: SectionsDataSource {
                         component.badgeView.text = "12"
                     },
                     .text { component in
-                        component.set(style: .c2)
+                        component.font = .subhead1
+                        component.textColor = .themeLeah
                         component.text = "$74.7 B"
                         component.textAlignment = .right
                     },
@@ -163,7 +196,8 @@ extension CellsController: SectionsDataSource {
                         component.imageView.contentMode = .scaleAspectFit
                     },
                     .text { component in
-                        component.set(style: .d1)
+                        component.font = .subhead2
+                        component.textColor = .themeGray
                         component.text = "0xai9823nfw2873dmn3498cm3498jf938hdfh98hwe8"
                         component.lineBreakMode = .byTruncatingMiddle
                     },
@@ -196,7 +230,8 @@ extension CellsController: SectionsDataSource {
                     },
                     .vStackCentered([
                         .text { component in
-                            component.set(style: .b2)
+                            component.font = .body
+                            component.textColor = .themeLeah
                             component.text = "Bitcoin"
                         },
                         .margin(3),
@@ -207,20 +242,23 @@ extension CellsController: SectionsDataSource {
                             },
                             .margin8,
                             .text { component in
-                                component.set(style: .d1)
+                                component.font = .subhead2
+                                component.textColor = .themeGray
                                 component.text = "BTC"
                             }
                         ])
                     ]),
                     .vStackCentered([
                         .text { component in
-                            component.set(style: .b2)
+                            component.font = .body
+                            component.textColor = .themeLeah
                             component.textAlignment = .right
                             component.text = "$65,145"
                         },
                         .margin(3),
                         .text { component in
-                            component.set(style: .d4)
+                            component.font = .subhead2
+                            component.textColor = .themeRemus
                             component.textAlignment = .right
                             component.text = "+2.35%"
                         }
@@ -246,11 +284,13 @@ extension CellsController: SectionsDataSource {
                     .vStackCentered([
                         .hStack([
                             .text { component in
-                                component.set(style: .b2)
+                                component.font = .body
+                                component.textColor = .themeLeah
                                 component.text = "Ethereum"
                             },
                             .text { component in
-                                component.set(style: .b2)
+                                component.font = .body
+                                component.textColor = .themeLeah
                                 component.textAlignment = .right
                                 component.text = "$12,153"
                             }
@@ -263,11 +303,13 @@ extension CellsController: SectionsDataSource {
                             },
                             .margin8,
                             .text { component in
-                                component.set(style: .d1)
+                                component.font = .subhead2
+                                component.textColor = .themeGray
                                 component.text = "ETH"
                             },
                             .text { component in
-                                component.set(style: .d4)
+                                component.font = .subhead2
+                                component.textColor = .themeRemus
                                 component.textAlignment = .right
                                 component.text = "-1.53%"
                             }
@@ -294,7 +336,7 @@ extension CellsController: SectionsDataSource {
     private func rowMultiline() -> RowProtocol {
         let backgroundStyle: BaseThemeCell.BackgroundStyle = .bordered
         let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        let textStyle: TextComponent.Style = .d2
+        let font: UIFont = .subhead2
 
         return CellBuilderNew.row(
                 rootElement: .hStack([
@@ -304,7 +346,8 @@ extension CellsController: SectionsDataSource {
                         component.imageView.contentMode = .scaleAspectFit
                     },
                     .text { component in
-                        component.set(style: textStyle)
+                        component.font = font
+                        component.textColor = .themeLeah
                         component.text = text
                         component.numberOfLines = 0
                     }
@@ -316,7 +359,7 @@ extension CellsController: SectionsDataSource {
                             containerWidth: containerWidth,
                             backgroundStyle: backgroundStyle,
                             text: text,
-                            textStyle: textStyle,
+                            font: font,
                             elements: [.fixed(width: 20), .multiline]
                     )
                 },
@@ -328,19 +371,21 @@ extension CellsController: SectionsDataSource {
 
     private func rowMultiline2() -> RowProtocol {
         let backgroundStyle: BaseThemeCell.BackgroundStyle = .bordered
-        let titleTextStyle: TextComponent.Style = .d1
+        let titleFont: UIFont = .subhead2
         let titleText = "Title"
-        let textStyle: TextComponent.Style = .g2
+        let textFont: UIFont = .subhead1I
         let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
         return CellBuilderNew.row(
                 rootElement: .hStack([
                     .text { component in
-                        component.set(style: titleTextStyle)
+                        component.font = titleFont
+                        component.textColor = .themeGray
                         component.text = titleText
                     },
                     .text { component in
-                        component.set(style: textStyle)
+                        component.font = textFont
+                        component.textColor = .themeLeah
                         component.text = text
                         component.numberOfLines = 0
                     }
@@ -352,8 +397,8 @@ extension CellsController: SectionsDataSource {
                             containerWidth: containerWidth,
                             backgroundStyle: backgroundStyle,
                             text: text,
-                            textStyle: textStyle,
-                            elements: [.fixed(width: TextComponent.width(style: titleTextStyle, text: titleText)), .multiline]
+                            font: textFont,
+                            elements: [.fixed(width: TextComponent.width(font: titleFont, text: titleText)), .multiline]
                     )
                 },
                 bind: { cell in
@@ -371,7 +416,8 @@ extension CellsController: SectionsDataSource {
                         component.imageView.contentMode = .scaleAspectFit
                     },
                     .text { component in
-                        component.set(style: .b2)
+                        component.font = .body
+                        component.textColor = .themeLeah
                         component.text = "Academy"
                     },
                     .image16 { component in
@@ -398,7 +444,8 @@ extension CellsController: SectionsDataSource {
                         component.imageView.contentMode = .scaleAspectFit
                     },
                     .text { component in
-                        component.set(style: .b2)
+                        component.font = .body
+                        component.textColor = .themeLeah
                         component.text = "Security Center"
                     },
                     .image20 { component in
@@ -431,11 +478,13 @@ extension CellsController: SectionsDataSource {
                         component.imageView.contentMode = .scaleAspectFit
                     },
                     .text { component in
-                        component.set(style: .b2)
+                        component.font = .body
+                        component.textColor = .themeLeah
                         component.text = "Language"
                     },
                     .text { component in
-                        component.set(style: .c1)
+                        component.font = .subhead1
+                        component.textColor = .themeGray
                         component.text = "English"
                         component.setContentCompressionResistancePriority(.required, for: .horizontal)
                         component.setContentHuggingPriority(.required, for: .horizontal)
@@ -466,12 +515,14 @@ extension CellsController: SectionsDataSource {
                     },
                     .vStackCentered([
                         .text { component in
-                            component.set(style: .b2)
+                            component.font = .body
+                            component.textColor = .themeLeah
                             component.text = "Wallet 1"
                         },
                         .margin(3),
                         .text { component in
-                            component.set(style: .d1)
+                            component.font = .subhead2
+                            component.textColor = .themeGray
                             component.text = "12 words"
                         }
                     ]),
@@ -500,12 +551,14 @@ extension CellsController: SectionsDataSource {
                     },
                     .vStackCentered([
                         .text { component in
-                            component.set(style: .b2)
+                            component.font = .body
+                            component.textColor = .themeLeah
                             component.text = "Wallet 2"
                         },
                         .margin(3),
                         .text { component in
-                            component.set(style: .d1)
+                            component.font = .subhead2
+                            component.textColor = .themeGray
                             component.text = "24 words"
                         }
                     ]),
@@ -538,7 +591,8 @@ extension CellsController: SectionsDataSource {
                         component.imageView.contentMode = .scaleAspectFit
                     },
                     .text { component in
-                        component.set(style: .b2)
+                        component.font = .body
+                        component.textColor = .themeLeah
                         component.text = "Passcode "
                     },
                     .image20 { component in
@@ -570,6 +624,7 @@ extension CellsController: SectionsDataSource {
                     footerState: .margin(height: .margin32),
                     rows: [
                         rowSpinner(),
+                        rowTextButton(),
                         rowDeterminiteSpinner(),
                         rowWallet1New(),
                         rowMarketCap(),

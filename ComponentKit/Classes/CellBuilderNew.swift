@@ -106,7 +106,7 @@ public class CellBuilderNew {
         cell.bind(rootElement: rootElement)
     }
 
-    public static func height(containerWidth: CGFloat, backgroundStyle: BaseThemeCell.BackgroundStyle, text: String, textStyle: TextComponent.Style, verticalPadding: CGFloat = defaultMargin, elements: [LayoutElement]) -> CGFloat {
+    public static func height(containerWidth: CGFloat, backgroundStyle: BaseThemeCell.BackgroundStyle, text: String, font: UIFont, verticalPadding: CGFloat = defaultMargin, elements: [LayoutElement]) -> CGFloat {
         var textWidth = containerWidth - BaseThemeCell.margin(backgroundStyle: backgroundStyle).width
 
         var lastMargin = defaultMargin
@@ -131,7 +131,7 @@ public class CellBuilderNew {
 
         textWidth -= lastMargin
 
-        return text.height(forContainerWidth: textWidth, font: textStyle.font) + 2 * verticalPadding
+        return text.height(forContainerWidth: textWidth, font: font) + 2 * verticalPadding
     }
 
     public static func stackComponent(axis: NSLayoutConstraint.Axis, elements: [CellElement], centered: Bool = false) -> StackComponent {
@@ -179,6 +179,7 @@ public class CellBuilderNew {
         case let .vStackCentered(elements): return stackComponent(axis: .vertical, elements: elements, centered: true)
 
         case .text: return TextComponent()
+        case .textButton: return TextButtonComponent()
         case .image16: return ImageComponent(size: .iconSize16)
         case .image20: return ImageComponent(size: .iconSize20)
         case .image24: return ImageComponent(size: .iconSize24)
@@ -228,6 +229,7 @@ extension CellBuilderNew {
         case margin32
 
         case text(_ bind: (TextComponent) ->  ())
+        case textButton(_ bind: (TextButtonComponent) ->  ())
         case image16(_ bind: (ImageComponent) ->  ())
         case image20(_ bind: (ImageComponent) ->  ())
         case image24(_ bind: (ImageComponent) ->  ())
@@ -262,6 +264,7 @@ extension CellBuilderNew {
             case .margin32: return "margin32"
 
             case .text: return "text"
+            case .textButton: return "textButton"
             case .image16: return "image16"
             case .image20: return "image20"
             case .image24: return "image24"
@@ -299,6 +302,10 @@ extension CellBuilderNew {
                 }
             case .text(let bind):
                 if let component = view as? TextComponent {
+                    bind(component)
+                }
+            case .textButton(let bind):
+                if let component = view as? TextButtonComponent {
                     bind(component)
                 }
             case .image16(let bind), .image20(let bind), .image24(let bind):
