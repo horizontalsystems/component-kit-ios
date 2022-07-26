@@ -4,7 +4,7 @@ import SnapKit
 public class TextButtonComponent: UIButton {
     public var onTap: (() -> ())?
 
-    init() {
+    public init() {
         super.init(frame: .zero)
 
         addTarget(self, action: #selector(_onTap), for: .touchUpInside)
