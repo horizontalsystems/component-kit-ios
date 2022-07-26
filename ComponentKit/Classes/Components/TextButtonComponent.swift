@@ -14,6 +14,10 @@ public class TextButtonComponent: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override public var intrinsicContentSize: CGSize {
+        titleLabel?.intrinsicContentSize ?? super.intrinsicContentSize
+    }
+
     @objc private func _onTap() {
         onTap?()
     }
