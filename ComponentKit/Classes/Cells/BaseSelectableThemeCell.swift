@@ -23,8 +23,8 @@ open class BaseSelectableThemeCell: BaseThemeCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func set(backgroundStyle: BackgroundStyle, isFirst: Bool = false, isLast: Bool = false) {
-        super.set(backgroundStyle: backgroundStyle, isFirst: isFirst, isLast: isLast)
+    open override func set(backgroundStyle: BackgroundStyle, cornerRadius: CGFloat = .cornerRadius12, isFirst: Bool = false, isLast: Bool = false) {
+        super.set(backgroundStyle: backgroundStyle, cornerRadius: cornerRadius, isFirst: isFirst, isLast: isLast)
 
         switch backgroundStyle {
         case .lawrence, .bordered:

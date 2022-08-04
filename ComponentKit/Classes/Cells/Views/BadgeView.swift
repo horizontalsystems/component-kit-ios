@@ -16,7 +16,8 @@ public class BadgeView: UIView {
             maker.height.equalTo(0)
         }
 
-        layer.cornerRadius = .cornerRadius1x
+        layer.cornerRadius = .cornerRadius4
+        layer.cornerCurve = .continuous
 
         addSubview(stackView)
         stackView.snp.makeConstraints { maker in
@@ -34,6 +35,7 @@ public class BadgeView: UIView {
         stackView.addArrangedSubview(changeLabel)
         changeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         changeLabel.setContentHuggingPriority(.required, for: .horizontal)
+        changeLabel.isHidden = true
     }
 
     public func set(style: Style) {

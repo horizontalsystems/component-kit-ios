@@ -15,7 +15,8 @@ open class CardView: UIView {
         }
 
         roundedBackground.backgroundColor = .themeLawrence
-        roundedBackground.layer.cornerRadius = .cornerRadius4x
+        roundedBackground.layer.cornerRadius = .cornerRadius16
+        roundedBackground.layer.cornerCurve = .continuous
 
         addSubview(clippingView)
         clippingView.snp.makeConstraints { maker in
@@ -24,7 +25,8 @@ open class CardView: UIView {
 
         clippingView.backgroundColor = .clear
         clippingView.clipsToBounds = true
-        clippingView.layer.cornerRadius = .cornerRadius4x
+        clippingView.layer.cornerRadius = .cornerRadius16
+        clippingView.layer.cornerCurve = .continuous
 
         clippingView.addSubview(contentView)
         contentView.snp.makeConstraints { maker in

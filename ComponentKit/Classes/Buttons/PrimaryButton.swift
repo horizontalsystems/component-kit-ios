@@ -8,6 +8,7 @@ public class PrimaryButton: UIButton {
         super.init(frame: .zero)
 
         cornerRadius = 25
+        layer.cornerCurve = .continuous
         contentEdgeInsets = UIEdgeInsets(top: 0, left: .margin16, bottom: 0, right: .margin16)
 
         titleLabel?.font = .headline2

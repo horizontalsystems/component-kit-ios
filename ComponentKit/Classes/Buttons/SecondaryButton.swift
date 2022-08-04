@@ -8,6 +8,7 @@ public class SecondaryButton: UIButton {
         super.init(frame: .zero)
 
         cornerRadius = 14
+        layer.cornerCurve = .continuous
         semanticContentAttribute = .forceRightToLeft
 
         setContentCompressionResistancePriority(.required, for: .horizontal)
