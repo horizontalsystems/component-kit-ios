@@ -3,11 +3,12 @@ import ThemeKit
 import SnapKit
 
 open class PrimaryButton: UIButton {
+    public static let height: CGFloat = .heightButton
 
     public init() {
         super.init(frame: .zero)
 
-        cornerRadius = 25
+        cornerRadius = Self.height / 2
         layer.cornerCurve = .continuous
         contentEdgeInsets = UIEdgeInsets(top: 0, left: .margin16, bottom: 0, right: .margin16)
 
@@ -15,7 +16,7 @@ open class PrimaryButton: UIButton {
         setTitleColor(.themeGray50, for: .disabled)
 
         snp.makeConstraints { maker in
-            maker.height.equalTo(CGFloat.heightButton)
+            maker.height.equalTo(Self.height)
         }
     }
 

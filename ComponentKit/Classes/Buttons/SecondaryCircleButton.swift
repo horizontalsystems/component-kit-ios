@@ -3,18 +3,19 @@ import ThemeKit
 import SnapKit
 
 open class SecondaryCircleButton: UIButton {
+    public static let size: CGFloat = 28
 
     public init() {
         super.init(frame: .zero)
 
-        cornerRadius = 14
+        cornerRadius = Self.size / 2
 
         setBackgroundColor(.themeSteel20, for: .normal)
         setBackgroundColor(.themeSteel10, for: .highlighted)
         setBackgroundColor(.themeSteel20, for: .disabled)
 
         snp.makeConstraints { maker in
-            maker.size.equalTo(28)
+            maker.size.equalTo(Self.size)
         }
     }
 
