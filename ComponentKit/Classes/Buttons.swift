@@ -75,7 +75,7 @@ open class ThemeButton: UIButton {
         }
 
         // BackgroundColor
-        let innerPath = createRoundedRectPath(for: rect, radius: self.layer.cornerRadius)
+        let innerPath = createRoundedRectPath(for: rect, radius: layer.cornerRadius)
         context.saveGState()
         context.addPath(innerPath)
         context.clip()

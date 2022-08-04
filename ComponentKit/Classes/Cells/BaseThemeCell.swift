@@ -66,9 +66,9 @@ open class BaseThemeCell: UITableViewCell {
         return maskedCorners
     }
 
-    open func set(backgroundStyle: BackgroundStyle, isFirst: Bool = false, isLast: Bool = false) {
+    open func set(backgroundStyle: BackgroundStyle, cornerRadius: CGFloat = .cornerRadius12, isFirst: Bool = false, isLast: Bool = false) {
         var maskedCorners: CACornerMask = []
-        var cornerRadius: CGFloat = 0
+        var resolvedCornerRadius: CGFloat = 0
 
         wrapperView.viewCornerEdges = []
         wrapperView.viewCornerRadius = 0
@@ -77,7 +77,7 @@ open class BaseThemeCell: UITableViewCell {
         case .lawrence:
             wrapperView.backgroundColor = .themeLawrence
             if isFirst || isLast {
-                cornerRadius = .cornerRadius12
+                resolvedCornerRadius = cornerRadius
             }
             maskedCorners = corners(isFirst: isFirst, isLast: isLast)
             wrapperView.viewBorderColor = .themeSteel10
@@ -88,7 +88,7 @@ open class BaseThemeCell: UITableViewCell {
             var viewCornerEdges: UIRectEdge = []
             var viewBorders: UIRectEdge = [.left, .top, .right]
             if isFirst || isLast {
-                cornerRadius = .cornerRadius12
+                resolvedCornerRadius = cornerRadius
             }
             maskedCorners = corners(isFirst: isFirst, isLast: isLast)
             if isFirst {
@@ -100,7 +100,7 @@ open class BaseThemeCell: UITableViewCell {
             }
 
             wrapperView.viewCornerEdges = viewCornerEdges
-            wrapperView.viewCornerRadius = cornerRadius
+            wrapperView.viewCornerRadius = resolvedCornerRadius
             wrapperView.viewBorderColor = .themeSteel20
             wrapperView.viewBorders = viewBorders
         case .transparent:
@@ -122,7 +122,7 @@ open class BaseThemeCell: UITableViewCell {
             maker.edges.equalToSuperview().inset(Self.margin(backgroundStyle: backgroundStyle))
         }
 
-        wrapperView.layer.cornerRadius = cornerRadius
+        wrapperView.layer.cornerRadius = resolvedCornerRadius
         wrapperView.layer.maskedCorners = maskedCorners
     }
 
