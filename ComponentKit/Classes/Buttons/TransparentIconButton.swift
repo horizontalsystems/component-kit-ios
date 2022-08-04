@@ -2,7 +2,7 @@ import UIKit
 import ThemeKit
 import SnapKit
 
-public class TransparentIconButton: UIButton {
+open class TransparentIconButton: UIButton {
 
     public init() {
         super.init(frame: .zero)
