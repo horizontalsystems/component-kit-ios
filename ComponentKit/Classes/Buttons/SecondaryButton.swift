@@ -3,17 +3,20 @@ import ThemeKit
 import SnapKit
 
 open class SecondaryButton: UIButton {
+    public static let height: CGFloat = 28
+    private static let titleFont: UIFont = .subhead1
+    private static let horizontalPadding: CGFloat = .margin16
 
     public init() {
         super.init(frame: .zero)
 
-        cornerRadius = 14
+        cornerRadius = Self.height / 2
         layer.cornerCurve = .continuous
         semanticContentAttribute = .forceRightToLeft
 
         setContentCompressionResistancePriority(.required, for: .horizontal)
         setContentHuggingPriority(.required, for: .horizontal)
-        titleLabel?.font = .subhead1
+        titleLabel?.font = Self.titleFont
 
         syncInsets()
 
@@ -27,7 +30,7 @@ open class SecondaryButton: UIButton {
         setBackgroundColor(.themeYellow50, for: [.selected, .highlighted])
 
         snp.makeConstraints { maker in
-            maker.height.equalTo(28)
+            maker.height.equalTo(Self.height)
         }
     }
 
@@ -45,13 +48,13 @@ open class SecondaryButton: UIButton {
         syncInsets()
     }
 
-    private func syncInsets() {
+    public func syncInsets() {
         if image(for: .normal) != nil {
             titleEdgeInsets = UIEdgeInsets(top: 0, left: -.margin4, bottom: 0, right: .margin4)
             contentEdgeInsets = UIEdgeInsets(top: .margin4, left: .margin16 + .margin4, bottom: .margin4, right: .margin8)
         } else {
             titleEdgeInsets = .zero
-            contentEdgeInsets = UIEdgeInsets(top: 0, left: .margin16, bottom: 0, right: .margin16)
+            contentEdgeInsets = UIEdgeInsets(top: 0, left: Self.horizontalPadding, bottom: 0, right: Self.horizontalPadding)
         }
     }
 
@@ -74,3 +77,12 @@ open class SecondaryButton: UIButton {
     }
 
 }
+
+extension SecondaryButton {
+
+    public static func width(title: String) -> CGFloat {
+        title.size(containerWidth: .greatestFiniteMagnitude, font: titleFont).width + 2 * horizontalPadding
+    }
+
+}
+
