@@ -2,7 +2,7 @@ import UIKit
 import ThemeKit
 import SnapKit
 
-public class PrimaryButton: UIButton {
+open class PrimaryButton: UIButton {
 
     public init() {
         super.init(frame: .zero)

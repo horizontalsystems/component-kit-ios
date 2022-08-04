@@ -2,7 +2,7 @@ import UIKit
 import ThemeKit
 import SnapKit
 
-public class PrimaryCircleButton: UIButton {
+open class PrimaryCircleButton: UIButton {
     private var style: Style?
 
     public init() {

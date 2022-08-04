@@ -2,7 +2,7 @@ import UIKit
 import ThemeKit
 import SnapKit
 
-public class SecondaryCircleButton: UIButton {
+open class SecondaryCircleButton: UIButton {
 
     public init() {
         super.init(frame: .zero)
