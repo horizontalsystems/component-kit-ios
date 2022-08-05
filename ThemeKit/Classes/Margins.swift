@@ -12,6 +12,7 @@ extension CGFloat {
     public static let cornerRadius8: CGFloat = 8
     public static let cornerRadius12: CGFloat = 12
     public static let cornerRadius16: CGFloat = 16
+    public static let cornerRadius24: CGFloat = 24
 
     public static let margin05x: CGFloat = 2
     public static let margin1x: CGFloat = 4

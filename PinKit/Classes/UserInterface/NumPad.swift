@@ -304,14 +304,13 @@ class NumPadNumberCell: UICollectionViewCell {
 }
 
 class NumPadImageCell: UICollectionViewCell {
-
-    private let button = ThemeButton()
+    private let button = UIButton()
     private var onTap: (() -> ())?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        addSubview(button)
+        contentView.addSubview(button)
         button.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
