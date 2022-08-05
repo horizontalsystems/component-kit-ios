@@ -11,9 +11,9 @@ class PinController: ThemeViewController {
 
     private let pinLabel = UILabel()
 
-    private let clearPinButton = ThemeButton().apply(style: .primaryRed)
-    private let setPinButton = ThemeButton()
-    private let editPinButton = ThemeButton()
+    private let clearPinButton = PrimaryButton()
+    private let setPinButton = PrimaryButton()
+    private let editPinButton = PrimaryButton()
 
     private var themeModeIterator = 0
     private var themeBarButtonItem: UIBarButtonItem?
@@ -64,10 +64,11 @@ class PinController: ThemeViewController {
         }
 
         clearPinButton.setTitle("Clear Pin", for: .normal)
+        clearPinButton.set(style: .red)
         setPinButton.setTitle("Set Pin", for: .normal)
-        setPinButton.apply(style: .primaryGray)
+        setPinButton.set(style: .gray)
         editPinButton.setTitle("Edit Pin", for: .normal)
-        editPinButton.apply(style: .primaryYellow)
+        editPinButton.set(style: .yellow)
 
         clearPinButton.addTarget(self, action: #selector(onClearPin), for: .touchUpInside)
         setPinButton.addTarget(self, action: #selector(onSetPin), for: .touchUpInside)
@@ -86,15 +87,15 @@ class PinController: ThemeViewController {
             maker.width.height.equalTo(50)
         }
 
-        let testButton = ThemeButton()
+        let testButton = PrimaryCircleButton()
 
         stabView.addSubview(testButton)
         testButton.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
 
-        testButton.setImage(UIImage(named: "Cell Icon")?.withTintColor(.red), for: .normal)
-        testButton.setImage(UIImage(named: "Cell Icon")?.withTintColor(.green), for: .highlighted)
+        testButton.set(style: .red)
+        testButton.set(image: UIImage(named: "Cell Icon"))
 
         view.addSubview(stabView)
         stabView.snp.makeConstraints { maker in
@@ -102,18 +103,16 @@ class PinController: ThemeViewController {
             maker.top.equalTo(clearPinButton.snp.bottom).offset(CGFloat.margin32)
         }
 
-        let primaryTestButton = ThemeButton()
+        let primaryTestButton = PrimaryCircleButton()
 
         view.addSubview(primaryTestButton)
         primaryTestButton.snp.makeConstraints { maker in
             maker.top.equalTo(stabView)
             maker.leading.equalTo(stabView.snp.trailing).offset(16)
-            maker.width.equalTo(100)
-            maker.height.equalTo(50)
         }
 
-        primaryTestButton.apply(style: .primaryGray)
-        primaryTestButton.setImage(UIImage(named: "arrow_swap_2_24"), for: .normal)
+        primaryTestButton.set(style: .gray)
+        primaryTestButton.set(image: UIImage(named: "arrow_swap_2_24"))
     }
 
     private func updateUI() {

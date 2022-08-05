@@ -69,7 +69,7 @@ public class NoPasscodeViewController: ThemeViewController {
         case .jailbreak:
             infoLabel.text = "jailbreak.info_text".localized
 
-            let understandButton = ThemeButton()
+            let understandButton = PrimaryButton()
             view.addSubview(understandButton)
             understandButton.snp.makeConstraints { maker in
                 maker.centerX.equalToSuperview()
@@ -78,7 +78,7 @@ public class NoPasscodeViewController: ThemeViewController {
                 maker.top.equalTo(containerView.snp.bottom).offset(CGFloat.margin32)
             }
 
-            understandButton.apply(style: .primaryYellow)
+            understandButton.set(style: .yellow)
             understandButton.setTitle("button.i_understand".localized, for: .normal)
             understandButton.addTarget(self, action: #selector(onUnderstand), for: .touchUpInside)
         case .noPasscode:

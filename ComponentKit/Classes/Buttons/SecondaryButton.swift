@@ -20,15 +20,6 @@ open class SecondaryButton: UIButton {
 
         syncInsets()
 
-        setTitleColor(.themeLeah, for: .normal)
-        setTitleColor(.themeGray, for: .highlighted)
-        setTitleColor(.themeGray50, for: .disabled)
-        setTitleColor(.themeDark, for: .selected)
-        setTitleColor(.themeDark, for: [.selected, .highlighted])
-
-        setBackgroundColor(.themeYellowD, for: .selected)
-        setBackgroundColor(.themeYellow50, for: [.selected, .highlighted])
-
         snp.makeConstraints { maker in
             maker.height.equalTo(Self.height)
         }
@@ -64,16 +55,42 @@ open class SecondaryButton: UIButton {
             setBackgroundColor(.themeSteel20, for: .normal)
             setBackgroundColor(.themeSteel10, for: .highlighted)
             setBackgroundColor(.themeSteel20, for: .disabled)
+            setBackgroundColor(.themeYellowD, for: .selected)
+            setBackgroundColor(.themeYellow50, for: [.selected, .highlighted])
         case .transparent:
             setBackgroundColor(.clear, for: .normal)
             setBackgroundColor(.clear, for: .highlighted)
             setBackgroundColor(.clear, for: .disabled)
+            setBackgroundColor(.themeYellowD, for: .selected)
+            setBackgroundColor(.themeYellow50, for: [.selected, .highlighted])
+        case .tab:
+            setBackgroundColor(.clear, for: .normal)
+            setBackgroundColor(.clear, for: .highlighted)
+            setBackgroundColor(.clear, for: .disabled)
+            setBackgroundColor(.clear, for: .selected)
+            setBackgroundColor(.clear, for: [.selected, .highlighted])
+        }
+
+        switch style {
+        case .default, .transparent:
+            setTitleColor(.themeLeah, for: .normal)
+            setTitleColor(.themeGray, for: .highlighted)
+            setTitleColor(.themeGray50, for: .disabled)
+            setTitleColor(.themeDark, for: .selected)
+            setTitleColor(.themeDark, for: [.selected, .highlighted])
+        case .tab:
+            setTitleColor(.themeGray, for: .normal)
+            setTitleColor(.themeGray, for: .highlighted)
+            setTitleColor(.themeGray50, for: .disabled)
+            setTitleColor(.themeLeah, for: .selected)
+            setTitleColor(.themeLeah, for: [.selected, .highlighted])
         }
     }
 
     public enum Style {
         case `default`
         case transparent
+        case tab
     }
 
 }

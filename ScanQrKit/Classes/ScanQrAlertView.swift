@@ -11,7 +11,7 @@ class ScanQrAlertView: UIView {
     private let wrapperView = UIView()
     private let titleLabel = UILabel()
 
-    private let actionButton = ThemeButton()
+    private let actionButton = SecondaryButton()
     private var action: (() -> ())?
 
     init() {
@@ -34,7 +34,7 @@ class ScanQrAlertView: UIView {
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
 
-        actionButton.apply(style: .secondaryDefault)
+        actionButton.set(style: .default)
         actionButton.addTarget(self, action: #selector(onTapAction), for: .touchUpInside)
 
         clipsToBounds = true
@@ -64,8 +64,7 @@ class ScanQrAlertView: UIView {
             if showButton {
                 maker.top.equalTo(titleLabel.snp.bottom).offset(CGFloat.margin6x)
             }
-            maker.leading.trailing.equalToSuperview().inset(72)
-            maker.height.equalTo(CGFloat.heightButton)
+            maker.centerX.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
     }
