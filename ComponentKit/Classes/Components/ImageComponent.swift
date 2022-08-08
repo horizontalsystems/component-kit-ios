@@ -5,7 +5,7 @@ import Kingfisher
 public class ImageComponent: UIView {
     public let imageView = UIImageView()
 
-    init(size: CGFloat) {
+    public init(size: CGFloat) {
         super.init(frame: .zero)
 
         addSubview(imageView)
