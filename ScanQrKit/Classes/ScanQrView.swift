@@ -4,7 +4,7 @@ import UIExtensions
 
 public class ScanQrView: UIView {
     private let scanQueue = DispatchQueue(label: "io.horizontalsystems.lightning.scan_view", qos: .default)
-    private static let sideMargin: CGFloat = CGFloat.margin6x
+    private static let sideMargin: CGFloat = CGFloat.margin24
 
     public weak var delegate: IScanQrCodeDelegate?
 
@@ -41,8 +41,8 @@ public class ScanQrView: UIView {
 
         addSubview(alertView)
         alertView.snp.makeConstraints { maker in
-            maker.center.equalToSuperview()
-            maker.leading.trailing.equalToSuperview().inset(24)
+            maker.centerY.equalToSuperview()
+            maker.leading.trailing.equalToSuperview().inset(Self.sideMargin)
             maker.height.equalTo(alertView.snp.width)
         }
         alertView.isHidden = true
@@ -106,6 +106,7 @@ public class ScanQrView: UIView {
     }
 
     private func showAlert(title: String, actionText: String? = nil, action: (() -> ())? = nil) {
+        blurView.isHidden = true
         alertView.isHidden = false
         alertView.bind(title: title, actionTitle: actionText, action: action)
     }
