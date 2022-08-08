@@ -152,30 +152,6 @@ open class BaseThemeCell: UITableViewCell {
         return view
     }
 
-    public func layout(leftView: UIView, leftInset: CGFloat = BaseThemeCell.leftInset, rightView: UIView, rightInset: CGFloat = BaseThemeCell.rightInset, middleInset: CGFloat = BaseThemeCell.middleInset) {
-        wrapperView.addSubview(leftView)
-        leftView.snp.makeConstraints { maker in
-            maker.leading.equalToSuperview().inset(leftInset)
-            maker.top.bottom.equalToSuperview()
-        }
-
-        wrapperView.addSubview(rightView)
-        rightView.snp.makeConstraints { maker in
-            maker.leading.equalTo(leftView.snp.trailing).offset(middleInset)
-            maker.trailing.equalToSuperview().inset(rightInset)
-            maker.top.bottom.equalToSuperview()
-        }
-    }
-
-    public func layout(singleView: UIView, leftInset: CGFloat = BaseThemeCell.leftInset) {
-        wrapperView.addSubview(singleView)
-        singleView.snp.makeConstraints { maker in
-            maker.leading.equalToSuperview().inset(leftInset)
-            maker.trailing.equalToSuperview().inset(Self.rightInset)
-            maker.top.bottom.equalToSuperview()
-        }
-    }
-
     public static func margin(backgroundStyle: BackgroundStyle) -> UIEdgeInsets {
         switch backgroundStyle {
         case .lawrence, .bordered:

@@ -26,7 +26,6 @@ class LanguageSettingsViewController: ThemeViewController {
 
         title = "settings_language.title".localized
 
-        tableView.registerCell(forClass: G4Cell.self)
         tableView.sectionDataSource = self
 
         tableView.backgroundColor = .clear
@@ -55,18 +54,36 @@ extension LanguageSettingsViewController: SectionsDataSource {
                         let isFirst = index == 0
                         let isLast = index == items.count - 1
 
-                        return Row<G4Cell>(
+                        return CellBuilderNew.row(
+                                rootElement: .hStack([
+                                    .image24 { component in
+                                        component.imageView.image = ModuleKit.image(named: item.language)
+                                    },
+                                    .vStackCentered([
+                                        .text { component in
+                                            component.font = .body
+                                            component.textColor = .themeLeah
+                                            component.text = item.name
+                                        },
+                                        .margin(3),
+                                        .text { component in
+                                            component.font = .subhead2
+                                            component.textColor = .themeGray
+                                            component.text = item.nativeName
+                                        }
+                                    ]),
+                                    .image20 { component in
+                                        component.isHidden = !item.selected
+                                        component.imageView.image = ComponentKit.image(named: "check_1_20")?.withTintColor(.themeJacob)
+                                    }
+                                ]),
+                                tableView: tableView,
                                 id: item.language,
                                 height: .heightDoubleLineCell,
-                                bind: { cell, _ in
+                                bind: { cell in
                                     cell.set(backgroundStyle: .lawrence, isFirst: isFirst, isLast: isLast)
-                                    cell.titleImage = ModuleKit.image(named: item.language)
-                                    cell.title = item.name
-                                    cell.subtitle = item.nativeName
-                                    cell.valueImage = item.selected ? ComponentKit.image(named: "check_1_20")?.withRenderingMode(.alwaysTemplate) : nil
-                                    cell.valueImageTintColor = .themeJacob
                                 },
-                                action: { [weak self] _ in
+                                action: { [weak self] in
                                     self?.delegate.didSelect(index: index)
                                 }
                         )
