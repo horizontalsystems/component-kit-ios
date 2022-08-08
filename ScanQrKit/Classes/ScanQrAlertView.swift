@@ -8,38 +8,49 @@ public protocol IScanQrCodeDelegate: AnyObject {
 }
 
 class ScanQrAlertView: UIView {
-    private let wrapperView = UIView()
+    private let cornersView = BorderedView()
+
+    private let stackView = UIStackView()
     private let titleLabel = UILabel()
 
-    private let actionButton = SecondaryButton()
+    private let actionButton = PrimaryButton()
     private var action: (() -> ())?
 
     init() {
         super.init(frame: .zero)
 
-        addSubview(wrapperView)
-        wrapperView.snp.makeConstraints { maker in
-            maker.leading.trailing.equalToSuperview()
+        addSubview(cornersView)
+        cornersView.snp.makeConstraints { maker in
+            maker.edges.equalToSuperview()
+        }
+        cornersView.borderStyle = .corners(length: .margin24)
+        cornersView.borderWidth = 2
+        cornersView.cornerRadius = .cornerRadius4
+        cornersView.borderColor = .themeGray
+
+        addSubview(stackView)
+        stackView.snp.makeConstraints { maker in
+            maker.leading.trailing.equalToSuperview().inset(CGFloat.margin32)
             maker.centerY.equalToSuperview()
-            maker.top.greaterThanOrEqualToSuperview().offset(CGFloat.margin12x)
         }
 
-        wrapperView.addSubview(titleLabel)
-        wrapperView.addSubview(actionButton)
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = .margin32
 
-        updateConstraints(showButton: false)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(actionButton)
 
         titleLabel.font = .subhead2
         titleLabel.textColor = .themeGray
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
 
-        actionButton.set(style: .default)
+        actionButton.set(style: .transparent)
         actionButton.addTarget(self, action: #selector(onTapAction), for: .touchUpInside)
 
         clipsToBounds = true
-        layer.cornerRadius = .cornerRadius2x
-        backgroundColor = .black                    // must be black in all themes
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -50,32 +61,13 @@ class ScanQrAlertView: UIView {
         action?()
     }
 
-    private func updateConstraints(showButton: Bool) {
-        titleLabel.snp.remakeConstraints { maker in
-            maker.leading.equalToSuperview().offset(CGFloat.margin12x)
-            maker.centerX.equalToSuperview()
-            maker.top.equalToSuperview()
-            if !showButton {
-                maker.bottom.equalToSuperview()
-            }
-        }
-        actionButton.isHidden = !showButton
-        actionButton.snp.remakeConstraints { maker in
-            if showButton {
-                maker.top.equalTo(titleLabel.snp.bottom).offset(CGFloat.margin6x)
-            }
-            maker.centerX.equalToSuperview()
-            maker.bottom.equalToSuperview()
-        }
-    }
-
     func bind(title: String, actionTitle: String? = nil, action: (() -> ())? = nil) {
         self.action = action
 
         titleLabel.text = title
         actionButton.setTitle(actionTitle, for: .normal)
 
-        updateConstraints(showButton: actionTitle != nil)
+        actionButton.isHidden = actionTitle == nil
     }
 
 }
