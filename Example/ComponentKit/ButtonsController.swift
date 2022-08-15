@@ -224,7 +224,7 @@ class ButtonsController: ThemeViewController {
             component.button.set(image: UIImage(named: "icon_20"))
         })
 
-        transparentIconCell.set(backgroundStyle: .transparent)
+        transparentIconCell.set(backgroundStyle: .transparent, isLast: true)
         CellBuilder.build(cell: transparentIconCell, elements: [.text, .margin4, .transparentIconButton, .margin4, .transparentIconButton, .margin4, .transparentIconButton])
         transparentIconCell.bind(index: 0, block: { (component: TextComponent) in
             component.font = .subhead1
