@@ -93,8 +93,12 @@ extension CellsController: SectionsDataSource {
                 tableView: tableView,
                 id: "row-text-button",
                 height: .heightCell48,
+                autoDeselect: true,
                 bind: { cell in
                     cell.set(backgroundStyle: .bordered)
+                },
+                action: {
+                    print("Did tap text row")
                 }
         )
     }

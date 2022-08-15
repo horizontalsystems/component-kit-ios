@@ -9,7 +9,7 @@ open class BaseSelectableThemeCell: BaseThemeCell {
 
         selectionStyle = .default
 
-        wrapperView.insertSubview(selectView, at: 0)
+        borderView.insertSubview(selectView, at: 0)
         selectView.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
             maker.top.equalToSuperview()
@@ -29,7 +29,7 @@ open class BaseSelectableThemeCell: BaseThemeCell {
         switch backgroundStyle {
         case .lawrence, .bordered:
             selectView.backgroundColor = .themeLawrencePressed
-            selectView.layer.cornerRadius = wrapperView.viewCornerRadius
+            selectView.layer.cornerRadius = borderView.cornerRadius
             selectView.layer.maskedCorners = corners(isFirst: isFirst, isLast: isLast)
         case .transparent:
             selectView.backgroundColor = .themeLawrencePressed
@@ -37,11 +37,18 @@ open class BaseSelectableThemeCell: BaseThemeCell {
             selectView.layer.maskedCorners = []
         }
 
+        var topInset: CGFloat = 0
+        if !topSeparatorView.isHidden {
+            topInset = topSeparatorView.height
+        }
+        if borderView.borders.contains(.top) {
+            topInset = borderView.borderWidth
+        }
         selectView.snp.updateConstraints { maker in
-            maker.top.equalToSuperview().inset(wrapperView.viewBorders.contains(.top) ? wrapperView.viewBorderWidth : 0)
-            maker.leading.equalToSuperview().inset(wrapperView.viewBorders.contains(.left) ? wrapperView.viewBorderWidth : 0)
-            maker.trailing.equalToSuperview().inset(wrapperView.viewBorders.contains(.right) ? wrapperView.viewBorderWidth : 0)
-            maker.bottom.equalToSuperview().inset(wrapperView.viewBorders.contains(.bottom) ? wrapperView.viewBorderWidth : 0).priority(.high)
+            maker.top.equalToSuperview().inset(topInset)
+            maker.leading.equalToSuperview().inset(borderView.borders.contains(.left) ? borderView.borderWidth : 0)
+            maker.trailing.equalToSuperview().inset(borderView.borders.contains(.right) ? borderView.borderWidth : 0)
+            maker.bottom.equalToSuperview().inset(borderView.borders.contains(.bottom) ? borderView.borderWidth : 0).priority(.high)
         }
 
         layoutIfNeeded()

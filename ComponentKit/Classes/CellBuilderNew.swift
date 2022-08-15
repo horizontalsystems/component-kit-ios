@@ -90,7 +90,7 @@ public class CellBuilderNew {
         }
 
         if let rootView = view(element: rootElement) {
-            cell.wrapperView.addSubview(rootView)
+            cell.borderView.addSubview(rootView)
             rootView.snp.makeConstraints { maker in
                 maker.edges.equalToSuperview().inset(layoutMargins)
             }

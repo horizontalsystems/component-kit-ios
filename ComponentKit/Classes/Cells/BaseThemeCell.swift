@@ -7,7 +7,8 @@ open class BaseThemeCell: UITableViewCell {
     public static let rightInset: CGFloat = .margin16
     public static let middleInset: CGFloat = .margin16
 
-    public let wrapperView = CellWrapperView()
+    public let borderView = BorderedView()
+    public let topSeparatorView = UIView()
 
     let stackView = UIStackView()
     var rootView: UIView?
@@ -24,24 +25,30 @@ open class BaseThemeCell: UITableViewCell {
         contentView.backgroundColor = .clear
         separatorInset.left = 0
         selectionStyle = .none
-        clipsToBounds = true
 
-        contentView.addSubview(wrapperView)
-        wrapperView.snp.makeConstraints { maker in
+        clipsToBounds = true
+        layer.cornerCurve = .continuous
+
+        contentView.addSubview(borderView)
+        borderView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
 
-        wrapperView.addSubview(stackView)
+        borderView.addSubview(stackView)
         stackView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
 
+        borderView.addSubview(topSeparatorView)
+        topSeparatorView.snp.makeConstraints { maker in
+            maker.leading.trailing.top.equalToSuperview()
+            maker.height.equalTo(CGFloat.heightOneDp)
+        }
+
         stackView.insetsLayoutMarginsFromSafeArea = false
 
-        wrapperView.viewSeparatorColor = .themeSteel10
-
-        wrapperView.viewBorderWidth = .heightOneDp
-        wrapperView.viewSeparatorWidth = .heightOneDp
+        borderView.borderWidth = .heightOneDp
+        topSeparatorView.backgroundColor = .themeSteel10
     }
 
     @available(*, unavailable)
@@ -70,60 +77,66 @@ open class BaseThemeCell: UITableViewCell {
         var maskedCorners: CACornerMask = []
         var resolvedCornerRadius: CGFloat = 0
 
-        wrapperView.viewCornerEdges = []
-        wrapperView.viewCornerRadius = 0
+        borderView.borders = []
+        borderView.borderWidth = 0
+        borderView.cornerRadius = 0
 
         switch backgroundStyle {
         case .lawrence:
-            wrapperView.backgroundColor = .themeLawrence
             if isFirst || isLast {
                 resolvedCornerRadius = cornerRadius
             }
             maskedCorners = corners(isFirst: isFirst, isLast: isLast)
-            wrapperView.viewBorderColor = .themeSteel10
-            wrapperView.viewBorders = isFirst ? [] : [.top]
-        case .bordered:
-            wrapperView.backgroundColor = .clear
 
-            var viewCornerEdges: UIRectEdge = []
-            var viewBorders: UIRectEdge = [.left, .top, .right]
+            topSeparatorView.isHidden = isFirst
+            borderView.backgroundColor = .themeLawrence
+            borderView.borderColor = .clear
+        case .bordered:
+            var borders: UIRectEdge = [.left, .right]
             if isFirst || isLast {
                 resolvedCornerRadius = cornerRadius
             }
             maskedCorners = corners(isFirst: isFirst, isLast: isLast)
             if isFirst {
-                viewCornerEdges.formUnion(.top)
+                borders.formUnion(.top)
             }
             if isLast {
-                viewCornerEdges.formUnion(.bottom)
-                viewBorders.formUnion(.bottom)
+                borders.formUnion(.bottom)
             }
 
-            wrapperView.viewCornerEdges = viewCornerEdges
-            wrapperView.viewCornerRadius = resolvedCornerRadius
-            wrapperView.viewBorderColor = .themeSteel20
-            wrapperView.viewBorders = viewBorders
+            topSeparatorView.snp.remakeConstraints { maker in
+                maker.leading.trailing.equalToSuperview().inset(CGFloat.heightOneDp)
+                maker.top.equalToSuperview()
+                maker.height.equalTo(CGFloat.heightOneDp)
+            }
+            topSeparatorView.layoutIfNeeded()
+
+            topSeparatorView.isHidden = isFirst
+            borderView.backgroundColor = .clear
+            borderView.borderWidth = .heightOneDp
+            borderView.borders = borders
+            borderView.cornerRadius = resolvedCornerRadius
+            borderView.borderColor = .themeSteel20
         case .transparent:
-            wrapperView.backgroundColor = .clear
-
-            var viewBorders: UIRectEdge = []
-            if !isFirst {
-                viewBorders.formUnion(.top)
-            }
+            var borders: UIRectEdge = [.top]
             if isLast {
-                viewBorders.formUnion(.bottom)
+                borders.formUnion(.bottom)
             }
 
-            wrapperView.viewBorderColor = .themeSteel10
-            wrapperView.viewBorders = viewBorders
+            topSeparatorView.isHidden = true
+            borderView.backgroundColor = .clear
+            borderView.borderColor = .themeSteel10
+            borderView.borderWidth = .heightOneDp
+            borderView.borders = borders
         }
 
-        wrapperView.snp.remakeConstraints { maker in
+        borderView.snp.remakeConstraints { maker in
             maker.edges.equalToSuperview().inset(Self.margin(backgroundStyle: backgroundStyle))
         }
+        borderView.layoutIfNeeded()
 
-        wrapperView.layer.cornerRadius = resolvedCornerRadius
-        wrapperView.layer.maskedCorners = maskedCorners
+        borderView.cornerRadius = resolvedCornerRadius
+        borderView.layer.maskedCorners = maskedCorners
     }
 
     public func bind(rootElement: CellBuilderNew.CellElement) {
