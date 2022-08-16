@@ -7,7 +7,7 @@ open class BaseThemeCell: UITableViewCell {
     public static let rightInset: CGFloat = .margin16
     public static let middleInset: CGFloat = .margin16
 
-    public let borderView = BorderedView()
+    public let wrapperView = BorderedView()
     public let topSeparatorView = UIView()
 
     let stackView = UIStackView()
@@ -29,17 +29,17 @@ open class BaseThemeCell: UITableViewCell {
         clipsToBounds = true
         layer.cornerCurve = .continuous
 
-        contentView.addSubview(borderView)
-        borderView.snp.makeConstraints { maker in
+        contentView.addSubview(wrapperView)
+        wrapperView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
 
-        borderView.addSubview(stackView)
+        wrapperView.addSubview(stackView)
         stackView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
 
-        borderView.addSubview(topSeparatorView)
+        wrapperView.addSubview(topSeparatorView)
         topSeparatorView.snp.makeConstraints { maker in
             maker.leading.trailing.top.equalToSuperview()
             maker.height.equalTo(CGFloat.heightOneDp)
@@ -47,7 +47,7 @@ open class BaseThemeCell: UITableViewCell {
 
         stackView.insetsLayoutMarginsFromSafeArea = false
 
-        borderView.borderWidth = .heightOneDp
+        wrapperView.borderWidth = .heightOneDp
         topSeparatorView.backgroundColor = .themeSteel10
     }
 
@@ -77,9 +77,9 @@ open class BaseThemeCell: UITableViewCell {
         var maskedCorners: CACornerMask = []
         var resolvedCornerRadius: CGFloat = 0
 
-        borderView.borders = []
-        borderView.borderWidth = 0
-        borderView.cornerRadius = 0
+        wrapperView.borders = []
+        wrapperView.borderWidth = 0
+        wrapperView.cornerRadius = 0
 
         switch backgroundStyle {
         case .lawrence:
@@ -89,8 +89,8 @@ open class BaseThemeCell: UITableViewCell {
             maskedCorners = corners(isFirst: isFirst, isLast: isLast)
 
             topSeparatorView.isHidden = isFirst
-            borderView.backgroundColor = .themeLawrence
-            borderView.borderColor = .clear
+            wrapperView.backgroundColor = .themeLawrence
+            wrapperView.borderColor = .clear
         case .bordered:
             var borders: UIRectEdge = [.left, .right]
             if isFirst || isLast {
@@ -112,11 +112,11 @@ open class BaseThemeCell: UITableViewCell {
             topSeparatorView.layoutIfNeeded()
 
             topSeparatorView.isHidden = isFirst
-            borderView.backgroundColor = .clear
-            borderView.borderWidth = .heightOneDp
-            borderView.borders = borders
-            borderView.cornerRadius = resolvedCornerRadius
-            borderView.borderColor = .themeSteel20
+            wrapperView.backgroundColor = .clear
+            wrapperView.borderWidth = .heightOneDp
+            wrapperView.borders = borders
+            wrapperView.cornerRadius = resolvedCornerRadius
+            wrapperView.borderColor = .themeSteel20
         case .transparent:
             var borders: UIRectEdge = [.top]
             if isLast {
@@ -124,19 +124,19 @@ open class BaseThemeCell: UITableViewCell {
             }
 
             topSeparatorView.isHidden = true
-            borderView.backgroundColor = .clear
-            borderView.borderColor = .themeSteel10
-            borderView.borderWidth = .heightOneDp
-            borderView.borders = borders
+            wrapperView.backgroundColor = .clear
+            wrapperView.borderColor = .themeSteel10
+            wrapperView.borderWidth = .heightOneDp
+            wrapperView.borders = borders
         }
 
-        borderView.snp.remakeConstraints { maker in
+        wrapperView.snp.remakeConstraints { maker in
             maker.edges.equalToSuperview().inset(Self.margin(backgroundStyle: backgroundStyle))
         }
-        borderView.layoutIfNeeded()
+        wrapperView.layoutIfNeeded()
 
-        borderView.cornerRadius = resolvedCornerRadius
-        borderView.layer.maskedCorners = maskedCorners
+        wrapperView.cornerRadius = resolvedCornerRadius
+        wrapperView.layer.maskedCorners = maskedCorners
     }
 
     public func bind(rootElement: CellBuilderNew.CellElement) {
