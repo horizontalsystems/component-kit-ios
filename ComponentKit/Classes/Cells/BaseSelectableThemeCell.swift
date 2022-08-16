@@ -9,7 +9,7 @@ open class BaseSelectableThemeCell: BaseThemeCell {
 
         selectionStyle = .default
 
-        borderView.insertSubview(selectView, at: 0)
+        wrapperView.insertSubview(selectView, at: 0)
         selectView.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
             maker.top.equalToSuperview()
@@ -29,7 +29,7 @@ open class BaseSelectableThemeCell: BaseThemeCell {
         switch backgroundStyle {
         case .lawrence, .bordered:
             selectView.backgroundColor = .themeLawrencePressed
-            selectView.layer.cornerRadius = borderView.cornerRadius
+            selectView.layer.cornerRadius = wrapperView.cornerRadius
             selectView.layer.maskedCorners = corners(isFirst: isFirst, isLast: isLast)
         case .transparent:
             selectView.backgroundColor = .themeLawrencePressed
@@ -41,14 +41,14 @@ open class BaseSelectableThemeCell: BaseThemeCell {
         if !topSeparatorView.isHidden {
             topInset = topSeparatorView.height
         }
-        if borderView.borders.contains(.top) {
-            topInset = borderView.borderWidth
+        if wrapperView.borders.contains(.top) {
+            topInset = wrapperView.borderWidth
         }
         selectView.snp.updateConstraints { maker in
             maker.top.equalToSuperview().inset(topInset)
-            maker.leading.equalToSuperview().inset(borderView.borders.contains(.left) ? borderView.borderWidth : 0)
-            maker.trailing.equalToSuperview().inset(borderView.borders.contains(.right) ? borderView.borderWidth : 0)
-            maker.bottom.equalToSuperview().inset(borderView.borders.contains(.bottom) ? borderView.borderWidth : 0).priority(.high)
+            maker.leading.equalToSuperview().inset(wrapperView.borders.contains(.left) ? wrapperView.borderWidth : 0)
+            maker.trailing.equalToSuperview().inset(wrapperView.borders.contains(.right) ? wrapperView.borderWidth : 0)
+            maker.bottom.equalToSuperview().inset(wrapperView.borders.contains(.bottom) ? wrapperView.borderWidth : 0).priority(.high)
         }
 
         layoutIfNeeded()
