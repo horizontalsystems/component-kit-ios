@@ -118,7 +118,10 @@ open class BaseThemeCell: UITableViewCell {
             wrapperView.cornerRadius = resolvedCornerRadius
             wrapperView.borderColor = .themeSteel20
         case .transparent:
-            var borders: UIRectEdge = [.top]
+            var borders: UIRectEdge = []
+            if !isFirst {
+                borders.formUnion(.top)
+            }
             if isLast {
                 borders.formUnion(.bottom)
             }
