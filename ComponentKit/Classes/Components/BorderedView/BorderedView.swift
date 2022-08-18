@@ -148,6 +148,8 @@ public class BorderedView: UIView {
         borderLayer.strokeColor = borderColor.cgColor
         borderLayer.fillColor = nil
         borderLayer.lineWidth = borderWidth
+
+        borderLayer.removeAllAnimations()
     }
 
     public override func layoutSubviews() {
