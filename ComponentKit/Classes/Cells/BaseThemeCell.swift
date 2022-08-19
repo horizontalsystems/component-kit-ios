@@ -109,7 +109,6 @@ open class BaseThemeCell: UITableViewCell {
                 maker.top.equalToSuperview()
                 maker.height.equalTo(CGFloat.heightOneDp)
             }
-            topSeparatorView.layoutIfNeeded()
 
             topSeparatorView.isHidden = isFirst
             wrapperView.backgroundColor = .clear
@@ -136,7 +135,6 @@ open class BaseThemeCell: UITableViewCell {
         wrapperView.snp.remakeConstraints { maker in
             maker.edges.equalToSuperview().inset(Self.margin(backgroundStyle: backgroundStyle))
         }
-        wrapperView.layoutIfNeeded()
 
         wrapperView.cornerRadius = resolvedCornerRadius
         wrapperView.layer.maskedCorners = maskedCorners
