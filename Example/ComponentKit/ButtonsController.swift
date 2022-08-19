@@ -206,7 +206,7 @@ class ButtonsController: ThemeViewController {
         })
 
         secondaryCircleCell.set(backgroundStyle: .transparent)
-        CellBuilder.build(cell: secondaryCircleCell, elements: [.text, .secondaryCircleButton, .margin4, .secondaryCircleButton, .margin4, .secondaryCircleButton])
+        CellBuilder.build(cell: secondaryCircleCell, elements: [.text, .secondaryCircleButton, .margin4, .secondaryCircleButton, .margin4, .secondaryCircleButton, .margin4, .secondaryCircleButton])
         secondaryCircleCell.bind(index: 0, block: { (component: TextComponent) in
             component.font = .subhead1
             component.textColor = .themeLeah
@@ -220,6 +220,9 @@ class ButtonsController: ThemeViewController {
             component.button.set(image: UIImage(named: "icon_20"))
         })
         secondaryCircleCell.bind(index: 3, block: { (component: SecondaryCircleButtonComponent) in
+            component.button.set(image: UIImage(named: "icon_20"), style: .red)
+        })
+        secondaryCircleCell.bind(index: 4, block: { (component: SecondaryCircleButtonComponent) in
             component.button.isEnabled = false
             component.button.set(image: UIImage(named: "icon_20"))
         })
