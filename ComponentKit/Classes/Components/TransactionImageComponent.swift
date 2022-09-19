@@ -35,6 +35,8 @@ public class TransactionImageComponent: UIView {
             maker.size.equalTo(CGFloat.iconSize24)
         }
 
+        imageView.cornerRadius = .cornerRadius4
+
         addSubview(doubleImageWrapper)
         doubleImageWrapper.snp.makeConstraints { maker in
             maker.center.equalTo(spinner)
@@ -92,7 +94,7 @@ public class TransactionImageComponent: UIView {
         doubleImageWrapper.isHidden = true
         imageView.isHidden = false
 
-        imageView.kf.setImage(with: urlString.flatMap { URL(string: $0) }, placeholder: placeholder, options: [.scaleFactor(UIScreen.main.scale)])
+        imageView.kf.setImage(with: urlString.flatMap { URL(string: $0) }, placeholder: placeholder, options: [.onlyLoadFirstFrame, .transition(.fade(0.5))])
     }
 
     public func setDoubleImage(frontUrlString: String?, frontPlaceholder: UIImage?, backUrlString: String?, backPlaceholder: UIImage?) {
