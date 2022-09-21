@@ -7,7 +7,7 @@ public class TransactionImageComponent: UIView {
     private let spinner = HUDProgressView(
             progress: 0,
             strokeLineWidth: 2,
-            radius: 19,
+            radius: 21,
             strokeColor: .themeGray,
             donutColor: .themeSteel10,
             duration: 2
@@ -17,6 +17,7 @@ public class TransactionImageComponent: UIView {
 
     private let doubleImageWrapper = UIView()
     private let backImageView = UIImageView()
+    private let frontImageMask = UIView()
     private let frontImageView = UIImageView()
 
     init() {
@@ -26,7 +27,7 @@ public class TransactionImageComponent: UIView {
         spinner.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
             maker.centerY.equalToSuperview()
-            maker.size.equalTo(40)
+            maker.size.equalTo(44)
         }
 
         addSubview(imageView)
@@ -49,8 +50,6 @@ public class TransactionImageComponent: UIView {
             maker.size.equalTo(CGFloat.iconSize20)
         }
 
-        let frontImageMask = UIView()
-
         doubleImageWrapper.addSubview(frontImageMask)
         doubleImageWrapper.addSubview(frontImageView)
 
@@ -65,7 +64,6 @@ public class TransactionImageComponent: UIView {
         }
 
         frontImageMask.backgroundColor = .themeTyler
-        frontImageMask.cornerRadius = 10
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -94,15 +92,44 @@ public class TransactionImageComponent: UIView {
         doubleImageWrapper.isHidden = true
         imageView.isHidden = false
 
+        imageView.image = nil
         imageView.kf.setImage(with: urlString.flatMap { URL(string: $0) }, placeholder: placeholder, options: [.onlyLoadFirstFrame, .transition(.fade(0.5))])
     }
 
-    public func setDoubleImage(frontUrlString: String?, frontPlaceholder: UIImage?, backUrlString: String?, backPlaceholder: UIImage?) {
+    public func setDoubleImage(frontType: ImageType, frontUrl: String?, frontPlaceholder: UIImage?, backType: ImageType, backUrl: String?, backPlaceholder: UIImage?) {
         imageView.isHidden = true
         doubleImageWrapper.isHidden = false
 
-        frontImageView.kf.setImage(with: frontUrlString.flatMap { URL(string: $0) }, placeholder: frontPlaceholder)
-        backImageView.kf.setImage(with: backUrlString.flatMap { URL(string: $0) }, placeholder: backPlaceholder)
+        switch frontType {
+        case .circle:
+            frontImageView.cornerRadius = CGFloat.iconSize20 / 2
+            frontImageMask.cornerRadius = CGFloat.iconSize20 / 2
+        case .squircle:
+            frontImageView.cornerRadius = .cornerRadius4
+            frontImageMask.cornerRadius = .cornerRadius4
+        }
+
+        switch backType {
+        case .circle:
+            backImageView.cornerRadius = CGFloat.iconSize20 / 2
+        case .squircle:
+            backImageView.cornerRadius = .cornerRadius4
+        }
+
+        frontImageView.image = nil
+        backImageView.image = nil
+
+        frontImageView.kf.setImage(with: frontUrl.flatMap { URL(string: $0) }, placeholder: frontPlaceholder)
+        backImageView.kf.setImage(with: backUrl.flatMap { URL(string: $0) }, placeholder: backPlaceholder)
+    }
+
+}
+
+extension TransactionImageComponent {
+
+    public enum ImageType {
+        case circle
+        case squircle
     }
 
 }
